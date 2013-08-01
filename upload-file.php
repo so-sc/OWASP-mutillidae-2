@@ -17,7 +17,7 @@
 				$lProtectAgainstXSS = FALSE;
 				$lValidateFileUpload = FALSE;
 				$lAllowedFileSize = 2000000;
-				$lUploadDirectoryFlag = "WEB_SERVER";
+				$lUploadDirectoryFlag = "CLIENT_DECIDES";
 			break;
 
 	   		case "2":
@@ -32,7 +32,8 @@
 			break;
     	}// end switch
     	
-		$lWebServerUploadDirectory = __ROOT__.DIRECTORY_SEPARATOR.'uploads';
+		//$lWebServerUploadDirectory = __ROOT__.DIRECTORY_SEPARATOR.'uploads';
+    	$lWebServerUploadDirectory = sys_get_temp_dir();
     	$lFormSubmitted = $lFileMovedSuccessfully = FALSE;
 		if (isset($_POST["upload-file-php-submit-button"]) || isset($_REQUEST["upload-file-php-submit-button"])) {
 			$lFormSubmitted = TRUE;

@@ -14,9 +14,11 @@
 			BUG FIX: Forgot to update version string 3 versions
 			in a row.
 		</li>
-		<li>Improved output on database offline page</li>
-		<li>Verified web service exploits work from Ubuntu 13.04. 
-		Windows XP already verified.</li>
+		<li>ENHANCEMENT: Improved output on database offline page</li>
+		<li>
+			QA: Verified web service exploits work from Ubuntu 13.04. 
+			Windows XP already verified.
+		</li>
 	</ul>
 </blockquote>
 
