@@ -230,20 +230,22 @@
 
 		try{
 			var gPenTestToolsJSON = "";
-			if (gUseSafeJSONParser == "TRUE"){
-				gPenTestToolsJSON = JSON.parse(gPenTestToolsJSONString);
-			}else{
-				gPenTestToolsJSON = eval("(" + gPenTestToolsJSONString + ")");
-			}// end if gUseSafeJSONParser
-			//alert(gPenTestToolsJSON);
+			if (gPenTestToolsJSONString.length > 0){
+				if (gUseSafeJSONParser == "TRUE"){
+					gPenTestToolsJSON = JSON.parse(gPenTestToolsJSONString);
+				}else{
+					gPenTestToolsJSON = eval("(" + gPenTestToolsJSONString + ")");
+				}// end if gUseSafeJSONParser
+				//alert(gPenTestToolsJSON);
 
-			var laTools = gPenTestToolsJSON.query.penTestTools;
-			if(laTools && laTools.length > 0){
-				document.getElementById("idDisplayTable").style.display="";
-				for (var i=0; i<laTools.length; i++){
-					addRow(laTools[i]);
-				}//end for i
-			}// end if
+				var laTools = gPenTestToolsJSON.query.penTestTools;
+				if(laTools && laTools.length > 0){
+					document.getElementById("idDisplayTable").style.display="";
+					for (var i=0; i<laTools.length; i++){
+						addRow(laTools[i]);
+					}//end for i
+				}// end if				
+			}// end if gPenTestToolsJSONString.length > 0
 		}catch(/*Exception*/ e){
 			alert("Error trying to parse JSON: " + e.message);
 		}// end try

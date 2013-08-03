@@ -8,7 +8,7 @@
    			// DO NOTHING: This is insecure		
 			$lEncodeOutput = FALSE;
 			$lTokenizeAllowedMarkup = FALSE;
-			$lProtectAgainstSQLInjection = FALSE;
+			$lProtectAgainstMethodTampering = FALSE;
 			break;
 	    		
 			case "2":
@@ -48,7 +48,7 @@
 			$lTokenizeAllowedMarkup = TRUE;
 			
 			/* If we are in secure mode, we need to protect against SQLi */
-			$lProtectAgainstSQLInjection = TRUE;
+			$lProtectAgainstMethodTampering = TRUE;
    		break;
    	}// end switch		
 ?>
@@ -147,8 +147,8 @@
 			 * There are 3 ways that stored procs can be made vulenrable by developers,
 			 * but they are safe by default. Queries are vulnerable by default.
 			 */
-			if($lProtectAgainstSQLInjection){
-				$lAuthor = $MySQLHandler->escapeDangerousCharacters($_POST["author"]);
+			if($lProtectAgainstMethodTampering){
+				$lAuthor = $_POST["author"];
 			}else{
 				$lAuthor = $_REQUEST["author"];
 			}// end if

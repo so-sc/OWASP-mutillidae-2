@@ -38,7 +38,7 @@
    			 for giving the user links to click, hardcoding is the best defense.
    			*/ 
    			echo '
-				<div class="label">Developed by <a href="mailto:webpwnized@gmail.com">Jeremy Druin</a></div>
+				<div class="label">Developed by <a href="mailto:webpwnized@gmail.com">Jeremy "webpwnized" Druin</a>. Based on Mutillidae 1.0 from Adrian &quot;<a href="http://www.irongeek.com" target="_blank">Irongeek</a>&quot; Crenshaw.</div>
 				<div>&nbsp;</div>
 				<div class="label" ArbitraryRedirectionPoint=\"1\"><a href="index.php?page=redirectandlog.php&forwardurl=http://www.owasp.org">OWASP</a></div>
 				<div class="label" ArbitraryRedirectionPoint=\"1\"><a href="index.php?page=redirectandlog.php&forwardurl=http://www.issa-kentuckiana.org/">ISSA Kentuckiana</a></div>

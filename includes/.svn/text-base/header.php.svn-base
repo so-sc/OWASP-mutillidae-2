@@ -747,11 +747,6 @@
 							</a>
 						</li>
 						<li>
-							<a href="http://www.hackersforcharity.org/ghdb/" target="_blank">
-								Google Hacking Database
-							</a>
-						</li>	
-						<li>
 							<a href="http://sourceforge.net/projects/mutillidae/files/mutillidae-project/" target="_blank">
 								Latest Version of OWASP Mutillidae II
 							</a>
@@ -781,33 +776,23 @@
 				<img alt="OWASP" style="border-width: 0px;" height="90px" width="120px" src="./images/owasp-logo-400-300.png" />
 			</a>
 		</div>
-		<div class="label" style="text-align: center;">
-			Site hacked...err...quality-tested with Firefox, Burp-Suite and 
-			<a href="https://addons.mozilla.org/en-US/firefox/collections/jdruin/pro-web-developer-qa-pack/" target="_blank">
-			these Mozilla Add-ons
-			</a>
-		</div>
-		<div>&nbsp;</div>
 		<div>&nbsp;</div>
 		<div class="label" style="text-align: center;">
 			<a href="https://twitter.com/webpwnized" target="_blank">
 				<img align="middle" alt="Webpwnized Twitter Channel" src="./images/twitter-bird-48-48.png" width="48px" height="48px" />
 				<br/>
-				@webpwnized
+				Release Announcements
 			</a>
 		</div>		
+		<div>&nbsp;</div>
 		<div>&nbsp;</div>
 		<div class="label" style="text-align: center;">
 			<a href="http://www.youtube.com/user/webpwnized" style="white-space:nowrap;" target="_blank">
 				<img align="middle" alt="Webpwnized YouTube Channel" src="./images/youtube-48-48.png" width="48px" height="48px" />
 				<br/>
-				Mutillidae<br/>Channel
+				Video<br/>Tutorials
 			</a>
 		</div>		
-		<div>&nbsp;</div>
-		<div class="label" style="text-align: center;">Developed by<br/>Jeremy<br/>"webpwnized"<br/>Druin</div>
-		<div>&nbsp;</div>
-		<div class="label" style="text-align: center;">Based on Mutillidae 1.0 from Adrian &quot;<a href="http://www.irongeek.com" target="_blank">Irongeek</a>&quot; Crenshaw</div>
 	</td>
 
 <td valign="top">
