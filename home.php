@@ -53,7 +53,7 @@
 			</a>
 		</td>
 		<td>
-			<a href="" onclick="alert('The email account is webpwnized at gmail');">
+			<a href="" onclick="alert('The email account is webpwnized. Its a gmail account.');">
 				<img alt="Help" align="middle" src="./images/mail-icon-48-48.png" width="48px" height="48px" />
 				Bug Report Email Address 
 			</a>

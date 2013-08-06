@@ -1,7 +1,7 @@
 10
 
 dir
-42
+46
 svn+ssh://jdruin@svn.code.sf.net/p/mutillidae/code/phpmyadmin/locale
 svn+ssh://jdruin@svn.code.sf.net/p/mutillidae/code
 
@@ -25,6 +25,87 @@ jdruin
 
 
 81c6261e-13cf-44a1-ad98-a65b7fa13788
+
+ja
+dir
+
+zh_TW
+dir
+
+fi
+dir
+
+uz
+dir
+
+nb
+dir
+
+hi
+dir
+
+zh_CN
+dir
+
+fr
+dir
+
+hr
+dir
+
+nl
+dir
+
+pl
+dir
+
+hu
+dir
+
+lt
+dir
+
+ro
+dir
+
+ca
+dir
+
+tr
+dir
+
+uz@latin
+dir
+
+ru
+dir
+
+id
+dir
+
+el
+dir
+
+ar
+dir
+
+gl
+dir
+
+cs
+dir
+
+pt_BR
+dir
+
+es
+dir
+
+et
+dir
+
+en_GB
+dir
 
 si
 dir
@@ -51,86 +132,5 @@ bg
 dir
 
 de
-dir
-
-ja
-dir
-
-fi
-dir
-
-uz
-dir
-
-nb
-dir
-
-hi
-dir
-
-pt_BR
-dir
-
-fr
-dir
-
-nl
-dir
-
-hr
-dir
-
-en_GB
-dir
-
-pl
-dir
-
-hu
-dir
-
-lt
-dir
-
-ro
-dir
-
-ca
-dir
-
-tr
-dir
-
-ru
-dir
-
-uz@latin
-dir
-
-zh_TW
-dir
-
-id
-dir
-
-el
-dir
-
-zh_CN
-dir
-
-ar
-dir
-
-gl
-dir
-
-cs
-dir
-
-es
-dir
-
-et
 dir
 

@@ -33,17 +33,21 @@
 				/* gets the data from a URL */
 				function get_data($url) {
 					$data="";
-					try {
-						$ch = curl_init();
-						$timeout = 5;
-						curl_setopt($ch, CURLOPT_URL, $url);
-						curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-						curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-						$data = curl_exec($ch);
-						curl_close($ch);
-					} catch (Exception $e) {
-						//do nothing
-					}
+						try {
+							if (function_exists("curl_init")) {
+								$timeout = 5;
+								$ch = curl_init();
+								curl_setopt($ch, CURLOPT_URL, $url);
+								curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+								curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+								$data = curl_exec($ch);
+								curl_close($ch);
+							}else{
+								//curl_php is not installed
+							}// end if
+						} catch (Exception $e) {
+							//do nothing
+						}
 					return $data;
 				}// end function
 	

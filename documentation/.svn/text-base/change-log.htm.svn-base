@@ -1,11 +1,14 @@
 <div><span style="font-weight:bold;">08/02/2013</span>: Jeremy Druin</div>
 <blockquote>
-	<div>Change Log for OWASP Mutillidae II 2.5.17.1:</div>
+	<div>Change Log for OWASP Mutillidae II 2.5.17.2:</div>
 	<ul>
 		<li>BUG FIX: Double encoding in view blog in security level 5</li>
 		<li>Simplified sidebar and footer</li>
 		<li>BUG FIX: pen-test-tool-lookup.php JavaScript error on first visit</li>
 		<li>Removed the bold tag from the change log</li>
+		<li>BUG FIX: 2013 change log dates were wrong</li>
+		<li>Fixed bug report email address</li>
+		<li>BUG FIX: SSL Config hints when curl-php not installed on system</li>
 	</ul>
 </blockquote>
 
@@ -145,7 +148,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">06/22/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">06/22/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.5.11:</div>
 	<ul>
@@ -181,7 +184,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">06/13/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">06/13/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.5.10:</div>
 	<ul>
@@ -195,7 +198,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">5/18/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">5/18/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.5.9:</div>
 	<ul>
@@ -220,7 +223,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">5/18/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">5/18/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.5.8:</div>
 	<ul>
@@ -245,7 +248,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">5/10/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">5/10/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.5.7:</div>
 	<ul>
@@ -258,7 +261,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">5/6/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">5/6/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.5.6:</div>
 	<ul>
@@ -269,7 +272,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">5/6/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">5/6/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.5.5:</div>
 	<ul>
@@ -286,7 +289,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">5/5/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">5/5/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.5.4:</div>
 	<ul>
@@ -316,7 +319,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">5/3/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">5/3/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.5.3:</div>
 	<ul>
@@ -332,7 +335,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">4/27/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">4/27/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.5.2:</div>
 	<ul>
@@ -344,7 +347,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">4/27/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">4/27/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.5.1:</div>
 	<ul>
@@ -354,7 +357,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">3/30/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">3/30/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.5.0:</div>
 	<ul>
@@ -449,7 +452,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">3/24/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">3/24/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.4.10:</div>
 	<ul>
@@ -478,7 +481,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">3/24/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">3/24/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.4.9:</div>
 	<ul>
@@ -515,7 +518,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">2/21/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">2/21/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.4.8:</div>
 	<ul>
@@ -530,7 +533,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">2/21/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">2/21/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.4.7:</div>
 	<ul>
@@ -596,7 +599,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">2/12/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">2/12/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.4.6:</div>
 	<ul>
@@ -624,7 +627,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">2/10/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">2/10/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.4.5:</div>
 	<ul>
@@ -637,7 +640,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">2/8/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">2/8/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.4.4:</div>
 	<ul>
@@ -684,7 +687,7 @@
  	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">1/31/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">1/31/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.4.3:</div>
 	<ul>
@@ -705,7 +708,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">1/26/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">1/26/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.4.2:</div>
 	<ul>
@@ -716,7 +719,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">1/21/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">1/21/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.4.1:</div>
 	<ul>
@@ -735,7 +738,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">1/13/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">1/13/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.4.0:</div>
 	<ul>
@@ -798,7 +801,7 @@
 	</ul>
 </blockquote>
 
-<div><span style="font-weight:bold;">1/11/2012</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">1/11/2013</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.3.14:</div>
 	<ul>
