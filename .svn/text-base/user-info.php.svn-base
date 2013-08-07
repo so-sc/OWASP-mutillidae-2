@@ -158,10 +158,12 @@
 			$lQueryResult = $SQLQueryHandler->getUserInformation($lUsername, $lPassword);
 	    	
 	   		$lResultsFound = FALSE;
+	   		$lRecordsFound = 0;
 	   		//$lResultsFound = isset($lQueryResult->num_rows) && $lQueryResult->num_rows > 0;
 	   		if (isset($lQueryResult->num_rows)){
 				if ($lQueryResult->num_rows > 0) {
 	   				$lResultsFound = TRUE;
+	   				$lRecordsFound = $lQueryResult->num_rows;
 				}//end if
 			}//end if
 
@@ -173,7 +175,7 @@
 			echo '	<div class="report-header">
 						Results for &quot;<span ReflectedXSSExecutionPoint="1" style="color:#770000;">'
 						.$lUsername.
-						'</span>&quot;.'.$lQueryResult->num_rows.' records found.
+						'</span>&quot;.'.$lRecordsFound.' records found.
 					</div>';
 
     		/* Print out results */
@@ -204,7 +206,7 @@
 				echo '<script>document.getElementById("id-bad-cred-tr").style.display=""</script>';
 			}// end if ($lResultsFound)
     	} catch (Exception $e) {
-			echo $CustomErrorHandler->FormatError($e, $lQueryString);
+			echo $CustomErrorHandler->FormatError($e, "Error attempting to display user information");
        	}// end try;
     	
 	}// end if (isset($_POST)) 
