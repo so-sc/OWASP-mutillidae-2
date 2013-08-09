@@ -228,6 +228,28 @@ class SQLQueryHandler {
 		return $this->mMySQLHandler->executeQuery($lQueryString);	
 	}// end function getPenTestTools	
 
+	public function getHitLogEntries(){
+		/* Note: No possibility of SQL injection because the query
+		 * is static.
+		*/
+		$lLimitString = "";
+		if ($this->mLimitOutput == TRUE){
+			$lLimitString .= " LIMIT 20";
+		}// end if
+		
+		$lQueryString  = "SELECT * FROM `hitlog` ORDER BY date DESC".$lLimitString.";";
+		return $this->mMySQLHandler->executeQuery($lQueryString);
+	}// end function getHitLogEntries
+
+	/* -----------------------------------------
+	 * Truncate Queries
+	* ----------------------------------------- */
+	public function truncateHitLog(){
+		/* Note: No possibility of SQL injection because the query is static.*/
+		$lQueryString  = "TRUNCATE TABLE hitlog;";
+		return $this->mMySQLHandler->executeQuery($lQueryString);
+	}// end function truncateHitLog
+	
 	/* -----------------------------------------
 	 * Insert Queries
 	 * ----------------------------------------- */

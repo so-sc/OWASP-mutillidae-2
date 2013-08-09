@@ -14,6 +14,8 @@
 		case "SL5": $lhintsPopUpNotificationMessage = "Security level set to 5. Good Luck.";break;
 		case "BHD1": $lhintsPopUpNotificationMessage = "Bubble Hints Disabled";break;
 		case "BHE1": $lhintsPopUpNotificationMessage = "Bubble Hints Enabled";break;
+		case "LFD1": $lhintsPopUpNotificationMessage = "Logs Deleted";break;
+		case "LFR1": $lhintsPopUpNotificationMessage = "Logs Refreshed";break;
 	}// end switch
 ?>
 

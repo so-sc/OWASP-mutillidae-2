@@ -6,6 +6,7 @@ html{
 
 img{
 	border: none;
+	vertical-align:middle;
 }
 
 a{
@@ -482,26 +483,26 @@ table tr td.success-header{
 }
 
 *.informative-message{
-	border-color: #000033;
+	border-color: #000000;
 	border-width: 1px;
 	border-style: solid;
 	background-color: #ccccff;
 	text-align: center;
 	font-weight: bold;
-	color: #000033;
+	color: #000000;
 	padding-left: 30px;
 	padding-right: 30px;
 	border-radius: 3px;
 }
 
 *.warning-message{
-	border-color: #000033;
+	border-color: #000000;
 	border-width: 1px;
 	border-style: solid;
 	background-color: #ffff99;
 	text-align: center;
 	font-weight: bold;
-	color: #000033;
+	color: #000000;
 	padding-left: 30px;
 	padding-right: 30px;
 	padding-top: 5px;

@@ -9,7 +9,7 @@
    		case "1": // This code is insecure
    			// DO NOTHING: This is insecure		
 			$lEncodeOutput = FALSE;
-			$lLimitOutput= FALSE;
+			$lLimitOutput = FALSE;
 		break;
 	    		
    		case "2":
@@ -31,30 +31,15 @@
    			// encode the output following OWASP standards
    			// this will be HTML encoding because we are outputting data into HTML
 			$lEncodeOutput = TRUE;
-			
-			/*
-			 *  If DOS defenses are enabled, we limit output. An attacker can easily cause 
-			 *  the logs to fill . This in itself may or may not pose a problem. 
-			 *  But filling logs which display is a type of ampliphication attack. 
-			 *  If one attacker puts 10,000 orws in the log then 10 innocent 
-			 *  users view those logs, the system will have to display 100,000 log rows (10 users * 10,000 rows). 
-			 *  Ampliphications attacks are also done by sending single IP packets to networks 
-			 *  which will broadcast the packet thus ampliphying the packet many times.
-			 */
-			$lLimitOutput= TRUE;
+			$lLimitOutput = TRUE;
    		break;
    	}// end switch		
 
    	if(isset($_GET["deleteLogs"])){
-   		
-		try{
-			$lQueryString = "TRUNCATE TABLE hitlog";
-			$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
-		} catch (Exception $e) {
-			echo $CustomErrorHandler->FormatError($e, $lQueryString);
-		}// end try
-
+   		$lQueryResult = $SQLQueryHandler->truncateHitLog();
 	}// end if isset
+
+	$lQueryResult = $SQLQueryHandler->getHitLogEntries();
 ?>
 
 <!-- Bubble hints code -->
@@ -78,74 +63,86 @@
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
 <?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-wrapper.inc'); ?>
 
+<style>
+	#idLogRecords tr td{
+		border: 1px solid black;
+	}
+	#idLogRecords{
+		width: 100%;
+	}
+	img{
+		vertical-align:middle;
+	}
+</style>
+<table class="main-table-frame" id="idLogRecords">
+<tr class="report-header">
+	<td colspan="10">	
+		<span>
+			<img width="32px" height="32px" src="./images/information-icon-64-64.png" />
+			<?php echo $lQueryResult->num_rows; ?> log records found
+		</span>
+		<span title="Click to refresh log file" onclick="document.location.href=document.location.href.replace('&deleteLogs=deleteLogs','').replace('&popUpNotificationCode=LFD1','').concat('&popUpNotificationCode=LFR1');" style="cursor: pointer;margin-left:35px;margin-right:35px;white-space:nowrap;font-weight:bold;">
+			<img width="32px" height="32px" src="./images/refresh-button-48px-by-48px.png" />
+			Refresh Logs
+		</span>
+		<span title="Click to delete log file" onclick="document.location='./index.php?page=show-log.php&deleteLogs=deleteLogs&popUpNotificationCode=LFD1';" style="cursor: pointer;white-space:nowrap;font-weight:bold;">
+			<img width="32px" height="32px" src="./images/delete-icon-256-256.png" />
+			Delete Logs
+		</span>
+	</td>
+</tr>		
+<tr class="report-header">
+    <td style="font-weight:bold;">Hostname</td>
+    <td style="font-weight:bold;">IP</td>
+    <td style="font-weight:bold;">Browser Agent</td>
+    <td style="font-weight:bold;">Page Viewed</td>
+    <td style="font-weight:bold;">Date/Time</td>
+</tr>
+
 <?php
-	try{// to draw table
-		$lQueryString = "SELECT * FROM `hitlog` ORDER BY date DESC";
-	    
-		if ($lLimitOutput){
-	    	$lQueryString .= " LIMIT 20";
-	    }// end if
-		
-		$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
-					    
-		// we have rows. Begin drawing output.
-		echo '<table border="1px" width="100%" class="main-table-frame">';
-		echo '<tr class="report-header">';
-		echo '	<td colspan="10">';		
-		echo '		<span><img width="32px" height="32px" src="./images/information-icon-64-64.png" style="vertical-align:middle;" />'.$lQueryResult->num_rows.' log records found<span>';
-		echo '		<span title="Click to refresh log file" onclick="document.location.reload(true);" style="cursor: pointer;margin-left:35px;margin-right:35px;white-space:nowrap;font-weight:bold;">';
-		echo '			<img width="32px" height="32px" src="./images/refresh-button-48px-by-48px.png" style="vertical-align:middle;" />';
-		echo '			Refresh Logs';
-		echo '		</span>';
-		echo '		<span title="Click to delete log file" onclick="document.location=\'./index.php?page=show-log.php&deleteLogs=deleteLogs\';" style="cursor: pointer;white-space:nowrap;font-weight:bold;">';
-		echo '			<img width="32px" height="32px" src="./images/delete-icon-256-256.png" style="vertical-align:middle;" />';
-		echo '			Delete Logs';
-		echo '		</span>';
-		echo '	</td>';
-		echo '</tr>';		
-	    echo '<tr class="report-header">
-			    <td style="font-weight:bold;">Hostname</td>
-			    <td style="font-weight:bold;">IP</td>
-			    <td style="font-weight:bold;">Browser Agent</td>
-			    <td style="font-weight:bold;">Page Viewed</td>
-			    <td style="font-weight:bold;">Date/Time</td>
-		    </tr>';
+	try{// to draw table		
 
 	    if ($lLimitOutput){
 	    	echo '<tr><td class="error-header" colspan="10">Note: DOS defenses enabled. Rows limited to last 20.</td></tr>';
 	    }// end if
 
-	    $lRowNumber = 0;
-	    while($row = $lQueryResult->fetch_object()){
-	    	$lRowNumber++;
-			
-			if(!$lEncodeOutput){
-				$lHostname = $row->hostname;
-				$lClientIPAddress = $row->ip;
-				$lBrowser = $row->browser;
-				$lReferer = $row->referer;
-				$lDate = $row->date;
-			}else{
-				$lHostname = $Encoder->encodeForHTML($row->hostname);
-				$lClientIPAddress = $Encoder->encodeForHTML($row->ip);
-				$lBrowser = $Encoder->encodeForHTML($row->browser);
-				$lReferer = $Encoder->encodeForHTML($row->referer);
-				$lDate = $Encoder->encodeForHTML($row->date);				
-			}// end if
+	    if($lQueryResult->num_rows > 0){
+		    $lRowNumber = 0;
+		    while($row = $lQueryResult->fetch_object()){
+		    	$lRowNumber++;
 				
-			echo "<tr>
-					<td>{$lHostname}</td>
-					<td>{$lClientIPAddress}</td>
-					<td ReflectedXSSExecutionPoint=\"1\">{$lBrowser}</td>
-					<td ReflectedXSSExecutionPoint=\"1\">{$lReferer}</td>
-					<td>{$lDate}</td>
-				</tr>\n";
-		}//end while $row
-		echo "</table>";
+				if(!$lEncodeOutput){
+					$lHostname = $row->hostname;
+					$lClientIPAddress = $row->ip;
+					$lBrowser = $row->browser;
+					$lReferer = $row->referer;
+					$lDate = $row->date;
+				}else{
+					$lHostname = $Encoder->encodeForHTML($row->hostname);
+					$lClientIPAddress = $Encoder->encodeForHTML($row->ip);
+					$lBrowser = $Encoder->encodeForHTML($row->browser);
+					$lReferer = $Encoder->encodeForHTML($row->referer);
+					$lDate = $Encoder->encodeForHTML($row->date);				
+				}// end if
+				
+				echo "<tr>
+						<td>{$lHostname}</td>
+						<td>{$lClientIPAddress}</td>
+						<td ReflectedXSSExecutionPoint=\"1\">{$lBrowser}</td>
+						<td ReflectedXSSExecutionPoint=\"1\">{$lReferer}</td>
+						<td>{$lDate}</td>
+					</tr>\n";
+			}//end while $row
+	    }else{
+	    	echo '<tr><td class="warning-message" colspan="10">No Records Found</td></tr>';
+		}//end if
+					
 	} catch (Exception $e) {
 		echo $CustomErrorHandler->FormatError($e, "Error writing log table rows.".$lQueryString);
 	}// end try;
 ?>
+
+</table>
 
 <?php
 	if ($_SESSION["showhints"] == 2) {

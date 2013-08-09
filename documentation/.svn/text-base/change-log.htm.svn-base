@@ -1,6 +1,6 @@
 <div><span style="font-weight:bold;">08/02/2013</span>: Jeremy Druin</div>
 <blockquote>
-	<div>Change Log for OWASP Mutillidae II 2.5.17.3:</div>
+	<div>Change Log for OWASP Mutillidae II 2.5.17.4:</div>
 	<ul>
 		<li>BUG FIX: Double encoding in view blog in security level 5</li>
 		<li>Simplified sidebar and footer</li>
@@ -10,6 +10,15 @@
 		<li>Fixed bug report email address</li>
 		<li>BUG FIX: SSL Config hints when curl-php not installed on system</li>
 		<li>Updated the listing of vulnerabilities</li>
+		<li>BUG FIX: Notices in user info if page SQL injected</li>
+		<li>Show log page queries converted to object oriented</li>
+		<li>Show log page refactored to run faster and be easier to understand</li>
+		<li>BUG FIX: Removed depreciated styles from log file page</li>
+		<li>Log page will show message if no records found</li>
+		<li>Aligned all images vertically for a better look</li>
+		<li>BUG FIX: Refresh on show logs would delete records over again
+		if clicked right after delete logs</li>
+		<li>Added growler popup when logs are refreshed or deleted</li>
 	</ul>
 </blockquote>
 

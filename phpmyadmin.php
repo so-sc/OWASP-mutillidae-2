@@ -1,6 +1,5 @@
 <iframe
 	id="id-iframe"
-	scrolling="no" 
 	width="100%" 
 	height="600px" 
 	src="./phpmyadmin/index.php" 
