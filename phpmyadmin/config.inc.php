@@ -5,6 +5,11 @@
  */
 $cfg['blowfish_secret'] = 'xampp'; /* YOU SHOULD CHANGE THIS FOR A MORE SECURE COOKIE AUTH! */
 
+/* Added by Jeremy Druin to avoid blank PHPMyAdmin screen on Linux hosts when Mutillidae
+ * has been purposely installed with incorrect permissions to create a vulnerability
+ */
+$cfg['CheckConfigurationPermissions'] = FALSE;
+
 /*
  * Servers configuration
  */
