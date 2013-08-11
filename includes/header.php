@@ -726,7 +726,7 @@
 				<li style="border-color: #ffffff;border-style: solid;border-width: 1px">
 					<a href="">Documentation</a>
 					<ul>
-						<li><a href="index.php?page=documentation/change-log.htm">Change Log</a></li>
+						<li><a href="index.php?page=documentation/change-log.html">Change Log</a></li>
 						<li><a href="index.php?page=credits.php">Credits</a></li>
 						<li>
 							<a href="index.php?page=documentation/how-to-access-Mutillidae-over-Virtual-Box-network.php" target="_blank">

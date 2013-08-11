@@ -1,13 +1,13 @@
 <div><span style="font-weight:bold;">08/02/2013</span>: Jeremy Druin</div>
 <blockquote>
-	<div>Change Log for OWASP Mutillidae II 2.5.17.4:</div>
+	<div>Change Log for OWASP Mutillidae II 2.5.17.6:</div>
 	<ul>
 		<li>BUG FIX: Double encoding in view blog in security level 5</li>
 		<li>Simplified sidebar and footer</li>
 		<li>BUG FIX: pen-test-tool-lookup.php JavaScript error on first visit</li>
 		<li>Removed the bold tag from the change log</li>
 		<li>BUG FIX: 2013 change log dates were wrong</li>
-		<li>Fixed bug report email address</li>
+		<li>BUG FIX: Fixed bug report email address</li>
 		<li>BUG FIX: SSL Config hints when curl-php not installed on system</li>
 		<li>Updated the listing of vulnerabilities</li>
 		<li>BUG FIX: Notices in user info if page SQL injected</li>
@@ -16,9 +16,18 @@
 		<li>BUG FIX: Removed depreciated styles from log file page</li>
 		<li>Log page will show message if no records found</li>
 		<li>Aligned all images vertically for a better look</li>
-		<li>BUG FIX: Refresh on show logs would delete records over again
-		if clicked right after delete logs</li>
+		<li>
+			BUG FIX: Refresh on show logs would delete records over again
+			if clicked right after delete logs</li>
 		<li>Added growler popup when logs are refreshed or deleted</li>
+		<li>
+			BUG FIX: Alter the PHPMyAdmin config file.
+			Added 
+				$cfg['CheckConfigurationPermissions'] = FALSE;
+			to file in PHPMyadmin to allow project
+			to run on Mutilidae installed on Linux hosts with world-writable 
+			permissions set on the project
+		</li>
 	</ul>
 </blockquote>
 

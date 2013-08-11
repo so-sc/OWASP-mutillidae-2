@@ -127,7 +127,7 @@
 			<tr><td></td></tr>
 			<tr>
 				<td style="text-align:left;">
-					<input name="PathToDocument" id="id_path_to_document" type="radio" value="documentation/change-log.htm" checked="checked" />&nbsp;&nbsp;Change Log<br />
+					<input name="PathToDocument" id="id_path_to_document" type="radio" value="documentation/change-log.html" checked="checked" />&nbsp;&nbsp;Change Log<br />
 					<input name="PathToDocument" id="id_path_to_document" type="radio" value="robots.txt" checked="checked" />&nbsp;&nbsp;Robots.txt<br />
 					<input name="PathToDocument" id="id_path_to_document" type="radio" value="documentation/mutillidae-installation-on-xampp-win7.pdf" checked="checked" />&nbsp;&nbsp;Installation Instructions: Windows 7 (PDF)<br />
 					<input name="PathToDocument" id="id_path_to_document" type="radio" value="documentation/how-to-access-Mutillidae-over-Virtual-Box-network.php" checked="checked" />&nbsp;&nbsp;How to access Mutillidae over Virtual-Box-network<br />

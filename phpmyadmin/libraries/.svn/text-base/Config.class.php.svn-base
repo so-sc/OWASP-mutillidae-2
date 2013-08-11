@@ -755,7 +755,7 @@ class PMA_Config
                     die(__('Wrong permissions on configuration file, should not be world writable!'));
                 }
             }
-        }
+        }	
     }
 
     /**

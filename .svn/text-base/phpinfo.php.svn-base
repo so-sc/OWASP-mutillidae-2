@@ -1,3 +1,4 @@
+
 <div class="page-title">Secret PHP Server Configuration Page</div>
 
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
@@ -54,7 +55,7 @@
 			            preg_split( '/\n/', trim(preg_replace( "/\nbody/", "\n", $matches[1])) )
 			            )
 			        ),
-			    "</style>\n",
+				"td{word-wrap: break-word;}</style>\n",
 			    $matches[2],
 			    "\n</div>\n";
 		}else{

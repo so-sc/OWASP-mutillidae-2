@@ -62,7 +62,7 @@
 	<tr><td>&nbsp;</td></tr>
 	<tr>
 		<td>
-			<a href="./index.php?page=documentation/change-log.htm">
+			<a href="./index.php?page=documentation/change-log.html">
 				<img alt="See the latest vulnerabilities in Mutillidae" align="middle" src="./images/new-icon-96-96.png" width="48px" height="48px" />
 				What's New? Click Here
 			</a>
