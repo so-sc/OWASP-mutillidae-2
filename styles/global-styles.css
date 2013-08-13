@@ -500,9 +500,9 @@ table tr td.success-header{
 	border-width: 1px;
 	border-style: solid;
 	background-color: #ffffcc;
+	color: #000000;
 	text-align: center;
 	font-weight: bold;
-	color: #000000;
 	padding-left: 30px;
 	padding-right: 30px;
 	padding-top: 5px;
