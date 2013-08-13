@@ -60,7 +60,7 @@ class BubbleHintHandler {
 			$this->doShowHideHints($_SESSION["BubbleHintHandler"]["mDisplayHints"]);
 		}//end if
 
-	}// end function
+	}// end function __construct
 	
 	/* PHP cant remeber any information in class after request is over, hence the 
 	disgusting hack of using the session to remember settings. Its total hack but

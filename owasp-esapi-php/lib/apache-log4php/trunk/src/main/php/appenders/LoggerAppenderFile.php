@@ -54,17 +54,32 @@ class LoggerAppenderFile extends LoggerAppender {
        $this->close();
    	}
    	
+   	/* Added by JD to fix Mutillidae issue */
+   	static public function mkdir_error_handler($errno, $errstr) {
+   		// bummer: we cant make the directory
+   	}
+	/* Added by JD to fix Mutillidae issue */
+	static public function fopen_error_handler($errno, $errstr) {
+		// bummer: we cant open the file
+	}
+   	
 	public function activateOptions() {
 		$fileName = $this->getFile();
 
 		if(!is_file($fileName)) {
 			$dir = dirname($fileName);
 			if(!is_dir($dir)) {
+			   	/* Added by JD to fix Mutillidae issue */
+				set_error_handler(array($this, 'mkdir_error_handler'));
 				mkdir($dir, 0777, true);
+		   		restore_error_handler();
 			}
 		}
-
+		
+		/* Added by JD to fix Mutillidae issue */
+		set_error_handler(array($this, 'fopen_error_handler'));
 		$this->fp = fopen($fileName, ($this->getAppend()? 'a':'w'));
+		restore_error_handler();
 		if($this->fp) {
 			if(flock($this->fp, LOCK_EX)) {
 				if($this->getAppend()) {

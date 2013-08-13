@@ -499,7 +499,7 @@ table tr td.success-header{
 	border-color: #000000;
 	border-width: 1px;
 	border-style: solid;
-	background-color: #ffff99;
+	background-color: #ffffcc;
 	text-align: center;
 	font-weight: bold;
 	color: #000000;
@@ -507,6 +507,7 @@ table tr td.success-header{
 	padding-right: 30px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	border-radius: 3px;	
 }
 
 div.database-success-message{

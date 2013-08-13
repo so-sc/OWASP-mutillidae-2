@@ -1,3 +1,9 @@
+<?php 
+	require_once (__ROOT__.'/classes/YouTubeVideoHandler.php');
+	$YouTubeVideoHandler = new YouTubeVideoHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
+	$lVideoHTML = $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$SSL_STRIPPING);
+?>
+
 <table class="hint-table">
 	<tr class="hint-header" 
 		id="idSSLMisconfigurationHintHeader"
@@ -24,41 +30,7 @@
 			<br/><br/>
 			<span class="report-header">Exploitation</span>
 			<br/><br/>
-			<span class="label">Mutillidae: Using ettercap and sslstrip to capture login</span>
-			<br/><br/>
-			<?php 
-				/*
-				 * This is just a prototype of things to come.
-				 */
-				/* gets the data from a URL */
-				function get_data($url) {
-					$data="";
-						try {
-							if (function_exists("curl_init")) {
-								$timeout = 5;
-								$ch = curl_init();
-								curl_setopt($ch, CURLOPT_URL, $url);
-								curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-								curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-								$data = curl_exec($ch);
-								curl_close($ch);
-							}else{
-								//curl_php is not installed
-							}// end if
-						} catch (Exception $e) {
-							//do nothing
-						}
-					return $data;
-				}// end function
-	
-				$lYouTubeResponse = get_data("http://gdata.youtube.com/feeds/api/videos/n_5NGkOnr7Q");
-				
-				if (strlen($lYouTubeResponse) > 0){
-					echo '<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/n_5NGkOnr7Q" frameborder="0" allowfullscreen="1"></iframe>';					
-				}else {
-					echo '<a href="https://www.youtube-nocookie.com/embed/n_5NGkOnr7Q" target="_blank">Mutillidae: Using ettercap and sslstrip to capture login</a>';
-				}// end if
-			?>
+			<?php echo $lVideoHTML;	?>
 			<br/><br/>
 		</td>
 	</tr>

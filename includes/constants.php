@@ -3,9 +3,10 @@
 	/* ------------------------------------------
 	 * @VERSION
 	 * ------------------------------------------*/
-	$C_VERSION = "2.5.17";
+	$C_VERSION = "2.5.18";
 	$C_VERSION_STRING = "Version: " . $C_VERSION;
-
+	$C_MAX_HINT_LEVEL = 2;
+	
 	/* ------------------------------------------
 	 * Document Root
 	 * ------------------------------------------*/
@@ -14,8 +15,6 @@
 	/* ------------------------------------------
 	 * @DANGEROUS TAG TOKENIZATION CONSTANTS
 	 * ------------------------------------------*/
-	$C_MAX_HINT_LEVEL = 2;
-
 	/* Defined our constants to use to tokenize allowed HTML characters.
 	 * Why use GUIDs? GUIDs are unique, they are very unlikely to be typed in 
 	 * by users, and they are alpha numeric. It is important that there be
