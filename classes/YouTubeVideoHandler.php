@@ -1,9 +1,41 @@
 <?php
+
+class YouTubeVideo{
+	public $mIdentificationToken = "";
+	public $mName = "";
+}// end class
+
+class YouTubeVideos{
+
+	private $mVideos = array(); 
+
+	private function createYouTubeVideo($pIdentificationToken, $pName){
+		$lNewYouTubeVideo = new YouTubeVideo();
+		$lNewYouTubeVideo->mIdentificationToken = $pIdentificationToken;
+		$lNewYouTubeVideo->mName = $pName;
+		return $lNewYouTubeVideo;
+	}//end function CreateYouTubeVideo()
+
+	private function createYouTubeVideos(){
+		$this->mVideos['SSL_STRIPPING'] = $this->createYouTubeVideo("n_5NGkOnr7Q","SSL Striping");
+	}//end function
+
+	public function getYouTubeVideo($pID){
+		return $this->mVideos[$pID];		
+	}// end function
+
+	public function __construct(){
+		$this->createYouTubeVideos();
+	}//end function
+
+}// end class
+
 class YouTubeVideoHandler {
 	
 	/* private properties */
 	private $mMySQLHandler = null;
 	private $mSecurityLevel = 0;
+	private $mYouTubeVideos = null;
 	
 	/* public properties */
 	public static $SSL_STRIPPING = 'SSL_STRIPPING';
@@ -14,10 +46,10 @@ class YouTubeVideoHandler {
 		$this->doSetSecurityLevel($pSecurityLevel);
 	
 		/* Initialize MySQL Connection handler */
-		require_once ('MySQLHandler.php');
-		$this->mMySQLHandler = new MySQLHandler($pPathToESAPI, $pSecurityLevel);
-		$this->mMySQLHandler->connectToDefaultDatabase();
-	
+		//require_once ('MySQLHandler.php');
+		//$this->mMySQLHandler = new MySQLHandler($pPathToESAPI, $pSecurityLevel);
+		//$this->mMySQLHandler->connectToDefaultDatabase();
+		
 	}// end function __construct
 	
 	/* private methods */
@@ -46,14 +78,18 @@ class YouTubeVideoHandler {
 	
 	public function getYouTubeVideo($pVideo) {
 		$data="";
-		$lVideoCode = $this->decodeVideoURL($pVideo);
 		$lYouTubeResponse = "";
 		$lHTML = "";
+		$this->mYouTubeVideos = new YouTubeVideos();
+		$lVideo = $this->mYouTubeVideos->getYouTubeVideo($this::$SSL_STRIPPING);
+		$lVideoIdentificationToken = $lVideo->mIdentificationToken;
+		$lVideoName = $lVideo->mName;
+		
 		try {
 			if (function_exists("curl_init")) {
 				$timeout = 5;
 				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_URL, "http://gdata.youtube.com/feeds/api/videos/".$lVideoCode);
+				curl_setopt($ch, CURLOPT_URL, "http://gdata.youtube.com/feeds/api/videos/".$lVideoIdentificationToken);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
 				$lYouTubeResponse = curl_exec($ch);
@@ -81,9 +117,9 @@ class YouTubeVideoHandler {
 		$lHTML .= '<span class="label">Mutillidae: Using ettercap and sslstrip to capture login</span><br/><br/>';
 				
 		if(strlen($lYouTubeResponse) > 0){
-			$lHTML .= '<iframe width="640px" height="480px" src="https://www.youtube.com/embed/'.$lVideoCode.'" frameborder="0" allowfullscreen="1"></iframe>';
+			$lHTML .= '<iframe width="640px" height="480px" src="https://www.youtube.com/embed/'.$lVideoIdentificationToken.'" frameborder="0" allowfullscreen="1"></iframe>';
 		}else {
-			$lHTML .= '<a href="https://www.youtube.com/watch?v='.$lVideoCode.'" target="_blank">Mutillidae: Using ettercap and sslstrip to capture login</a>';
+			$lHTML .= '<a href="https://www.youtube.com/watch?v='.$lVideoIdentificationToken.'" target="_blank">Mutillidae: Using ettercap and sslstrip to capture login</a>';
 		}// end if
 	
 		return $lHTML;
