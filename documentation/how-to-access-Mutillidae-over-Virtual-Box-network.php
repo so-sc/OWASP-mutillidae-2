@@ -1,5 +1,5 @@
 
-<div class="page-title">Access Mutillidae from Samurai/Backtrack over a Virtual Box "Host Only" network</div><br /><br />
+<div class="page-title">How to Access Mutillidae over Virtual Box "Host only" Network</div><br /><br />
 <div>&nbsp;</div>
 <div>Note: This tutorial assumes that Mutillidae is installed in a Virtual Box Windows XP machine and that Samurai and Mutillidae are installed in Virtual Box virtual machines as well.</div>
 <div>&nbsp;</div>

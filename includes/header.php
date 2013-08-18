@@ -729,7 +729,7 @@
 						<li><a href="index.php?page=documentation/change-log.html">Change Log</a></li>
 						<li><a href="index.php?page=credits.php">Credits</a></li>
 						<li>
-							<a href="index.php?page=documentation/how-to-access-Mutillidae-over-Virtual-Box-network.php" target="_blank">
+							<a href="index.php?page=documentation/how-to-access-Mutillidae-over-Virtual-Box-network.php">
 								How to Access Mutillidae over Virtual Box "Host Only" Network
 							</a>
 						</li>

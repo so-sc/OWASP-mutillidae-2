@@ -1,5 +1,5 @@
 
-<div class="page-title">Installation Options</div>
+<div class="page-title">Installation Instructions</div>
 
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
 
@@ -57,7 +57,7 @@
 		iv.	Unzip Mutillidae. Note the mutillidae project is in a folder called "mutillidae"
 	</div>
 	<div style="margin:20px">
-		v.	Place the entire "mutillidae" directory into XAMPP’s " htdocs" directory
+		v.	Place the entire "mutillidae" directory into XAMPPï¿½s " htdocs" directory
 	</div>
 	<div style="margin:20px">
 		vi.	Browse to mutillidae at http://localhost/mutillidae

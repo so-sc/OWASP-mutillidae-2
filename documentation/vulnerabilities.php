@@ -1,4 +1,4 @@
-<div class="page-title">Vulnerabilities</div>
+<div class="page-title">Listing of Vulnerabilities</div>
 
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
 
