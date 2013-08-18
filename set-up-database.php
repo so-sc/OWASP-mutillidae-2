@@ -639,7 +639,28 @@ try{
 	}else{
 		echo "<div class=\"database-success-message\">Executed query 'INSERT INTO TABLE' with result ".$lQueryResult."</div>";
 	}// end if
-	
+
+	$lQueryString = 'CREATE TABLE youTubeVideos( '.
+			'recordIndetifier INT NOT NULL, '.
+			'identificationToken TEXT, '.
+			'title TEXT)';
+	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
+	if (!$lQueryResult) {
+		$lErrorDetected = TRUE;
+	}else{
+		echo format("Executed query 'CREATE TABLE' with result ".$lQueryResult,"S");
+	}// end if
+
+	$lQueryString = "INSERT INTO youTubeVideos(recordIndetifier, identificationToken, title) 
+		VALUES
+			(1, 'n_5NGkOnr7Q', 'SSL Striping')";
+	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
+	if (!$lQueryResult) {
+		$lErrorDetected = TRUE;
+	}else{
+		echo "<div class=\"database-success-message\">Executed query 'INSERT INTO TABLE' with result ".$lQueryResult."</div>";
+	}// end if
+
 	$lQueryString = "
 	CREATE PROCEDURE getBestCollegeBasketballTeam ()
 	BEGIN

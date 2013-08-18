@@ -236,11 +236,25 @@ class SQLQueryHandler {
 		if ($this->mLimitOutput == TRUE){
 			$lLimitString .= " LIMIT 20";
 		}// end if
-		
+
 		$lQueryString  = "SELECT * FROM `hitlog` ORDER BY date DESC".$lLimitString.";";
 		return $this->mMySQLHandler->executeQuery($lQueryString);
 	}// end function getHitLogEntries
 
+	public function getYouTubeVideo($pRecordIdentifier){
+   		/* 
+  		 * Note: While escaping works ok in some case, it is not the best defense.
+ 		 * Using stored procedures is a much stronger defense.
+ 		 */
+		if ($this->stopSQLInjection == TRUE){
+			$pRecordIdentifier = $this->mMySQLHandler->escapeDangerousCharacters($pRecordIdentifier);
+		}// end if
+
+		$lQueryString  = "SELECT identificationToken, title FROM youTubeVideos WHERE recordIndetifier = " .	$pRecordIdentifier . ";";
+		$lQueryResult = $this->mMySQLHandler->executeQuery($lQueryString);
+		return $lQueryResult->fetch_object();
+	}//end public function getUserInformation
+	
 	/* -----------------------------------------
 	 * Truncate Queries
 	* ----------------------------------------- */

@@ -1,57 +1,49 @@
 <?php
 
+require_once ('SQLQueryHandler.php');
+
 class YouTubeVideo{
 	public $mIdentificationToken = "";
-	public $mName = "";
+	public $mTitle = "";
 }// end class
 
 class YouTubeVideos{
 
-	private $mVideos = array(); 
+	private $mSQLQueryHandler = null;
 
-	private function createYouTubeVideo($pIdentificationToken, $pName){
+	public function __construct(){
+		/* ------------------------------------------
+		 * initialize SQLQuery handler
+		* ------------------------------------------ */
+		$this->mSQLQueryHandler = new SQLQueryHandler("./owasp-esapi-php/src/", $_SESSION["security-level"]);
+	
+	}//end function
+	
+	public function getYouTubeVideo($pRecordIdentifier){
+		$lQueryResult = $this->mSQLQueryHandler->getYouTubeVideo($pRecordIdentifier);
 		$lNewYouTubeVideo = new YouTubeVideo();
-		$lNewYouTubeVideo->mIdentificationToken = $pIdentificationToken;
-		$lNewYouTubeVideo->mName = $pName;
+		$lNewYouTubeVideo->mIdentificationToken = $lQueryResult->identificationToken;
+		$lNewYouTubeVideo->mTitle = $lQueryResult->title;
 		return $lNewYouTubeVideo;
 	}//end function CreateYouTubeVideo()
 
-	private function createYouTubeVideos(){
-		$this->mVideos['SSL_STRIPPING'] = $this->createYouTubeVideo("n_5NGkOnr7Q","SSL Striping");
-	}//end function
-
-	public function getYouTubeVideo($pID){
-		return $this->mVideos[$pID];		
-	}// end function
-
-	public function __construct(){
-		$this->createYouTubeVideos();
-	}//end function
-
-}// end class
+}// end class YouTubeVideos
 
 class YouTubeVideoHandler {
 	
 	/* private properties */
-	private $mMySQLHandler = null;
 	private $mSecurityLevel = 0;
 	private $mYouTubeVideos = null;
-	
+
 	/* public properties */
-	public static $SSL_STRIPPING = 'SSL_STRIPPING';
-	
+	public static $SSL_STRIPPING = 1;
+
 	/* constructor */
 	public function __construct($pPathToESAPI, $pSecurityLevel){
-	
 		$this->doSetSecurityLevel($pSecurityLevel);
-	
-		/* Initialize MySQL Connection handler */
-		//require_once ('MySQLHandler.php');
-		//$this->mMySQLHandler = new MySQLHandler($pPathToESAPI, $pSecurityLevel);
-		//$this->mMySQLHandler->connectToDefaultDatabase();
-		
+		$this->mYouTubeVideos = new YouTubeVideos();
 	}// end function __construct
-	
+
 	/* private methods */
 	private function doSetSecurityLevel($pSecurityLevel){
 		$this->mSecurityLevel = $pSecurityLevel;
@@ -68,33 +60,38 @@ class YouTubeVideoHandler {
 				break;
 		}// end switch
 	}// end function
-	
-	private function decodeVideoURL($pVideo){
-		switch ($pVideo){
-			case $this::$SSL_STRIPPING: return "n_5NGkOnr7Q"; break;
-				
-		}//end switch
-	}//end function decodeVideoURL
-	
-	public function getYouTubeVideo($pVideo) {
-		$data="";
-		$lYouTubeResponse = "";
-		$lHTML = "";
-		$this->mYouTubeVideos = new YouTubeVideos();
-		$lVideo = $this->mYouTubeVideos->getYouTubeVideo($this::$SSL_STRIPPING);
-		$lVideoIdentificationToken = $lVideo->mIdentificationToken;
-		$lVideoName = $lVideo->mName;
 		
-		try {
+	private function fetchVideoPropertiesFromYouTube($pVideoIdentificationToken){
+		$lYouTubeResponse = "";
+		
+		try{
 			if (function_exists("curl_init")) {
 				$timeout = 5;
-				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_URL, "http://gdata.youtube.com/feeds/api/videos/".$lVideoIdentificationToken);
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-				$lYouTubeResponse = curl_exec($ch);
-				curl_close($ch);
-			}else{				
+				$lCurlInstance = curl_init();
+				curl_setopt($lCurlInstance, CURLOPT_URL, "http://gdata.youtube.com/feeds/api/videos/".$pVideoIdentificationToken);
+				curl_setopt($lCurlInstance, CURLOPT_RETURNTRANSFER, 1);
+				curl_setopt($lCurlInstance, CURLOPT_CONNECTTIMEOUT, $timeout);
+				$lYouTubeResponse = curl_exec($lCurlInstance);
+				curl_close($lCurlInstance);
+			}//end if
+		} catch (Exception $e) {
+			//do nothing
+		}//end try
+		
+		return $lYouTubeResponse;
+	}// end function fetchVideoPropertiesFromYouTube
+	
+	public function getYouTubeVideo($pVideo) {
+		$lYouTubeResponse = "";
+		$lHTML = "";
+		$lVideo = $this->mYouTubeVideos->getYouTubeVideo($this::$SSL_STRIPPING);
+		$lVideoIdentificationToken = $lVideo->mIdentificationToken;
+		$lVideoTitle = $lVideo->mTitle;
+		$lOperatingSystemAdvice = "";
+		
+		try {
+			$lYouTubeResponse = $this->fetchVideoPropertiesFromYouTube($lVideoIdentificationToken);
+			if (strlen($lYouTubeResponse) == 0) {
 				switch (PHP_OS){
 					case "Linux": 
 						$lOperatingSystemAdvice = "The server operating system seems to be Linux. You may be able to install with sudo apt-get install php5-curl";
@@ -107,8 +104,7 @@ class YouTubeVideoHandler {
 					default: $lOperatingSystemAdvice = ""; break;
 				}// end switch
 
-				$lHTML .= '<span style="background-color: #ffffcc;">Warning: Failed to embed video because PHP Curl is not installed on the server. '.$lOperatingSystemAdvice.'</span><br/><br/>';
-			
+				$lHTML .= '<span style="background-color: #ffffcc;">Warning: Failed to embed video because PHP Curl is not installed on the server. '.$lOperatingSystemAdvice.'</span><br/><br/>';			
 			}// end if
 		} catch (Exception $e) {
 			//do nothing
