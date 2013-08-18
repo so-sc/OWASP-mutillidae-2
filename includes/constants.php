@@ -44,5 +44,5 @@
 
 	define('XML_EXTERNAL_ENTITY_REGEX_PATTERNS',"/<![CDATA|<!ELEMENT|<!ENTITY|<!DOCTYPE]/i");
 	define("VALID_XML_CHARACTERS","/[\x{0009}\x{000a}\x{000d}\x{0020}-\x{D7FF}\x{E000}-\x{FFFD}]/u");
-	
+
 ?>
