@@ -1,5 +1,4 @@
 <?php
-
 require_once ('SQLQueryHandler.php');
 
 class YouTubeVideo{
@@ -11,11 +10,11 @@ class YouTubeVideos{
 
 	private $mSQLQueryHandler = null;
 
-	public function __construct(){
+	public function __construct($pPathToESAPI, $pSecurityLevel){
 		/* ------------------------------------------
 		 * initialize SQLQuery handler
 		* ------------------------------------------ */
-		$this->mSQLQueryHandler = new SQLQueryHandler("./owasp-esapi-php/src/", $_SESSION["security-level"]);
+		$this->mSQLQueryHandler = new SQLQueryHandler($pPathToESAPI, $pSecurityLevel);
 	
 	}//end function
 	
@@ -36,12 +35,12 @@ class YouTubeVideoHandler {
 	private $mYouTubeVideos = null;
 
 	/* public properties */
-	public static $SSL_STRIPPING = 1;
+	public static $SSL_STRIPPING = 67;
 
 	/* constructor */
 	public function __construct($pPathToESAPI, $pSecurityLevel){
 		$this->doSetSecurityLevel($pSecurityLevel);
-		$this->mYouTubeVideos = new YouTubeVideos();
+		$this->mYouTubeVideos = new YouTubeVideos($pPathToESAPI, $pSecurityLevel);
 	}// end function __construct
 
 	/* private methods */
@@ -81,6 +80,30 @@ class YouTubeVideoHandler {
 		return $lYouTubeResponse;
 	}// end function fetchVideoPropertiesFromYouTube
 	
+	private function getNoCurlAdviceBasedOnOperatingSystem(){
+		$lOperatingSystemAdvice = "";
+		$lHTML = "";
+		
+		switch (PHP_OS){
+			case "Linux":
+				$lOperatingSystemAdvice = "The server operating system seems to be Linux. You may be able to install with sudo apt-get install php5-curl";
+				break;
+			case "WIN32":
+			case "WINNT":
+			case "Windows":
+				$lOperatingSystemAdvice = "The server operating system seems to be Windows. You may be able to enable by uncommenting extension=php_curl.dll in the php.ini file and restarting apache server.";
+				break;
+			default: $lOperatingSystemAdvice = ""; break;
+		}// end switch
+		
+		$lHTML = '<span style="background-color: #ffffcc;">Warning: Failed to embed video because PHP Curl is not installed on the server. '.$lOperatingSystemAdvice.'</span><br/><br/>';
+		return $lHTML;	
+	}// end function getNoCurlAdviceBasedOnOperatingSystem
+
+	private function curlIsInstalled(){
+		return function_exists("curl_init");
+	}// end function curlIsInstalled
+	
 	public function getYouTubeVideo($pVideo) {
 		$lYouTubeResponse = "";
 		$lHTML = "";
@@ -88,36 +111,26 @@ class YouTubeVideoHandler {
 		$lVideoIdentificationToken = $lVideo->mIdentificationToken;
 		$lVideoTitle = $lVideo->mTitle;
 		$lOperatingSystemAdvice = "";
-		
-		try {
-			$lYouTubeResponse = $this->fetchVideoPropertiesFromYouTube($lVideoIdentificationToken);
-			if (strlen($lYouTubeResponse) == 0) {
-				switch (PHP_OS){
-					case "Linux": 
-						$lOperatingSystemAdvice = "The server operating system seems to be Linux. You may be able to install with sudo apt-get install php5-curl";
-						break;
-					case "WIN32":
-					case "WINNT":
-					case "Windows": 
-						$lOperatingSystemAdvice = "The server operating system seems to be Windows. You may be able to enable by uncommenting extension=php_curl.dll in the php.ini file and restarting apache server.";
-						break;
-					default: $lOperatingSystemAdvice = ""; break;
-				}// end switch
 
-				$lHTML .= '<span style="background-color: #ffffcc;">Warning: Failed to embed video because PHP Curl is not installed on the server. '.$lOperatingSystemAdvice.'</span><br/><br/>';			
+		try {
+			if ($this->curlIsInstalled()){
+				$lYouTubeResponse = $this->fetchVideoPropertiesFromYouTube($lVideoIdentificationToken);
+			}else{
+				$lHTML .= getNoCurlAdviceBasedOnOperatingSystem();
+			}//end if curl installed
+			
+			$lHTML .= '<span class="label">Mutillidae: Using ettercap and sslstrip to capture login</span><br/><br/>';
+			
+			if(strlen($lYouTubeResponse) > 0){
+				$lHTML .= '<iframe width="640px" height="480px" src="https://www.youtube.com/embed/'.$lVideoIdentificationToken.'" frameborder="0" allowfullscreen="1"></iframe>';
+			}else {
+				$lHTML .= '<a href="https://www.youtube.com/watch?v='.$lVideoIdentificationToken.'" target="_blank">Mutillidae: Using ettercap and sslstrip to capture login</a>';
 			}// end if
+		
 		} catch (Exception $e) {
 			//do nothing
 		}//end try
 
-		$lHTML .= '<span class="label">Mutillidae: Using ettercap and sslstrip to capture login</span><br/><br/>';
-				
-		if(strlen($lYouTubeResponse) > 0){
-			$lHTML .= '<iframe width="640px" height="480px" src="https://www.youtube.com/embed/'.$lVideoIdentificationToken.'" frameborder="0" allowfullscreen="1"></iframe>';
-		}else {
-			$lHTML .= '<a href="https://www.youtube.com/watch?v='.$lVideoIdentificationToken.'" target="_blank">Mutillidae: Using ettercap and sslstrip to capture login</a>';
-		}// end if
-	
 		return $lHTML;
 		
 	}// end function getYouTubeVideo
