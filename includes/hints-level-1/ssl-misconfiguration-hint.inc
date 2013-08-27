@@ -1,7 +1,7 @@
 <?php 
 	require_once (__ROOT__.'/classes/YouTubeVideoHandler.php');
 	$YouTubeVideoHandler = new YouTubeVideoHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
-	$lVideoHTML = $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$SSL_STRIPPING);
+	$lVideoHTML = $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$UsingEttercapandSSLstriptoCaptureCredentials);
 ?>
 
 <table class="hint-table">

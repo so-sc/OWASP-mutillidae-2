@@ -35,8 +35,72 @@ class YouTubeVideoHandler {
 	private $mYouTubeVideos = null;
 
 	/* public properties */
-	public static $SSL_STRIPPING = 67;
-
+	public static $InstallingOWASPMutillidaeIIonWindowswithXAMPP = 2;
+	public static $InstallingMetasploitable2withMutillidaeonVirtualBox = 3;
+	public static $HowtoinstalllatestMutillidaeonSamuraiWTF20 = 4;
+	public static $IntroductiontoInstallingConfiguringandUsingBurpSuiteProxy = 5;
+	public static $HowtoinstallandconfigureBurpSuitewithFirefox = 6;
+	public static $HowtoremovePHPerrorsafterinstallingMutillidaeonWindowsXAMPP = 7;
+	public static $BuildingaVirtualLabtoPracticePenTesting = 8;
+	public static $HowtoUpgradetotheLatestMutillidaeonSamuraiWTF20 = 9;
+	public static $SpideringWebApplicationswithBurpSuite = 10;
+	public static $BasicsofBurpSuiteTargetsTab = 11;
+	public static $BruteForcePageNamesusingBurpSuiteIntruder = 12;
+	public static $UsingBurpIntruderSnipertoFuzzParameters = 13;
+	public static $ComparingBurpSuiteIntruderModesSniperBatteringramPitchforkClusterbomb = 14;
+	public static $IntroductiontoBurpSuiteComparerTool = 15;
+	public static $UsingBurpSuiteSequencertoCompareCSRFtokenstrengths = 16;
+	public static $BasicsofWebRequestandResponseInterceptionwithBurpSuite = 17;
+	public static $ISSA2013WebPentestingWorkshopPart1IntrotoMutillidaeBurpSuiteInjection = 18;
+	public static $OverviewofUsefulPenTestingAddonsforFirefox = 19;
+	public static $BypassAuthenticationusingSQLInjection = 20;
+	public static $AutomateSQLInjectionusingsqlmap = 21;
+	public static $BasicsofSQLInjectionTimingAttacks = 22;
+	public static $IntroductiontoUnionBasedSQLInjection = 23;
+	public static $BasicsofInsertingDatawithSQLInjection = 24;
+	public static $InjectWebShellBackdoorviaSQLInjection = 25;
+	public static $BasicsofusingSQLInjectiontoReadFiles = 26;
+	public static $GenerateCrossSiteScriptswithSQLInjection = 27;
+	public static $SQLInjectionviaAJAXrequestwithJSONresponse = 28;
+	public static $BasicsofusingsqlmapISSAKYWorkshopFebruary2013 = 29;
+	public static $ExplanationofHTTPOnlyCookiesinPresenceCrossSiteScripting = 30;
+	public static $TwoMethodstoStealSessionTokenusingCrossSiteScripting = 31;
+	public static $InjectingaCrossSiteScriptviaCascadingStylesheetContext = 32;
+	public static $BasicsofInjectingCrossSiteScriptintoHTMLonclickEvent = 33;
+	public static $IntroductiontolocatingReflectedCrosssiteScripting = 34;
+	public static $SendingPersistentCrosssiteScriptsintoWebLogstoSnagWebAdmin = 35;
+	public static $InjectingCrossSiteScriptsXSSintoLogPageviaCookie = 37;
+	public static $IntroductiontoHTMLInjectionHTMLiandCrossSiteScriptingXSSUsingMutillidae = 38;
+	public static $IntroductiontoCrossSiteScriptingXSSviaJavaScriptStringInjection = 39;
+	public static $AddingValuestoDOMStorageusingCrosssiteScripting = 41;
+	public static $AlterValuesinHTML5WebStorageusingCrosssiteScript = 42;
+	public static $AlterValuesinHTML5WebStorageusingPersistentCrosssiteScript = 43;
+	public static $AlterValuesinHTML5WebStorageusingReflectedCrosssiteScript = 44;
+	public static $WebPenTestingHTML5WebStorageusingJSONInjection = 45;
+	public static $StealingHTML5StorageviaJSONInjection = 46;
+	public static $ReadingHiddenValuesfromHTML5DomStorage = 47;
+	public static $CommandInjectiontoDumpFilesStartServicesandDisableFirewall = 48;
+	public static $HowtoLocatetheEastereggFileusingCommandInjection = 49;
+	public static $GainingAdministrativeShellAccessviaCommandInjection = 50;
+	public static $UsingCommandInjectiontoGainRemoteDesktop = 51;
+	public static $IntroductiontoHTTPParameterPollution = 52;
+	public static $UsingHydratoBruteForceWebFormsBasedAuthentication = 53;
+	public static $BypassAuthenticationviaAuthenticationTokenManipulation = 55;
+	public static $BruteForceAuthenticationusingBurpIntruder = 56;
+	public static $AnalyzeSessionTokenRandomnessusingBurpSuiteSequencer = 57;
+	public static $DetermineServerBannersusingNetcatNiktoandw3af = 58;
+	public static $UsingNmaptoFingerprintHTTPserversandWebApplications = 59;
+	public static $FindingCommentsandFileMetadatausingMultipleTechniques = 60;
+	public static $HowtoExploitLocalFileInclusionVulnerabilityusingBurpSuite = 61;
+	public static $ISSA2013WebPentestingWorkshopPart6LocalRemoteFileInclusion = 62;
+	public static $TwoMethodstoBypassJavaScriptValidation = 63;
+	public static $XSSbypassingJavaScriptValidation = 64;
+	public static $HowtoBypassMaxlengthRestrictionsonHTMLInputFields = 65;
+	public static $IntroductiontoCBCBitFlippingAttack = 66;
+	public static $UsingEttercapandSSLstriptoCaptureCredentials = 67;
+	public static $IntroductiontoXMLExternalEntityInjection = 68;
+	public static $DetermineHTTPMethodsusingNetcat = 69;
+	
 	/* constructor */
 	public function __construct($pPathToESAPI, $pSecurityLevel){
 		$this->doSetSecurityLevel($pSecurityLevel);
@@ -107,7 +171,7 @@ class YouTubeVideoHandler {
 	public function getYouTubeVideo($pVideo) {
 		$lYouTubeResponse = "";
 		$lHTML = "";
-		$lVideo = $this->mYouTubeVideos->getYouTubeVideo($this::$SSL_STRIPPING);
+		$lVideo = $this->mYouTubeVideos->getYouTubeVideo($pVideo);
 		$lVideoIdentificationToken = $lVideo->mIdentificationToken;
 		$lVideoTitle = $lVideo->mTitle;
 		$lOperatingSystemAdvice = "";
