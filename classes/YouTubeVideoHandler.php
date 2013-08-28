@@ -29,6 +29,8 @@ class YouTubeVideos{
 }// end class YouTubeVideos
 
 class YouTubeVideoHandler {
+
+	const TWO_SECONDS = 2;
 	
 	/* private properties */
 	private $mSecurityLevel = 0;
@@ -126,10 +128,9 @@ class YouTubeVideoHandler {
 		
 	private function fetchVideoPropertiesFromYouTube($pVideoIdentificationToken){
 		$lYouTubeResponse = "";
-		
 		try{
 			if (function_exists("curl_init")) {
-				$timeout = 5;
+				$timeout = $this::TWO_SECONDS;
 				$lCurlInstance = curl_init();
 				curl_setopt($lCurlInstance, CURLOPT_URL, "http://gdata.youtube.com/feeds/api/videos/".$pVideoIdentificationToken);
 				curl_setopt($lCurlInstance, CURLOPT_RETURNTRANSFER, 1);
@@ -161,7 +162,7 @@ class YouTubeVideoHandler {
 		}// end switch
 		
 		$lHTML = '<span style="background-color: #ffffcc;">Warning: Failed to embed video because PHP Curl is not installed on the server. '.$lOperatingSystemAdvice.'</span><br/><br/>';
-		return $lHTML;	
+		return $lHTML;
 	}// end function getNoCurlAdviceBasedOnOperatingSystem
 
 	private function curlIsInstalled(){
@@ -183,12 +184,12 @@ class YouTubeVideoHandler {
 				$lHTML .= getNoCurlAdviceBasedOnOperatingSystem();
 			}//end if curl installed
 			
-			$lHTML .= '<span class="label">Mutillidae: Using ettercap and sslstrip to capture login</span><br/><br/>';
+			$lHTML .= '<span class="label">'.$lVideoTitle.'</span>';
 			
 			if(strlen($lYouTubeResponse) > 0){
-				$lHTML .= '<iframe width="640px" height="480px" src="https://www.youtube.com/embed/'.$lVideoIdentificationToken.'" frameborder="0" allowfullscreen="1"></iframe>';
+				$lHTML .= '<br/><br/><iframe width="640px" height="480px" src="https://www.youtube.com/embed/'.$lVideoIdentificationToken.'" frameborder="0" allowfullscreen="1"></iframe>';
 			}else {
-				$lHTML .= '<a href="https://www.youtube.com/watch?v='.$lVideoIdentificationToken.'" target="_blank">Mutillidae: Using ettercap and sslstrip to capture login</a>';
+				$lHTML .= ': <a href="https://www.youtube.com/watch?v='.$lVideoIdentificationToken.'" target="_blank">Mutillidae: Using ettercap and sslstrip to capture login (https://www.youtube.com/watch?v='.$lVideoIdentificationToken.')</a>';
 			}// end if
 		
 		} catch (Exception $e) {

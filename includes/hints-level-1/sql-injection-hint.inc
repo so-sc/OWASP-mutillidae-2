@@ -1,3 +1,8 @@
+<?php 
+	require_once (__ROOT__.'/classes/YouTubeVideoHandler.php');
+	$YouTubeVideoHandler = new YouTubeVideoHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
+?>
+
 <table class="hint-table">
 	<tr class="hint-header" 
 		id="idSQLInjectionHintHeader"
@@ -391,7 +396,29 @@ netsh firewall add portopening protocol=TCP port=23 name=telnet mode=enable scop
 		echo &quot;&lt;/pre&gt;&quot;;	
 	?&gt;
 </code>
-		<br/><br/>			
+			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$BypassAuthenticationusingSQLInjection);	?>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$AutomateSQLInjectionusingsqlmap);	?>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$BasicsofSQLInjectionTimingAttacks);	?>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$IntroductiontoUnionBasedSQLInjection);	?>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$BasicsofInsertingDatawithSQLInjection);	?>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$InjectWebShellBackdoorviaSQLInjection);	?>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$BasicsofusingSQLInjectiontoReadFiles);	?>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$GenerateCrossSiteScriptswithSQLInjection);	?>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$SQLInjectionviaAJAXrequestwithJSONresponse);	?>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$BasicsofusingsqlmapISSAKYWorkshopFebruary2013);	?>
+			<br/><br/>
 	</td>
 </tr>
 			</table>

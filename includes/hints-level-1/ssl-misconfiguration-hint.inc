@@ -30,7 +30,12 @@
 			<br/><br/>
 			<span class="report-header">Exploitation</span>
 			<br/><br/>
-			<?php echo $lVideoHTML;	?>
+			After ARP poisoning the client and the gateway, use SSLStrip to
+			remove SSL connection. 
+			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+						<?php echo $lVideoHTML;	?>
 			<br/><br/>
 		</td>
 	</tr>

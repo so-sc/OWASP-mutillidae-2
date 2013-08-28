@@ -642,8 +642,10 @@ try{
 
 	$lQueryString = 'CREATE TABLE youTubeVideos( '.
 			'recordIndetifier INT NOT NULL, '.
-			'identificationToken TEXT, '.
-			'title TEXT)';
+			'identificationToken varchar(16), '.
+			'title VARCHAR(128),
+			PRIMARY KEY (recordIndetifier),
+			UNIQUE KEY (identificationToken))';
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {
 		$lErrorDetected = TRUE;
