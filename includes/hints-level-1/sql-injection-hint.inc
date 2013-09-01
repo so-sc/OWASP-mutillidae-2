@@ -396,8 +396,23 @@ netsh firewall add portopening protocol=TCP port=23 name=telnet mode=enable scop
 		echo &quot;&lt;/pre&gt;&quot;;	
 	?&gt;
 </code>
-			<br/><br/>
-			<span class="report-header">Videos</span>
+
+2='.$lRandomNumber.'
+
+<script>
+	var lYouTubeFrameCode2 = '<iframe width=640px height=480px src=https://www.youtube.com/embed/3?autoplay=1 frameborder=0 allowfullscreen=1></iframe>';
+</script>
+<br/><br/>
+<p>
+<a 
+	href="#" 
+	id="btn-load-video2" 
+	onclick="document.getElementById('the-player2').innerHTML=lYouTubeFrameCode2;"
+>
+Load the video</a></p>
+<div id="the-player2"></div>
+
+			<br/><br/>			<span class="report-header">Videos</span>
 			<br/><br/>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$BypassAuthenticationusingSQLInjection);	?>
 			<br/><br/>

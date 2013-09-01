@@ -185,9 +185,24 @@ class YouTubeVideoHandler {
 			}//end if curl installed
 			
 			$lHTML .= '<span class="label">'.$lVideoTitle.'</span>';
-			
+
 			if(strlen($lYouTubeResponse) > 0){
-				$lHTML .= '<br/><br/><iframe width="640px" height="480px" src="https://www.youtube.com/embed/'.$lVideoIdentificationToken.'" frameborder="0" allowfullscreen="1"></iframe>';
+				$lRandomNumber = rand(1, 1000000);
+				$lHTML .= '
+<script>
+	var lYouTubeFrameCode'.$lRandomNumber.' = \'<iframe width=640px height=480px src=https://www.youtube.com/embed/'.$lVideoIdentificationToken.'?autoplay=1 frameborder=0 allowfullscreen=1></iframe>\';
+</script>
+<br/><br/>
+<p>
+<a 
+	href="#" 
+	id="btn-load-video'.$lRandomNumber.'" 
+	onclick="document.getElementById(\'the-player'.$lRandomNumber.'\').innerHTML=lYouTubeFrameCode'.$lRandomNumber.';"
+>
+Load the video</a></p>
+<div id="the-player'.$lRandomNumber.'"></div>
+				
+				';
 			}else {
 				$lHTML .= ': <a href="https://www.youtube.com/watch?v='.$lVideoIdentificationToken.'" target="_blank">Mutillidae: Using ettercap and sslstrip to capture login (https://www.youtube.com/watch?v='.$lVideoIdentificationToken.')</a>';
 			}// end if
