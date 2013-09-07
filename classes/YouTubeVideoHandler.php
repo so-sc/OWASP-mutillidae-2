@@ -35,6 +35,8 @@ class YouTubeVideoHandler {
 	/* private properties */
 	private $mSecurityLevel = 0;
 	private $mYouTubeVideos = null;
+	private $mCurlIsInstalled = false;
+	private $mYouTubeIsReachable = false;
 
 	/* public properties */
 	public static $InstallingOWASPMutillidaeIIonWindowswithXAMPP = 2;
@@ -103,12 +105,6 @@ class YouTubeVideoHandler {
 	public static $IntroductiontoXMLExternalEntityInjection = 68;
 	public static $DetermineHTTPMethodsusingNetcat = 69;
 	
-	/* constructor */
-	public function __construct($pPathToESAPI, $pSecurityLevel){
-		$this->doSetSecurityLevel($pSecurityLevel);
-		$this->mYouTubeVideos = new YouTubeVideos($pPathToESAPI, $pSecurityLevel);
-	}// end function __construct
-
 	/* private methods */
 	private function doSetSecurityLevel($pSecurityLevel){
 		$this->mSecurityLevel = $pSecurityLevel;
@@ -145,6 +141,10 @@ class YouTubeVideoHandler {
 		return $lYouTubeResponse;
 	}// end function fetchVideoPropertiesFromYouTube
 	
+	private function getYouTubeIsNotReachableAdvice(){
+		return '<br/><span style="background-color: #ffff99;">Warning: Could not reach YouTube via network connection. Failed to embed video.</span><br/>';
+	}// end function getYouTubeIsNotReachableAdvice
+	
 	private function getNoCurlAdviceBasedOnOperatingSystem(){
 		$lOperatingSystemAdvice = "";
 		$lHTML = "";
@@ -161,7 +161,7 @@ class YouTubeVideoHandler {
 			default: $lOperatingSystemAdvice = ""; break;
 		}// end switch
 		
-		$lHTML = '<span style="background-color: #ffffcc;">Warning: Failed to embed video because PHP Curl is not installed on the server. '.$lOperatingSystemAdvice.'</span><br/><br/>';
+		$lHTML = '<br/><span style="background-color: #ffff99;">Warning: Failed to embed video because PHP Curl is not installed on the server. '.$lOperatingSystemAdvice.'</span><br/>';
 		return $lHTML;
 	}// end function getNoCurlAdviceBasedOnOperatingSystem
 
@@ -169,8 +169,45 @@ class YouTubeVideoHandler {
 		return function_exists("curl_init");
 	}// end function curlIsInstalled
 	
-	public function getYouTubeVideo($pVideo) {
+	private function generateYouTubeFrameHTML($pVideoIdentificationToken){
+		$lRandomNumber = rand(1, 10000000);
+		$lHTML = '
+			<script>
+				var lYouTubeFrameCode'.$lRandomNumber.' = \'<iframe width=640px height=480px src=https://www.youtube.com/embed/'.$pVideoIdentificationToken.'?autoplay=1 frameborder=0 allowfullscreen=1></iframe>\';
+			</script>
+			<span>
+				<a
+					href="#"
+					id="btn-load-video'.$lRandomNumber.'"
+					onclick="document.getElementById(\'the-player'.$lRandomNumber.'\').innerHTML=lYouTubeFrameCode'.$lRandomNumber.';"
+				>
+				Load the video</a>
+			</span>
+			<div id="the-player'.$lRandomNumber.'"></div>
+		';
+		return $lHTML;
+	}// end function generateYouTubeFrameHTML()
+
+	private function isYouTubeReachable(){
+		/* Pick any video and see if we can fetch its properties.
+		 * 'DJaX4HN2gwQ' is 'Introduction to XML External Entity Injection'
+		* */
 		$lYouTubeResponse = "";
+		if ($this->curlIsInstalled()){
+			$lYouTubeResponse = $this->fetchVideoPropertiesFromYouTube("DJaX4HN2gwQ");
+		}// end if $mCurlIsInstalled
+		return (strlen($lYouTubeResponse) > 0);
+	}// end function isYouTubeReachable()
+	
+	/* constructor */
+	public function __construct($pPathToESAPI, $pSecurityLevel){
+		$this->doSetSecurityLevel($pSecurityLevel);
+		$this->mYouTubeVideos = new YouTubeVideos($pPathToESAPI, $pSecurityLevel);
+		$this->mCurlIsInstalled = $this->curlIsInstalled();
+		$this->mYouTubeIsReachable = $this->isYouTubeReachable();
+	}// end function __construct
+
+	public function getYouTubeVideo($pVideo) {
 		$lHTML = "";
 		$lVideo = $this->mYouTubeVideos->getYouTubeVideo($pVideo);
 		$lVideoIdentificationToken = $lVideo->mIdentificationToken;
@@ -178,35 +215,22 @@ class YouTubeVideoHandler {
 		$lOperatingSystemAdvice = "";
 
 		try {
-			if ($this->curlIsInstalled()){
-				$lYouTubeResponse = $this->fetchVideoPropertiesFromYouTube($lVideoIdentificationToken);
-			}else{
-				$lHTML .= getNoCurlAdviceBasedOnOperatingSystem();
-			}//end if curl installed
-			
-			$lHTML .= '<span class="label">'.$lVideoTitle.'</span>';
+			if (!$this->mCurlIsInstalled){
+				$lHTML .= $this->getNoCurlAdviceBasedOnOperatingSystem();
+			}//end if curl is not installed
 
-			if(strlen($lYouTubeResponse) > 0){
-				$lRandomNumber = rand(1, 1000000);
-				$lHTML .= '
-<script>
-	var lYouTubeFrameCode'.$lRandomNumber.' = \'<iframe width=640px height=480px src=https://www.youtube.com/embed/'.$lVideoIdentificationToken.'?autoplay=1 frameborder=0 allowfullscreen=1></iframe>\';
-</script>
-<br/><br/>
-<p>
-<a 
-	href="#" 
-	id="btn-load-video'.$lRandomNumber.'" 
-	onclick="document.getElementById(\'the-player'.$lRandomNumber.'\').innerHTML=lYouTubeFrameCode'.$lRandomNumber.';"
->
-Load the video</a></p>
-<div id="the-player'.$lRandomNumber.'"></div>
-				
-				';
+			if (!$this->mYouTubeIsReachable){
+				$lHTML .= $this->getYouTubeIsNotReachableAdvice();
+			}//end if YouTube is not reachable
+
+			$lHTML .= '<br/><span class="label">'.$lVideoTitle.': </span>';
+
+			if($this->mYouTubeIsReachable){
+				$lHTML .= $this->generateYouTubeFrameHTML($lVideoIdentificationToken);
 			}else {
-				$lHTML .= ': <a href="https://www.youtube.com/watch?v='.$lVideoIdentificationToken.'" target="_blank">Mutillidae: Using ettercap and sslstrip to capture login (https://www.youtube.com/watch?v='.$lVideoIdentificationToken.')</a>';
+				$lHTML .= '<a href="https://www.youtube.com/watch?v='.$lVideoIdentificationToken.'" target="_blank">Visit YouTube Site</a>';
 			}// end if
-		
+
 		} catch (Exception $e) {
 			//do nothing
 		}//end try

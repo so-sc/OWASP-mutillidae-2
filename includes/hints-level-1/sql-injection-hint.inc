@@ -396,44 +396,29 @@ netsh firewall add portopening protocol=TCP port=23 name=telnet mode=enable scop
 		echo &quot;&lt;/pre&gt;&quot;;	
 	?&gt;
 </code>
-
-2='.$lRandomNumber.'
-
-<script>
-	var lYouTubeFrameCode2 = '<iframe width=640px height=480px src=https://www.youtube.com/embed/3?autoplay=1 frameborder=0 allowfullscreen=1></iframe>';
-</script>
-<br/><br/>
-<p>
-<a 
-	href="#" 
-	id="btn-load-video2" 
-	onclick="document.getElementById('the-player2').innerHTML=lYouTubeFrameCode2;"
->
-Load the video</a></p>
-<div id="the-player2"></div>
-
-			<br/><br/>			<span class="report-header">Videos</span>
+			<br/><br/>
+			<span class="report-header">Videos</span>
 			<br/><br/>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$BypassAuthenticationusingSQLInjection);	?>
-			<br/><br/>
+			<br/>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$AutomateSQLInjectionusingsqlmap);	?>
-			<br/><br/>
+			<br/>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$BasicsofSQLInjectionTimingAttacks);	?>
-			<br/><br/>
+			<br/>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$IntroductiontoUnionBasedSQLInjection);	?>
-			<br/><br/>
+			<br/>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$BasicsofInsertingDatawithSQLInjection);	?>
-			<br/><br/>
+			<br/>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$InjectWebShellBackdoorviaSQLInjection);	?>
-			<br/><br/>
+			<br/>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$BasicsofusingSQLInjectiontoReadFiles);	?>
-			<br/><br/>
+			<br/>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$GenerateCrossSiteScriptswithSQLInjection);	?>
-			<br/><br/>
+			<br/>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$SQLInjectionviaAJAXrequestwithJSONresponse);	?>
-			<br/><br/>
+			<br/>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$BasicsofusingsqlmapISSAKYWorkshopFebruary2013);	?>
-			<br/><br/>
-	</td>
-</tr>
-			</table>
+			<br/>
+		</td>
+	</tr>
+</table>

