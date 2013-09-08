@@ -29,7 +29,7 @@
    	if(isset($_SERVER['HTTP_REFERER'])){
    		 $lHTTPReferer = $_SERVER['HTTP_REFERER'];
    	}else{
-   		$lHTTPReferer = "index.php?page=home.php";
+   		$lHTTPReferer = "index.php?page=home.php&popUpNotificationCode=HPH0";
    	}// end if
 
    	/* Encode to defeat JavaScript string injection */

@@ -1,4 +1,7 @@
 <?php
+	require_once (__ROOT__.'/classes/YouTubeVideoHandler.php');
+	$YouTubeVideoHandler = new YouTubeVideoHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
+
 	if ($_SESSION["showhints"] > 0) {
 		require_once 'level-1-hints.js.inc';
 		$lDisplayHintStyle = "block";

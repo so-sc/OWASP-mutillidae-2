@@ -42,6 +42,9 @@
 			<br/><br/>
 			Possible Solution:<span class="label">style="&lt;body color:#"<span style="color:red;">"&gt;&lt;H1&gt;HELLO WORLD&lt;/H1&gt;&lt;</span> anything="</span>"&gt;
 			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$InjectingaCrossSiteScriptviaCascadingStylesheetContext);?>
 		</td>
 	</tr>
 </table>

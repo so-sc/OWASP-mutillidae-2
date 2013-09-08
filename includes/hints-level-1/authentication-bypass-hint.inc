@@ -105,6 +105,13 @@ Password: whatever
 			<br/><br/>
 			<a href="index.php?page=user-agent-impersonation.php">User-Agent Impersonation</a>
 			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$BruteForceAuthenticationusingBurpIntruder);	?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$BypassAuthenticationusingSQLInjection);	?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$BypassAuthenticationviaAuthenticationTokenManipulation);	?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$UsingHydratoBruteForceWebFormsBasedAuthentication);	?>
+			<br/><br/>
 		</td>
 	</tr>
 </table>

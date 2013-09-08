@@ -164,6 +164,20 @@
 			production database data; ever. Developers should not be able to copy 
 			their own code into production; ever. That is what change control is for.
 			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$ExplanationofHTTPOnlyCookiesinPresenceCrossSiteScripting);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$TwoMethodstoStealSessionTokenusingCrossSiteScripting);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$InjectingaCrossSiteScriptviaCascadingStylesheetContext);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$BasicsofInjectingCrossSiteScriptintoHTMLonclickEvent);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$IntroductiontolocatingReflectedCrosssiteScripting);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$SendingPersistentCrosssiteScriptsintoWebLogstoSnagWebAdmin);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$GenerateCrossSiteScriptswithSQLInjection);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$InjectingCrossSiteScriptsXSSintoLogPageviaCookie);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$IntroductiontoHTMLInjectionHTMLiandCrossSiteScriptingXSSUsingMutillidae);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$IntroductiontoCrossSiteScriptingXSSviaJavaScriptStringInjection);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$ExplanationofHTTPOnlyCookiesinPresenceCrossSiteScripting);?>
+			<br/><br/>
 		</td>
 	</tr>
 </table>

@@ -162,7 +162,7 @@
 		<td colspan="2" class="header-menu-table">
 			<table class="header-menu-table">
 				<tr>
-					<td><a href="index.php?page=home.php">Home</a></td>
+					<td><a href="index.php?page=home.php&popUpNotificationCode=HPH0">Home</a></td>
 					<td>|</td>
 					<td>
 						<?php

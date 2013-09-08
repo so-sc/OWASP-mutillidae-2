@@ -62,6 +62,10 @@
 		  	not for security level 1. Note the initial user ID in security level
 		  	1 is more challenging to change correctly.
 			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$IntroductiontoCBCBitFlippingAttack);?>
+		  	<br/><br/>
 		</td>
 	</tr>
 </table>

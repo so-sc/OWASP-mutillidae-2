@@ -147,6 +147,10 @@
 			including but not limited to database records and all parameters 
 			submitted by the browser.
 			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$IntroductiontoHTMLInjectionHTMLiandCrossSiteScriptingXSSUsingMutillidae);?>
+			<br/><br/>
 		</td>
 	</tr>
 </table>
