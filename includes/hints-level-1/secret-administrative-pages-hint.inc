@@ -37,6 +37,10 @@
 	  		The phpinfo function dumps PHP server configuration information to a nice table.
 			The phpMyAdmin.php hosts a secret phpMyAdmin console.
 			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$GainingAdministrativeShellAccessviaCommandInjection);?>
+			<br/><br/>
 		</td>
 	</tr>
 </table>

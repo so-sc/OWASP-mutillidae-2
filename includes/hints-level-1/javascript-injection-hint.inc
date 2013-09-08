@@ -82,6 +82,10 @@
 	canary";}catch(e){}alert(1);try{a="
 </code>
 			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$IntroductiontoCrossSiteScriptingXSSviaJavaScriptStringInjection);?>
+			<br/><br/>
 		</td>
 	</tr>
 </table>

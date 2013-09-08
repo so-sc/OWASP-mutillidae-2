@@ -104,6 +104,8 @@ class YouTubeVideoHandler {
 	public static $UsingEttercapandSSLstriptoCaptureCredentials = 67;
 	public static $IntroductiontoXMLExternalEntityInjection = 68;
 	public static $DetermineHTTPMethodsusingNetcat = 69;
+	public static $ISSAIntroductiontoXMLExternalEntityInjection = 70;
+	public static $IntroductiontoUseragentImpersonation = 71;
 	
 	/* private methods */
 	private function doSetSecurityLevel($pSecurityLevel){

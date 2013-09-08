@@ -32,6 +32,10 @@
 			the javascript could be manipulated or even rewritten to beat the 
 			challenge. There is no security in javascript.
 			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$IntroductiontoUseragentImpersonation);?>
+			<br/><br/>
 		</td>
 	</tr>
 </table>

@@ -720,7 +720,9 @@ try{
 			(66, 'TNt2rJcxdyg', 'Introduction to CBC Bit Flipping Attack'),
 			(67, 'n_5NGkOnr7Q', 'Using Ettercap and SSLstrip to Capture Credentials'),
 			(68, 'DJaX4HN2gwQ', 'Introduction to XML External Entity Injection'),
-			(69, 'MxiVx7e_FbM', 'Determine HTTP Methods using Netcat')
+			(69, 'MxiVx7e_FbM', 'Determine HTTP Methods using Netcat'),
+			(70, 'Zl8U2YVp2lw', 'ISSA KY September 2013 Workshop - Introduction to XML External Entity Injection'),
+			(71, 'VAGG4uC1ogw', 'Introduction to User-agent Impersonation')
 	";
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {

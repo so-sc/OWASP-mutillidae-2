@@ -6,7 +6,7 @@
 		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
 		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
 	>
-		<td><img id="idInformationDisclosureHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand Information Path Hints" src="./images/down_arrow_16_16.png" />Information Path Hints</td>
+		<td><img id="idInformationDisclosureHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand Information Disclosure Hints" src="./images/down_arrow_16_16.png" />Information Path Hints</td>
 	</tr>
 	<tr id="idInformationDisclosureHintBody" style="display: none;">
 		<td class="hint-body">
@@ -33,6 +33,13 @@
 			Burp-Suite to seach for inappropriate information. Search for known
 			common administrative consoles such as phpMyAdmin installations,
 			Drupal and Wordpress consoles.
+			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$DetermineHTTPMethodsusingNetcat);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$DetermineServerBannersusingNetcatNiktoandw3af);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$UsingNmaptoFingerprintHTTPserversandWebApplications);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$FindingCommentsandFileMetadatausingMultipleTechniques);?>
 			<br/><br/>
 		</td>
 	</tr>

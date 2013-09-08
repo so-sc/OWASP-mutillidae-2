@@ -32,6 +32,12 @@
 			in a client proxy such as
 			Burp Suite after the validation has occured.
 			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$TwoMethodstoBypassJavaScriptValidation);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$XSSbypassingJavaScriptValidation);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$HowtoBypassMaxlengthRestrictionsonHTMLInputFields);?>
+			<br/><br/>			
 		</td>
 	</tr>
 </table>

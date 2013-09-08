@@ -33,6 +33,10 @@
 			Method tampering can help with filter bypass and make cross site request
 			forgery easier.
 			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$DetermineHTTPMethodsusingNetcat);?>
+			<br/><br/>
 		</td>
 	</tr>
 </table>

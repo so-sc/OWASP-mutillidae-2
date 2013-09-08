@@ -35,6 +35,10 @@
 			Example: 
 			<a href="index.php?page=http://www.google.com">index.php?page=http://www.google.com</a>
 			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$ISSA2013WebPentestingWorkshopPart6LocalRemoteFileInclusion);?>
+			<br/><br/>
 		</td>
 	</tr>
 </table>

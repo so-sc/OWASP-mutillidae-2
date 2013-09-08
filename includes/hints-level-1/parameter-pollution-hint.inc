@@ -34,6 +34,10 @@
 			the web server to put the values together. This allows WAF and validation
 			bypass in some cases.
 			<br/><br/>
-		</td>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$IntroductiontoHTTPParameterPollution);?>
+			<br/><br/>
+					</td>
 	</tr>
 </table>

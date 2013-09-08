@@ -1,17 +1,25 @@
-<div><span style="font-weight:bold;">08/14/2013</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">09/08/2013</span>: Jeremy Druin</div>
 <blockquote>
-	<div>Change Log for OWASP Mutillidae II 2.5.19.6:</div>
+	<div>Change Log for OWASP Mutillidae II 2.6.0:</div>
 	<ul>
-		<li>Add hint reminder to Home page growl notification 
-		to let users know hints are available</li>
+		<li>
+			A new section has been added to most hints on most pages. The "video"
+			section contains either a link to the video or a frame with the video
+			embedded. Mutillidae will detect if Curl is installed and if the Internet
+			is reachable. If those preconditions fail, the link will be displayed.
+			If Mutillidae is mistaken about connectivity and the link is displayed
+			rather than the frame, the user can still click the link to open 
+			the video in a new tab.
+		</li>
+		<li>
+			Add hint reminder to Home page growl notification 
+			to let users know hints are available
+		</li>
 		<li>Fixed bug in code examples on XML XXE hint</li>
 		<li>Added new material to the XML XXE hint from ISSA workshop</li>
 		<li>
 			On pages with multiple hints, the last hint opened will now
 			automatically close when the next hint is opened
-		</li>
-		<li>
-			More work on video handler class
 		</li>
 		<li>BUG FIX (Credit Lee Baird): Fixed 3 broken links on credits.php</li>
 		<li>Rewrote credits.php to remove code redundancy</li>
@@ -28,6 +36,7 @@
 			 Use the following to pull project via Git. 
 			 git clone git://git.code.sf.net/p/mutillidae/git mutillidae-git
 		 </li>
+		 <li>BUG FIX: Title on the information disclosure hints page</li>
 	</ul>
 </blockquote>
 
