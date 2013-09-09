@@ -6,53 +6,53 @@
 	<tr>
 		<td>
 			<ul>
-				<li>SQL Injection</li>
-				<li>O/S Command injection</li>
-				<li>JSON injection</li>
-				<li>HTML injection</li>
-				<li>JavaScript  Injection</li>
-				<li>DOM injection</li>
-				<li>Cascading style sheet injection</li>
-				<li>Log injection</li>
-				<li>Reflected Cross Site Scripting via GET, POST, Cookies,  and HTTP Headers</li>
-				<li>Stored Cross Site Scripting</li>
-				<li>Cross Site Request Forgery</li>
-				<li>Authentication Bypass via SQL injection</li>
-				<li>Privilege Escalation via Cookie Injection</li>
-				<li>Unencrypted database credentials</li>
-				<li>Directory Browsing</li>
-				<li>JavaScript validation bypass</li>
-				<li>Remote File Inclusion</li>
-				<li>Frame source injection</li>
-				<li>PHPMyAdmin Console</li>
-				<li>SSL Stripping</li>
 				<li>Application Exception</li>
-				<li>Un-validated Redirects and Forwards</li>
-				<li>Phishing</li>
+				<li>Application path disclosure</li>
+				<li>Authentication Bypass via SQL injection</li>
+				<li>Brute force secret admin pages</li>
+				<li>Buffer overflow</li>
+				<li>Cascading style sheet injection</li>
+				<li>CBC bit flipping (latest)</li>
 				<li>Click-jacking</li>
+				<li>Comments with sensitive data</li>
+				<li>Cross Site Request Forgery</li>
+				<li>Denial of Service</li>
+				<li>Directory Browsing</li>
+				<li>DOM injection</li>
+				<li>Forms caching</li>
+				<li>Frame source injection</li>
+				<li>HTML injection</li>
+				<li>HTTP Parameter Pollution</li>
+				<li>Information disclosure via HTML comments</li>
+				<li>Insecure Cookies</li>
+				<li>JavaScript Injection</li>
+				<li>JavaScript validation bypass</li>
 			</ul>
 		</td>
 		<td>
 			<ul>
-				<li>CBC bit flipping (latest)</li>
-				<li>Brute force secret admin pages</li>
-				<li>PHP server configuration disclosure</li>
-				<li>Application path disclosure</li>
-				<li>Platform path disclosure</li>
-				<li>Information disclosure via HTML comments</li>
-				<li>robots.txt information disclosure</li>
-				<li>Parameter addition</li>
-				<li>HTTP Parameter Pollution</li>
-				<li>Buffer overflow</li>
-				<li>Denial of Service</li>
+				<li>JSON injection</li>
 				<li>Loading of any arbitrary file</li>
-				<li>Method Tampering</li>
-				<li>Forms caching</li>
 				<li>Local File Inclusion</li>
-				<li>Comments with sensitive data</li>
-				<li>Insecure Cookies</li>
+				<li>Log injection</li>
+				<li>Method Tampering</li>
+				<li>O/S Command injection</li>
+				<li>Parameter addition</li>
+				<li>PHPMyAdmin Console</li>
+				<li>PHP server configuration disclosure</li>
+				<li>Phishing</li>
+				<li>Platform path disclosure</li>
+				<li>Privilege Escalation via Cookie Injection</li>
+				<li>Reflected Cross Site Scripting via GET, POST, Cookies,  and HTTP Headers</li>
+				<li>Remote File Inclusion</li>
+				<li>robots.txt information disclosure</li>
+				<li>Stored Cross Site Scripting</li>
+				<li>SSL Stripping</li>
+				<li>SQL Injection</li>
 				<li>XML External Entity Injection</li>
+				<li>Unencrypted database credentials</li>
 				<li>Unrestricted File Upload</li>
+				<li>Un-validated Redirects and Forwards</li>
 			</ul>	
 		</td>
 	</tr>

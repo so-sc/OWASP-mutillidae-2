@@ -128,11 +128,11 @@ class YouTubeVideoHandler {
 		$lYouTubeResponse = "";
 		try{
 			if (function_exists("curl_init")) {
-				$timeout = $this::TWO_SECONDS;
+				$lConnectionTimeout = 2; //two seconds. Using constant messed up Metasplitable 2.
 				$lCurlInstance = curl_init();
 				curl_setopt($lCurlInstance, CURLOPT_URL, "http://gdata.youtube.com/feeds/api/videos/".$pVideoIdentificationToken);
 				curl_setopt($lCurlInstance, CURLOPT_RETURNTRANSFER, 1);
-				curl_setopt($lCurlInstance, CURLOPT_CONNECTTIMEOUT, $timeout);
+				curl_setopt($lCurlInstance, CURLOPT_CONNECTTIMEOUT, $lConnectionTimeout);
 				$lYouTubeResponse = curl_exec($lCurlInstance);
 				curl_close($lCurlInstance);
 			}//end if
