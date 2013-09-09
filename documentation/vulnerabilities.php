@@ -2,7 +2,7 @@
 
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
 
-<table style="width: 700px;">
+<table style="width: 800px;">
 	<tr>
 		<td>
 			<ul>
