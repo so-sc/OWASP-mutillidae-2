@@ -37,7 +37,7 @@
 			<br/><br/>
 			<span class="report-header">Videos</span>
 			<br/><br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$ISSA2013WebPentestingWorkshopPart6LocalRemoteFileInclusion);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->ISSA2013WebPentestingWorkshopPart6LocalRemoteFileInclusion);?>
 			<br/><br/>
 		</td>
 	</tr>

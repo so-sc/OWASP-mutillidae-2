@@ -166,8 +166,8 @@
 			<br/><br/>
 			<span class="report-header">Videos</span>
 			<br/><br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$IntroductiontoXMLExternalEntityInjection);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$ISSAIntroductiontoXMLExternalEntityInjection);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoXMLExternalEntityInjection);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->ISSAIntroductiontoXMLExternalEntityInjection);?>
 			<br/><br/>
 </td>
 	</tr>

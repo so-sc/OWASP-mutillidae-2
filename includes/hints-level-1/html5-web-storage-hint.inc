@@ -423,13 +423,13 @@ try{
 			<br/><br/>
 			<span class="report-header">Videos</span>
 			<br/><br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$AddingValuestoDOMStorageusingCrosssiteScripting);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$AlterValuesinHTML5WebStorageusingCrosssiteScript);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$AlterValuesinHTML5WebStorageusingPersistentCrosssiteScript);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$AlterValuesinHTML5WebStorageusingReflectedCrosssiteScript);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$WebPenTestingHTML5WebStorageusingJSONInjection);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$StealingHTML5StorageviaJSONInjection);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$ReadingHiddenValuesfromHTML5DomStorage);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AddingValuestoDOMStorageusingCrosssiteScripting);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AlterValuesinHTML5WebStorageusingCrosssiteScript);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AlterValuesinHTML5WebStorageusingPersistentCrosssiteScript);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AlterValuesinHTML5WebStorageusingReflectedCrosssiteScript);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->WebPenTestingHTML5WebStorageusingJSONInjection);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->StealingHTML5StorageviaJSONInjection);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->ReadingHiddenValuesfromHTML5DomStorage);?>
 			<br/><br/>
 		</td>
 	</tr>

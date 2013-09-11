@@ -64,7 +64,7 @@
 			<br/><br/>
 			<span class="report-header">Videos</span>
 			<br/><br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$IntroductiontoCBCBitFlippingAttack);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoCBCBitFlippingAttack);?>
 		  	<br/><br/>
 		</td>
 	</tr>

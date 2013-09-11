@@ -394,25 +394,25 @@ netsh firewall add portopening protocol=TCP port=23 name=telnet mode=enable scop
 			<br/><br/>
 			<span class="report-header">Videos</span>
 			<br/><br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$BypassAuthenticationusingSQLInjection);	?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BypassAuthenticationusingSQLInjection);	?>
 			<br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$AutomateSQLInjectionusingsqlmap);	?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AutomateSQLInjectionusingsqlmap);	?>
 			<br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$BasicsofSQLInjectionTimingAttacks);	?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofSQLInjectionTimingAttacks);	?>
 			<br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$IntroductiontoUnionBasedSQLInjection);	?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoUnionBasedSQLInjection);	?>
 			<br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$BasicsofInsertingDatawithSQLInjection);	?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofInsertingDatawithSQLInjection);	?>
 			<br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$InjectWebShellBackdoorviaSQLInjection);	?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->InjectWebShellBackdoorviaSQLInjection);	?>
 			<br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$BasicsofusingSQLInjectiontoReadFiles);	?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofusingSQLInjectiontoReadFiles);	?>
 			<br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$GenerateCrossSiteScriptswithSQLInjection);	?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->GenerateCrossSiteScriptswithSQLInjection);	?>
 			<br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$SQLInjectionviaAJAXrequestwithJSONresponse);	?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->SQLInjectionviaAJAXrequestwithJSONresponse);	?>
 			<br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$BasicsofusingsqlmapISSAKYWorkshopFebruary2013);	?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofusingsqlmapISSAKYWorkshopFebruary2013);	?>
 			<br/>
 		</td>
 	</tr>

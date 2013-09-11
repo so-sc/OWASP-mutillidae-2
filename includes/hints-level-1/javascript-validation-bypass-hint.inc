@@ -34,9 +34,9 @@
 			<br/><br/>
 			<span class="report-header">Videos</span>
 			<br/><br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$TwoMethodstoBypassJavaScriptValidation);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$XSSbypassingJavaScriptValidation);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$HowtoBypassMaxlengthRestrictionsonHTMLInputFields);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->TwoMethodstoBypassJavaScriptValidation);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->XSSbypassingJavaScriptValidation);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoBypassMaxlengthRestrictionsonHTMLInputFields);?>
 			<br/><br/>			
 		</td>
 	</tr>

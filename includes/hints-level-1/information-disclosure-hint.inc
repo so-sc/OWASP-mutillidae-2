@@ -36,10 +36,10 @@
 			<br/><br/>
 			<span class="report-header">Videos</span>
 			<br/><br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$DetermineHTTPMethodsusingNetcat);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$DetermineServerBannersusingNetcatNiktoandw3af);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$UsingNmaptoFingerprintHTTPserversandWebApplications);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$FindingCommentsandFileMetadatausingMultipleTechniques);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->DetermineHTTPMethodsusingNetcat);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->DetermineServerBannersusingNetcatNiktoandw3af);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->UsingNmaptoFingerprintHTTPserversandWebApplications);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->FindingCommentsandFileMetadatausingMultipleTechniques);?>
 			<br/><br/>
 		</td>
 	</tr>

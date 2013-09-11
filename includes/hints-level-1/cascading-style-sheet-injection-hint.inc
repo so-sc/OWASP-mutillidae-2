@@ -44,7 +44,7 @@
 			<br/><br/>
 			<span class="report-header">Videos</span>
 			<br/><br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler::$InjectingaCrossSiteScriptviaCascadingStylesheetContext);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->InjectingaCrossSiteScriptviaCascadingStylesheetContext);?>
 		</td>
 	</tr>
 </table>
