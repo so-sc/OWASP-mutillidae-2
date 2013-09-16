@@ -3,13 +3,13 @@
 	require_once('./lib/nusoap.php');
 	
 	// Create the server instance
-	$server = new soap_server();
+	$lSOAPWebService = new soap_server();
 	
 	// Initialize WSDL support
-	$server->configureWSDL('sqliwsdl', 'urn:sqliwsdl');
+	$lSOAPWebService->configureWSDL('sqliwsdl', 'urn:sqliwsdl');
 	
 	// Register the method to expose
-	$server->register('getUserInformation',                // method name
+	$lSOAPWebService->register('getUserInformation',                // method name
 	    array('username' => 'xsd:string','password' => 'xsd:string'),	// input parameters
 	    array('return' => 'xsd:string'),      // output parameters
 	    'urn:sqliwsdl',                      // namespace
@@ -106,5 +106,5 @@
 	
 	// Use the request to (try to) invoke the service
 	$HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : '';
-	$server->service($HTTP_RAW_POST_DATA);
+	$lSOAPWebService->service($HTTP_RAW_POST_DATA);
 ?>

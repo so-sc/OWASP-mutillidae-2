@@ -3,20 +3,21 @@
 	require_once('./lib/nusoap.php');
 
 	// Create the server instance
-	$server = new soap_server();
+	$lSOAPWebService = new soap_server();
 	
 	// Initialize WSDL support
-	$server->configureWSDL('commandinjwsdl', 'urn:commandinjwsdl');
+	$lSOAPWebService->configureWSDL('commandinjwsdl', 'urn:commandinjwsdl');
 	
 	// Register the method to expose
-	$server->register('lookupDNS',			// method name
-	    array('targetHost' => 'xsd:string'),   // input parameters
-	    array('Answer' => 'xsd:string'),    // output parameters
-	    'urn:commandinjwsdl',               // namespace
-	    'urn:commandinjwsdl#commandinj',    // soapaction
-	    'rpc',                              // style
-	    'encoded',                          // use
-	    'Returns the results of the DNS lookup'  // documentation
+	$lSOAPWebService->register(
+		'lookupDNS',							// method name
+	    array('targetHost' => 'xsd:string'),	// input parameters
+	    array('Answer' => 'xsd:string'),    	// output parameters
+	    'urn:commandinjwsdl',               	// namespace
+	    'urn:commandinjwsdl#commandinj',    	// soapaction
+	    'rpc',                              	// style
+	    'encoded',                          	// use
+	    'Returns the results of the DNS lookup' // documentation
 	);
 
 	// Define the method as a PHP function
@@ -69,7 +70,8 @@
     			/* Protect against XSS by output encoding */
     			$lTargetHostText = $Encoder->encodeForHTML($pTargetHost);
 	    	}else{
-				$lTargetHostText = $pTargetHost; 		//allow XSS by not encoding output	    		
+				//allow XSS by not encoding output
+				$lTargetHostText = $pTargetHost;	    		
 	    	}//end if
 		    	
 		}catch(Exception $e){
@@ -96,5 +98,5 @@
 
 	// Use the request to (try to) invoke the service
 	$HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : '';
-	$server->service($HTTP_RAW_POST_DATA);
+	$lSOAPWebService->service($HTTP_RAW_POST_DATA);
 ?>
