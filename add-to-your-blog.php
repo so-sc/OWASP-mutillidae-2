@@ -13,7 +13,7 @@
 	if (!isSet($logged_in_user)) {
 		throw new Exception("$logged_in_user is not set. Page add-to-your-blog.php requires this variable.");
 	}// end if
-	
+
 	switch ($_SESSION["security-level"]){
    		case "0": // This code is insecure
    			// DO NOTHING: This is insecure		
@@ -23,7 +23,6 @@
 			$lProtectAgainstSQLInjection = FALSE;
 			$lProtectAgainstCSRF = FALSE;
 			$lCSRFTokenStrength = "NONE";
-			$lNewCSRFTokenForNextRequest = "SecurityIsDisabled";
 			$lEnableJavaScriptValidation = FALSE;
 		break;	   		
 
@@ -35,7 +34,6 @@
 			$lProtectAgainstSQLInjection = FALSE;
 			$lProtectAgainstCSRF = TRUE;
 			$lCSRFTokenStrength = "LOW";
-			$lNewCSRFTokenForNextRequest = "SecurityIsDisabled";
 			$lEnableJavaScriptValidation = TRUE;			
 		break;	   		
 
@@ -89,7 +87,7 @@
 			 */
 			$lProtectAgainstCSRF = TRUE;
 			$lCSRFTokenStrength = "HIGH";
-			
+				
 			/* Note that $MySQLHandler->escapeDangerousCharacters is ok but not the best defense. Stored
 			 * Procedures are a much more powerful defense, run much faster, can be
 			 * trapped in a schema, can run on the database, and can be called from
@@ -107,6 +105,7 @@
    		break;
    	}// end switch
    	
+   	$lNewCSRFTokenForNextRequest = "CSRFProtectionDisabled";
    	if($lProtectAgainstCSRF){
 			/* Record the CSRF token that we saved in the session when we offered the ADD BLOG 
 			 * page to the user. This was the token we created before the user POSTed to this page
