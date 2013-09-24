@@ -24,28 +24,33 @@ class CustomErrorHandler{
 	protected $mSecurityLevel = 0;
 	protected $ESAPI = null;
 	protected $Encoder = null;
+	protected $supressErrorMessages = FALSE;
+	
+	protected $mLine = "";
+	protected $mCode = "";
+	protected $mFile = "";
+	protected $mMessage = "";
+	protected $mTrace = "";
+	protected $mDiagnosticInformation = "";
 
-	private function FormatErrorTable(Exception $e, $pDiagnosticInformation){
+	private function doFormatErrorAsHTMLTable(Exception $e, $pDiagnosticInformation){
 
-		if (!$this->encodeOutput){
-   			// encode the entire message following OWASP standards
-   			// this is HTML encoding because we are outputting data into HTML
-			$lLine = $e->getLine();
-			$lCode = $e->getCode();
-			$lFile = $e->getFile();
-			$lMessage = $e->getMessage();
-			$lTrace = $e->getTraceAsString();
-			$lDiagnosticInformation = $pDiagnosticInformation;
-		}else{
-			/* Cross site scripting defense */
-			$lLine = $this->Encoder->encodeForHTML($e->getLine());
-			$lCode = $this->Encoder->encodeForHTML($e->getCode());
-			$lFile = $this->Encoder->encodeForHTML($e->getFile());
-			$lMessage = $this->Encoder->encodeForHTML($e->getMessage());
-			$lTrace = $this->Encoder->encodeForHTML($e->getTraceAsString());
-			$lDiagnosticInformation = $this->Encoder->encodeForHTML($pDiagnosticInformation);
-		}// end if
+		$lSupressedMessage = "Sorry. An error occured. Support has been notified. Not allowed to give out errors at this security level.";
 		
+		$this->setErrorProperties($e, $pDiagnosticInformation);
+		
+		if($this->supressErrorMessages){
+			$lHTML = '<tr><td class="error-label">Message</td><td class="error-detail">' . $lSupressedMessage . '</td></tr>';
+		}else{
+			$lHTML = 
+				'<tr><td class="error-label">Line</td><td class="error-detail">' . $this->mLine . '</td></tr>
+				<tr><td class="error-label">Code</td><td class="error-detail">' . $this->mCode . '</td></tr>
+				<tr><td class="error-label">File</td><td class="error-detail">' . $this->mFile . '</td></tr>
+				<tr><td class="error-label">Message</td><td class="error-detail">' . $this->mMessage . '</td></tr>
+				<tr><td class="error-label">Trace</td><td class="error-detail">' . $this->mTrace . '</td></tr>
+				<tr><td class="error-label">Diagnotic Information</td><td class="error-detail">' . $this->mDiagnosticInformation . '</td></tr>';
+		}// end if
+
 		return
 		'<fieldset>
 			<legend>Error Message</legend>
@@ -54,24 +59,7 @@ class CustomErrorHandler{
 				<tr>
 					<td colspan="2" class="error-header">Failure is always an option</td>
 				</tr>
-				<tr>
-					<td class="error-label">Line</td><td class="error-detail">' . $lLine . '</td>
-				</tr>
-				<tr>
-					<td class="error-label">Code</td><td class="error-detail">' . $lCode . '</td>
-				</tr>
-				<tr>
-					<td class="error-label">File</td><td class="error-detail">' . $lFile . '</td>
-				</tr>
-				<tr>
-					<td class="error-label">Message</td><td class="error-detail">' . $lMessage . '</td>
-				</tr>
-				<tr>
-					<td class="error-label">Trace</td><td class="error-detail">' . $lTrace . '</td>
-				</tr>
-				<tr>
-					<td class="error-label">Diagnotic Information</td><td class="error-detail">' . $lDiagnosticInformation . '</td>
-				</tr>
+				'.$lHTML.'
 				<tr>
 					<td colspan="2" class="error-header" style="text-align: center;"><a href="set-up-database.php">Click here to reset the DB</a></td>
 				</tr>
@@ -80,24 +68,6 @@ class CustomErrorHandler{
 		</fieldset>';
 
 	}// end private function FormatErrorTable
-
-	private function FormatErrorTableForUser(){
-		$lMessage = 'Sorry. An error occured. Support has been notified.';
-		return 
-		'<table>
-			<tr><td colspan="2">&nbsp;</td></tr>
-			<tr>
-				<td colspan="2" class="error-header">Error: Failure is always an option and this situation proves it</td>
-			</tr>
-			<tr>
-				<td class="error-label">Message</td><td class="error-detail">' . $lMessage . '</td>
-			</tr>
-			<tr>
-				<td colspan="2" class="error-header" style="text-align: center;">Did you <a href="set-up-database.php">setup/reset the DB</a>?</td>
-			</tr>
-			<tr><td colspan="2">&nbsp;</td></tr>
-		</table>';
-	}// end private function FormatErrorTableForUser()
 	
 	private function doSetSecurityLevel($pSecurityLevel){
 		$this->mSecurityLevel = $pSecurityLevel;
@@ -106,6 +76,7 @@ class CustomErrorHandler{
 	   		case "0": // This code is insecure, we are not encoding output
 	   		case "1": // This code is insecure, we are not encoding output
 				$this->encodeOutput = FALSE;
+				$this->supressErrorMessages = FALSE;
 	   		break;
 
 	   		case "2":
@@ -114,6 +85,7 @@ class CustomErrorHandler{
 	   		case "5": // This code is fairly secure
 	  			// If we are secure, then we encode all output.
 	   			$this->encodeOutput = TRUE;
+	   			$this->supressErrorMessages = TRUE;
 	   		break;
 	   	}// end switch		
 	}// end function
@@ -121,6 +93,29 @@ class CustomErrorHandler{
 	private function formatExceptionMessage(Exception $e, $pDiagnosticInformation){
 		return sprintf("%s on line %d: %s %s (%d) [%s] <br />\n", $e->getFile(), $e->getLine(), $e->getMessage(), $pDiagnosticInformation, $e->getCode(), get_class($e));
 	}// end private function formatExceptionMessage()
+
+	private function setErrorProperties(Exception $pException, $pDiagnosticInformation){
+
+		if (!$this->encodeOutput){
+			// encode the entire message following OWASP standards
+			// this is HTML encoding because we are outputting data into HTML
+			$this->mLine = $pException->getLine();
+			$this->mCode = $pException->getCode();
+			$this->mFile = $pException->getFile();
+			$this->mMessage = $pException->getMessage();
+			$this->mTrace = $pException->getTraceAsString();
+			$this->mDiagnosticInformation = $pDiagnosticInformation;
+		}else{
+			/* Cross site scripting defense */
+			$this->mLine = $this->Encoder->encodeForHTML($pException->getLine());
+			$this->mCode = $this->Encoder->encodeForHTML($pException->getCode());
+			$this->mFile = $this->Encoder->encodeForHTML($pException->getFile());
+			$this->mMessage = $this->Encoder->encodeForHTML($pException->getMessage());
+			$this->mTrace = $this->Encoder->encodeForHTML($pException->getTraceAsString());
+			$this->mDiagnosticInformation = $this->Encoder->encodeForHTML($pDiagnosticInformation);
+		}// end if
+
+	}// end private function setErrorProperties()	
 	
 	public function __construct($pPathToESAPI, $pSecurityLevel){
 		
@@ -152,38 +147,46 @@ class CustomErrorHandler{
 	}//end function getExceptionMessage
 	
 	public function FormatError(Exception $e, $pDiagnosticInformation){
-	
-		switch ($this->mSecurityLevel){
-	   		case "0": // This code is insecure, we are not encoding output
-	   		case "1": // This code is insecure, we are not encoding output
-	   			$lErrorMessage = $this->FormatErrorTable($e, $pDiagnosticInformation); 
-				return $lErrorMessage;
-			break;
-	   		
-			case "2":
-			case "3":
-			case "4":
-	   		case "5": // This code is fairly secure
-	  			/* A secure error handler performs 3 critical functions but it does
-	  			 * not tell the user about the error details
-	  			 * 
-	  			 * Error handlers perform these 3 basic functions
-	  			 * 1. Log the error details
-	  			 * 2. Tell the user what to do (i.e.e - try again, call help desk, etc.)
-	  			 * 3. Notify support of error details (i.e. - email, page, etc.)
-	  			 */
-	   			// emailSupport(FormatErrorTable(Exception $e, $pDiagnosticInformation));
-	   			// logError(FormatErrorTable(Exception $e, $pDiagnosticInformation));
-	   			$lErrorMessage = $this->FormatErrorTableForUser($e, $pDiagnosticInformation); 
-				return $lErrorMessage;
-	   		break;
-	   		
-	   		default: 
-	   			echo "Error in CustomErrorHandler->public function FormatError(Exception $e, $pDiagnosticInformation)";
-	   		break;
-	   		
-	   	}// end switch		
-	
+		return $this->doFormatErrorAsHTMLTable($e, $pDiagnosticInformation);
+	}// end public function FormatError()
+
+	private function doFormatErrorJSON(Exception $e, $pDiagnosticInformation){
+		
+		$lSupressedMessage = "Sorry. An error occured. Support has been notified. Not allowed to give out errors at this security level.";
+		
+		$this->setErrorProperties($e, $pDiagnosticInformation);
+		
+		if($this->supressErrorMessages){
+			$lJSON = 
+			'{
+				"Exception": [
+				"Line": "",
+				"Code": "",
+				"File": "",
+				"Message": "'.$lSupressedMessage.'",
+				"Trace": "",
+				"DiagnoticInformation": "'.$lSupressedMessage.'"
+				]
+			}';			
+		}else{
+			$lJSON =
+				'{
+					"Exception": [
+						"Line": "' . $this->mLine . '",
+						"Code": "' . $this->mCode . '",
+						"File": "' . $this->mFile . '",
+						"Message": "' . $this->mMessage . '",
+						"Trace": "' . $this->mTrace . '",
+						"DiagnoticInformation": "' . $this->mDiagnosticInformation . '"
+					]
+				}';
+		}// end if
+		
+		return $lJSON;
+	}// end private function doFormatErrorJSON()
+
+	public function FormatErrorJSON(Exception $e, $pDiagnosticInformation){
+		return $this->doFormatErrorJSON($e, $pDiagnosticInformation);
 	}// end public function FormatError()
 	
 }// end class

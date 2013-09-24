@@ -589,17 +589,19 @@
     * BEGIN OUTPUT RESPONSE
     * ------------------------------------------ */
     if (strlen($lPage)==0 || !isset($lPage)){
+    	/* Default Page */
 	    require_once (__ROOT__."/includes/header.php");
     	require_once(__ROOT__."/home.php");
 	    require_once (__ROOT__."/includes/footer.php");
     }elseif($lPage=="rene-magritte.php") {
-    	/* This page is our framing demonstration. 
-    	 * The page goes in an iframe so we dont want to
+    	/* Framing Demonstration */
+    	/* The page goes in an iframe so we dont want to
     	 * show the header and footer again. They will
     	 * already show in the outer frame.
     	 */    	
 	    require_once ($lPage);
     }else{
+    	/* All Other Pages */
     	require_once (__ROOT__."/includes/header.php");    	
 	    if (file_exists($lPage)){
 	  		require_once ($lPage);
@@ -609,6 +611,16 @@
 	    require_once (__ROOT__."/includes/footer.php");
     }// end if
 
+   	/* ------------------------------------------
+   	 * LOG USER VISIT TO PAGE
+   	* ------------------------------------------ */
+   	include_once (__ROOT__."/includes/log-visit.php");
+   	 
+   	/* ------------------------------------------
+   	 * CLOSE DATABASE CONNECTION
+   	* ------------------------------------------ */
+   	$MySQLHandler->closeDatabaseConnection();
+
     /* ------------------------------------------
      * Anti-framing protection (Older Browsers)
      * ------------------------------------------ */
@@ -616,17 +628,7 @@
     	include_once (__ROOT__."/includes/anti-framing-protection.inc");	
     }// end if    
     
-    /* ------------------------------------------
-     * LOG USER VISIT TO PAGE
-     * ------------------------------------------ */
-	include_once (__ROOT__."/includes/log-visit.php");
-   
-    /* ------------------------------------------
-     * CLOSE DATABASE CONNECTION
-     * ------------------------------------------ */
-    $MySQLHandler->closeDatabaseConnection();
-
-    /* ------------------------------------------
+   	/* ------------------------------------------
      * Add javascript includes
      * ------------------------------------------ */
    	include_once (__ROOT__."/includes/create-html-5-web-storage-target.inc");	
@@ -635,5 +637,5 @@
    	if (isset($_GET["popUpNotificationCode"])){
    		include_once (__ROOT__."/includes/pop-up-status-notification.inc");
    	}// end if
-   	
+
 ?>

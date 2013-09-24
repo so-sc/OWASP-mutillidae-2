@@ -88,12 +88,12 @@
     	}// end if ($lQueryResult->num_rows > 0)
 	    
 	} catch (Exception $e) {
-			try{
-				$LogHandler->writeToLog("Failed login attempt for user: " . $lUsername);
-		   	} catch (Exception $e) {
-		   		//do nothing
-		   	}// end try
-			$failedloginflag=1;
-		echo $CustomErrorHandler->FormatError($e, $lQueryString);
+		try{
+			$LogHandler->writeToLog("Failed login attempt for user: " . $lUsername);
+	   	} catch (Exception $e) {
+	   		//do nothing
+	   	}// end try
+		$failedloginflag=1;
+		echo $CustomErrorHandler->FormatErrorJSON($e, "Failed login attempt");
 	}// end try
 ?>

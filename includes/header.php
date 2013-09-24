@@ -247,11 +247,17 @@
 									</ul>
 								</li>
 								<li>
-									<a href="">Via Web Service</a>
+									<a href="">Via SOAP Web Service</a>
 									<ul>
-										<li><a href="./webservices/ws-lookup-user-information.php">Lookup User</a></li>
+										<li><a href="./webservices/soap/ws-lookup-user-information.php">Lookup User</a></li>
 									</ul>
 								</li>
+								<li>
+									<a href="">Via REST Web Service</a>
+									<ul>
+										<li><a href="./webservices/rest/ws-user-account.php">User Account Management</a></li>
+									</ul>
+								</li>								
 							</ul>
 						</li>
 						<li>
@@ -306,7 +312,7 @@
 									<a href="">Command Injection</a>
 									<ul>
 										<li><a href="index.php?page=dns-lookup.php">DNS Lookup</a></li>
-										<li><a href="./webservices/ws-lookup-dns-record.php">DNS Lookup (Web Service)</a></li>
+										<li><a href="./webservices/soap/ws-lookup-dns-record.php">DNS Lookup (SOAP Web Service)</a></li>
 									</ul>
 								</li>
 								<li>
@@ -592,23 +598,39 @@
 					<a href="#">Web Services</a>
 					<ul>
 						<li>
-							<a href="">Test Page</a>
+							<a href="">SOAP</a>
 							<ul>
-								<li><a href="./webservices/ws-hello-world.php">Hello World</a></li>
+								<li>
+									<a href="">Test Page</a>
+									<ul>
+										<li><a href="./webservices/soap/ws-hello-world.php">Hello World</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="">Command Injection</a>
+									<ul>
+										<li><a href="./webservices/soap/ws-lookup-dns-record.php">DNS Lookup</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="">SQL Injection</a>
+									<ul>
+										<li><a href="./webservices/soap/ws-lookup-user-information.php">Lookup User</a></li>
+									</ul>
+								</li>
 							</ul>
 						</li>
 						<li>
-							<a href="">Command Injection</a>
+							<a href="">REST</a>
 							<ul>
-								<li><a href="./webservices/ws-lookup-dns-record.php">DNS Lookup</a></li>
+								<li>
+									<a href="">SQL Injection</a>
+									<ul>
+										<li><a href="./webservices/rest/ws-user-account.php">User Account Management</a></li>
+									</ul>
+								</li>
 							</ul>
-						</li>
-						<li>
-							<a href="">SQL Injection</a>
-							<ul>
-								<li><a href="./webservices/ws-lookup-user-information.php">Lookup User</a></li>
-							</ul>
-						</li>
+						</li>						
 					</ul>
 				</li>
 				<li style="border-color: #ffffff; border-style: solid;border-width: 1px">
@@ -667,7 +689,7 @@
 								<li><a href="index.php?page=register.php">Register</a></li>
 								<li><a href="index.php?page=pen-test-tool-lookup.php">Pen Test Tool Lookup</a></li>
 								<li><a href="index.php?page=pen-test-tool-lookup-ajax.php">Pen Test Tool Lookup (AJAX)</a></li>
-								<li><a href="./webservices/ws-lookup-user-information.php">Lookup User Web Service</a></li>
+								<li><a href="./webservices/soap/ws-lookup-user-information.php">Lookup User (SOAP Web Service)</a></li>
 							</ul>		
 						</li>
 						<li>
