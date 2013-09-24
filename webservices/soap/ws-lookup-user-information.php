@@ -60,7 +60,7 @@
 	   	}// end try;
 			
 		try{
-			$lQueryResult = $SQLQueryHandler->getUserInformation($pUsername, $pPassword);
+			$lQueryResult = $SQLQueryHandler->getUserAccount($pUsername, $pPassword);
 	    } catch (Exception $e) {
 			echo $CustomErrorHandler->FormatError($e, $lQueryString);
 	    }// end try;

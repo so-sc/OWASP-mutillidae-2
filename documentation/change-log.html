@@ -6,8 +6,16 @@ TODO: Have level-1 hints open in new tab (optionally)
 
 <div><span style="font-weight:bold;">09/16/2013</span>: Jeremy Druin</div>
 <blockquote>
-	<div>Change Log for OWASP Mutillidae II 2.6.2.3:</div>
+	<div>Change Log for OWASP Mutillidae II 2.6.3:</div>
 	<ul>
+		<li>
+			Added new RESTful web service ws-user-account.php.
+			Service accepts GET, PUT, POST, and DELETE methods
+			The GET method is overloaded. If username parameter is
+			passed as a URL parameter, then that account will
+			be fetched. If no username is passed, a list of
+			usernames will be returned.
+		</li>
 		<li>
 			Refactoring some of the web service code to make it 
 			easier to read. Getting ready for ISSA Conference
@@ -22,6 +30,27 @@ TODO: Have level-1 hints open in new tab (optionally)
 		<li>Rewrote custom error handler to be more efficient</li>
 		<li>Fixed minor bug in log error handler</li>
 		<li>Added JSON output to custom error handler</li>
+		<li>Added authenticateAccount() method to SQL query handler
+		that allows username and password to be checked
+		</li>
+		<li>
+			Added getNonSensitiveAccountInformation() to SQL query
+			handler to lookup username and signature
+		</li>
+		<li>
+			Standardized all pages to use getUserAccount() to pull
+			user account
+		</li>
+		<li>Added deleteUser() method to SQL Handler</li>
+		<li>
+			Added accountExists() method to SQL Handler to allow pages to check
+			if account exists before inserting
+		</li>
+		<li>
+			Added updateUserAccount() method to SQL handler to allow
+			updates to user accounts. Eventually an update account page
+			will be added.
+		</li>
 	</ul>
 </blockquote>
 

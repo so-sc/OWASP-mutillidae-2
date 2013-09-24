@@ -155,7 +155,7 @@
 				//do nothing
 			}// end try
 	    			
-			$lQueryResult = $SQLQueryHandler->getUserInformation($lUsername, $lPassword);
+			$lQueryResult = $SQLQueryHandler->getUserAccount($lUsername, $lPassword);
 	    	
 	   		$lResultsFound = FALSE;
 	   		$lRecordsFound = 0;

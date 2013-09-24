@@ -124,7 +124,7 @@
 			}// end if
 		   	
 		   	if (!$lValidationFailed){					
-		   		$lRowsAffected = $SQLQueryHandler->insertNewUser($lUsername, $lPassword, $lConfirmedPassword);
+		   		$lRowsAffected = $SQLQueryHandler->insertNewUserAccount($lUsername, $lPassword, $lConfirmedPassword);
 				echo '<h2 class="success-message">Account created for ' . $lUsernameText .'. '.$lRowsAffected.' rows inserted.</h2>';
 				$LogHandler->writeToLog("Added account for: " . $lUsername);
 		   	}// end if (!$lValidationFailed)

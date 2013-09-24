@@ -154,32 +154,6 @@ class SQLQueryHandler {
 		return $this->mMySQLHandler->executeQuery($lQueryString);
 	}//end public function insertBlogRecord
 
-	public function getUsernames(){
-
-		$lQueryString  = "SELECT username FROM accounts;";
-						
-		return $this->mMySQLHandler->executeQuery($lQueryString);
-	}//end public function getUsernames
-
-	public function getAccount($pUsername, $pPassword){
-   		/* 
-  		 * Note: While escaping works ok in some case, it is not the best defense.
- 		 * Using stored procedures is a much stronger defense.
- 		 */
-	
-		if ($this->stopSQLInjection == TRUE){
-			$pUsername = $this->mMySQLHandler->escapeDangerousCharacters($pUsername);
-			$pPassword = $this->mMySQLHandler->escapeDangerousCharacters($pPassword);
-		}// end if
-
-		$lQueryString = 
-			"SELECT * FROM accounts 
-			WHERE username='".$pUsername.
-			"' AND password='".$pPassword."'";		
-					
-		return $this->mMySQLHandler->executeQuery($lQueryString);
-	}//end public function insertBlogRecord
-	
 	public function getPenTestTool($pPostedToolID){
    		/* 
   		 * Note: While escaping works ok in some case, it is not the best defense.
@@ -202,23 +176,89 @@ class SQLQueryHandler {
 		return $this->mMySQLHandler->executeQuery($lQueryString);
 	}//end public function getPenTestTool
 
-	public function getUserInformation($pUsername, $pPassword){
-   		/* 
-  		 * Note: While escaping works ok in some case, it is not the best defense.
- 		 * Using stored procedures is a much stronger defense.
- 		 */
+	public function getUsernames(){
+
+		$lQueryString  = "SELECT username FROM accounts;";
+						
+		return $this->mMySQLHandler->executeQuery($lQueryString);
+	}//end public function getUsernames
+
+	public function authenticateAccount($pUsername, $pPassword){
+	
 		if ($this->stopSQLInjection == TRUE){
 			$pUsername = $this->mMySQLHandler->escapeDangerousCharacters($pUsername);
 			$pPassword = $this->mMySQLHandler->escapeDangerousCharacters($pPassword);
 		}// end if
 
-		$lQueryString  = "SELECT * FROM accounts WHERE username='". 
-  			$pUsername .
-   			"' AND password='" . 
-   			$pPassword . 
-   			"'";
+		$lQueryString = 
+			"SELECT username FROM accounts 
+			WHERE username='".$pUsername.
+			"' AND password='".$pPassword."';";
+			
+		$lQueryResult = $this->mMySQLHandler->executeQuery($lQueryString);
+			
+		if (isset($lQueryResult->num_rows)){
+			return ($lQueryResult->num_rows > 0);
+		}else{
+			return FALSE;
+		}// end if
+		
+	}//end public function getUsernames
+
+	public function accountExists($pUsername){
+	
+		if ($this->stopSQLInjection == TRUE){
+			$pUsername = $this->mMySQLHandler->escapeDangerousCharacters($pUsername);
+		}// end if
+	
+		$lQueryString =
+		"SELECT username FROM accounts WHERE username='".$pUsername."';";
+			
+		$lQueryResult = $this->mMySQLHandler->executeQuery($lQueryString);
+
+		if (isset($lQueryResult->num_rows)){
+			return ($lQueryResult->num_rows > 0);
+		}else{
+			return FALSE;
+		}// end if
+	
+	}//end public function getUsernames
+	
+	public function getNonSensitiveAccountInformation($pUsername){
+		/*
+		 * Note: While escaping works ok in some case, it is not the best defense.
+		* Using stored procedures is a much stronger defense.
+		*/
+		if ($this->stopSQLInjection == TRUE){
+			$pUsername = $this->mMySQLHandler->escapeDangerousCharacters($pUsername);
+		}// end if
+	
+		$lQueryString =
+		"SELECT username, mysignature 
+			FROM accounts
+			WHERE username='".$pUsername."'";
+			
 		return $this->mMySQLHandler->executeQuery($lQueryString);
-	}//end public function getUserInformation
+	}//end public function getNonSensitiveAccountInformation
+
+	public function getUserAccount($pUsername, $pPassword){
+   		/* 
+  		 * Note: While escaping works ok in some case, it is not the best defense.
+ 		 * Using stored procedures is a much stronger defense.
+ 		 */
+	
+		if ($this->stopSQLInjection == TRUE){
+			$pUsername = $this->mMySQLHandler->escapeDangerousCharacters($pUsername);
+			$pPassword = $this->mMySQLHandler->escapeDangerousCharacters($pPassword);
+		}// end if
+
+		$lQueryString = 
+			"SELECT * FROM accounts 
+			WHERE username='".$pUsername.
+			"' AND password='".$pPassword."'";		
+					
+		return $this->mMySQLHandler->executeQuery($lQueryString);
+	}//end public function getUserAccount
 	
 	public function getPenTestTools(){
 		/* Note: No possibility of SQL injection because the query 
@@ -253,21 +293,12 @@ class SQLQueryHandler {
 		$lQueryString  = "SELECT identificationToken, title FROM youTubeVideos WHERE recordIndetifier = " .	$pRecordIdentifier . ";";
 		$lQueryResult = $this->mMySQLHandler->executeQuery($lQueryString);
 		return $lQueryResult->fetch_object();
-	}//end public function getUserInformation
-	
-	/* -----------------------------------------
-	 * Truncate Queries
-	* ----------------------------------------- */
-	public function truncateHitLog(){
-		/* Note: No possibility of SQL injection because the query is static.*/
-		$lQueryString  = "TRUNCATE TABLE hitlog;";
-		return $this->mMySQLHandler->executeQuery($lQueryString);
-	}// end function truncateHitLog
+	}//end public function getYouTubeVideo
 	
 	/* -----------------------------------------
 	 * Insert Queries
 	 * ----------------------------------------- */
-	public function insertNewUser($pUsername, $pPassword, $pSignature){
+	public function insertNewUserAccount($pUsername, $pPassword, $pSignature){
    		/* 
   		 * Note: While escaping works ok in some case, it is not the best defense.
  		 * Using stored procedures is a much stronger defense.
@@ -283,12 +314,13 @@ class SQLQueryHandler {
 			$pPassword . "', '" . 
 			$pSignature .
 			"')";
-			if ($this->mMySQLHandler->executeQuery($lQueryString)){
-				return $this->mMySQLHandler->affected_rows();
-			}else{
-				return 0;
-			}
-	}//end function insertNewUser
+
+		if ($this->mMySQLHandler->executeQuery($lQueryString)){
+			return $this->mMySQLHandler->affected_rows();
+		}else{
+			return 0;
+		}
+	}//end function insertNewUserAccount
 
 	public function insertCapturedData(
 		$pClientIP, 
@@ -324,5 +356,60 @@ class SQLQueryHandler {
 				
 		return $this->mMySQLHandler->executeQuery($lQueryString);
 	}//end public function insertBlogRecord
+
+	/* -----------------------------------------
+	 * Update Queries
+	* ----------------------------------------- */
+	public function updateUserAccount($pUsername, $pPassword, $pSignature){
+		/*
+		 * Note: While escaping works ok in some case, it is not the best defense.
+		* Using stored procedures is a much stronger defense.
+		*/
+		if ($this->stopSQLInjection == TRUE){
+			$pUsername = $this->mMySQLHandler->escapeDangerousCharacters($pUsername);
+			$pPassword = $this->mMySQLHandler->escapeDangerousCharacters($pPassword);
+			$pSignature = $this->mMySQLHandler->escapeDangerousCharacters($pSignature);
+		}// end if
+
+		$lQueryString = 
+			"UPDATE accounts 
+			SET 
+				username = '".$pUsername."', 
+				password = '".$pPassword."', 
+				mysignature = '".$pSignature."'
+			WHERE
+				username = '".$pUsername."';";
+
+		if ($this->mMySQLHandler->executeQuery($lQueryString)){
+			return $this->mMySQLHandler->affected_rows();
+		}else{
+			return 0;
+		}
+	}//end function updateUserAccount
+	
+	/* -----------------------------------------
+	 * Delete Queries
+	* ----------------------------------------- */
+	public function deleteUser($pUsername){
+		if ($this->stopSQLInjection == TRUE){
+			$pUsername = $this->mMySQLHandler->escapeDangerousCharacters($pUsername);
+		}// end if
+		
+		$lQueryString  = "DELETE FROM accounts WHERE username = '".$pUsername."';";
+		if ($this->mMySQLHandler->executeQuery($lQueryString)){
+			return $this->mMySQLHandler->affected_rows();
+		}else{
+			return 0;
+		}
+	}// end function deleteUser
+
+	/* -----------------------------------------
+	 * Truncate Queries
+	* ----------------------------------------- */
+	public function truncateHitLog(){
+		/* Note: No possibility of SQL injection because the query is static.*/
+		$lQueryString  = "TRUNCATE TABLE hitlog;";
+		return $this->mMySQLHandler->executeQuery($lQueryString);
+	}// end function truncateHitLog
 	
 }// end class

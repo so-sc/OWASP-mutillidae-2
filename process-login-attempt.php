@@ -33,7 +33,7 @@
 	   		//do nothing
 	   	}// end try
 
-	   	$lQueryResult = $SQLQueryHandler->getAccount($lUsername, $lPassword);
+	   	$lQueryResult = $SQLQueryHandler->getUserAccount($lUsername, $lPassword);
 	    if ($lQueryResult->num_rows > 0) {
 		    $row = $lQueryResult->fetch_object();
 			$failedloginflag=0;
