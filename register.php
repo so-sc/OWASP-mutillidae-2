@@ -1,26 +1,20 @@
-<div class="page-title">Register for an Account</div>
+<?php 
+	require_once (__ROOT__.'/classes/CSRFTokenHandler.php');
+	$lCSRFTokenHandler = new CSRFTokenHandler("owasp-esapi-php/src/", $_SESSION["security-level"], "register-user");
 
-<?php include_once (__ROOT__.'/includes/back-button.inc');?>
-<?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-wrapper.inc'); ?>
-
-<?php
 	switch ($_SESSION["security-level"]){
 		case "0": // This code is insecure
 			// DO NOTHING: This is equivalent to using client side security
 			$lProtectAgainstMethodTampering = FALSE;
 			$lEncodeOutput = FALSE;
-			$lProtectAgainstCSRF = FALSE;
-			$lCSRFTokenStrength = "NONE";
-		break;
+			break;
 	
 		case "1": // This code is insecure
 			// DO NOTHING: This is equivalent to using client side security
 			$lProtectAgainstMethodTampering = FALSE;
 			$lEncodeOutput = FALSE;
-			$lProtectAgainstCSRF = TRUE;
-			$lCSRFTokenStrength = "LOW";
-		break;
-			 
+			break;
+	
 		case "2":
 		case "3":
 		case "4":
@@ -31,71 +25,36 @@
 			 */
 			$lProtectAgainstMethodTampering = TRUE;
 			$lEncodeOutput = TRUE;
-			$lProtectAgainstCSRF = TRUE;
-			$lCSRFTokenStrength = "HIGH";
-		break;
+			break;
 	}// end switch
 
-	$lNewCSRFTokenForNextRequest = "CSRFProtectionDisabled";
-	$lExpectedTokenForThisRequest = "";
-	if($lProtectAgainstCSRF){
-		/* Record the CSRF token that we saved in the session when we offered the ADD BLOG
-		 * page to the user. This was the token we created before the user POSTed to this page
-		* a new blog entry to be saved.
-		*/
-		$lPostedCSRFToken = "";
-		 
-		if (isset($_SESSION['register-user']['csrf-token'])){
-			$lExpectedTokenForThisRequest = $_SESSION['register-user']['csrf-token'];
-		}//end if
-		 
-		/* Store a new token in the session for the NEXT request to add a new blog entry.
-		* The user might be making a request right now, but this token is for the next
-		* request if it ever occurs.
-		*/
-		switch ($lCSRFTokenStrength){
-			case "HIGH":
-				$_SESSION['register-user']['csrf-token'] = $lNewCSRFTokenForNextRequest = $ESAPIRandomizer->getRandomString(32, "ABCDEFGEHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890");
-			break;
-			case "MEDIUM":
-				$_SESSION['register-user']['csrf-token'] = $lNewCSRFTokenForNextRequest = mt_rand();
-			break;
-			case "LOW":
-				if (!is_null($lExpectedTokenForThisRequest)) {
-					$_SESSION['register-user']['csrf-token'] = $lNewCSRFTokenForNextRequest = ($lExpectedTokenForThisRequest + 7777);
-				}else{
-				//initialize the tokens
-					$_SESSION['register-user']['csrf-token'] = $lNewCSRFTokenForNextRequest = 5323;
-				}//end if
-			break;
-			default:break;
-		}//end switch on $lCSRFTokenStrength
-	
-		/* Record the token which the user just passed in. If they used the page offered, the token
-		* should match. If the users browser was forced to make a request, the token sent should
-		* not match unless the attacker makes a good guess.
-		*/
-		if (isset($_POST['csrf-token'])){
-			$lPostedCSRFToken = $_POST['csrf-token'];
-		}//end if
-		
-	}// end if $lProtectAgainstCSRF
-	
-	if (isset($_REQUEST["register-php-submit-button"])){
+	$lNewCSRFTokenForNextRequest = $lCSRFTokenHandler->generateCSRFToken();
+	$lFormSubmitted = isset($_REQUEST["register-php-submit-button"]);
+?>
+
+<div class="page-title">Register for an Account</div>
+
+<?php include_once (__ROOT__.'/includes/back-button.inc');?>
+<?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-wrapper.inc'); ?>
+
+<?php
+	if ($lFormSubmitted){
 		
 		try {					
-			$lValidationFailed = false;			
-		   	
+			$lValidationFailed = false;
+					
 	   		if ($lProtectAgainstMethodTampering) {
    				$lUsername = $_POST["username"];
 				$lPassword = $_POST["password"];
 				$lConfirmedPassword = $_POST["confirm_password"];
 				$lUserSignature = $_POST["my_signature"];
+				$lPostedCSRFToken = $_POST['csrf-token'];
 	   		}else{
 	   			$lUsername = $_REQUEST["username"];
 				$lPassword = $_REQUEST["password"];
 				$lConfirmedPassword = $_REQUEST["confirm_password"];
 				$lUserSignature = $_REQUEST["my_signature"];
+				$lPostedCSRFToken = $_REQUEST['csrf-token'];
 	   		}//end if
 	   		
 	   		if ($lEncodeOutput){
@@ -107,22 +66,20 @@
 	   		
 			$LogHandler->writeToLog("Attempting to add account for: " . $lUsername);				
 		   	
+			if (!$lCSRFTokenHandler->validateCSRFToken($lPostedCSRFToken)){
+				throw (new Exception("Security Violation: Cross Site Request Forgery attempt detected.", 500));
+			}// end if
+					
 		   	if (strlen($lUsername) == 0) {
-		   		$lValidationFailed = true;
+		   		$lValidationFailed = TRUE;
 				echo '<h2 class="error-message">Username cannot be blank</h2>';
 		   	}// end if
 					
 		   	if ($lPassword != $lConfirmedPassword ) {
-				$lValidationFailed = true;
+				$lValidationFailed = TRUE;
 		   		echo '<h2 class="error-message">Passwords do not match</h2>';
 		   	}// end if
-				
-			if ($lProtectAgainstCSRF){
-				if ($lPostedCSRFToken != $lExpectedTokenForThisRequest){
-					throw (new Exception("Security Violation: Cross Site Request Forgery attempt detected.", 500));
-				}// end if
-			}// end if
-		   	
+						   	
 		   	if (!$lValidationFailed){					
 		   		$lRowsAffected = $SQLQueryHandler->insertNewUserAccount($lUsername, $lPassword, $lConfirmedPassword);
 				echo '<h2 class="success-message">Account created for ' . $lUsernameText .'. '.$lRowsAffected.' rows inserted.</h2>';
@@ -142,7 +99,6 @@
 	try{
    		$lHTMLandXSSandSQLInjectionPointBalloonTip = $BubbleHintHandler->getHint("HTMLandXSSandSQLInjectionPoint");
    		$lSQLInjectionPointBallonTip = $BubbleHintHandler->getHint("SQLInjectionPoint");
-   		
 	} catch (Exception $e) {
 		echo $CustomErrorHandler->FormatError($e, "Error attempting to execute query to fetch bubble hints.");
 	}// end try
@@ -199,23 +155,9 @@
 </div>
 
 <?php
-	if ($lProtectAgainstCSRF){
-		echo('<div>&nbsp;</div>'.PHP_EOL);
-		echo('<div>&nbsp;</div>'.PHP_EOL);
-		echo('<fieldset>'.PHP_EOL);
-		echo('<legend>CSRF Protection Information</legend>'.PHP_EOL);
-		echo('<table style="margin-left:auto; margin-right:auto;">'.PHP_EOL);
-		echo('<tr><td></td></tr>'.PHP_EOL);
-		echo('<tr><td class="report-header">Posted Token: '.$lPostedCSRFToken.'</td></tr>'.PHP_EOL);
-		echo('<tr><td>Expected Token For This Request: '.$lExpectedTokenForThisRequest.'</td></tr>'.PHP_EOL);
-		echo('<tr><td>Token Passed By User For This Request: '.$lPostedCSRFToken.'</td></tr>'.PHP_EOL);
-		echo('<tr><td>&nbsp;</td></tr>'.PHP_EOL);
-		echo('<tr><td>New Token For Next Request: '.$lNewCSRFTokenForNextRequest.'</td></tr>'.PHP_EOL);
-		echo('<tr><td>Token Stored in Session: '.$_SESSION['register-user']['csrf-token'].'</td></tr>'.PHP_EOL);
-		echo('<tr><td></td></tr>'.PHP_EOL);
-		echo('</table>'.PHP_EOL);
-		echo('</fieldset>'.PHP_EOL);
-	}// end if $lProtectAgainstCSRF
+	if ($lFormSubmitted) {
+		echo $lCSRFTokenHandler->generateCSRFHTMLReport();
+	}// end if
 
 	if ($_SESSION["showhints"] == 2) {
 		include_once './includes/hints-level-2/sql-injection-tutorial.inc';

@@ -10,6 +10,10 @@
 	/* Defined our constants to use to tokenize allowed HTML characters */
 	include_once './includes/constants.php';
 
+	/* Instantiate CSRF Protection object */
+	require_once (__ROOT__.'/classes/CSRFTokenHandler.php');
+	$lCSRFTokenHandler = new CSRFTokenHandler("owasp-esapi-php/src/", $_SESSION["security-level"], "register-user");
+	
 	if (!isSet($logged_in_user)) {
 		throw new Exception("$logged_in_user is not set. Page add-to-your-blog.php requires this variable.");
 	}// end if
@@ -21,9 +25,8 @@
 			$lLoggedInUser = $logged_in_user;
 			$lTokenizeAllowedMarkup = FALSE;
 			$lProtectAgainstSQLInjection = FALSE;
-			$lProtectAgainstCSRF = FALSE;
-			$lCSRFTokenStrength = "NONE";
 			$lEnableJavaScriptValidation = FALSE;
+			$lProtectAgainstMethodTampering = FALSE;
 		break;	   		
 
    		case "1": // This code is insecure
@@ -32,9 +35,8 @@
 			$lLoggedInUser = $logged_in_user;
 			$lTokenizeAllowedMarkup = FALSE;
 			$lProtectAgainstSQLInjection = FALSE;
-			$lProtectAgainstCSRF = TRUE;
-			$lCSRFTokenStrength = "LOW";
-			$lEnableJavaScriptValidation = TRUE;			
+			$lEnableJavaScriptValidation = TRUE;
+			$lProtectAgainstMethodTampering = FALSE;
 		break;	   		
 
 		case "2":
@@ -75,18 +77,6 @@
 			
 			/* If we are in secure mode, we need to protect against SQLi */
 			$lProtectAgainstSQLInjection = TRUE;
-
-			/* Protecting against CSRF requires that we allow the server to know
-			 * if the user intended to submit the request. For example, this page
-			 * adds a blog entry. How does the server know that the current user
-			 * intended to add a blog entry? Perhaps an agent caused the users
-			 * browser to POST an "add" request without th$_SESSION['add-to-your-blog']['csrf-token']e users consent. CAPTCHA
-			 * can help as can randomly generated math problems. Another method is 
-			 * to have the server attach random tokens to forms, then verify the 
-			 * token is returned upon submition. 
-			 */
-			$lProtectAgainstCSRF = TRUE;
-			$lCSRFTokenStrength = "HIGH";
 				
 			/* Note that $MySQLHandler->escapeDangerousCharacters is ok but not the best defense. Stored
 			 * Procedures are a much more powerful defense, run much faster, can be
@@ -102,66 +92,30 @@
 			 * JS is easy to bypass.
 			 */
 			$lEnableJavaScriptValidation = TRUE;
+			$lProtectAgainstMethodTampering = TRUE;
    		break;
    	}// end switch
    	
-   	$lNewCSRFTokenForNextRequest = "CSRFProtectionDisabled";
-   	if($lProtectAgainstCSRF){
-			/* Record the CSRF token that we saved in the session when we offered the ADD BLOG 
-			 * page to the user. This was the token we created before the user POSTed to this page
-			 * a new blog entry to be saved.
-			 */
-		$lPostedCSRFToken = "";
-   		
-		if (isset($_SESSION['add-to-your-blog']['csrf-token'])){
-			$lExpectedTokenForThisRequest = $_SESSION['add-to-your-blog']['csrf-token'];
-		}//end if
-   		
-		/* Store a new token in the session for the NEXT request to add a new blog entry.
-		 * The user might be making a request right now, but this token is for the next
-		 * request if it ever occurs.
-		 */
-		switch ($lCSRFTokenStrength){
-			case "HIGH":
-				$_SESSION['add-to-your-blog']['csrf-token'] = $lNewCSRFTokenForNextRequest = $ESAPIRandomizer->getRandomString(32, "ABCDEFGEHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890");
-			break;
-			case "MEDIUM":
-				$_SESSION['add-to-your-blog']['csrf-token'] = $lNewCSRFTokenForNextRequest = mt_rand();
-			break;
-			case "LOW":
-				if (!is_null($lExpectedTokenForThisRequest)) {
-					$_SESSION['add-to-your-blog']['csrf-token'] = $lNewCSRFTokenForNextRequest = ($lExpectedTokenForThisRequest + 7777);
-				}else{
-					//initialize the tokens
-					$_SESSION['add-to-your-blog']['csrf-token'] = $lNewCSRFTokenForNextRequest = 5323;
-				}//end if
-			break;
-			default:break;
-		}//end switch on $lCSRFTokenStrength
-
-		/* Record the token which the user just passed in. If they used the page offered, the token
-		 * should match. If the users browser was forced to make a request, the token sent should
-		 * not match unless the attacker makes a good guess.
-		 */
-		if (isset($_POST['csrf-token'])){
-			$lPostedCSRFToken = $_POST['csrf-token'];	
-		}//end if
-			
-   	}// end if $lProtectAgainstCSRF
-
+	$lNewCSRFTokenForNextRequest = $lCSRFTokenHandler->generateCSRFToken();
+   	$lFormSubmitted = isSet($_POST["add-to-your-blog-php-submit-button"]);
 	/* ----------------------------------------
 	 * Insert user's new blog entry 
 	 * ----------------------------------------
 	 * precondition: $logged_in_user is not null 
 	 */
-	if(isSet($_POST["add-to-your-blog-php-submit-button"])){
+	if($lFormSubmitted){
 		try {
-			if ($lProtectAgainstCSRF){
-				if ($lPostedCSRFToken != $lExpectedTokenForThisRequest){
-					throw (new Exception("Security Violation: Cross Site Request Forgery attempt detected.", 500));
-				}// end if
-			}// end if
 			
+			if ($lProtectAgainstMethodTampering) {
+				$lPostedCSRFToken = $_POST['csrf-token'];
+			}else{
+				$lPostedCSRFToken = $_REQUEST['csrf-token'];
+			}//end if
+					
+			if (!$lCSRFTokenHandler->validateCSRFToken($lPostedCSRFToken)){
+				throw (new Exception("Security Violation: Cross Site Request Forgery attempt detected.", 500));
+			}// end if
+						
 			// Grab inputs
 			if ($lProtectAgainstSQLInjection){
 				// This might prevent SQL injection on the insert.
@@ -303,7 +257,7 @@
 <?php
 	/* Display current user's blog entries */
 	try {		
-	    	    
+
 		try {
 			/* Note that the logged in user could be used for SQL injection */
 			$lQueryResult = $SQLQueryHandler->getBlogRecord($lLoggedInUser);
@@ -380,23 +334,9 @@
 ?>
 
 <?php 
-	if ($lProtectAgainstCSRF){
-		echo('<div>&nbsp;</div>'.PHP_EOL);
-		echo('<div>&nbsp;</div>'.PHP_EOL);
-		echo('<fieldset>'.PHP_EOL);
-		echo('<legend>CSRF Protection Information</legend>'.PHP_EOL);
-		echo('<table style="margin-left:auto; margin-right:auto;">'.PHP_EOL);				
-		echo('<tr><td></td></tr>'.PHP_EOL);
-		echo('<tr><td class="report-header">Posted Token: '.$lPostedCSRFToken.'</td></tr>'.PHP_EOL);
-		echo('<tr><td>Expected Token For This Request: '.$lExpectedTokenForThisRequest.'</td></tr>'.PHP_EOL);
-		echo('<tr><td>Token Passed By User For This Request: '.$lPostedCSRFToken.'</td></tr>'.PHP_EOL);	
-		echo('<tr><td>&nbsp;</td></tr>'.PHP_EOL);
-		echo('<tr><td>New Token For Next Request: '.$lNewCSRFTokenForNextRequest.'</td></tr>'.PHP_EOL);
-		echo('<tr><td>Token Stored in Session: '.$_SESSION['add-to-your-blog']['csrf-token'].'</td></tr>'.PHP_EOL);
-		echo('<tr><td></td></tr>'.PHP_EOL);
-		echo('</table>'.PHP_EOL);
-		echo('</fieldset>'.PHP_EOL);
-	}// end if $lProtectAgainstCSRF
+	if ($lFormSubmitted) {
+		echo $lCSRFTokenHandler->generateCSRFHTMLReport();
+	}// end if
 
 	if ($_SESSION["showhints"] == 2) {
 		include_once '/includes/hints-level-2/cross-site-scripting-tutorial.inc';

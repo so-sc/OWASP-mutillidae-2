@@ -81,15 +81,6 @@
 			<td class="label">Source File Name</td>
 			<td>
 				<input type="hidden" name="page" value="<?php echo $_REQUEST['page']?>">
-				<?php 
-					if($lBeSmart){
-						// CSRF Defense
-					    require_once 'classes/CSRFTokenStructure.php';
-						$lCSRFTokenStructure = new CSRFTokenStructure($_SERVER['PHP_SELF'], $_SESSION['logged_in_user']);
-						$_SESSION['source-viewer-csrf-token'] = $lCSRFTokenStructure;						
-						echo '<input type="hidden" name="CSRFToken" value="'.$lCSRFTokenStructure->getCSRFToken().'"/>';
-					}//end if
-				?>
 				<select name="phpfile" id="id_file_select" HTMLandXSSandSQLInjectionPoint="1">
 				<?php 
 					$_SESSION['source-viewer-files-array'] = "";						
@@ -169,11 +160,6 @@
 	   			 *  check range
 	   			 */
 
-				// CSRF Defense
-			    //NOT YET IMPLEMENTED
-			    // Check that the token for this page and this request matches
-			    //Token good for one request from one page only
-				
 				// Grab inputs
 				$pPHPFile = $_REQUEST['phpfile'];
 				

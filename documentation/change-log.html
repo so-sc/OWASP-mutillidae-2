@@ -1,5 +1,4 @@
 TODO: Add "edit my account page"
-TODO: Move CSRF code into class
 TODO: Merge level-2 hints into level-1 hints
 TODO: Have level-1 hints open in new tab (optionally)
 
@@ -18,10 +17,33 @@ TODO: Have level-1 hints open in new tab (optionally)
 			Fixed a bug in the pen test lookup tool AJAX which prevented
 			JavaScript error messages from appearing
 		</li>
-		<li>Sorry to say the SQLi vuln in the JSON parser pages
-		has to be removed because it prevents the POST JSON exercise
-		from working (since the user must inject a single quote to 
-		do the exercise correctly.)
+		<li>
+			Sorry to say the SQLi vuln in the JSON parser pages
+			has to be removed because it prevents the POST JSON exercise
+			from working (since the user must inject a single quote to 
+			do the exercise correctly.)
+		</li>
+		<li>
+			Created class CSRFTokenHandler (CSRFTokenHandler.php) to 
+			take over CSRF duties from the pages. This makes the CSRF
+			handling object oriented and reduces the code in the pages
+			that use CSRF protection. New pages can have CSRF protection
+			added easier.
+		</li>
+		<li>
+			Deleted CSRFTokenStructure.php. File is not being used
+		</li>
+		<li>
+			Added CSRFTokenHandler to Register user page, Add to your blog,
+			and Poll Question pages.
+		</li>
+		<li>
+			Consolodated some code in user-poll.php. Added CSRF protection in 
+			level 1 and level 5. Good luck in level 5.
+		</li>
+		<li>
+			The CSRF results report will print at the bottom of pages
+			protected by CSRF in all levels now
 		</li>
 	</ul>
 </blockquote>
