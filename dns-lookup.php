@@ -112,6 +112,13 @@
 	};// end JavaScript function onSubmitBlogEntry()
 </script>
 
+<span>
+	<a style="text-decoration: none; cursor: pointer;" href="./webservices/soap/ws-lookup-dns-record.php">
+		<img style="vertical-align: middle;" src="./images/ajax_logo-285x300.jpg" height="75px" width="78px" />
+		<span style="font-weight:bold;">Switch to SOAP Web Service Version of this Page</span>
+	</a>
+</span>
+
 <form 	action="index.php?page=dns-lookup.php" 
 			method="post" 
 			enctype="application/x-www-form-urlencoded" 
