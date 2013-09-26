@@ -127,7 +127,7 @@
 						lErrorMessage.style.display="none";
 					}catch(e){
 						lErrorMessage.style.display="";
-						//lErrorMessage.innerHTML = "Error Message: " + e.message + " JSON Response:" + lXMLHTTP.response;
+						lErrorMessage.innerHTML = "Error Message: " + e.message + " JSON Response:" + lXMLHTTP.response;
 					}// end catch
 				}; // end if
 			}; //end function

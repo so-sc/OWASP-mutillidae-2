@@ -1,8 +1,30 @@
 TODO: Add "edit my account page"
 TODO: Move CSRF code into class
-TODO: Add RESTful web service
 TODO: Merge level-2 hints into level-1 hints
 TODO: Have level-1 hints open in new tab (optionally)
+
+<div><span style="font-weight:bold;">09/16/2013</span>: Jeremy Druin</div>
+<blockquote>
+	<div>Change Log for OWASP Mutillidae II 2.6.3.1:</div>
+	<ul>
+		<li>
+			Added some help text to new RESTful web service 
+			ws-user-account.php. Browse to page "normally"
+			(GET request) to see help.
+		</li>
+		<li>Modified some messages in ws-user-account.php</li>
+		<li>Fixed version string</li>
+		<li>
+			Fixed a bug in the pen test lookup tool AJAX which prevented
+			JavaScript error messages from appearing
+		</li>
+		<li>Sorry to say the SQLi vuln in the JSON parser pages
+		has to be removed because it prevents the POST JSON exercise
+		from working (since the user must inject a single quote to 
+		do the exercise correctly.)
+		</li>
+	</ul>
+</blockquote>
 
 <div><span style="font-weight:bold;">09/16/2013</span>: Jeremy Druin</div>
 <blockquote>

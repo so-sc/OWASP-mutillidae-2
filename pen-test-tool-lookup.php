@@ -95,29 +95,25 @@
 				}else{
 					$lErrorNoChoiceMade = FALSE;
 
-					try {
-						$qPenTestToolResults = $SQLQueryHandler->getPenTestTool($lPostedToolID);
-						$lPenTestToolsDetails = "";
-						$lPenTestToolsJSON = 
-							'{"query": {"toolIDRequested": "'.$lPostedToolID.'", "penTestTools": [';
-						if($qPenTestToolResults->num_rows > 0){
-							while($row = $qPenTestToolResults->fetch_object()){
-								$lPenTestToolsDetails .= json_encode($row) . ",";
-							}// end while
-							$lPenTestToolsJSON .= substr($lPenTestToolsDetails, 0, strlen($lPenTestToolsDetails)-1);
-						}//end if
-						$lPenTestToolsJSON .= ']}}';
-						
-						//print $lPenTestToolsJSON;
-					} catch (Exception $e) {
-	    				throw (new Exception("Error working with query results"));
-					}// end try			    
+					$qPenTestToolResults = $SQLQueryHandler->getPenTestTool($lPostedToolID);
+					$lPenTestToolsDetails = "";
+					$lPenTestToolsJSON = 
+						'{"query": {"toolIDRequested": "'.$lPostedToolID.'", "penTestTools": [';
+					if($qPenTestToolResults->num_rows > 0){
+						while($row = $qPenTestToolResults->fetch_object()){
+							$lPenTestToolsDetails .= json_encode($row) . ",";
+						}// end while
+						$lPenTestToolsJSON .= substr($lPenTestToolsDetails, 0, strlen($lPenTestToolsDetails)-1);
+					}//end if
+					$lPenTestToolsJSON .= ']}}';
+					
+					//print $lPenTestToolsJSON;
 				    
 				}// end if user didnt pick anything
 				
 			}// end if user didnt click submit
 		} catch (Exception $e) {
-			echo $CustomErrorHandler->FormatError($e, $query);
+			echo $CustomErrorHandler->FormatError($e, "Pen test tool lookup failed");
 		}// end try	
 	}//end if isset()	
 ?>

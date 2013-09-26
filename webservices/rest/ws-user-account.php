@@ -12,7 +12,7 @@
 	if (!isset($_SESSION['security-level'])){
 		$_SESSION['security-level'] = '0';
 	}// end if
-	
+
 	/* ------------------------------------------
 	 * Constants used in application
 	 * ------------------------------------------ */
@@ -37,6 +37,15 @@
 		}// end if isset
 	}// end function validatePOSTParameter
 
+	function jsonEncodeQueryResults($pQueryResult){
+		$lDataRows = array();
+		while ($lDataRow = mysqli_fetch_assoc($pQueryResult)) {
+			$lDataRows[] = $lDataRow;
+		}// end while
+		
+		return json_encode($lDataRows);
+	}//end function jsonEncodeQueryResults
+	
 	try{
 		$lAccountUsername = "";
 		$lVerb = $_SERVER['REQUEST_METHOD'];
@@ -52,13 +61,21 @@
 					$lQueryResult = $SQLQueryHandler->getUsernames();
 				}// end if
 				
-				$lDataRows = array();
-				while ($lDataRow = mysqli_fetch_assoc($lQueryResult)) {
-					$lDataRows[] = $lDataRow;
-				}// end while
-				
-				echo "Accounts: {".json_encode($lDataRows)."}";
-				
+				echo 
+					"Result: {
+						Documentation: {
+							Help: \"This service exposes GET, POST, PUT, DELETE methods.
+							DEFAULT GET without any parameters will display this help plus a list of accounts in the system.
+							This service is vulnerable to SQL injection in security level 0.
+							GET: Either displays usernames of all accounts or the username and signature of one account. Optional params: username AS URL parameter.
+							POST: Creates new account. Required params: username, password AS POST parameter. Optional params: signature AS POST parameter.
+							PUT: Creates or updates account. Required params: username, password AS POST parameter. Optional params: signature AS POST parameter.
+							DELETE: Deletes account. Required params: username, password AS POST parameter.
+							\"
+						}, 
+						Accounts: {".jsonEncodeQueryResults($lQueryResult)."}
+					}";
+
 			break;
 			case "POST"://create
 				
@@ -107,7 +124,7 @@
 						echo "Result: {Attempted to delete account ".$lAccountUsername." but result returned was ".$lQueryResult."}";
 					}//end if
 				}else{
-					echo "Result: {Could not verify account ".$lAccountUsername." exists}";
+					echo "Result: {Could not authenticate account ".$lAccountUsername." with username and password provided}";
 				}// end if
 			break;
 			default:
