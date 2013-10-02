@@ -9,12 +9,12 @@
 	$lSOAPWebService->configureWSDL('sqliwsdl', 'urn:sqliwsdl');
 	
 	// Register the method to expose
-	$lSOAPWebService->register('getUserInformation',                // method name
+	$lSOAPWebService->register('getUserInformation',                	// method name
 	    array('username' => 'xsd:string','password' => 'xsd:string'),	// input parameters
-	    array('return' => 'xsd:string'),      // output parameters
-	    'urn:sqliwsdl',                      // namespace
-	    'urn:sqliwsdl#sqli',                // soapaction
-	    'rpc',                                // style
+	    array('return' => 'xsd:xml'),      								// output parameters
+	    'urn:sqliwsdl',                      							// namespace
+	    'urn:sqliwsdl#sqli',                							// soapaction
+	    'rpc',                                							// style
 	    'encoded',                            							// use
 	    'Fetches user information is username and password are correct'	// documentation
 	);
@@ -56,13 +56,13 @@
 	    	}//end switch
 	
 	   	} catch (Exception $e) {
-			echo $CustomErrorHandler->FormatError($e, $lQueryString);
+			echo $CustomErrorHandler->FormatError($e, "Unable to parse session");
 	   	}// end try;
 			
 		try{
 			$lQueryResult = $SQLQueryHandler->getUserAccount($pUsername, $pPassword);
 	    } catch (Exception $e) {
-			echo $CustomErrorHandler->FormatError($e, $lQueryString);
+			echo $CustomErrorHandler->FormatError($e, "Error querying user account");
 	    }// end try;
 			
 		$lResults = "";
@@ -76,9 +76,11 @@
 	
 		/* Print out results */
 		if ($lResultsFound){
-		    while($row = $lQueryResult->fetch_object()){
+			$lResults.= "<accounts>";
+
+			while($row = $lQueryResult->fetch_object()){
 		    	try {
-					$LogHandler->writeToLog("user-info.php: Displayed user-information for: " . $row->username);				
+					$LogHandler->writeToLog("ws-lookup-user-information.php: Fetched user-information for: " . $row->username);				
 		    	} catch (Exception $e) {
 		    		// do nothing
 		    	}//end try
@@ -93,12 +95,16 @@
 					$lSignature = $Encoder->encodeForHTML($row->mysignature);			
 				}// end if
 				
-				$lResults.= "<span style=\"font-weight:bold;\">Username=</span><span>{$lUsername}</span><br/>";
-				$lResults.= "<span style=\"font-weight:bold;\">Password=</span><span>{$lPassword}</span><br/>";
-				$lResults.= "<span style=\"font-weight:bold;\">Signature=</span><span>{$lSignature}</span><br/><br/>";
+				$lResults.= "<account>";
+				$lResults.= "<username>{$lUsername}</username>";
+				$lResults.= "<password>{$lPassword}</password>";
+				$lResults.= "<signature>{$lSignature}</signature>";
+				$lResults.= "</account>";
 			}// end while
+
+			$lResults.= "</accounts>";
 		} else {
-			$lResults = 'No Results Found';
+			$lResults = '<message>No Results Found</message>';
 		}// end if ($lResultsFound)
 	    
 	    return $lResults;

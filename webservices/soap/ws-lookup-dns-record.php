@@ -12,7 +12,7 @@
 	$lSOAPWebService->register(
 		'lookupDNS',							// method name
 	    array('targetHost' => 'xsd:string'),	// input parameters
-	    array('Answer' => 'xsd:string'),    	// output parameters
+	    array('Answer' => 'xsd:xml'),    		// output parameters
 	    'urn:commandinjwsdl',               	// namespace
 	    'urn:commandinjwsdl#commandinj',    	// soapaction
 	    'rpc',                              	// style
@@ -81,11 +81,12 @@
 	    try{
 	    	$lResults = "";
 	    	if ($lTargetHostValidated){
-	    		$lResults .= '<div class="report-header">Results for '.$lTargetHostText.'</div>';
-    			$lResults .=  '<pre class="report-header" style="text-align:left;">'.shell_exec("nslookup " . $pTargetHost).'</pre>';
+	    		$lResults .= '<results host="'.$lTargetHostText.'">';
+    			$lResults .=  shell_exec("nslookup " . $pTargetHost);
+    			$lResults .= '</results>';
 				$LogHandler->writeToLog("Executed operating system command: nslookup " . $lTargetHostText);
 	    	}else{
-	    		$lResults .= "Validation Error";
+	    		$lResults .= "<message>Validation Error</message>";
 	    	}// end if ($lTargetHostValidated){
 			
 	    	return $lResults;
