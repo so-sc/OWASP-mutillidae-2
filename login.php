@@ -31,10 +31,10 @@
 			echo "var l_loggedIn = false;" . PHP_EOL;
 		}// end if
 	
-		if (isset($failedloginflag)){
-			echo 'var l_failedLogInFlag = "'.$failedloginflag.'";' . PHP_EOL;
+		if (isset($lAuthenticationAttemptResult)){
+			echo "var lAuthenticationAttemptResultFlag = {$lAuthenticationAttemptResult};" . PHP_EOL;
 		}else{
-			echo 'var l_failedLogInFlag = "0";'.PHP_EOL;
+			echo "var lAuthenticationAttemptResultFlag = -1;".PHP_EOL;
 		}// end if
  
 		if($lEnableJavaScriptValidation){
@@ -53,20 +53,20 @@
 					theForm.password.value.length > 15){
 						alert('Username too long. We dont want to allow too many characters.\n\nSomeone might have enough room to enter a hack attempt.');
 						return false;
-				}// end if
+				};// end if
 				
 				if (theForm.username.value.search(lUnsafeCharacters) > -1 || 
 					theForm.password.value.search(lUnsafeCharacters) > -1){
 						alert('Dangerous characters detected. We can\'t allow these. This all powerful blacklist will stop such attempts.\n\nMuch like padlocks, filtering cannot be defeated.\n\nBlacklisting is l33t like l33tspeak.');
 						return false;
-				}// end if
-			}// end if(lValidateInput)
+				};// end if
+			};// end if(lValidateInput)
 			
 			return true;
 		}catch(e){
 			alert("Error: " + e.message);
-		}// end catch
-	}// end function onSubmitOfLoginForm(/*HTMLFormElement*/ theForm)
+		};// end catch
+	};// end function onSubmitOfLoginForm(/*HTMLFormElement*/ theForm)
 //-->
 </script>
 
@@ -102,10 +102,8 @@
 			onsubmit="return onSubmitOfLoginForm(this);"
 			id="idLoginForm">
 		<table style="margin-left:auto; margin-right:auto;">
-			<tr id="id-bad-cred-tr" style="display: none;">
-				<td colspan="2" class="error-message">
-					Authentication Error: Bad user name or password
-				</td>
+			<tr id="id-authentication-failed-tr" style="display: none;">
+				<td id="id-authentication-failed-td" colspan="2" class="error-message"></td>
 			</tr>
 			<tr><td></td></tr>
 			<tr>
@@ -152,9 +150,34 @@
 </div>
 
 <script type="text/javascript">
-	if(l_failedLogInFlag=="1"){
-		document.getElementById("id-bad-cred-tr").style.display="";
-	}// end if l_failedLogInFlag
+	var cUNSURE = -1;
+   	var cACCOUNT_DOES_NOT_EXIST = 0;
+   	var cPASSWORD_INCORRECT = 1;
+   	var cNO_RESULTS_FOUND = 2;
+   	var cAUTHENTICATION_SUCCESSFUL = 3;
+   	var cAUTHENTICATION_EXCEPTION_OCCURED = 4;
+   	var lMessage = "";
+   	var lAuthenticationFailed = "FALSE";
+   	
+	switch(lAuthenticationAttemptResultFlag){
+   		case cACCOUNT_DOES_NOT_EXIST: 
+   	   		lMessage="Account does not exist"; lAuthenticationFailed = "TRUE";
+   	   		break;
+   		case cPASSWORD_INCORRECT: 
+   	   		lMessage="Password incorrect"; lAuthenticationFailed = "TRUE"; 
+   	   		break;
+   		case cNO_RESULTS_FOUND: 
+   	   		lMessage="No results found"; lAuthenticationFailed = "TRUE"; 
+   	   		break;
+   		case cAUTHENTICATION_EXCEPTION_OCCURED: 
+   	   		lMessage="Exception occurred"; lAuthenticationFailed = "TRUE"; 
+   		break;
+   	};
+
+	if(lAuthenticationFailed=="TRUE"){
+		document.getElementById("id-authentication-failed-tr").style.display="";
+		document.getElementById("id-authentication-failed-td").innerHTML=lMessage;
+	}// end if AuthenticationAttemptResultFlag
 
 	if (!l_loggedIn){
 		document.getElementById("id-log-in-form-div").style.display="";

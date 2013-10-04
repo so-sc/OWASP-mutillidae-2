@@ -55,26 +55,34 @@
 				if(isset($_GET['username'])){
 					/* Example hack: username=adrian'+union+select+username,+password+AS+password+from+accounts+--+ */
 					$lAccountUsername = $_GET['username'];
-					$lQueryResult = $SQLQueryHandler->getNonSensitiveAccountInformation($lAccountUsername);
+
+					if (!$SQLQueryHandler->accountExists($lAccountUsername)){
+						echo "Result: {User '".$lAccountUsername."' does not exist}";
+					}else{				
+						$lQueryResult = $SQLQueryHandler->getNonSensitiveAccountInformation($lAccountUsername);
+						echo "Result: {Accounts: {".jsonEncodeQueryResults($lQueryResult)."}}";
+					}// end if accountExists
+				
 				}else{
 					/* List all accounts */
 					$lQueryResult = $SQLQueryHandler->getUsernames();
-				}// end if
+
+					echo
+						"Result: {
+							Documentation: {
+								Help: \"This service exposes GET, POST, PUT, DELETE methods.
+								DEFAULT GET without any parameters will display this help plus a list of accounts in the system.
+								This service is vulnerable to SQL injection in security level 0.
+								GET: Either displays usernames of all accounts or the username and signature of one account. Optional params: username AS URL parameter.
+								POST: Creates new account. Required params: username, password AS POST parameter. Optional params: signature AS POST parameter.
+								PUT: Creates or updates account. Required params: username, password AS POST parameter. Optional params: signature AS POST parameter.
+								DELETE: Deletes account. Required params: username, password AS POST parameter.
+								\"
+							}, 
+							Accounts: {".jsonEncodeQueryResults($lQueryResult)."}
+						}";
 				
-				echo 
-					"Result: {
-						Documentation: {
-							Help: \"This service exposes GET, POST, PUT, DELETE methods.
-							DEFAULT GET without any parameters will display this help plus a list of accounts in the system.
-							This service is vulnerable to SQL injection in security level 0.
-							GET: Either displays usernames of all accounts or the username and signature of one account. Optional params: username AS URL parameter.
-							POST: Creates new account. Required params: username, password AS POST parameter. Optional params: signature AS POST parameter.
-							PUT: Creates or updates account. Required params: username, password AS POST parameter. Optional params: signature AS POST parameter.
-							DELETE: Deletes account. Required params: username, password AS POST parameter.
-							\"
-						}, 
-						Accounts: {".jsonEncodeQueryResults($lQueryResult)."}
-					}";
+				}// end if
 
 			break;
 			case "POST"://create
@@ -114,8 +122,10 @@
 								
 				$lAccountUsername = getPOSTParameter("username", TRUE);
 				$lAccountPassword = getPOSTParameter("password", TRUE);
-								
-				if ($SQLQueryHandler->authenticateAccount($lAccountUsername,$lAccountPassword)){
+
+				if (!$SQLQueryHandler->accountExists($lAccountUsername)){
+					echo "Result: {User '".$lAccountUsername."' does not exist}";
+				}elseif ($SQLQueryHandler->authenticateAccount($lAccountUsername,$lAccountPassword)){
 					$lQueryResult = $SQLQueryHandler->deleteUser($lAccountUsername);
 				
 					if ($lQueryResult){
@@ -124,7 +134,7 @@
 						echo "Result: {Attempted to delete account ".$lAccountUsername." but result returned was ".$lQueryResult."}";
 					}//end if
 				}else{
-					echo "Result: {Could not authenticate account ".$lAccountUsername." with username and password provided}";
+					echo "Result: {Could not authenticate account ".$lAccountUsername.". Password incorrect.}";
 				}// end if
 			break;
 			default:

@@ -1,4 +1,14 @@
 <?php
+
+	function logLoginAttempt($lMessage){
+		try {
+			global $LogHandler;
+			$LogHandler->writeToLog($lMessage);
+		} catch (Exception $e) {
+			/*do nothing*/
+		};
+	};//end function logLoginAttempt
+
     try {
 		$lQueryString = "";
     	switch ($_SESSION["security-level"]){
@@ -27,73 +37,98 @@
 	   		break;
 	   	}// end switch
 
-	   	try {
-	   		$LogHandler->writeToLog("Attempt to log in by user: " . $lUsername);	
-	   	} catch (Exception $e) {
-	   		//do nothing
-	   	}// end try
+	   	$cUNSURE = -1;
+	   	$cACCOUNT_DOES_NOT_EXIST = 0;
+	   	$cPASSWORD_INCORRECT = 1;
+	   	$cNO_RESULTS_FOUND = 2;
+	   	$cAUTHENTICATION_SUCCESSFUL = 3;
+	   	$cAUTHENTICATION_EXCEPTION_OCCURED = 4;
+	   	 
+	   	$lAuthenticationAttemptResult = $cUNSURE;
+	   	$lAuthenticationAttemptResultFound = FALSE;
+	   	$lKeepGoing = TRUE;
+	   	$lQueryResult=NULL;
+	   	
+   		logLoginAttempt("User {$lUsername} attempting to authenticate");
+	   		
+	   		if (!$SQLQueryHandler->accountExists($lUsername)){
+	   			$lAuthenticationAttemptResult = $cACCOUNT_DOES_NOT_EXIST;
+	   			$lKeepGoing = FALSE;
+	   			logLoginAttempt("Login Failed: Account {$lUsername} does not exist");
+	   		}// end if accountExists
+	   	
+   			if ($lKeepGoing){
+	   			if (!$SQLQueryHandler->authenticateAccount($lUsername, $lPassword)){
+		   			$lAuthenticationAttemptResult = $cPASSWORD_INCORRECT;
+		   			$lKeepGoing = FALSE;
+		   			logLoginAttempt("Login Failed: Password for {$lUsername} incorrect");
+		   		}//end if authenticateAccount
+	   		}//end if $lKeepGoing
+	   	
+	   		if ($lKeepGoing){
+	   			$lQueryResult = $SQLQueryHandler->getUserAccount($lUsername, $lPassword);
+	   	
+	   			if (isset($lQueryResult->num_rows)){
+		   			if ($lQueryResult->num_rows > 0) {
+			   			$lAuthenticationAttemptResultFound = TRUE;
+		   			}//end if
+	   			}//end if
+	   	
+	   			if(!$lAuthenticationAttemptResultFound){
+		   			$lAuthenticationAttemptResult = $cNO_RESULTS_FOUND;
+		   			$lKeepGoing = FALSE;
+		   			logLoginAttempt("Login Failed: No account record found for user {$lUsername}");
+	   			}// end if
 
-	   	$lQueryResult = $SQLQueryHandler->getUserAccount($lUsername, $lPassword);
-	    if ($lQueryResult->num_rows > 0) {
-		    $row = $lQueryResult->fetch_object();
-			$failedloginflag=0;
+	   		}//end if $lKeepGoing
+	   	
+		if ($lKeepGoing){
+			$lRecord = $lQueryResult->fetch_object();
 			$_SESSION['loggedin'] = 'True';
-			$_SESSION['uid'] = $row->cid;
-			$_SESSION['logged_in_user'] = $row->username;
-			$_SESSION['logged_in_usersignature'] = $row->mysignature;
-			$_SESSION['is_admin'] = $row->is_admin;
-
-			/*
-			/* Set client-side auth token. if we are in insecure mode, we will
-			 * pay attention to client-side authorization tokens. If we are secure,
-			 * we dont use client-side authortization tokens and we ignore any
-			 * attempts to use them.
-			 * 
-			 * If in secure mode, we want the cookie to be protected
-			 * with HTTPOnly flag. There is some irony here. In secure code,
-			 * we are to ignore authorization cookies, so we are protecting
-			 * a cookie we know we are going to ignore. But the point is to
-			 * provide an example to developers of proper coding techniques.
-			 * 
-			 * Note: Ideally this cookie must be protected with SSL also but
-			 * again this is just a demo. Once your in SSL mode, maintain SSL
-			 * and escalate any requests for HTTP to HTTPS.
-			 */
+			$_SESSION['uid'] = $lRecord->cid;
+			$_SESSION['logged_in_user'] = $lRecord->username;
+			$_SESSION['logged_in_usersignature'] = $lRecord->mysignature;
+			$_SESSION['is_admin'] = $lRecord->is_admin;
+   				
+   				/*
+   				 /* Set client-side auth token. if we are in insecure mode, we will
+   				* pay attention to client-side authorization tokens. If we are secure,
+   				* we dont use client-side authortization tokens and we ignore any
+   				* attempts to use them.
+   				*
+   				* If in secure mode, we want the cookie to be protected
+   				* with HTTPOnly flag. There is some irony here. In secure code,
+   				* we are to ignore authorization cookies, so we are protecting
+   				* a cookie we know we are going to ignore. But the point is to
+   				* provide an example to developers of proper coding techniques.
+   				*
+   				* Note: Ideally this cookie must be protected with SSL also but
+   				* again this is just a demo. Once your in SSL mode, maintain SSL
+   				* and escalate any requests for HTTP to HTTPS.
+   				*/
 			if ($lProtectCookies){
-				$lUsernameCookie = $Encoder->encodeForURL($row->username);
+				$lUsernameCookie = $Encoder->encodeForURL($lRecord->username);
 				setcookie("username", $lUsernameCookie, 0, "", "", FALSE, TRUE);
-				setcookie("uid", $row->cid, 0, "", "", FALSE, TRUE);
+				setcookie("uid", $lRecord->cid, 0, "", "", FALSE, TRUE);
 			}else {
 				//setrawcookie() allows for response splitting
-				$lUsernameCookie = $row->username;
+				$lUsernameCookie = $lRecord->username;
 				setrawcookie("username", $lUsernameCookie);
-				setrawcookie("uid", $row->cid);
-			}// end if
+				setrawcookie("uid", $lRecord->cid);
+			}// end if $lProtectCookies
+   				
+			logLoginAttempt("Login Succeeded: Logged in user: {$lRecord->username} ({$lRecord->cid})");
+
+			$lAuthenticationAttemptResult = $cAUTHENTICATION_SUCCESSFUL;
 			
-		   	try {
-				$LogHandler->writeToLog("Logged in user: " . $row->username . " (" . $row->cid . ")");
-		   	} catch (Exception $e) {
-		   		//do nothing
-		   	}// end try
-			
-		   	/* Redirect back to the home page */
+			/* Redirect back to the home page */
 			header('Location: index.php?popUpNotificationCode=AU1', true, 302);
-		} else {
-			try{
-				$LogHandler->writeToLog("Failed login attempt for user: " . $lUsername);
-		   	} catch (Exception $e) {
-		   		//do nothing
-		   	}// end try
-			$failedloginflag=1;
-    	}// end if ($lQueryResult->num_rows > 0)
-	    
-	} catch (Exception $e) {
-		try{
-			$LogHandler->writeToLog("Failed login attempt for user: " . $lUsername);
-	   	} catch (Exception $e) {
-	   		//do nothing
-	   	}// end try
-		$failedloginflag=1;
-		echo $CustomErrorHandler->FormatErrorJSON($e, "Failed login attempt");
-	}// end try
+   					
+		}// end if $lKeepGoing
+	   				
+   	} catch (Exception $e) {
+		echo $CustomErrorHandler->FormatError($e, "Error querying user account");
+		$lAuthenticationAttemptResult = $cAUTHENTICATION_EXCEPTION_OCCURED;
+	}// end try;
+
 ?>

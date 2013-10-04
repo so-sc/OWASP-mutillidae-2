@@ -180,6 +180,41 @@ class SQLQueryHandler {
 		return $this->mMySQLHandler->executeQuery($lQueryString);
 	}//end public function getPenTestTool
 
+	public function getPenTestTools(){
+		/* Note: No possibility of SQL injection because the query
+		 * is static.
+		*/
+		$lQueryString  = "SELECT tool_id, tool_name FROM pen_test_tools;";
+		return $this->mMySQLHandler->executeQuery($lQueryString);
+	}// end function getPenTestTools
+	
+	public function getHitLogEntries(){
+	/* Note: No possibility of SQL injection because the query
+		* is static.
+	*/
+		$lLimitString = "";
+		if ($this->mLimitOutput == TRUE){
+		$lLimitString .= " LIMIT 20";
+	}// end if
+	
+	$lQueryString  = "SELECT * FROM `hitlog` ORDER BY date DESC".$lLimitString.";";
+	return $this->mMySQLHandler->executeQuery($lQueryString);
+	}// end function getHitLogEntries
+	
+	public function getYouTubeVideo($pRecordIdentifier){
+	/*
+	* Note: While escaping works ok in some case, it is not the best defense.
+		* Using stored procedures is a much stronger defense.
+	*/
+	if ($this->stopSQLInjection == TRUE){
+		$pRecordIdentifier = $this->mMySQLHandler->escapeDangerousCharacters($pRecordIdentifier);
+	}// end if
+	
+	$lQueryString  = "SELECT identificationToken, title FROM youTubeVideos WHERE recordIndetifier = " .	$pRecordIdentifier . ";";
+	$lQueryResult = $this->mMySQLHandler->executeQuery($lQueryString);
+	return $lQueryResult->fetch_object();
+	}//end public function getYouTubeVideo
+	
 	public function getUsernames(){
 
 		$lQueryString  = "SELECT username FROM accounts;";
@@ -187,6 +222,25 @@ class SQLQueryHandler {
 		return $this->mMySQLHandler->executeQuery($lQueryString);
 	}//end public function getUsernames
 
+	public function accountExists($pUsername){
+	
+		if ($this->stopSQLInjection == TRUE){
+			$pUsername = $this->mMySQLHandler->escapeDangerousCharacters($pUsername);
+		}// end if
+	
+		$lQueryString =
+		"SELECT username FROM accounts WHERE username='".$pUsername."';";
+			
+		$lQueryResult = $this->mMySQLHandler->executeQuery($lQueryString);
+
+		if (isset($lQueryResult->num_rows)){
+			return ($lQueryResult->num_rows > 0);
+		}else{
+			return FALSE;
+		}// end if
+	
+	}//end public function getUsernames
+	
 	public function authenticateAccount($pUsername, $pPassword){
 	
 		if ($this->stopSQLInjection == TRUE){
@@ -207,25 +261,6 @@ class SQLQueryHandler {
 			return FALSE;
 		}// end if
 		
-	}//end public function getUsernames
-
-	public function accountExists($pUsername){
-	
-		if ($this->stopSQLInjection == TRUE){
-			$pUsername = $this->mMySQLHandler->escapeDangerousCharacters($pUsername);
-		}// end if
-	
-		$lQueryString =
-		"SELECT username FROM accounts WHERE username='".$pUsername."';";
-			
-		$lQueryResult = $this->mMySQLHandler->executeQuery($lQueryString);
-
-		if (isset($lQueryResult->num_rows)){
-			return ($lQueryResult->num_rows > 0);
-		}else{
-			return FALSE;
-		}// end if
-	
 	}//end public function getUsernames
 	
 	public function getNonSensitiveAccountInformation($pUsername){
@@ -263,41 +298,6 @@ class SQLQueryHandler {
 					
 		return $this->mMySQLHandler->executeQuery($lQueryString);
 	}//end public function getUserAccount
-	
-	public function getPenTestTools(){
-		/* Note: No possibility of SQL injection because the query 
-		 * is static.
-		 */
-		$lQueryString  = "SELECT tool_id, tool_name FROM pen_test_tools;";
-		return $this->mMySQLHandler->executeQuery($lQueryString);	
-	}// end function getPenTestTools	
-
-	public function getHitLogEntries(){
-		/* Note: No possibility of SQL injection because the query
-		 * is static.
-		*/
-		$lLimitString = "";
-		if ($this->mLimitOutput == TRUE){
-			$lLimitString .= " LIMIT 20";
-		}// end if
-
-		$lQueryString  = "SELECT * FROM `hitlog` ORDER BY date DESC".$lLimitString.";";
-		return $this->mMySQLHandler->executeQuery($lQueryString);
-	}// end function getHitLogEntries
-
-	public function getYouTubeVideo($pRecordIdentifier){
-   		/* 
-  		 * Note: While escaping works ok in some case, it is not the best defense.
- 		 * Using stored procedures is a much stronger defense.
- 		 */
-		if ($this->stopSQLInjection == TRUE){
-			$pRecordIdentifier = $this->mMySQLHandler->escapeDangerousCharacters($pRecordIdentifier);
-		}// end if
-
-		$lQueryString  = "SELECT identificationToken, title FROM youTubeVideos WHERE recordIndetifier = " .	$pRecordIdentifier . ";";
-		$lQueryResult = $this->mMySQLHandler->executeQuery($lQueryString);
-		return $lQueryResult->fetch_object();
-	}//end public function getYouTubeVideo
 	
 	/* -----------------------------------------
 	 * Insert Queries

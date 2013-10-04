@@ -58,56 +58,78 @@
 	   	} catch (Exception $e) {
 			echo $CustomErrorHandler->FormatError($e, "Unable to parse session");
 	   	}// end try;
-			
+		
+		$lResults = "";
+	    $lResultsFound = FALSE;
+	    $lKeepGoing = TRUE;
+	    $lQueryResult=NULL;
+	    
 		try{
-			$lQueryResult = $SQLQueryHandler->getUserAccount($pUsername, $pPassword);
+			
+		   	if (!$SQLQueryHandler->accountExists($pUsername)){
+		   		$lResults = "<message>Account {$pUsername} does not exist</message>";	 
+		   		$lKeepGoing = FALSE;
+		   	}// end if accountExists
+		   			   	
+		   	if ($lKeepGoing){
+			   	if (!$SQLQueryHandler->authenticateAccount($pUsername, $pPassword)){
+			   		$lResults = "<message>Incorrect password</message>";
+			   		$lKeepGoing = FALSE;
+			   	}//end if authenticateAccount
+			}//end if $lKeepGoing
+		   					
+			if ($lKeepGoing){
+				$lQueryResult = $SQLQueryHandler->getUserAccount($pUsername, $pPassword);
+
+				if (isset($lQueryResult->num_rows)){
+					if ($lQueryResult->num_rows > 0) {
+						$lResultsFound = TRUE;
+					}//end if
+				}//end if
+
+				if(!$lResultsFound){
+					$lResults = '<message>No Results Found</message>';
+					$lKeepGoing = FALSE;
+				}// end if
+			}//end if $lKeepGoing
+
+			/* Print out results */
+			if ($lKeepGoing){
+				$lResults = "<accounts>";
+			
+				while($row = $lQueryResult->fetch_object()){
+					try {
+						$LogHandler->writeToLog("ws-lookup-user-information.php: Fetched user-information for: " . $row->username);
+					} catch (Exception $e) {
+						// do nothing
+					}//end try
+			
+					if(!$lEncodeOutput){
+						$lUsername = $row->username;
+						$lPassword = $row->password;
+						$lSignature = $row->mysignature;
+					}else{
+						$lUsername = $Encoder->encodeForHTML($row->username);
+						$lPassword = $Encoder->encodeForHTML($row->password);
+						$lSignature = $Encoder->encodeForHTML($row->mysignature);
+					}// end if
+			
+					$lResults.= "<account>";
+					$lResults.= "<username>{$lUsername}</username>";
+					$lResults.= "<password>{$lPassword}</password>";
+					$lResults.= "<signature>{$lSignature}</signature>";
+					$lResults.= "</account>";
+				}// end while
+			
+				$lResults.= "</accounts>";
+			}// end if ($lResultsFound)
+					
 	    } catch (Exception $e) {
 			echo $CustomErrorHandler->FormatError($e, "Error querying user account");
 	    }// end try;
-			
-		$lResults = "";
-	    $lResultsFound = FALSE;
-		//$lResultsFound = isset($lQueryResult->num_rows) && $lQueryResult->num_rows > 0;
-		if (isset($lQueryResult->num_rows)){
-			if ($lQueryResult->num_rows > 0) {
-				$lResultsFound = TRUE;
-			}//end if
-		}//end if
-	
-		/* Print out results */
-		if ($lResultsFound){
-			$lResults.= "<accounts>";
-
-			while($row = $lQueryResult->fetch_object()){
-		    	try {
-					$LogHandler->writeToLog("ws-lookup-user-information.php: Fetched user-information for: " . $row->username);				
-		    	} catch (Exception $e) {
-		    		// do nothing
-		    	}//end try
-	
-				if(!$lEncodeOutput){
-					$lUsername = $row->username;
-					$lPassword = $row->password;
-					$lSignature = $row->mysignature;
-				}else{
-					$lUsername = $Encoder->encodeForHTML($row->username);
-					$lPassword = $Encoder->encodeForHTML($row->password);
-					$lSignature = $Encoder->encodeForHTML($row->mysignature);			
-				}// end if
-				
-				$lResults.= "<account>";
-				$lResults.= "<username>{$lUsername}</username>";
-				$lResults.= "<password>{$lPassword}</password>";
-				$lResults.= "<signature>{$lSignature}</signature>";
-				$lResults.= "</account>";
-			}// end while
-
-			$lResults.= "</accounts>";
-		} else {
-			$lResults = '<message>No Results Found</message>';
-		}// end if ($lResultsFound)
 	    
 	    return $lResults;
+	    
 	}// end function
 	
 	// Use the request to (try to) invoke the service

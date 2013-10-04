@@ -5,8 +5,22 @@ TODO: Audit menu to see if all pages linked
 
 <div><span style="font-weight:bold;">10/03/2013</span>: Jeremy Druin</div>
 <blockquote>
-	<div>Change Log for OWASP Mutillidae II 2.6.3.4:</div>
+	<div>Change Log for OWASP Mutillidae II 2.6.3.5:</div>
 	<ul>
+		<li>Rewrote process login attempt. The whole thing was a mess.</li>
+		<li>
+			New Vulnerability: Added user account enumeration to RESTful lookup user
+			account web service for the DELETE and the GET 
+			methods. Added for Tim Tomes (Lanmaster53).
+		</li>
+		<li>
+			New Vulnerability: Added user account enumeration to 
+			login process. Added for Tim Tomes (Lanmaster53).
+		</li>
+		<li>
+			New Vulnerability: Added user account enumeration to SOAP lookup user
+			information web service. Added for Tim Tomes (Lanmaster53).
+		</li>
 		<li>
 			Added some help text to new RESTful web service 
 			ws-user-account.php. Browse to page "normally"
