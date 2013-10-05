@@ -52,6 +52,7 @@
 				<li>XML External Entity Injection</li>
 				<li>Unencrypted database credentials</li>
 				<li>Unrestricted File Upload</li>
+				<li>Username enumeration</li>
 				<li>Un-validated Redirects and Forwards</li>
 			</ul>	
 		</td>
@@ -285,6 +286,7 @@
 		<li>XSS via username field</li>
 		<li>JavaScript validation bypass</li>
 		<li>HTML injection via username field</li>
+		<li>Username enumeration</li>
 	</ul>
 </div>
 
@@ -540,14 +542,24 @@
 <p class="label">ws-lookup-dns-record.php</p>
 <div style="padding-left: 40px;">
 	<ul>
-		<li>Web Service: Command Injection</li>
+		<li>SOAP Web Service: Command Injection</li>
+		<li>SOAP Web Service: Username emuneration</li>
 	</ul>
 </div>
 
 <p class="label">ws-lookup-user-information.php</p>
 <div style="padding-left: 40px;">
 	<ul>
-		<li>Web Service: SQL Injection</li>
+		<li>SOAP Web Service: SQL Injection</li>
+		<li>SOAP Web Service: Username emuneration</li>
+	</ul>
+</div>
+
+<p class="label">ws-user-account.php</p>
+<div style="padding-left: 40px;">
+	<ul>
+		<li>REST Web Service: SQL Injection</li>
+		<li>REST Web Service: Username emuneration</li>
 	</ul>
 </div>
 
