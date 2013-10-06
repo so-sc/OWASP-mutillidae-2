@@ -489,9 +489,35 @@
 								A3 - Broken Authentication and Session Management
 							</a>
 							<ul>
-								<li><a href="index.php">Cookies</a></li>
-								<li><a href="index.php?page=login.php">Login</a></li>
-								<li><a href="index.php?page=view-user-privilege-level.php&iv=6bc24fc1ab650b25b4114e93a98f1eba">View User Privileges</a></li>
+								<li><a href="index.php">Authentication Bypass</a>
+									<ul>
+										<li><a href="index.php">Via Brute Force</a>
+											<ul>
+												<li><a href="index.php?page=login.php">Login</a></li>
+											</ul>
+										</li>
+										<li><a href="index.php?page=privilege-escalation.php">Via Cookies</a></li>
+										<li><a href="index.php">Via SQL Injection</a>
+											<ul>
+												<li><a href="index.php?page=login.php">Login</a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li><a href="index.php">Priviliege Escalation</a>
+									<ul>
+										<li><a href="index.php?page=privilege-escalation.php">Via Cookies</a></li>
+										<li><a href="index.php?page=login.php">Login</a></li>
+										<li><a href="index.php?page=view-user-privilege-level.php&iv=6bc24fc1ab650b25b4114e93a98f1eba">View User Privileges</a></li>
+									</ul>								
+								</li>
+								<li><a href="index.php">Username Enumeration</a>
+									<ul>
+										<li><a href="index.php?page=login.php">Login</a></li>
+										<li><a href="./webservices/soap/ws-lookup-user-information.php">Lookup User (SOAP Web Service)</a></li>
+										<li><a href="./webservices/rest/ws-user-account.php">User Account Management(REST Web Service)</a></li>
+									</ul>
+								</li>							
 							</ul>
 						</li>
 						<li>
@@ -500,7 +526,7 @@
 								<li><a href="index.php?page=text-file-viewer.php">Text File Viewer</a></li>
 								<li><a href="index.php?page=source-viewer.php">Source Viewer</a></li>
 								<li><a href="index.php?page=credits.php">Credits</a></li>
-								<li><a href="index.php">Cookies</a></li>
+								<li><a href="index.php?page=privilege-escalation.php">Cookies</a></li>
 								<li><a href="index.php?page=arbitrary-file-inclusion.php">Arbitrary File Inclusion</a></li>
 							</ul>
 						</li>
@@ -618,6 +644,12 @@
 										<li><a href="./webservices/soap/ws-lookup-user-information.php">Lookup User</a></li>
 									</ul>
 								</li>
+								<li>
+									<a href="">Username Enumeration</a>
+									<ul>
+										<li><a href="./webservices/soap/ws-lookup-user-information.php">Lookup User</a></li>
+									</ul>
+								</li>
 							</ul>
 						</li>
 						<li>
@@ -625,6 +657,12 @@
 							<ul>
 								<li>
 									<a href="">SQL Injection</a>
+									<ul>
+										<li><a href="./webservices/rest/ws-user-account.php">User Account Management</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="">Username Enumeration</a>
 									<ul>
 										<li><a href="./webservices/rest/ws-user-account.php">User Account Management</a></li>
 									</ul>

@@ -27,11 +27,11 @@
 				<li>Insecure Cookies</li>
 				<li>JavaScript Injection</li>
 				<li>JavaScript validation bypass</li>
+				<li>JSON injection</li>
 			</ul>
 		</td>
 		<td>
 			<ul>
-				<li>JSON injection</li>
 				<li>Loading of any arbitrary file</li>
 				<li>Local File Inclusion</li>
 				<li>Log injection</li>

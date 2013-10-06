@@ -345,6 +345,7 @@ try{
 			('login.php', 12, 1),
 			('login.php', 13, 1),
 			('login.php', 25, 1),
+			('login.php', 47, 1),
 			('password-generator.php', 1, 1),
 			('password-generator.php', 11, 1),
 			('password-generator.php', 12, 1),
@@ -557,7 +558,8 @@ try{
 		(43, '<span class=\"label\">Robots.txt</span>: This file gives away sensitive file paths.'),
 		(44, '<span class=\"label\">Secret Administrative Pages</span>: These pages are obscured by not being linked from other pages but they can be found using other vulnerabilities such as directory browsing, robots.txt, and local file inclusion.'),
 		(45, '<span class=\"label\">User Agent Impersonation</span>: Based on the information sent by the browser, this page decides if the user is authorized.'),
-		(46, '<span class=\"label\">Unrestricted File Upload</span>: This page allows dangerous files to be uploaded.');";
+		(46, '<span class=\"label\">Unrestricted File Upload</span>: This page allows dangerous files to be uploaded.'),
+		(47, '<span class=\"label\">Username Enumeration</span>: This page allows usernames to be enumerated.');";
 	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {
