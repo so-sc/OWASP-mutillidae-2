@@ -51,38 +51,29 @@
 	   	
    		logLoginAttempt("User {$lUsername} attempting to authenticate");
 	   		
-	   		if (!$SQLQueryHandler->accountExists($lUsername)){
-	   			$lAuthenticationAttemptResult = $cACCOUNT_DOES_NOT_EXIST;
-	   			$lKeepGoing = FALSE;
-	   			logLoginAttempt("Login Failed: Account {$lUsername} does not exist");
-	   		}// end if accountExists
-	   	
-   			if ($lKeepGoing){
-	   			if (!$SQLQueryHandler->authenticateAccount($lUsername, $lPassword)){
-		   			$lAuthenticationAttemptResult = $cPASSWORD_INCORRECT;
-		   			$lKeepGoing = FALSE;
-		   			logLoginAttempt("Login Failed: Password for {$lUsername} incorrect");
-		   		}//end if authenticateAccount
-	   		}//end if $lKeepGoing
-	   	
-	   		if ($lKeepGoing){
-	   			$lQueryResult = $SQLQueryHandler->getUserAccount($lUsername, $lPassword);
-	   	
-	   			if (isset($lQueryResult->num_rows)){
-		   			if ($lQueryResult->num_rows > 0) {
-			   			$lAuthenticationAttemptResultFound = TRUE;
-		   			}//end if
-	   			}//end if
-	   	
-	   			if(!$lAuthenticationAttemptResultFound){
-		   			$lAuthenticationAttemptResult = $cNO_RESULTS_FOUND;
-		   			$lKeepGoing = FALSE;
-		   			logLoginAttempt("Login Failed: No account record found for user {$lUsername}");
-	   			}// end if
-
-	   		}//end if $lKeepGoing
+   		if (!$SQLQueryHandler->accountExists($lUsername)){
+   			$lAuthenticationAttemptResult = $cACCOUNT_DOES_NOT_EXIST;
+   			$lKeepGoing = FALSE;
+   			logLoginAttempt("Login Failed: Account {$lUsername} does not exist");
+   		}// end if accountExists
 	   	
 		if ($lKeepGoing){
+   			if (!$SQLQueryHandler->authenticateAccount($lUsername, $lPassword)){
+	   			$lAuthenticationAttemptResult = $cPASSWORD_INCORRECT;
+	   			$lKeepGoing = FALSE;
+	   			logLoginAttempt("Login Failed: Password for {$lUsername} incorrect");
+	   		}//end if authenticateAccount
+   		}//end if $lKeepGoing
+	   	
+		$lQueryResult = $SQLQueryHandler->getUserAccount($lUsername, $lPassword);
+   	
+		if (isset($lQueryResult->num_rows)){
+   			if ($lQueryResult->num_rows > 0) {
+	   			$lAuthenticationAttemptResultFound = TRUE;
+   			}//end if
+		}//end if
+	   	
+		if ($lAuthenticationAttemptResultFound){
 			$lRecord = $lQueryResult->fetch_object();
 			$_SESSION['loggedin'] = 'True';
 			$_SESSION['uid'] = $lRecord->cid;
