@@ -56,32 +56,39 @@
 					/* Example hack: username=adrian'+union+select+username,+password+AS+password+from+accounts+--+ */
 					$lAccountUsername = $_GET['username'];
 
+					$lQueryResult = $SQLQueryHandler->getNonSensitiveAccountInformation($lAccountUsername);
+					
+					if ($lQueryResult->num_rows > 0){
+						echo "Result: {Accounts: {".jsonEncodeQueryResults($lQueryResult)."}}";
+					}else{
+						echo "Result: {User '".$lAccountUsername."' does not exist}";
+					}// end if
+					
+					/*
 					if (!$SQLQueryHandler->accountExists($lAccountUsername)){
 						echo "Result: {User '".$lAccountUsername."' does not exist}";
-					}else{				
+					}else{	
 						$lQueryResult = $SQLQueryHandler->getNonSensitiveAccountInformation($lAccountUsername);
 						echo "Result: {Accounts: {".jsonEncodeQueryResults($lQueryResult)."}}";
 					}// end if accountExists
-				
+					*/
 				}else{
 					/* List all accounts */
 					$lQueryResult = $SQLQueryHandler->getUsernames();
 
 					echo
-						"Result: {
-							Documentation: {
-								Help: \"This service exposes GET, POST, PUT, DELETE methods.
-								DEFAULT GET without any parameters will display this help plus a list of accounts in the system.
-								This service is vulnerable to SQL injection in security level 0.
-								GET: Either displays usernames of all accounts or the username and signature of one account. Optional params: username AS URL parameter.
-								POST: Creates new account. Required params: username, password AS POST parameter. Optional params: signature AS POST parameter.
-								PUT: Creates or updates account. Required params: username, password AS POST parameter. Optional params: signature AS POST parameter.
-								DELETE: Deletes account. Required params: username, password AS POST parameter.
-								\"
-							}, 
+						"<br /><br />
+						<div><span style='font-weight:bold;'>Help:</span> This service exposes GET, POST, PUT, DELETE methods.</div><br />
+						<div><span style='font-weight:bold;'>DEFAULT GET:</span> (without any parameters) will display this help plus a list of accounts in the system.<br /><br />
+						This service is vulnerable to SQL injection in security level 0.</div><br />
+						<div><span style='font-weight:bold;'>GET:</span> Either displays usernames of all accounts or the username and signature of one account.<br /><br />Optional params: username AS URL parameter.</div><br />
+						<div><span style='font-weight:bold;'>POST:</span> Creates new account. Required params: username, password AS POST parameter.<br /><br />Optional params: signature AS POST parameter.</div><br />
+						<div><span style='font-weight:bold;'>PUT:</span> Creates or updates account. Required params: username, password AS POST parameter.<br /><br />Optional params: signature AS POST parameter.</div><br />
+						<div><span style='font-weight:bold;'>DELETE:</span> Deletes account. Required params: username, password AS POST parameter.</div><br />
+						<br />
+						Result: {
 							Accounts: {".jsonEncodeQueryResults($lQueryResult)."}
 						}";
-				
 				}// end if
 
 			break;
