@@ -130,7 +130,7 @@ try{
 	}// end if
 	
 	$lQueryString = "INSERT INTO accounts (username, password, mysignature, is_admin) VALUES
-		('admin', 'adminpass', 'root', 'TRUE'),
+		('admin', 'adminpass', 'g0t r00t?', 'TRUE'),
 		('adrian', 'somepassword', 'Zombie Films Rock!', 'TRUE'),
 		('john', 'monkey', 'I like the smell of confunk', 'FALSE'),
 		('jeremy', 'password', 'd1373 1337 speak', 'FALSE'),

@@ -249,10 +249,11 @@ class SQLQueryHandler {
 		}// end if
 
 		$lQueryString = 
-			"SELECT username FROM accounts 
-			WHERE username='".$pUsername.
-			"' AND password='".$pPassword."';";
-			
+			"SELECT username ".
+			"FROM accounts ". 
+			"WHERE username='".$pUsername."' ".
+			"AND password='".$pPassword."';";
+
 		$lQueryResult = $this->mMySQLHandler->executeQuery($lQueryString);
 			
 		if (isset($lQueryResult->num_rows)){
