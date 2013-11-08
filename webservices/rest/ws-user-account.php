@@ -155,6 +155,6 @@
 
 	} catch (Exception $e) {
 		echo $CustomErrorHandler->FormatErrorJSON($e, "Unable to process request to web service ws-user-account");
-	}// end try;
+	}// end try
 	
 ?>

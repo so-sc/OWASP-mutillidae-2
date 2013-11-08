@@ -547,7 +547,7 @@
 	</ul>
 </div>
 
-<p class="label">ws-lookup-user-information.php</p>
+<p class="label">ws-user-account.php</p>
 <div style="padding-left: 40px;">
 	<ul>
 		<li>SOAP Web Service: SQL Injection</li>

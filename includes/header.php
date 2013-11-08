@@ -249,7 +249,7 @@
 								<li>
 									<a href="">Via SOAP Web Service</a>
 									<ul>
-										<li><a href="./webservices/soap/ws-lookup-user-information.php">Lookup User</a></li>
+										<li><a href="./webservices/soap/ws-user-account.php">Lookup User</a></li>
 									</ul>
 								</li>
 								<li>
@@ -514,7 +514,7 @@
 								<li><a href="index.php">Username Enumeration</a>
 									<ul>
 										<li><a href="index.php?page=login.php">Login</a></li>
-										<li><a href="./webservices/soap/ws-lookup-user-information.php">Lookup User (SOAP Web Service)</a></li>
+										<li><a href="./webservices/soap/ws-user-account.php">Lookup User (SOAP Web Service)</a></li>
 										<li><a href="./webservices/rest/ws-user-account.php">User Account Management(REST Web Service)</a></li>
 									</ul>
 								</li>							
@@ -641,13 +641,13 @@
 								<li>
 									<a href="">SQL Injection</a>
 									<ul>
-										<li><a href="./webservices/soap/ws-lookup-user-information.php">Lookup User</a></li>
+										<li><a href="./webservices/soap/ws-user-account.php">Lookup User</a></li>
 									</ul>
 								</li>
 								<li>
 									<a href="">Username Enumeration</a>
 									<ul>
-										<li><a href="./webservices/soap/ws-lookup-user-information.php">Lookup User</a></li>
+										<li><a href="./webservices/soap/ws-user-account.php">Lookup User</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -727,7 +727,7 @@
 								<li><a href="index.php?page=register.php">Register</a></li>
 								<li><a href="index.php?page=pen-test-tool-lookup.php">Pen Test Tool Lookup</a></li>
 								<li><a href="index.php?page=pen-test-tool-lookup-ajax.php">Pen Test Tool Lookup (AJAX)</a></li>
-								<li><a href="./webservices/soap/ws-lookup-user-information.php">Lookup User (SOAP Web Service)</a></li>
+								<li><a href="./webservices/soap/ws-user-account.php">Lookup User (SOAP Web Service)</a></li>
 							</ul>		
 						</li>
 						<li>

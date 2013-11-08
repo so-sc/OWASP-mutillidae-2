@@ -107,7 +107,7 @@
 <?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-wrapper.inc'); ?>
 
 <span>
-	<a style="text-decoration: none; cursor: pointer;" href="./webservices/soap/ws-lookup-user-information.php">
+	<a style="text-decoration: none; cursor: pointer;" href="./webservices/soap/ws-user-account.php">
 		<img style="vertical-align: middle;" src="./images/ajax_logo-285x300.jpg" height="75px" width="78px" />
 		<span style="font-weight:bold;">Switch to SOAP Web Service Version of this Page</span>
 	</a>

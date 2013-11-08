@@ -160,11 +160,7 @@ class CustomErrorHandler{
 			$lJSON = 
 			'{
 				"Exception": [
-				"Line": "",
-				"Code": "",
-				"File": "",
 				"Message": "'.$lSupressedMessage.'",
-				"Trace": "",
 				"DiagnoticInformation": "'.$lSupressedMessage.'"
 				]
 			}';			
@@ -185,9 +181,38 @@ class CustomErrorHandler{
 		return $lJSON;
 	}// end private function doFormatErrorJSON()
 
+	private function doFormatErrorXML(Exception $e, $pDiagnosticInformation){
+		$lXML = "";
+		$lSupressedMessage = "Sorry. An error occured. Support has been notified. Not allowed to give out errors at this security level.";
+	
+		$this->setErrorProperties($e, $pDiagnosticInformation);
+	
+		if($this->supressErrorMessages){
+			$lXML .= "<exception>";
+			$lXML .= "<message>{$lSupressedMessage}</message>";
+			$lXML .= "<diagnoticInformation>{$lSupressedMessage}</diagnoticInformation>";
+			$lXML .= "</exception>";
+		}else{
+			$lXML .= "<exception>";
+			$lXML .= "<line>{$this->mLine}</line>";
+			$lXML .= "<code>{$this->mCode}</code>";
+			$lXML .= "<file>{$this->mFile}</file>";
+			$lXML .= "<message>{$this->mMessage}</message>";
+			$lXML .= "<trace>{$this->mTrace}</trace>";
+			$lXML .= "<diagnoticInformation>{$this->mDiagnosticInformation}</diagnoticInformation>";
+			$lXML .= "</exception>";
+		}// end if
+	
+		return $lXML;
+	}// end private function doFormatErrorXML()
+	
 	public function FormatErrorJSON(Exception $e, $pDiagnosticInformation){
 		return $this->doFormatErrorJSON($e, $pDiagnosticInformation);
-	}// end public function FormatError()
+	}// end public function FormatErrorJSON()
+
+	public function FormatErrorXML(Exception $e, $pDiagnosticInformation){
+		return $this->doFormatErrorXML($e, $pDiagnosticInformation);
+	}// end public function FormatErrorXML()
 	
 }// end class
 
