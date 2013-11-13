@@ -539,7 +539,7 @@
 	</ul>
 </div>
 
-<p class="label">ws-lookup-dns-record.php</p>
+<p class="label">webservices/soap/ws-lookup-dns-record.php</p>
 <div style="padding-left: 40px;">
 	<ul>
 		<li>SOAP Web Service: Command Injection</li>
@@ -547,19 +547,19 @@
 	</ul>
 </div>
 
-<p class="label">ws-user-account.php</p>
-<div style="padding-left: 40px;">
-	<ul>
-		<li>SOAP Web Service: SQL Injection</li>
-		<li>SOAP Web Service: Username emuneration</li>
-	</ul>
-</div>
-
-<p class="label">ws-user-account.php</p>
+<p class="label">webservices/rest/ws-user-account.php</p>
 <div style="padding-left: 40px;">
 	<ul>
 		<li>REST Web Service: SQL Injection</li>
 		<li>REST Web Service: Username emuneration</li>
+	</ul>
+</div>
+
+<p class="label">webservices/soap/ws-user-account.php</p>
+<div style="padding-left: 40px;">
+	<ul>
+		<li>SOAP Web Service: SQL Injection</li>
+		<li>SOAP Web Service: Username emuneration</li>
 	</ul>
 </div>
 

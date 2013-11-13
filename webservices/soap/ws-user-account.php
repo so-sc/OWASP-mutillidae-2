@@ -72,6 +72,35 @@
 			'encoded',                            							// use
 			'Creates new user account'										// documentation
 	);
+
+	// Register the method to expose
+	$lSOAPWebService->register('updateUser',			                	// method name
+			array(
+					'username' => 'xsd:string',
+					'password' => 'xsd:string',
+					'signature' => 'xsd:string'
+			),																// input parameters
+			array('return' => 'xsd:xml'),      								// output parameters
+			'urn:ws-user-account',                      					// namespace
+			'urn:ws-user-account#updateUser',                				// soapaction
+			'rpc',                                							// style
+			'encoded',                            							// use
+			'If account exists, updates existing user account else creates new user account'	// documentation
+	);
+
+	// Register the method to expose
+	$lSOAPWebService->register('deleteUser',			                	// method name
+			array(
+					'username' => 'xsd:string',
+					'password' => 'xsd:string'
+			),											// input parameters
+			array('return' => 'xsd:xml'),      			// output parameters
+			'urn:ws-user-account',                      // namespace
+			'urn:ws-user-account#deleteUser',           // soapaction
+			'rpc',                                		// style
+			'encoded',                            		// use
+			'If account exists, deletes user account'	// documentation
+	);
 	
 	function doXMLEncodeQueryResults($pUsername, $pQueryResult, $pEncodeOutput){
 
@@ -80,19 +109,11 @@
 		$lSignature = "";
 		
 		while($row = $pQueryResult->fetch_object()){
-				
-			if(!$pEncodeOutput){
-				$lUsername = $row->username;
-			}else{
-				$lUsername = $Encoder->encodeForHTML($row->username);
-			}// end if
+			
+			$pEncodeOutput?$lSignature = $lUsername = $Encoder->encodeForHTML($row->username):$lUsername = $row->username;;
 
 			if(isset($row->mysignature)){
-				if(!$pEncodeOutput){
-					$lSignature = $row->mysignature;
-				}else{
-					$lSignature = $Encoder->encodeForHTML($row->mysignature);
-				}// end if
+				$pEncodeOutput?$lSignature = $Encoder->encodeForHTML($row->mysignature):$lSignature = $row->mysignature;
 			}// end if					
 			
 			$lResults.= "<account>";
@@ -128,6 +149,12 @@
 		
 	}// end function xmlEncodeQueryResults()
 
+	function assertParameter($pParameter){
+		if(strlen($pParameter) == 0 || !isset($pParameter)){
+			throw new Exception("Parameter ".$pParameter." is required");
+		}// end if
+	}// end function assertParameter
+	
 	// Define the method as a PHP function
 	function getUser($pUsername) {
 
@@ -138,14 +165,16 @@
 		   	global $SQLQueryHandler;	   	
 		   	global $CustomErrorHandler;
 		   	
+		   	assertParameter($pUsername);
+		   	
+			$lResults = xmlEncodeQueryResults($pUsername, $lEncodeOutput, $SQLQueryHandler);
+
 			try {
 				$LogHandler->writeToLog("ws-user-account.php: Fetched user-information for: {$pUsername}");
 			} catch (Exception $e) {
 				// do nothing
 			}//end try
-						
-			$lResults = xmlEncodeQueryResults($pUsername, $lEncodeOutput, $SQLQueryHandler);
-									
+			
 		    return $lResults;
 
 	    } catch (Exception $e) {
@@ -153,13 +182,7 @@
 	    }// end try
 		    
 	}// end function getUser()
-	
-	function assertParameter($pParameter){
-		if(strlen($pParameter) == 0 || !isset($pParameter)){
-			throw new Exception("Parameter ".$pParameter." is required");
-		}// end if
-	}// end function assertParameter
-	
+		
 	function createUser($pUsername, $pPassword, $pSignature){
 		
 		try{
@@ -185,7 +208,71 @@
 		}// end try
 		
 	}// end function createUser()
+
+	function updateUser($pUsername, $pPassword, $pSignature){
+	
+		try{
+				
+			global $LogHandler;
+			global $lEncodeOutput;
+			global $SQLQueryHandler;
+			global $CustomErrorHandler;
+				
+			assertParameter($pUsername);
+			assertParameter($pPassword);
+			assertParameter($pSignature);
+
+			if ($SQLQueryHandler->accountExists($pUsername)){
+				$lQueryResult = $SQLQueryHandler->updateUserAccount($pUsername, $pPassword, $pSignature);
+				return "<accounts message=\"Updated account {$pUsername}\" />";
+			}else{
+				$lQueryResult = $SQLQueryHandler->insertNewUserAccount($pUsername, $pPassword, $pSignature);
+				return "<accounts message=\"Inserted account {$pUsername}\" />";
+			}// end if
+	
+		} catch (Exception $e) {
+			return $CustomErrorHandler->FormatErrorXML($e, "Unable to process request to web service ws-user-account->updateUser()");
+		}// end try
+	
+	}// end function updateUser()
+	
+	function deleteUser($pUsername, $pPassword){
+	
+		try{
+				
+			global $LogHandler;
+			global $lEncodeOutput;
+			global $SQLQueryHandler;
+			global $CustomErrorHandler;
+				
+			assertParameter($pUsername);
+			assertParameter($pPassword);
+
+			if($SQLQueryHandler->accountExists($pUsername)){
 			
+				if($SQLQueryHandler->authenticateAccount($pUsername,$pPassword)){
+					$lQueryResult = $SQLQueryHandler->deleteUser($pUsername);
+						
+					if ($lQueryResult){
+						return "<accounts message=\"Deleted account {$pUsername}\" />";
+					}else{
+						return "<accounts message=\"Attempted to delete account {$pUsername} but result returned was {$lQueryResult}\" />";
+					}//end if
+			
+				}else{
+					return "<accounts message=\"Could not authenticate account {$pUsername}. Password incorrect.\" />";
+				}// end if
+			
+			}else{
+				return "<accounts message=\"User {$pUsername} does not exist\" />";
+			}// end if					
+				
+		} catch (Exception $e) {
+			return $CustomErrorHandler->FormatErrorXML($e, "Unable to process request to web service ws-user-account->deleteUser()");
+		}// end try
+	
+	}// end function createUser()
+	
 	// Use the request to (try to) invoke the service
 	$HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : '';
 	$lSOAPWebService->service($HTTP_RAW_POST_DATA);
