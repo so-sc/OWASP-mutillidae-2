@@ -8,6 +8,17 @@
 	Mutillidae implements vulnerabilities from the <a href="http://www.owasp.org/index.php/OWASP_Top_Ten_Project" target="_blank">OWASP Top 10</a> 2010 and 2007 in PHP. 
 	Additionally vulnerabilities from the SANS Top 25 Programming Errors and select information disclosure vulnerabilities have been exposed on various pages. 
 	<br/><br/>
+	A project whitepaper is available to explain the features of Mutillidae and suggested use-cases.
+	<br/><br/>
+	<a 
+		href="https://www.sans.org/reading-room/whitepapers/application/introduction-owasp-mutillidae-ii-web-pen-test-training-environment-34380" 
+		target="_blank"
+		title="Whitepaper: Introduction to OWASP Mutillidae II Web Pen Test Training Environment"
+	>			
+		<img align="middle" alt="Webpwnized Twitter Channel" src="./images/pdf-icon-48-48.png" />
+		Introduction to OWASP Mutillidae II Web Pen Test Training Environment
+	</a>
+	<br/><br/>
 	The menu on the left is organized by category then vulnerability. Some vulnerabilities
 	will be in more than one category as there is overlap between categories. Each
 	page in Mutillidae will expose multiple vulnerabilities. Some pages have half a dozen

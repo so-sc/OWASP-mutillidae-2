@@ -796,6 +796,11 @@
 						<li><a href="index.php?page=installation.php">Installation Instructions</a></li>
 						<li><a href="/mutillidae/documentation/mutillidae-installation-on-xampp-win7.pdf">Installation Instructions: Windows 7 (PDF)</a></li>
 						<li><a href="index.php?page=documentation/vulnerabilities.php">Listing of Vulnerabilities</a></li>
+						<li>
+							<a href="https://www.sans.org/reading-room/whitepapers/application/introduction-owasp-mutillidae-ii-web-pen-test-training-environment-34380" target="_blank">
+								Whitepaper: Introduction to OWASP Mutillidae II Web Pen Test Training Environment
+							</a>
+						</li>
 					</ul>
 				</li>
 				<li style="border-color: #ffffff;border-style: solid;border-width: 1px">
@@ -831,11 +836,19 @@
 			</ul>
 			<br style="clear: left" />
 		</div>
-		<div style="text-align: center;">
-			<a href="https://www.owasp.org" target="_blank">
-				<img alt="OWASP" style="border-width: 0px;" height="90px" width="120px" src="./images/owasp-logo-400-300.png" />
+		<div>&nbsp;</div>
+		<div class="label" style="text-align: center;">
+			<a 
+				href="https://www.sans.org/reading-room/whitepapers/application/introduction-owasp-mutillidae-ii-web-pen-test-training-environment-34380" 
+				target="_blank"
+				title="Whitepaper: Introduction to OWASP Mutillidae II Web Pen Test Training Environment"
+			>			
+				<img align="middle" alt="Webpwnized Twitter Channel" src="./images/pdf-icon-48-48.png" />
+				<br/>
+				Getting Started: Project Whitepaper
 			</a>
-		</div>
+		</div>		
+		<div>&nbsp;</div>
 		<div>&nbsp;</div>
 		<div class="label" style="text-align: center;">
 			<a href="https://twitter.com/webpwnized" target="_blank">
@@ -853,6 +866,11 @@
 				Video<br/>Tutorials
 			</a>
 		</div>		
+		<div style="text-align: center;">
+			<a href="https://www.owasp.org" target="_blank">
+				<img alt="OWASP" style="border-width: 0px;" height="90px" width="120px" src="./images/owasp-logo-400-300.png" />
+			</a>
+		</div>
 	</td>
 
 <td valign="top">
