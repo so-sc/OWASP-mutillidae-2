@@ -7,6 +7,7 @@
 		<td>
 			<ul>
 				<li>Application Exception</li>
+				<li>Application log injection</li>
 				<li>Application path disclosure</li>
 				<li>Authentication Bypass via SQL injection</li>
 				<li>Brute force secret admin pages</li>
@@ -74,6 +75,7 @@
 		<li>XSS in the form title via logged in username</li>
 		<li>HTML injection in blog input field</li>
 		<li>Application Exception Output</li>
+		<li>Application Log Injection</li>
 		<li>Known Vulnerable Output: Name, Comment, "Add blog for" title</li>
 	</ul>
 </div>
@@ -88,6 +90,7 @@
 		<li>HTML injection</li>
 		<li>Remote File Inclusion</li>
 		<li>Local File Inclusion</li>
+		<li>Method Tampering</li>
 	</ul>
 </div>
 
@@ -96,6 +99,16 @@
 	<ul>
 		<li>No known vulnerabilities. We should add something.</li>
 		<li>This page is only used in secure mode. In insecure mode, the site does not authorize user.</li>
+	</ul>
+</div>
+
+<p class="label">back-button-discussion.php</p>
+<div style="padding-left: 40px;">
+	<ul>
+		<li>Reflected XSS via referer HTTP header</li>
+		<li>JS Injection via referer HTTP header</li>
+		<li>HTML injection via referer HTTP header</li>
+		<li>Unvalidated redirect</li>
 	</ul>
 </div>
 
@@ -539,19 +552,19 @@
 	</ul>
 </div>
 
-<p class="label">webservices/soap/ws-lookup-dns-record.php</p>
-<div style="padding-left: 40px;">
-	<ul>
-		<li>SOAP Web Service: Command Injection</li>
-		<li>SOAP Web Service: Username emuneration</li>
-	</ul>
-</div>
-
 <p class="label">webservices/rest/ws-user-account.php</p>
 <div style="padding-left: 40px;">
 	<ul>
 		<li>REST Web Service: SQL Injection</li>
 		<li>REST Web Service: Username emuneration</li>
+	</ul>
+</div>
+
+<p class="label">webservices/soap/ws-lookup-dns-record.php</p>
+<div style="padding-left: 40px;">
+	<ul>
+		<li>SOAP Web Service: Command Injection</li>
+		<li>SOAP Web Service: Username emuneration</li>
 	</ul>
 </div>
 

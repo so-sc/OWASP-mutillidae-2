@@ -4,8 +4,9 @@
 		Cross Site Scripting, 
 		Cross Site Request Forgery,
 		Application Exception Output,
+		HTML injection,
+		Method Tampering
 		Known Vulnerable Output: Name, Comment, "Add blog for" title,
-		HTML injection
 	*/
 	/* Defined our constants to use to tokenize allowed HTML characters */
 	include_once './includes/constants.php';

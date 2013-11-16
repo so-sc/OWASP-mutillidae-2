@@ -219,6 +219,7 @@
 								<li>
 									<a href="">SQLi - Insert Injection</a>
 									<ul>
+										<li><a href="?page=add-to-your-blog.php">Add to your blog</a></li>
 										<li><a href="index.php?page=register.php">Register</a></li>
 										<li><a href="index.php?page=captured-data.php">View Captured Data</a></li>
 									</ul>
@@ -266,7 +267,8 @@
 								<li>
 									<a href="">HTML Injection (HTMLi)</a>
 									<ul>
-										<li><a href="?page=add-to-your-blog.php">Add to your blog</a></li>
+										<li><a href="index.php?page=add-to-your-blog.php">Add to your blog</a></li>
+										<li><a href="index.php?page=browser-info.php">Browser Info</a></li>
 										<li><a href="index.php?page=dns-lookup.php">DNS Lookup</a></li>
 										<li><a href="index.php?page=pen-test-tool-lookup.php">Pen Test Tool Lookup</a></li>
 										<li><a href="index.php?page=text-file-viewer.php">Text File Viewer</a></li>
@@ -280,11 +282,13 @@
 										<li><a href="index.php?page=user-poll.php">Poll Question</a></li>
 										<li><a href="index.php?page=register.php">Register User</a></li>
 										<li><a href="index.php?page=login.php">Login</a></li>
+										<li><a href="index.php?page=back-button-discussion.php">Those "Back" Buttons</a></li>
 									</ul>
 								</li>
 								<li>
 									<a href="">HTMLi via HTTP Headers</a>
 									<ul>
+										<li><a href="index.php?page=back-button-discussion.php">Those "Back" Buttons</a></li>
 										<li><a href="index.php?page=browser-info.php">Browser Info</a></li>
 										<li><a href="index.php?page=site-footer-xss-discussion.php">Site Footer</a><li>
 										<li><a href="">HTTP Response Splitting (Hint: Difficult)</a></li>
@@ -318,7 +322,7 @@
 								<li>
 									<a href="">JavaScript Injection</a>
 									<ul>
-										<li><a href="index.php">Those "Back" Buttons</a></li>
+										<li><a href="index.php?page=back-button-discussion.php">Those "Back" Buttons</a></li>
 										<li>
 											<a href="index.php?page=password-generator.php&username=<?php echo $logged_in_user ?>">
 												Password Generator
@@ -366,6 +370,12 @@
 										<li><a href="index.php?page=xml-validator.php">XML Validator</a></li>
 									</ul>
 								</li>
+								<li>
+									<a href="">Application Log Injection</a>
+									<ul>
+										<li><a href="index.php?page=add-to-your-blog.php">Add to your blog</a></li>
+									</ul>
+								</li>
 							</ul>
 						</li>
 						<li>
@@ -386,6 +396,8 @@
 										<li><a href="index.php?page=xml-validator.php">XML Validator</a></li>
 										<li><a href="index.php?page=user-poll.php">Poll Question</a></li>
 										<li><a href="index.php?page=register.php">Register User</a></li>
+										<li><a href="index.php?page=browser-info.php">Browser Info</a></li>
+										<li><a href="index.php?page=back-button-discussion.php">Those "Back" Buttons</a></li>
 									</ul>
 								</li>
 								<li>
@@ -489,29 +501,29 @@
 								A3 - Broken Authentication and Session Management
 							</a>
 							<ul>
-								<li><a href="index.php">Authentication Bypass</a>
+								<li><a href="">Authentication Bypass</a>
 									<ul>
-										<li><a href="index.php">Via Brute Force</a>
+										<li><a href="">Via Brute Force</a>
 											<ul>
 												<li><a href="index.php?page=login.php">Login</a></li>
 											</ul>
 										</li>
 										<li><a href="index.php?page=privilege-escalation.php">Via Cookies</a></li>
-										<li><a href="index.php">Via SQL Injection</a>
+										<li><a href="">Via SQL Injection</a>
 											<ul>
 												<li><a href="index.php?page=login.php">Login</a></li>
 											</ul>
 										</li>
 									</ul>
 								</li>
-								<li><a href="index.php">Priviliege Escalation</a>
+								<li><a href="">Priviliege Escalation</a>
 									<ul>
 										<li><a href="index.php?page=privilege-escalation.php">Via Cookies</a></li>
 										<li><a href="index.php?page=login.php">Login</a></li>
 										<li><a href="index.php?page=view-user-privilege-level.php&iv=6bc24fc1ab650b25b4114e93a98f1eba">View User Privileges</a></li>
 									</ul>								
 								</li>
-								<li><a href="index.php">Username Enumeration</a>
+								<li><a href="">Username Enumeration</a>
 									<ul>
 										<li><a href="index.php?page=login.php">Login</a></li>
 										<li><a href="./webservices/soap/ws-user-account.php">Lookup User (SOAP Web Service)</a></li>
@@ -546,6 +558,7 @@
 								<li>
 									<a href="">Method Tampering (GET for POST)</a>
 									<ul>
+										<li><a href="index.php?page=add-to-your-blog.php">Add to your blog</a></li>
 										<li><a href="index.php?page=user-info.php">User Info</a></li>
 										<li><a href="index.php?page=user-poll.php">Poll Question</a></li>
 										<li><a href="index.php?page=dns-lookup.php">DNS Lookup</a></li>

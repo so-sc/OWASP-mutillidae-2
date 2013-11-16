@@ -311,6 +311,8 @@ try{
 			('add-to-your-blog.php', 12, 1),
 			('add-to-your-blog.php', 13, 1),
 			('add-to-your-blog.php', 14, 1),
+			('add-to-your-blog.php', 30, 1),
+			('add-to-your-blog.php', 48, 1),
 			('arbitrary-file-inclusion.php', 11, 1),
 			('arbitrary-file-inclusion.php', 12, 1),
 			('arbitrary-file-inclusion.php', 15, 0),
@@ -318,13 +320,17 @@ try{
 			('arbitrary-file-inclusion.php', 17, 1),
 			('arbitrary-file-inclusion.php', 39, 1),
 			('arbitrary-file-inclusion.php', 40, 1),
+			('back-button-discussion.php', 11, 1),
+			('back-button-discussion.php', 12, 1),
+			('back-button-discussion.php', 18, 1),
+			('back-button-discussion.php', 19, 1),
 			('browser-info.php', 11, 1),
 			('browser-info.php', 12, 1),
 			('browser-info.php', 18, 1),
 			('capture-data.php', 1, 1),
+			('capture-data.php', 10, 1),
 			('capture-data.php', 11, 1),
 			('capture-data.php', 12, 1),
-			('captured-data.php', 10, 1),
 			('captured-data.php', 11, 1),
 			('captured-data.php', 12, 1),
 			('credits.php', 19, 1),
@@ -559,7 +565,8 @@ try{
 		(44, '<span class=\"label\">Secret Administrative Pages</span>: These pages are obscured by not being linked from other pages but they can be found using other vulnerabilities such as directory browsing, robots.txt, and local file inclusion.'),
 		(45, '<span class=\"label\">User Agent Impersonation</span>: Based on the information sent by the browser, this page decides if the user is authorized.'),
 		(46, '<span class=\"label\">Unrestricted File Upload</span>: This page allows dangerous files to be uploaded.'),
-		(47, '<span class=\"label\">Username Enumeration</span>: This page allows usernames to be enumerated.');";
+		(47, '<span class=\"label\">Username Enumeration</span>: This page allows usernames to be enumerated.'),
+		(48, '<span class=\"label\">Application Log Injection</span>: Some inputs on this page are recorded into log records which can be read by visiting the Show Log page. Vulnerabilities on the Show Log page may allow injections in log records to execute.')";
 	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {

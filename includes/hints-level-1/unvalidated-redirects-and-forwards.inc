@@ -32,6 +32,10 @@
 			or if the URL on which the browser lands contains any
 			of the injected values (from page rewriting).
 			<br/><br/>
+			Additionally, grep pages for JavaScript and HTML redirects. For example, look
+			for calls to JavaScript document.location method or HTML meta tag redirection.
+			If these are found, determine if user-input affects the location to which the 
+			user is redirected.
 			<span class="report-header">Exploitation</span>
 			<br/><br/>
 			<span class="label">Note: The "Credits" page in this site is vulnerable.</span>
