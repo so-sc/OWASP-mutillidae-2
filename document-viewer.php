@@ -4,6 +4,8 @@
 		Cross Site Scripting, 
 		HTML injection,
 		HTTP Parameter Pollution
+		Method Tampering
+		Application Log Injection
 	*/
 		
 	switch ($_SESSION["security-level"]){
@@ -164,74 +166,10 @@
 
 <?php
 	// Begin hints section
-	if ($_SESSION["showhints"]) {
-		echo '
-			<table>
-				<tr><td class="hint-header">Hints</td></tr>
-				<tr>
-					<td class="hint-body">
-						<br/><br/>
-						<span class="report-header">HTTP Parameter Pollution</span>
-						<br/><br/>
-						<ul class="hints">
-						  	<li>
-							  	HTTP Parameter Pollution involves sending in duplicate parameters 
-							  	in order to take advantage of how the application server reacts to 
-							  	parsing multiple parameters with the same name.
-							</li>
-						  	<li>
-							  	Each brand of web application server acts a little different when 
-							  	two or more parameters with the same name are submitted.
-							</li>
-							<li>This page implements "GET for POST" to make this exercise easier</li>
-						</ul>
-						<br/><br/>
-						<span class="report-header">Frame Source Injection</span>
-						<br/><br/>
-						<ul class="hints">
-						  	<li>
-							  	Frame Source Injection is a specific type of HTML injection (HTMLi). 
-							  	A sub-type of HTML injection (HTMLi) called HTMLi attribute
-							  	injection occurs when user-supplied input is placed into an HTML
-							  	attribute. For example, if a form field is output into an anchor
-							  	tag HREF attribute without being output encoded, HTMLi attribute
-							  	injection may occur. When the HTML attribute susceptible to injection
-							  	happens to be the SRC attribute of a &lt;frame&gt; or &lt;iframe&gt;
-							  	tag, then Frame Source Injection may occur. In reality all HTMLi attribute
-							  	injection is dangerous, but some web vulnerability scanners will
-							  	check specfically for this one particular variant because exploits
-							  	can result in phishing and user-redirection attacks that are virtually
-							  	undetectable even by seasoned users. 
-							</li>
-						  	<li>
-							  	Does the page use any frames?
-							</li>
-							<li>
-							  	Try to determine which user input if any is able to influence the source
-							  	attribute (SRC) of a frame tag
-							</li>
-						  	<li>
-							  	What happens if another page from this site is injected into a field
-							  	that is able to able to influence the source
-							  	attribute (SRC) of a frame tag?
-							</li>
-						  	<li>
-							  	What happens if the URL of anohter web site is injected into a field
-							  	that is able to able to influence the source
-							  	attribute (SRC) of a frame tag? (Note: XAMPP contains sites by default such 
-							  	as http://localhost/
-							</li>
-							<br/>
-					</td>
-				</tr>
-			</table>'; 
-	}//end if ($_SESSION["showhints"])
-	
 	if ($_SESSION["showhints"] == 2) {
 		include_once '/includes/hints-level-2/http-parameter-pollution-tutorial.inc';
 		include_once '/includes/hints-level-2/cross-site-scripting-tutorial.inc';
 	}// end if
-	
 ?>
 
 <script type="text/javascript">

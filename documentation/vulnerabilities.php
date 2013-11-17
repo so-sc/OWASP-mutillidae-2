@@ -128,6 +128,7 @@
 		<li>XSS via any GET, POST, or Cookie</li>
 		<li>Insert based SQL injection via any GET, POST, or Cookie</li>
 		<li>HTML injection</li>
+		<li>Application Log Injection</li>
 	</ul>
 </div>
 
@@ -190,6 +191,8 @@
 			GET for POST (method tampering) is possible because only reading 
 			POSTed variables is not enforced.
 		</li>
+		<li>Application Log Injection</li>
+		<li>JavaScript Validation Bypass</li>
 	</ul>
 </div>
 
@@ -200,15 +203,8 @@
 		<li>HTML injection</li>
 		<li>HTTP Parameter Pollution</li>
 		<li>Frame source injection</li>
-	</ul>
-</div>
-
-<p class="label">upload-file.php<span class="big-asterik">*</span></p>
-<div style="padding-left: 40px;">
-	<ul>
-		<li>Unrestricted File Upload</li>
-		<li>Cross Site Scripting</li>
-		<li>HTML injection</li>
+		<li>Method Tampering</li>
+		<li>Application Log Injection</li>
 	</ul>
 </div>
 
@@ -300,6 +296,7 @@
 		<li>JavaScript validation bypass</li>
 		<li>HTML injection via username field</li>
 		<li>Username enumeration</li>
+		<li>Application Log Injection</li>
 	</ul>
 </div>
 
@@ -388,6 +385,17 @@
 			via the username, signature and password field
 		</li>
 		<li>Method tampering</li>
+		<li>Application Log Injection</li>
+	</ul>
+</div>
+
+<p class="label">repeater.php</p>
+<div style="padding-left: 40px;">
+	<ul>
+		<li>HTML injection and XSS</li>
+		<li>Method tampering</li>
+		<li>Parameter addition</li>
+		<li>Buffer overflow</li>
 	</ul>
 </div>
 
@@ -410,14 +418,6 @@
 <div style="padding-left: 40px;">
 	<ul>
 		<li>Discusses robots.txt</li>
-	</ul>
-</div>
-
-<p class="label">repeater.php</p>
-<div style="padding-left: 40px;">
-	<ul>
-		<li>Parameter addition</li>
-		<li>Buffer overflow</li>
 	</ul>
 </div>
 
@@ -468,6 +468,7 @@
 		<li>Loading of any arbitrary file including operating system files.</li>
 		<li>HTML Injection</li>
 		<li>Cross Site Scripting</li>
+		<li>Application log injection</li>
 	</ul>
 </div>
 
@@ -488,14 +489,16 @@
 		<li>Phishing</li>
 		<li>Method Tampering</li>
 		<li>Cross site scripting</li>
+		<li>Application log injection</li>
 	</ul>
 </div>
 
-<p class="label">xml-validator.php</p>
+<p class="label">upload-file.php<span class="big-asterik">*</span></p>
 <div style="padding-left: 40px;">
 	<ul>
-		<li>XML External Entity Injection Attack</li>
-		<li>Reflected Cross-Site Scripting via XML</li>
+		<li>Unrestricted File Upload</li>
+		<li>Cross Site Scripting</li>
+		<li>HTML injection</li>
 	</ul>
 </div>
 
@@ -521,6 +524,7 @@
 		<li>SQL injection to dump all usernames and passwords via the username field or the password field</li>
 		<li>XSS via any of the displayed fields. Inject the XSS on the register.php page.</li>
 		<li>XSS via the username field</li>
+		<li>JavaScript validation bypass</li>
 	</ul>
 </div>
 
@@ -580,6 +584,6 @@
 <div style="padding-left: 40px;">
 	<ul>
 		<li>XML Entity Injection Attack</li>
-		<li>Cross site scripting via XML Injection</li>
+		<li>Reflected Cross site scripting via XML Injection</li>
 	</ul>
 </div>

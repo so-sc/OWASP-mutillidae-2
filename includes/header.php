@@ -374,6 +374,13 @@
 									<a href="">Application Log Injection</a>
 									<ul>
 										<li><a href="index.php?page=add-to-your-blog.php">Add to your blog</a></li>
+										<li><a href="index.php?page=dns-lookup.php">DNS Lookup</a></li>
+										<li><a href="index.php?page=document-viewer.php&PathToDocument=documentation/how-to-access-Mutillidae-over-Virtual-Box-network.php">Document Viewer</a></li>
+										<li><a href="index.php?page=capture-data.php">Capture Data Page</a></li>
+										<li><a href="index.php?page=login.php">Login</a></li>
+										<li><a href="index.php?page=register.php">Register User</a></li>
+										<li><a href="index.php?page=source-viewer.php">Source Viewer</a></li>
+										<li><a href="index.php?page=text-file-viewer.php">Text File Viewer</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -775,12 +782,14 @@
 							</ul>		
 						</li>
 						<li>
-							<a href="">JavaScript "Security"</a>
+							<a href="">JavaScript Validation Bypass</a>
 							<ul>
 								<li><a href="index.php?page=login.php">Login</a></li>
 								<li><a href="index.php?page=user-info.php">User Info</a></li>
 								<li><a href="index.php?page=add-to-your-blog.php">Add to your blog</a></li>
 								<li><a href="index.php?page=html5-storage.php">HTML5 Storage</a></li>
+								<li><a href="index.php?page=dns-lookup.php">DNS Lookup</a></li>
+								<li><a href="index.php?page=repeater.php">Repeater</a></li>
 							</ul>		
 						</li>
 						<li>

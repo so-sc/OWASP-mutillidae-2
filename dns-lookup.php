@@ -1,4 +1,9 @@
 <?php 
+	/* Command Injection
+	 * Method Tampering
+	 * Cross Site Scripting
+	 * HTML Injection */
+
 	try {	    	
     	switch ($_SESSION["security-level"]){
     		case "0": // This code is insecure. No input validation is performed.
@@ -33,11 +38,7 @@
 		
 		if ($lFormSubmitted){
 			
-	    	if ($lProtectAgainstMethodTampering) {
-	    		$lTargetHost = $_POST["target_host"];
-	    	}else{
-	    		$lTargetHost = $_REQUEST["target_host"];
-	    	}// end if $lProtectAgainstMethodTampering
+			$lProtectAgainstMethodTampering?$lTargetHost = $_POST["target_host"]:$lTargetHost = $_REQUEST["target_host"];
 	    	
 	    	if ($lProtectAgainstCommandInjection) {
 				/* Protect against command injection. 
@@ -46,7 +47,7 @@
 	    	}else{
     			$lTargetHostValidated=TRUE; 			// do not perform validation
 	    	}// end if
-	    	
+
 	    	if ($lProtectAgainstXSS) {
     			/* Protect against XSS by output encoding */
     			$lTargetHostText = $Encoder->encodeForHTML($lTargetHost);
@@ -161,7 +162,7 @@
 </script>
 
 <?php
-	if (isset($_POST["dns-lookup-php-submit-button"])){
+	if ($lFormSubmitted){
 	    try{
 	    	if ($lTargetHostValidated){
 	    		echo '<div class="report-header" ReflectedXSSExecutionPoint="1">Results for '.$lTargetHostText.'</div>';
@@ -181,9 +182,6 @@
 <?php
 	if ($_SESSION["showhints"] == 2) {
 		include_once './includes/hints-level-2/command-injection-tutorial.inc';
-	}// end if
-	
-	if ($_SESSION["showhints"] == 2) {
 		include_once '/includes/hints-level-2/cross-site-scripting-tutorial.inc';
 	}// end if
 ?>

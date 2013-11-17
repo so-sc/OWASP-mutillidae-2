@@ -9,6 +9,7 @@
 	 * Improper Error Handling, (Fix: Employ custom error handler)
 	 * SQL Exception, (Fix: Employ custom error handler)
 	 * HTTP Parameter Pollution (Fix: Scope request variables)
+	 * Method Tampering
 	 */
 	try {	    	
 		switch ($_SESSION["security-level"]){

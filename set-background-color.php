@@ -27,7 +27,7 @@
 	    		break;
 	    	}// end switch
 
-    	} catch (Exception $e) {
+    	}catch (Exception $e){
 			echo $CustomErrorHandler->FormatError($e, "Input: " . $lBackgroundColor);
     	}// end try
     	
@@ -35,7 +35,6 @@
 		$lBackgroundColor = $lBackgroundColorText = "eecccc";
 	}// end if (isset($_POST)) 
 ?>
-
 
 <!-- Bubble hints code -->
 <?php 

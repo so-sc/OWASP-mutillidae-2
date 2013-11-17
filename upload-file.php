@@ -5,16 +5,12 @@
 	try{
     	switch ($_SESSION["security-level"]){
     		case "0": // This code is insecure. No input validation is performed.
-				$lEnableJavaScriptValidation = FALSE;
-				$lProtectAgainstXSS = FALSE;
 				$lValidateFileUpload = FALSE;
 				$lAllowedFileSize = 2000000;
 				$lUploadDirectoryFlag = "CLIENT_DECIDES";
 			break;
 
     		case "1": // This code is insecure. No input validation is performed.
-				$lEnableJavaScriptValidation = TRUE;
-				$lProtectAgainstXSS = FALSE;
 				$lValidateFileUpload = FALSE;
 				$lAllowedFileSize = 2000000;
 				$lUploadDirectoryFlag = "CLIENT_DECIDES";
@@ -24,8 +20,6 @@
 	   		case "3":
 	   		case "4":
     		case "5": // This code is fairly secure
-    			$lProtectAgainstCommandInjection=TRUE;
-   				$lProtectAgainstXSS = TRUE; 			
 				$lValidateFileUpload = TRUE;
 				$lAllowedFileSize = 20000;
 				$lUploadDirectoryFlag = "TEMP_DIRECTORY";
