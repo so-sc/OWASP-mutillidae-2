@@ -23,23 +23,6 @@
     	session_start();
     }// end if
 
-	/* ----------------------------------------------------
-	 * If the user would like to enforce the use of SSL, 
-	 * redirect any HTTP requests "up to" HTTPS. Otherwise
-	 * keep the URL the same. 
-	 * ---------------------------------------------------- */
-	if (!isset($_SESSION["EnforceSSL"])){
-    	$_SESSION["EnforceSSL"] = "False";
-    }// end if
-
-	if ($_SESSION["EnforceSSL"] == "True"){
-		if($_SERVER['HTTPS']!="on"){
-			$lSecureRedirect = "https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-			header("Location: $lSecureRedirect");
-			exit();
-		}//end if
-	}//end if
-
     // ----------------------------------------
 	// initialize security level to "insecure" 
 	// ----------------------------------------
@@ -47,21 +30,72 @@
     	$_SESSION['security-level'] = '0';
     }// end if
 
-	// user is logged out by default
+    /* ----------------------------------------------------
+     * ENFORCE SSL
+     * ----------------------------------------------------
+     * If the user would like to enforce the use of SSL,
+     * redirect any HTTP requests "up to" HTTPS. Otherwise
+     * keep the URL the same.
+     * ---------------------------------------------------- */
+    if (!isset($_SESSION["EnforceSSL"])){
+    	$_SESSION["EnforceSSL"] = "False";
+    }// end if
+    
+    switch ($_SESSION["security-level"]){
+    	case "0": // This code is insecure
+    	case "1": // This code is insecure
+		    if ($_SESSION["EnforceSSL"] == "True"){
+		    	if($_SERVER['HTTPS']!="on"){
+		    		$lSecureRedirect = "https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+		    		header("Location: $lSecureRedirect");
+		    		exit();
+		    	}//end if
+		    }//end if
+   		break;
+    			
+    	case "2":
+    	case "3":
+    	case "4":
+    	case "5": // This code is fairly secure
+		    if ($_SESSION["EnforceSSL"] == "True"){
+		    	if($_SERVER['HTTPS']!="on"){
+		    		//$lSecureRedirect = "http://".$_SERVER['HTTP_HOST']."/mutillidae/index.php?page=ssl-enforced.php";
+		    		//header("Location: $lSecureRedirect");
+		    		require_once('ssl-enforced.php');
+		    		exit();
+		    	}//end if
+		    }//end if
+   		break;
+    }// end switch
+    
+    
+    
+    
+    /* ----------------------------------------------------
+     * Initialize logged in status
+     * ----------------------------------------------------
+     * user is logged out by default
+     */
     if (!isset($_SESSION["loggedin"])){
 	    $_SESSION['loggedin'] = 'False';
 	    $_SESSION['logged_in_user'] = '';
 	    $_SESSION['logged_in_usersignature'] = '';	    	
     }// end if    
     
+    /* ----------------------------------------------------
+     * Check if user wants to disregard any detected
+     * database errors
+     * ----------------------------------------------------
+     * user is logged out by default
+     */
     if (!isset($_SESSION["UserOKWithDatabaseFailure"])) {
     	$_SESSION["UserOKWithDatabaseFailure"] = "FALSE";
     }// end if
     
-    // ----------------------------------------
-	// initialize showhints session and cookie 
-	// ----------------------------------------
-	/* This code is here to create a simulated vulnerability. Some
+    /* ----------------------------------------
+     * initialize showhints session and cookie
+     * ----------------------------------------
+	 * This code is here to create a simulated vulnerability. Some
 	 * sites put authorication and status tokens in cookies instead
 	 * of the session. This is a mistake. The user controls the 
 	 * cookies entirely.
