@@ -37,6 +37,7 @@ class YouTubeVideoHandler {
 	private $mYouTubeVideos = null;
 	private $mCurlIsInstalled = false;
 	private $mYouTubeIsReachable = false;
+	private $mRemoteFileHandler = null;
 
 	/* public properties */
 	public $InstallingOWASPMutillidaeIIonWindowswithXAMPP = 2;
@@ -126,9 +127,10 @@ class YouTubeVideoHandler {
 		
 	private function fetchVideoPropertiesFromYouTube($pVideoIdentificationToken){
 		$lYouTubeResponse = "";
+
 		try{
-			if (function_exists("curl_init")) {
-				$lConnectionTimeout = 2; //two seconds. Using constant messed up Metasplitable 2.
+			if ($this->mCurlIsInstalled) {
+				$lConnectionTimeout = 2; //two seconds. Using constant messed up Metasploitable 2.
 				$lCurlInstance = curl_init();
 				curl_setopt($lCurlInstance, CURLOPT_URL, "http://gdata.youtube.com/feeds/api/videos/".$pVideoIdentificationToken);
 				curl_setopt($lCurlInstance, CURLOPT_RETURNTRANSFER, 1);
@@ -139,7 +141,7 @@ class YouTubeVideoHandler {
 		} catch (Exception $e) {
 			//do nothing
 		}//end try
-		
+
 		return $lYouTubeResponse;
 	}// end function fetchVideoPropertiesFromYouTube
 	
@@ -201,10 +203,13 @@ class YouTubeVideoHandler {
 		return (strlen($lYouTubeResponse) > 0);
 	}// end function isYouTubeReachable()
 	
+	/* public methods */
+	
 	/* constructor */
 	public function __construct($pPathToESAPI, $pSecurityLevel){
 		$this->doSetSecurityLevel($pSecurityLevel);
 		$this->mYouTubeVideos = new YouTubeVideos($pPathToESAPI, $pSecurityLevel);
+		$this->mRemoteFileHandler = new RemoteFileHandler($pPathToESAPI, $pSecurityLevel);
 		$this->mCurlIsInstalled = $this->curlIsInstalled();
 		$this->mYouTubeIsReachable = $this->isYouTubeReachable();
 	}// end function __construct
