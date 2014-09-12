@@ -2,7 +2,51 @@ TODO: Add "edit my account page"
 TODO: Merge level-2 hints into level-1 hints
 TODO: Have level-1 hints open in new tab (optionally)
 TODO: Integrate LanMaster scripts
- 
+
+<div><span style="font-weight:bold;">09/12/2014</span>: Jeremy Druin</div>
+<blockquote>
+	<div>Change Log for OWASP Mutillidae II 2.6.13:</div>
+	<ul>
+		<li>
+			New vulnerability added: XPath injection by inspired by
+			Tim Tomes (Twitter: @LanMaster53). 
+			Some of Tim's code base was used as well.
+		</li>
+		<li>
+			Created new directory "data" to hold text data like XML database
+			files
+		</li>
+		<li>
+			Enhanced set-up-database to create accounts.xml file which
+			is stored in the data directory
+		</li>
+		<li>BUG FIX: Fixed style in set-up-database for failure message</li>
+		<li>Added a new type of message to set up database: warning</li>
+		<li>
+			Created an accounts.xml file to be included with the project since
+			PHP cannot update the accounts.xml file on all systems
+		</li>
+		<li>
+			Added protection against the new XPath vulnerability when the security
+			level is set to 5.
+		</li>
+		<li>Added quicklinks between user lookup XPath and user lookup SQL</li>
+		<li>Added User Info (XPath) to menu in several categories</li>
+		<li>Fixed a bug in SSLStrip documentation</li>
+		<li>Added help me documentation for XPath</li>
+	</ul>
+</blockquote>
+
+<div><span style="font-weight:bold;">09/05/2014</span>: Jeremy Druin</div>
+<blockquote>
+	<div>Change Log for OWASP Mutillidae II 2.6.12:</div>
+	<ul>
+		<li>Minor documentation improvements</li>
+		<li>Moved process-login-attempt.php into includes directory</li>
+		<li>Added Tim Tomes to included accounts</li>
+	</ul>
+</blockquote>
+
 <div><span style="font-weight:bold;">09/05/2014</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.6.11:</div>

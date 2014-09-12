@@ -42,7 +42,8 @@ function format($pMessage, $pLevel ) {
 	switch ($pLevel){
 		case "I": $lStyle = "database-informative-message";break;
 		case "S": $lStyle = "database-success-message";break;
-		case "F": $lStyle = "database-failture-message";break;
+		case "F": $lStyle = "database-failure-message";break;
+		case "W": $lStyle = "database-warning-message";break;
 	}// end switch
 	
 	return "<div class=\"".$lStyle."\">" . $pMessage . "</div>";
@@ -135,18 +136,22 @@ try{
 		('john', 'monkey', 'I like the smell of confunk', 'FALSE'),
 		('jeremy', 'password', 'd1373 1337 speak', 'FALSE'),
 		('bryce', 'password', 'I Love SANS', 'FALSE'),
-		('samurai', 'samurai', 'Carving Fools', 'FALSE'),
-		('jim', 'password', 'Jim Rome is Burning', 'FALSE'),
+		('samurai', 'samurai', 'Carving fools', 'FALSE'),
+		('jim', 'password', 'Rome is burning', 'FALSE'),
 		('bobby', 'password', 'Hank is my dad', 'FALSE'),
 		('simba', 'password', 'I am a super-cat', 'FALSE'),
 		('dreveil', 'password', 'Preparation H', 'FALSE'),
-		('scotty', 'password', 'Scotty Do', 'FALSE'),
-		('cal', 'password', 'Go Wildcats', 'FALSE'),
+		('scotty', 'password', 'Scotty do', 'FALSE'),
+		('cal', 'password', 'C-A-T-S Cats Cats Cats', 'FALSE'),
 		('john', 'password', 'Do the Duggie!', 'FALSE'),
 		('kevin', '42', 'Doug Adams rocks', 'FALSE'),
 		('dave', 'set', 'Bet on S.E.T. FTW', 'FALSE'),
 		('patches', 'tortoise', 'meow', 'FALSE'),
 		('rocky', 'stripes', 'treats?', 'FALSE'),
+		('tim', 'lanmaster53', 'Because reconnaissance is hard to spell', 'FALSE'),
+		('ABaker', 'SoSecret', 'Muffin tops only', 'TRUE'),
+		('PPan', 'NotTelling', 'Where is Tinker?', 'FALSE'),
+		('CHook', 'JollyRoger', 'Gator-hater', 'FALSE'),
 		('ed', 'pentest', 'Commandline KungFu anyone?', 'FALSE')";
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {
@@ -425,6 +430,12 @@ try{
 			('user-info.php', 12, 1),
 			('user-info.php', 13, 1),
 			('user-info.php', 30, 1),
+			('user-info-xpath.php', 1, 1),
+			('user-info-xpath.php', 11, 1),
+			('user-info-xpath.php', 12, 1),
+			('user-info-xpath.php', 13, 1),
+			('user-info-xpath.php', 30, 1),
+			('user-info-xpath.php', 49, 1),
 			('user-poll.php', 11, 1),
 			('user-poll.php', 12, 1),
 			('user-poll.php', 14, 1),
@@ -535,7 +546,7 @@ try{
 	 */
 	$lQueryString ="INSERT INTO help_texts (help_text_key, help_text) VALUES
 		(0, 'The index page has several global vulnerabilities.'),
-		(1, 'SSLStrip can be used to downgrade the connection when the Enforce SSL button is selected.'),
+		(1, '<span class=\"label\">SSLStrip</span> can be used to downgrade the connection when the Enforce SSL button is selected.'),
 		(2, 'Output fields such as the logged-in username, signature, and the footer are vulnerable to cross-site scripting.'),
 		(3, 'The hints cookie and other cookies can be hacked to login as another user and gain admin access.'),
 		(4, 'Cookies are missing the HTTPOnly attribute and may be accessed via cross-site scripting.'),
@@ -581,7 +592,8 @@ try{
 		(45, '<span class=\"label\">User Agent Impersonation</span>: Based on the information sent by the browser, this page decides if the user is authorized.'),
 		(46, '<span class=\"label\">Unrestricted File Upload</span>: This page allows dangerous files to be uploaded.'),
 		(47, '<span class=\"label\">Username Enumeration</span>: This page allows usernames to be enumerated.'),
-		(48, '<span class=\"label\">Application Log Injection</span>: Some inputs on this page are recorded into log records which can be read by visiting the Show Log page. Vulnerabilities on the Show Log page may allow injections in log records to execute.')";
+		(48, '<span class=\"label\">Application Log Injection</span>: Some inputs on this page are recorded into log records which can be read by visiting the Show Log page. Vulnerabilities on the Show Log page may allow injections in log records to execute.'),
+		(49, '<span class=\"label\">XPath Injection</span>: Some inputs on this page are vulnerable to XPath injection.')";
 	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {
@@ -813,6 +825,57 @@ try{
 		echo format("Executed query 'CREATE PROCEDURE' with result ".$lQueryResult,"S");
 	}// end if
 	
+	/* ***********************************************************************************
+	 * Create accounts.xml file from MySQL accounts table 
+	 * ************************************************************************************/
+	$lAccountXMLFilePath="./data/accounts.xml";
+	
+	echo format("Trying to build XML version of accounts table to update accounts XML ".$lAccountXMLFilePath,"I");
+	echo format("Do not worry. A default version of the file is included if this does not work.","I");
+	
+	$lAccountsXML = "";
+	$lQueryString = "SELECT username, password, mysignature, is_admin FROM accounts;";
+	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
+	
+	if (isset($lQueryResult->num_rows)){
+		if ($lQueryResult->num_rows > 0) {
+			$lResultsFound = TRUE;
+			$lRecordsFound = $lQueryResult->num_rows;
+		}//end if
+	}//end if
+
+	if ($lResultsFound){
+		
+		echo format("Executed query 'SELECT * FROM accounts'. Found ".$lRecordsFound." records.","S");
+		
+		$lAccountsXML='<?xml version="1.0" encoding="utf-8"?>';
+		$lAccountsXML.="<Employees>";
+		$lCounter=1;
+		
+		while($row = $lQueryResult->fetch_object()){
+		   	$lAccountsXML.='<Employee ID="'.$lCounter.'">';
+		   	$lAccountsXML.='<UserName>'.$row->username.'</UserName>';
+		   	$lAccountsXML.='<Password>'.$row->password.'</Password>';
+		   	$lAccountsXML.='<Signature>'.$row->username.'</Signature>';
+		   	$lAccountsXML.='<Type>'.$row->is_admin?"Admin":"User".'</Type>';
+		   	$lAccountsXML.='</Employee>';
+		   	$lCounter+=1;
+		}// end while
+
+		$lAccountsXML.="</Employees>";
+		
+		if (is_writable($lAccountXMLFilePath)){
+			file_put_contents($lAccountXMLFilePath,$lAccountsXML);
+			echo format("Wrote accounts to ".$lAccountXMLFilePath,"S");
+		}else{
+			echo format("Could not write accounts XML to ".$lAccountXMLFilePath,"W");
+		}// end if
+
+	} else {
+		$lErrorDetected = TRUE;
+		echo format("Warning: No records found when trying to build XML version of accounts table ".$lQueryResult,"W");
+	}// end if ($lResultsFound)	
+			
 	$MySQLHandler->closeDatabaseConnection();
 
 } catch (Exception $e) {

@@ -527,3 +527,12 @@ div.database-informative-message{
 	color: #000033;
 	padding: 3px;	
 }
+
+div.database-warning-message{
+	text-align: center;
+	width: 600px;
+	text-align: left;
+	font-weight: bold;
+	color: #999900;
+	padding: 3px;	
+}

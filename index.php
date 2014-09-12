@@ -15,7 +15,7 @@
 	require_once (__ROOT__.'/classes/LogHandler.php');
 	require_once (__ROOT__.'/classes/BubbleHintHandler.php');
 	require_once (__ROOT__.'/classes/RemoteFileHandler.php');
-
+	
     /* ------------------------------------------
      * INITIALIZE SESSION
      * ------------------------------------------ */
@@ -67,10 +67,7 @@
 		    	}//end if
 		    }//end if
    		break;
-    }// end switch
-    
-    
-    
+    }// end switch    
     
     /* ----------------------------------------------------
      * Initialize logged in status
@@ -174,7 +171,7 @@
 		header("Location: database-offline.php", true, 302);
 		exit();
 		*/
-	}
+	}// end function
 
 	function handleException($exception){
 		//restore_error_handler();
@@ -261,21 +258,21 @@
  	* initialize remote file handler
  	* ------------------------------------------ */
 	$RemoteFileHandler = new RemoteFileHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
-
+		
 	/* ------------------------------------------
 	* PROCESS REQUESTS
 	* ------------------------------------------ */
 	if (isset($_GET["do"])){
-	    	include ("process-commands.php");
+		include_once("process-commands.php");
 	}// end if
     
 	/* ------------------------------------------
 	* PROCESS LOGIN ATTEMPT (IF ANY)
 	* ------------------------------------------ */
 	if (isset($_POST["login-php-submit-button"])){
-		include ("process-login-attempt.php");
+		include_once("includes/process-login-attempt.php");
 	}// end if
-    
+
 	/* ------------------------------------------
      * REACT TO CLIENT SIDE CHANGES
      * ------------------------------------------ */

@@ -9,7 +9,7 @@
 						<li>
 							<a href="">SQLi - Extract Data</a>
 							<ul>
-								<li><a href="index.php?page=user-info.php">User Info</a></li>
+								<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
 							</ul>
 						</li>
 						<li>
@@ -30,7 +30,7 @@
 							<a href="">Blind SQL via Timing</a>
 							<ul>
 								<li><a href="index.php?page=login.php">Login</a></li>
-								<li><a href="index.php?page=user-info.php">User Info</a></li>
+								<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
 							</ul>
 						</li>
 						<li>
@@ -39,7 +39,7 @@
 								<li><a href="index.php?page=sqlmap-targets.php">SQLMAP Practice Targets</a></li>
 								<li><a href="index.php?page=login.php">Login</a></li>
 								<li><a href="index.php?page=view-someones-blog.php">View Someones Blog</a></li>
-								<li><a href="index.php?page=user-info.php">User Info</a></li>
+								<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
 							</ul>
 						</li>
 						<li>
@@ -74,7 +74,8 @@
 								<li><a href="index.php?page=dns-lookup.php">DNS Lookup</a></li>
 								<li><a href="index.php?page=pen-test-tool-lookup.php">Pen Test Tool Lookup</a></li>
 								<li><a href="index.php?page=text-file-viewer.php">Text File Viewer</a></li>
-								<li><a href="index.php?page=user-info.php">User Info</a></li>
+								<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
+								<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
 								<li><a href="index.php?page=set-background-color.php">Set Background Color</a></li>
 								<li><a href="index.php?page=html5-storage.php">HTML5 Storage</a></li>
 								<li><a href="index.php?page=capture-data.php">Capture Data Page</a></li>
@@ -173,6 +174,12 @@
 							</ul>
 						</li>
 						<li>
+							<a href="">XPath Injection</a>
+							<ul>
+								<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
+							</ul>
+						</li>
+						<li>
 							<a href="">Application Log Injection</a>
 							<ul>
 								<li><a href="index.php?page=add-to-your-blog.php">Add to your blog</a></li>
@@ -232,13 +239,14 @@
 								<li><a href="index.php?page=dns-lookup.php">DNS Lookup</a></li>
 								<li><a href="index.php?page=pen-test-tool-lookup.php">Pen Test Tool Lookup</a></li>
 								<li><a href="index.php?page=text-file-viewer.php">Text File Viewer</a></li>
-								<li><a href="index.php?page=user-info.php">User Info</a></li>
+								<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
 								<li><a href="index.php?page=set-background-color.php">Set Background Color</a></li>
 								<li><a href="index.php?page=html5-storage.php">HTML5 Storage</a></li>
 								<li><a href="index.php?page=capture-data.php">Capture Data Page</a></li>
 								<li><a href="index.php?page=document-viewer.php&PathToDocument=documentation/how-to-access-Mutillidae-over-Virtual-Box-network.php">Document Viewer</a></li>
 								<li><a href="index.php?page=arbitrary-file-inclusion.php">Arbitrary File Inclusion</a></li>
 								<li><a href="index.php?page=xml-validator.php">XML Validator</a></li>
+								<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>	
 								<li><a href="index.php?page=user-poll.php">Poll Question</a></li>
 								<li><a href="index.php?page=register.php">Register User</a></li>
 								<li><a href="index.php?page=browser-info.php">Browser Info</a></li>
@@ -267,7 +275,8 @@
 								<li><a href="index.php?page=show-log.php">Show Log</a><li>
 								<li><a href="index.php?page=text-file-viewer.php">Text File Viewer</a></li>
 								<li><a href="index.php?page=dns-lookup.php">DNS Lookup</a></li>
-								<li><a href="index.php?page=user-info.php">User Info</a></li>
+								<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
+								<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
 								<li><a href="index.php">Missing HTTPOnly Attribute</a></li>
 								<li><a href="index.php?page=set-background-color.php">Set Background Color</a></li>
 								<li><a href="index.php?page=pen-test-tool-lookup.php">Pen Test Tool Lookup</a></li>
@@ -320,6 +329,12 @@
 							</ul>
 						</li>
 						<li>
+							<a href="">Via XPath Injection</a>
+							<ul>
+								<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
+							</ul>
+						</li>						
+						<li>
 							<a href="">BeeF Framework Targets</a>
 							<ul>
 								<li><a href="index.php?page=add-to-your-blog.php">Add to your blog</a></li>
@@ -328,13 +343,14 @@
 								<li><a href="index.php?page=dns-lookup.php">DNS Lookup</a></li>
 								<li><a href="index.php?page=pen-test-tool-lookup.php">Pen Test Tool Lookup</a></li>
 								<li><a href="index.php?page=text-file-viewer.php">Text File Viewer</a></li>
-								<li><a href="index.php?page=user-info.php">User Info</a></li>
+								<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
 								<li><a href="index.php?page=set-background-color.php">Set Background Color</a></li>
 								<li><a href="index.php?page=html5-storage.php">HTML5 Storage</a></li>
 								<li><a href="index.php?page=capture-data.php">Capture Data Page</a></li>
 								<li><a href="index.php?page=document-viewer.php&PathToDocument=documentation/how-to-access-Mutillidae-over-Virtual-Box-network.php">Document Viewer</a></li>
 								<li><a href="index.php?page=arbitrary-file-inclusion.php">Arbitrary File Inclusion</a></li>
 								<li><a href="index.php?page=xml-validator.php">XML Validator</a></li>
+								<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
 								<li><a href="index.php?page=user-poll.php">Poll Question</a></li>
 								<li><a href="index.php?page=register.php">Register User</a></li>
 							</ul>
@@ -360,7 +376,8 @@
 							<a href="">Method Tampering (GET for POST)</a>
 							<ul>
 								<li><a href="index.php?page=add-to-your-blog.php">Add to your blog</a></li>
-								<li><a href="index.php?page=user-info.php">User Info</a></li>
+								<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
+								<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
 								<li><a href="index.php?page=user-poll.php">Poll Question</a></li>
 								<li><a href="index.php?page=dns-lookup.php">DNS Lookup</a></li>
 							</ul>
@@ -451,7 +468,8 @@
 				<li>
 					<a href="http://www.owasp.org/index.php/Top_10_2010-A7" target="_blank">2010 A7 - Insecure Cryptographic Storage</a>
 					<ul>
-						<li><a href="index.php?page=user-info.php">User Info</a></li>
+						<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
+						<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
 						<li><a href="index.php?page=html5-storage.php">HTML5 Storage</a></li>
 						<li><a href="index.php?page=view-user-privilege-level.php&iv=6bc24fc1ab650b25b4114e93a98f1eba">View User Privileges</a></li>
 					</ul>
@@ -472,7 +490,8 @@
 					<ul>
 						<li><a href="index.php?page=ssl-misconfiguration.php">SSL Misconfiguration</a></li>
 						<li><a href="index.php?page=login.php">Login</a></li>
-						<li><a href="index.php?page=user-info.php">User Info</a></li>
+						<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
+						<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -506,7 +525,8 @@
 				<li>
 					<a href="http://www.owasp.org/index.php/Top_10_2007-A6" target="_blank">OWASP 2007 A6 - Improper Error Handling</a>
 					<ul>
-						<li><a href="index.php?page=user-info.php">User Info</a></li>
+						<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
+						<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
 						<li><a href="index.php?page=login.php">Login</a></li>
 						<li><a href="index.php?page=register.php">Register</a></li>
 						<li><a href="index.php?page=pen-test-tool-lookup.php">Pen Test Tool Lookup</a></li>
@@ -609,6 +629,12 @@
 					</ul>
 				</li>
 				<li>
+					<a href="">XPath Injection</a>
+					<ul>
+						<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
+					</ul>
+				</li>				
+				<li>
 					<a href="">Local File Inclusion</a>
 					<ul>
 						<li><a href="index.php?page=arbitrary-file-inclusion.php">Arbitrary File Inclusion</a></li>
@@ -631,7 +657,8 @@
 					<a href="">JavaScript Validation Bypass</a>
 					<ul>
 						<li><a href="index.php?page=login.php">Login</a></li>
-						<li><a href="index.php?page=user-info.php">User Info</a></li>
+						<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
+						<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
 						<li><a href="index.php?page=add-to-your-blog.php">Add to your blog</a></li>
 						<li><a href="index.php?page=html5-storage.php">HTML5 Storage</a></li>
 						<li><a href="index.php?page=dns-lookup.php">DNS Lookup</a></li>
