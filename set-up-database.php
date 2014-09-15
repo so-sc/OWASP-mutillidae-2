@@ -518,7 +518,8 @@ try{
 		(44, 'secret-administrative-pages-hint.inc'),
 		(45, 'user-agent-impersonation-hint.inc'),
 		(46, 'unrestricted-file-upload-hint.inc'),
-		(48, 'application-log-injection.inc')";
+		(48, 'application-log-injection.inc'),
+		(49, 'xpath-injection-hint.inc')";
 					
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {
@@ -848,27 +849,30 @@ try{
 		
 		echo format("Executed query 'SELECT * FROM accounts'. Found ".$lRecordsFound." records.","S");
 		
-		$lAccountsXML='<?xml version="1.0" encoding="utf-8"?>';
-		$lAccountsXML.="<Employees>";
+		$lAccountsXML='<?xml version="1.0" encoding="utf-8"?>'.PHP_EOL;
+		$lAccountsXML.="<Employees>".PHP_EOL;
 		$lCounter=1;
+		$cTAB = CHR(9);
 		
 		while($row = $lQueryResult->fetch_object()){
-		   	$lAccountsXML.='<Employee ID="'.$lCounter.'">';
-		   	$lAccountsXML.='<UserName>'.$row->username.'</UserName>';
-		   	$lAccountsXML.='<Password>'.$row->password.'</Password>';
-		   	$lAccountsXML.='<Signature>'.$row->username.'</Signature>';
-		   	$lAccountsXML.='<Type>'.$row->is_admin?"Admin":"User".'</Type>';
-		   	$lAccountsXML.='</Employee>';
+			$lAccountType = $row->is_admin?"Admin":"User";
+		   	$lAccountsXML.=$cTAB.'<Employee ID="'.$lCounter.'">'.PHP_EOL;
+		   	$lAccountsXML.=$cTAB.$cTAB.'<UserName>'.$row->username.'</UserName>'.PHP_EOL;
+		   	$lAccountsXML.=$cTAB.$cTAB.'<Password>'.$row->password.'</Password>'.PHP_EOL;
+		   	$lAccountsXML.=$cTAB.$cTAB.'<Signature>'.$row->username.'</Signature>'.PHP_EOL;
+		   	$lAccountsXML.=$cTAB.$cTAB.'<Type>'.$lAccountType.'</Type>'.PHP_EOL;
+		   	$lAccountsXML.=$cTAB.'</Employee>'.PHP_EOL;
 		   	$lCounter+=1;
 		}// end while
 
-		$lAccountsXML.="</Employees>";
+		$lAccountsXML.="</Employees>".PHP_EOL;
 		
-		if (is_writable($lAccountXMLFilePath)){
+		if (is_writable(pathinfo($lAccountXMLFilePath)['dirname'])){
 			file_put_contents($lAccountXMLFilePath,$lAccountsXML);
 			echo format("Wrote accounts to ".$lAccountXMLFilePath,"S");
 		}else{
 			echo format("Could not write accounts XML to ".$lAccountXMLFilePath,"W");
+			echo format("Using default version of accounts.xml","W");
 		}// end if
 
 	} else {

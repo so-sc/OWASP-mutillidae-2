@@ -206,16 +206,18 @@
 				$lHTMLXPathQueryString = $lXPathQueryString;
 			}// end if			
 
-			echo "<span onmouseover=\"document.getElementById('xml').style.display='inline';\" onmouseout=\"document.getElementById('xml').style.display='none';\">View XML</span><br />";
-			echo "<div id=\"xml\" style=\"display: none; border: 1px solid black;\"></div>";
-			echo "<br />";
-			echo 'Executed query: ' . $lHTMLXPathQueryString . '<br /><br />';
+			echo '<br /><span style="font-weight:bold;">Executed query:</span>&nbsp;' . $lHTMLXPathQueryString . '<br /><br />';
 
 			if ($lXMLQueryResults){
-				echo 'Results for user '.$lHTMLUsername.':<br /><pre>'.$lXMLQueryResults.'</pre>';
+				echo '<span style="font-weight:bold;">Results for user '.$lHTMLUsername.':</span><br /><pre>'.$lXMLQueryResults.'</pre>';
 			}else{
 				echo 'No Results Found<br />';
-			};// end if			
+			};// end if
+			
+			echo "<br />";
+			echo "<input type='button' class='button' value='Click Here to View XML' onclick=\"var s=document.getElementById('xml').style; s.display=='none'?s.display='inline':s.display='none';\"><br />";
+			echo "<div id=\"xml\" style=\"display: none;\"></div>";
+				
     	} catch (Exception $e) {
 			echo $CustomErrorHandler->FormatError($e, "Error attempting to display user information");
        	}// end try;
