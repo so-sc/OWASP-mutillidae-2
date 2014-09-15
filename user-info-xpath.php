@@ -121,14 +121,14 @@
 <span>
 	<a style="text-decoration: none; cursor: pointer;" href="./webservices/soap/ws-user-account.php">
 		<img style="vertical-align: middle;" src="./images/ajax_logo-285x300.jpg" height="75px" width="78px" />
-		<span style="font-weight:bold;">Switch to SOAP Web Service Version of this Page</span>
+		<span style="font-weight:bold;">Switch to SOAP Web Service version</span>
 	</a>
 </span>
-<br />
+&nbsp;&nbsp;&nbsp;
 <span>
 	<a style="text-decoration: none; cursor: pointer;" href="index.php?page=user-info.php">
 		<img style="vertical-align: middle;" src="./images/sql-logo-128-by-128.png" height="64px" width="64px" />
-		<span style="font-weight:bold;">Switch to SQL Version of this Page</span>
+		<span style="font-weight:bold;">Switch to SQL version</span>
 	</a>
 </span>
 
@@ -206,16 +206,19 @@
 				$lHTMLXPathQueryString = $lXPathQueryString;
 			}// end if			
 
+			echo '<br />
+				  <div class="report-header">
+						Results for <span ReflectedXSSExecutionPoint="1" style="color:#770000;">'
+					.$lHTMLUsername.
+				'</span></div>';		
+			
 			echo '<br /><span style="font-weight:bold;">Executed query:</span>&nbsp;' . $lHTMLXPathQueryString . '<br /><br />';
-
 			if ($lXMLQueryResults){
-				echo '<span style="font-weight:bold;">Results for user '.$lHTMLUsername.':</span><br /><pre>'.$lXMLQueryResults.'</pre>';
+				echo $lXMLQueryResults;
 			}else{
 				echo 'No Results Found<br />';
-			};// end if
-			
-			echo "<br />";
-			echo "<input type='button' class='button' value='Click Here to View XML' onclick=\"var s=document.getElementById('xml').style; s.display=='none'?s.display='inline':s.display='none';\"><br />";
+			};// end if			
+			echo "<br /><input type='button' class='button' value='Click Here to View XML' onclick=\"var s=document.getElementById('xml').style; s.display=='none'?s.display='inline':s.display='none';\"><br />";
 			echo "<div id=\"xml\" style=\"display: none;\"></div>";
 				
     	} catch (Exception $e) {
@@ -232,7 +235,7 @@
 	}// end function
 
 	decode_data();
-</script>    
+</script>
 </body>
 
 <?php	

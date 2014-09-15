@@ -109,14 +109,14 @@
 <span>
 	<a style="text-decoration: none; cursor: pointer;" href="./webservices/soap/ws-user-account.php">
 		<img style="vertical-align: middle;" src="./images/ajax_logo-285x300.jpg" height="75px" width="78px" />
-		<span style="font-weight:bold;">Switch to SOAP Web Service Version of this Page</span>
+		<span style="font-weight:bold;">Switch to SOAP Web Service version</span>
 	</a>
 </span>
-<br />
+&nbsp;&nbsp;&nbsp;
 <span>
 	<a style="text-decoration: none; cursor: pointer;" href="index.php?page=user-info-xpath.php">
 		<img style="vertical-align: middle;" src="./images/xml-logo-128-by-128.png" height="64px" width="64px" />
-		<span style="font-weight:bold;">Switch to XPath Version of this Page</span>
+		<span style="font-weight:bold;">Switch to XPath version</span>
 	</a>
 </span>
 
