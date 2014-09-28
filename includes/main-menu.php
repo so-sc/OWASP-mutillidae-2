@@ -174,6 +174,18 @@
 							</ul>
 						</li>
 						<li>
+							<a href="">XML Entity Expansion</a>
+							<ul>
+								<li><a href="index.php?page=xml-validator.php">XML Validator</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="">XML Injection</a>
+							<ul>
+								<li><a href="index.php?page=xml-validator.php">XML Validator</a></li>
+							</ul>
+						</li>
+						<li>
 							<a href="">XPath Injection</a>
 							<ul>
 								<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>

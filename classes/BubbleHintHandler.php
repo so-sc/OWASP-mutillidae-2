@@ -34,12 +34,12 @@ class BubbleHintHandler {
 	   		break;
 	   	}// end switch		
 	}// end function
-	
+
 	private function doShowHideHints($pboolShow){
 		$this->mDisplayHints = $pboolShow;
 		$_SESSION["BubbleHintHandler"]["mDisplayHints"] = $pboolShow;
 	}// end function
-						
+
 	public function __construct($pPathToESAPI, $pSecurityLevel){
 		
 		$this->doSetSecurityLevel($pSecurityLevel);
@@ -55,7 +55,8 @@ class BubbleHintHandler {
 		$this->mMySQLHandler->connectToDefaultDatabase();
 		
 		if(!isset($_SESSION["BubbleHintHandler"]["mDisplayHints"])){
-			$this->doShowHideHints(TRUE);
+			//$this->doShowHideHints(TRUE);
+			$this->doShowHideHints(FALSE);
 		}else{
 			$this->doShowHideHints($_SESSION["BubbleHintHandler"]["mDisplayHints"]);
 		}//end if

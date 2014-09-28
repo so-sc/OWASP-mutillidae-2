@@ -86,7 +86,6 @@
 	$lSecurityLevelMessage = "Security Level: ".$_SESSION["security-level"]." (".$lSecurityLevelDescription.")";
 ?>
 
-<!-- Bubble hints code -->
 <?php 
 	try{
    		$lReflectedXSSExecutionPointBallonTip = $BubbleHintHandler->getHint("ReflectedXSSExecutionPoint");
@@ -179,17 +178,17 @@
 							echo '<td><a href="index.php?do=toggle-hints&page='.$lPage.'">Toggle Hints</a></td><td>|</td>';
 						}// end if
 					?>
+					<td><a href="index.php?do=toggle-bubble-hints&page=<?php echo $lPage?>"><?php echo $lPopupHintsLabel; ?></a></td>
+					<td>|</td>
 					<td><a href="index.php?do=toggle-security&page=<?php echo $lPage?>">Toggle Security</a></td>
+					<td>|</td>
+					<td><a href="index.php?do=toggle-enforce-ssl&page=<?php echo $lPage?>"><?php echo $lEnforceSSLLabel; ?></a></td>
 					<td>|</td>
 					<td><a href="set-up-database.php">Reset DB</a></td>
 					<td>|</td>
 					<td><a href="index.php?page=show-log.php">View Log</a></td>
 					<td>|</td>
 					<td><a href="index.php?page=captured-data.php">View Captured Data</a></td>
-					<td>|</td>
-					<td><a href="index.php?do=toggle-bubble-hints&page=<?php echo $lPage?>"><?php echo $lPopupHintsLabel; ?></a></td>
-					<td>|</td>
-					<td><a href="index.php?do=toggle-enforce-ssl&page=<?php echo $lPage?>"><?php echo $lEnforceSSLLabel; ?></a></td>
 				</tr>
 			</table>	
 		</td>

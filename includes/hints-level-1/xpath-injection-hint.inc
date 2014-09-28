@@ -21,7 +21,8 @@
 			<br/><br/>
 			Attempt to inject XML reserved characters into input
 			parameters and observe if XML parsing errors are 
-			generated.
+			generated. Make a list of input parameters that appear 
+			to be passed into an XML parser based on ths feedback.
 			<br/><br/>
 			For web services, check each input parameter specified in the 
 			WSDL or WADL document for those of type XML.
@@ -35,7 +36,7 @@
 			<br/><br/>
 			<span class="report-header">Example</span>
 			<br/><br/>
-			Here is an examples to try in the username field
+			Try this example in the username field
 			<br/>
 <code>
 	admin&apos; or &apos;1&apos; = &apos;1

@@ -107,6 +107,8 @@ try{
 	         'password TEXT, '.
 			 'mysignature TEXT, '.
 			 'is_admin VARCHAR(5),'.
+			 'firstname TEXT, '.
+			 'lastname TEXT, '.
 			 'PRIMARY KEY(cid))';
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {
@@ -130,29 +132,30 @@ try{
 		echo format("Executed query 'CREATE TABLE' with result ".$lQueryResult,"S");
 	}// end if
 	
-	$lQueryString = "INSERT INTO accounts (username, password, mysignature, is_admin) VALUES
-		('admin', 'adminpass', 'g0t r00t?', 'TRUE'),
-		('adrian', 'somepassword', 'Zombie Films Rock!', 'TRUE'),
-		('john', 'monkey', 'I like the smell of confunk', 'FALSE'),
-		('jeremy', 'password', 'd1373 1337 speak', 'FALSE'),
-		('bryce', 'password', 'I Love SANS', 'FALSE'),
-		('samurai', 'samurai', 'Carving fools', 'FALSE'),
-		('jim', 'password', 'Rome is burning', 'FALSE'),
-		('bobby', 'password', 'Hank is my dad', 'FALSE'),
-		('simba', 'password', 'I am a super-cat', 'FALSE'),
-		('dreveil', 'password', 'Preparation H', 'FALSE'),
-		('scotty', 'password', 'Scotty do', 'FALSE'),
-		('cal', 'password', 'C-A-T-S Cats Cats Cats', 'FALSE'),
-		('john', 'password', 'Do the Duggie!', 'FALSE'),
-		('kevin', '42', 'Doug Adams rocks', 'FALSE'),
-		('dave', 'set', 'Bet on S.E.T. FTW', 'FALSE'),
-		('patches', 'tortoise', 'meow', 'FALSE'),
-		('rocky', 'stripes', 'treats?', 'FALSE'),
-		('tim', 'lanmaster53', 'Because reconnaissance is hard to spell', 'FALSE'),
-		('ABaker', 'SoSecret', 'Muffin tops only', 'TRUE'),
-		('PPan', 'NotTelling', 'Where is Tinker?', 'FALSE'),
-		('CHook', 'JollyRoger', 'Gator-hater', 'FALSE'),
-		('ed', 'pentest', 'Commandline KungFu anyone?', 'FALSE')";
+	$lQueryString = "INSERT INTO accounts (username, password, mysignature, is_admin, firstname, lastname) VALUES
+		('admin', 'adminpass', 'g0t r00t?', 'TRUE' ,'System' ,'Administrator'),
+		('adrian', 'somepassword', 'Zombie Films Rock!', 'TRUE' ,'Adrian' ,'Crenshaw'),
+		('john', 'monkey', 'I like the smell of confunk', 'FALSE' ,'John' ,'Pentest'),
+		('jeremy', 'password', 'd1373 1337 speak', 'FALSE' ,'Jeremy' ,'Druin'),
+		('bryce', 'password', 'I Love SANS', 'FALSE' ,'Bryce' ,'Galbraith'),
+		('samurai', 'samurai', 'Carving fools', 'FALSE' ,'Samurai' ,'WTF'),
+		('jim', 'password', 'Rome is burning', 'FALSE' ,'Jim' ,'Rome'),
+		('bobby', 'password', 'Hank is my dad', 'FALSE' ,'Bobby' ,'Hill'),
+		('simba', 'password', 'I am a super-cat', 'FALSE' ,'Simba' ,'Lion'),
+		('dreveil', 'password', 'Preparation H', 'FALSE' ,'Dr.' ,'Evil'),
+		('scotty', 'password', 'Scotty do', 'FALSE' ,'Scotty' ,'Evil'),
+		('cal', 'password', 'C-A-T-S Cats Cats Cats', 'FALSE' ,'John' ,'Calipari'),
+		('john', 'password', 'Do the Duggie!', 'FALSE' ,'John' ,'Wall'),
+		('kevin', '42', 'Doug Adams rocks', 'FALSE' ,'Kevin' ,'Johnson'),
+		('dave', 'set', 'Bet on S.E.T. FTW', 'FALSE' ,'Dave' ,'Kennedy'),
+		('patches', 'tortoise', 'meow', 'FALSE' ,'Patches' ,'Pester'),
+		('rocky', 'stripes', 'treats?', 'FALSE' ,'Rocky' ,'Paws'),
+		('tim', 'lanmaster53', 'Because reconnaissance is hard to spell', 'FALSE' ,'Tim' ,'Tomes'),
+		('ABaker', 'SoSecret', 'Muffin tops only', 'TRUE' ,'Aaron' ,'Baker'),
+		('PPan', 'NotTelling', 'Where is Tinker?', 'FALSE' ,'Peter' ,'Pan'),
+		('CHook', 'JollyRoger', 'Gator-hater', 'FALSE' ,'Captain' ,'Hook'),
+		('james', 'i<3devs', 'Occupation: Researcher', 'FALSE' ,'James' ,'Jardine'),
+		('ed', 'pentest', 'Commandline KungFu anyone?', 'FALSE' ,'Ed' ,'Skoudis')";
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {
 		$lErrorDetected = TRUE;

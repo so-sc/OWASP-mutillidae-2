@@ -1,7 +1,46 @@
 TODO: Add "edit my account page"
 TODO: Merge level-2 hints into level-1 hints
 TODO: Have level-1 hints open in new tab (optionally)
-TODO: Integrate LanMaster scripts
+
+<div><span style="font-weight:bold;">09/24/2014</span>: Jeremy Druin</div>
+<blockquote>
+	<div>Change Log for OWASP Mutillidae II 2.6.14:</div>
+	<ul>
+		<li>
+			BUG FIX: Moved information disclosure comment that discloses database 
+			credentials from top of page to below the body tag to fix 
+			issue in Burp-Suite render tab. Note the issue did not affect
+			standard browsers. The render functionality in Burp-Suite does
+			not work if comment appears at top of page. Credit Kevin Johnson
+			(@secureideas).
+		</li>
+		<li>
+			Altered the startup to disable bubble hints (popup hints)
+			by default
+		</li>
+		<li>
+			Improved the initial status hint to more clearly let the user know help
+			is available
+		</li>
+		<li>Added James Jardine to list of default accounts</li>
+		<li>Added firstname and lastname columns to the accounts table</li>
+		<li>
+			Reorganized the menu bar to put toggle hints and toggle popup
+			hints together. Also moved the view logs and view captured data 
+			together.
+		 </li>
+		 <li>Updated the vulnerabilities.php page with xpath vulnerabilities</li>
+		 <li>
+			 Updated listing of vulnerabilities under the Documentation 
+			 menu (vulnerabilities.php) to include several vulnerabilities
+			 that are built into the tool but not documented previously
+		 </li>
+		 <li>
+			 Added XML Injection and XML Entity Expansion to the menu under
+			 Other Injection
+		 </li>
+	</ul>
+</blockquote>
 
 <div><span style="font-weight:bold;">09/12/2014</span>: Jeremy Druin</div>
 <blockquote>

@@ -16,6 +16,9 @@
 				<li>CBC bit flipping (latest)</li>
 				<li>Click-jacking</li>
 				<li>Comments with sensitive data</li>
+				<li>Content type is not specified</li>
+				<li>Cookie scoped to parent domain</li>
+				<li>Credit card numbers disclosed</li>
 				<li>Cross Site Request Forgery</li>
 				<li>Denial of Service</li>
 				<li>Directory Browsing</li>
@@ -39,18 +42,22 @@
 				<li>Method Tampering</li>
 				<li>O/S Command injection</li>
 				<li>Parameter addition</li>
+				<li>Password field submitted using GET method</li>
 				<li>PHPMyAdmin Console</li>
 				<li>PHP server configuration disclosure</li>
 				<li>Phishing</li>
 				<li>Platform path disclosure</li>
 				<li>Privilege Escalation via Cookie Injection</li>
-				<li>Reflected Cross Site Scripting via GET, POST, Cookies,  and HTTP Headers</li>
+				<li>Reflected Cross Site Scripting via GET, POST, Cookies, and HTTP Headers</li>
 				<li>Remote File Inclusion</li>
 				<li>robots.txt information disclosure</li>
 				<li>Stored Cross Site Scripting</li>
 				<li>SSL Stripping</li>
 				<li>SQL Injection</li>
+				<li>XML Entity Expansion</li>
+				<li>XML Injection</li>
 				<li>XML External Entity Injection</li>
+				<li>XPath Injection</li>
 				<li>Unencrypted database credentials</li>
 				<li>Unrestricted File Upload</li>
 				<li>Username enumeration</li>
@@ -528,6 +535,16 @@
 	</ul>
 </div>
 
+<p class="label">user-info-xpath.php</p>
+<div style="padding-left: 40px;">
+	<ul>
+		<li>XPath injection to dump all usernames and passwords via the username field or the password field</li>
+		<li>XSS via any of the displayed fields. Inject the XSS on the register.php page.</li>
+		<li>XSS via the username field</li>
+		<li>JavaScript validation bypass</li>
+	</ul>
+</div>
+
 <p class="label">user-poll.php</p>
 <div style="padding-left: 40px;">
 	<ul>
@@ -584,6 +601,8 @@
 <div style="padding-left: 40px;">
 	<ul>
 		<li>XML Entity Injection Attack</li>
+		<li>XML Entity Expansion</li>
+		<li>XML Injection</li>
 		<li>Reflected Cross site scripting via XML Injection</li>
 	</ul>
 </div>

@@ -1,6 +1,6 @@
 <?php 
 	switch ($_GET["popUpNotificationCode"]){
-		case "HPH0": $lhintsPopUpNotificationMessage = "Feeling Lost? Toggle hints to activate dynamic help system.";break;
+		case "HPH0": $lhintsPopUpNotificationMessage = "<b>Feeling Lost?</b> Toggle <b><u>Hints</u></b> or <b><u>Popup Hints</u></b> to activate dynamic help systems.";break;
 		case "L1H0": $lhintsPopUpNotificationMessage = "Hints Disabled";break;
 		case "L1H1": $lhintsPopUpNotificationMessage = "Level 1 hints enabled. Toggle hints again to enable level 2 hints.";break;
 		case "L1H2": $lhintsPopUpNotificationMessage = "Level 1 and 2 Hints Enabled. Toggle hints again to disable.";break;
