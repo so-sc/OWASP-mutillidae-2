@@ -15,6 +15,7 @@
 	require_once (__ROOT__.'/classes/LogHandler.php');
 	require_once (__ROOT__.'/classes/BubbleHintHandler.php');
 	require_once (__ROOT__.'/classes/RemoteFileHandler.php');
+	require_once (__ROOT__.'/classes/RequiredSoftwareHandler.php');
 	
     /* ------------------------------------------
      * INITIALIZE SESSION
@@ -258,7 +259,12 @@
  	* initialize remote file handler
  	* ------------------------------------------ */
 	$RemoteFileHandler = new RemoteFileHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
-		
+
+	/* ------------------------------------------
+	 * initialize required software handler
+	* ------------------------------------------ */
+	$RequiredSoftwareHandler = new RequiredSoftwareHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
+	
 	/* ------------------------------------------
 	* PROCESS REQUESTS
 	* ------------------------------------------ */

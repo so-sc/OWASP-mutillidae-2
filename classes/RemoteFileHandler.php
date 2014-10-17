@@ -3,8 +3,10 @@ class RemoteFileHandler {
 
 	/* private properties */
 	private $mSecurityLevel = 0;
-	private $mCurlIsInstalled = false;
 	
+	/* private objects */
+	protected $mRequiredSoftwareHandler = null;
+		
 	/* private methods */
 	private function doSetSecurityLevel($pSecurityLevel){
 		$this->mSecurityLevel = $pSecurityLevel;
@@ -22,24 +24,33 @@ class RemoteFileHandler {
 		}// end switch
 	}// end function
 
-	private function doCurlIsInstalled(){
-		return function_exists("curl_init");
-	}// end function doCurlIsInstalled
-
 	/* public methods */
 	/* constructor */
 	public function __construct($pPathToESAPI, $pSecurityLevel){
 		$this->doSetSecurityLevel($pSecurityLevel);
-		$this->mCurlIsInstalled = $this->doCurlIsInstalled();
+		
+		/* Initialize Required Software Handler */
+		require_once ('RequiredSoftwareHandler.php');
+		$this->mRequiredSoftwareHandler = new RequiredSoftwareHandler($pPathToESAPI, $pSecurityLevel);
+				
 	}// end function __construct
 
+	public function setSecurityLevel($pSecurityLevel){
+		$this->doSetSecurityLevel($pSecurityLevel);
+		$this->mRequiredSoftwareHandler->setSecurityLevel($pSecurityLevel);
+	}// end function
+	
+	public function getSecurityLevel($pSecurityLevel){
+		return $this->mSecurityLevel;
+	}// end function
+	
 	public function curlIsInstalled(){
-		return $this->mCurlIsInstalled;
+		return $this->mRequiredSoftwareHandler->isPHPCurlIsInstalled();
 	}// end function isCurlInstalled
 
 	public function remoteSiteIsReachable($pPage){
 		try{
-			if ($this->mCurlIsInstalled){
+			if ($this->mRequiredSoftwareHandler->isPHPCurlIsInstalled()){
 				$ch = curl_init($pPage);
 				curl_setopt($ch, CURLOPT_NOBODY, true);
 				/* Status 4xx: Client messed up, Status 5xx: Server messed up */
@@ -48,31 +59,15 @@ class RemoteFileHandler {
 				$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 				/* Status 4xx: Client messed up, Status 5xx: Server messed up */
 				return (startsWith($httpCode, '2') || startsWith($httpCode, '3') || startsWith($httpCode, '1'));
-			}// end if $mCurlIsInstalled
+			}// end if $this->mRequiredSoftwareHandler->isPHPCurlIsInstalled()
 		} catch (Exception $e) {
 			return false;
 		}//end try
-	}// end function
+	}// end function remoteSiteIsReachable()
 
 	public function getNoCurlAdviceBasedOnOperatingSystem(){
-		$lOperatingSystemAdvice = "";
-		$lHTML = "";
-		
-		switch (PHP_OS){
-			case "Linux":
-				$lOperatingSystemAdvice = "The server operating system seems to be Linux. You may be able to install with sudo apt-get install php5-curl";
-				break;
-			case "WIN32":
-			case "WINNT":
-			case "Windows":
-				$lOperatingSystemAdvice = "The server operating system seems to be Windows. You may be able to enable by uncommenting extension=php_curl.dll in the php.ini file and restarting apache server.";
-				break;
-			default: $lOperatingSystemAdvice = ""; break;
-		}// end switch
-		
-		$lHTML = '<br/><span style="background-color: #ffff99;">Warning: Detected PHP Curl is not installed on the server. This may cause issues detecting or downloading remote files. '.$lOperatingSystemAdvice.'</span><br/><br/>';
-		return $lHTML;
-	}// end function getNoCurlAdviceBasedOnOperatingSystem
+		return $this->mRequiredSoftwareHandler->getNoCurlAdviceBasedOnOperatingSystem();
+	}// end function getNoCurlAdviceBasedOnOperatingSystem()
 
-}// end class
+}// end class RemoteFileHandler
 ?>

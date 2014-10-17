@@ -8,8 +8,19 @@
 	Mutillidae: Deliberately Vulnerable Web Pen-Testing Application
 </div>
 
-<table style="margin:0px;">
-	<tr><td>&nbsp;</td></tr>
+<?php
+	/* Check if required software is installed. Issue warning if not. */
+ 
+	if (!$RequiredSoftwareHandler->isPHPCurlIsInstalled()){
+		echo $RequiredSoftwareHandler->getNoCurlAdviceBasedOnOperatingSystem();
+	}// end if
+
+	if (!$RequiredSoftwareHandler->isPHPJSONIsInstalled()){
+		echo $RequiredSoftwareHandler->getNoJSONAdviceBasedOnOperatingSystem();
+	}// end if
+?>
+
+<table style="margin:0px;margin-top:5px;">
  	<tr>
 	    <td colspan="2" style="text-align: center;">
 			<a title="Hacker for Charity: Johnny Long" href="./index.php?page=hackers-for-charity.php">
