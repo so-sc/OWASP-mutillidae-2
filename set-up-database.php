@@ -869,15 +869,23 @@ try{
 		}// end while
 
 		$lAccountsXML.="</Employees>".PHP_EOL;
-		
-		if (is_writable(pathinfo($lAccountXMLFilePath)['dirname'])){
-			file_put_contents($lAccountXMLFilePath,$lAccountsXML);
-			echo format("Wrote accounts to ".$lAccountXMLFilePath,"S");
-		}else{
-			echo format("Could not write accounts XML to ".$lAccountXMLFilePath,"W");
-			echo format("Using default version of accounts.xml","W");
-		}// end if
 
+		try{
+			/* Ubuntu 12.04LTS PHP cannot parse short syntax of
+			 * is_writable(pathinfo($lAccountXMLFilePath)['dirname']).
+			 * Replacing with long form version.
+			 */
+			if (is_writable(pathinfo($lAccountXMLFilePath, PATHINFO_DIRNAME))) {
+				file_put_contents($lAccountXMLFilePath,$lAccountsXML);
+				echo format("Wrote accounts to ".$lAccountXMLFilePath,"S");
+			}else{
+				throw new Exception("Oh snap. Trying to create an XML version of the accounts file did not work out.");
+			}//end if
+		}catch(Exception $e){
+			echo format("Could not write accounts XML to ".$lAccountXMLFilePath,"W");
+			echo format("Using default version of accounts.xml","W");			
+		};// end try
+		
 	} else {
 		$lErrorDetected = TRUE;
 		echo format("Warning: No records found when trying to build XML version of accounts table ".$lQueryResult,"W");

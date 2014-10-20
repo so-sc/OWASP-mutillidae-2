@@ -59,7 +59,7 @@ class RequiredSoftwareHandler {
 	public function isPHPJSONIsInstalled(){
 		return $this->mPHPJSONIsInstalled;
 	}// end function isPHPJSONIsInstalled()
-	
+
 	public function getNoCurlAdviceBasedOnOperatingSystem(){
 		$lOperatingSystemAdvice = "";
 		$lHTML = "";
