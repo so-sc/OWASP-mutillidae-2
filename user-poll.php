@@ -220,6 +220,6 @@
 	}// end if
 
 	if ($_SESSION["showhints"] == 2) {
-		include_once '/includes/hints-level-2/http-parameter-pollution-tutorial.inc';
+		include_once './includes/hints-level-2/http-parameter-pollution-tutorial.inc';
 	}// end if	
 ?>

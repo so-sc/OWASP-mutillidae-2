@@ -8,6 +8,7 @@
 		Method Tampering
 		Known Vulnerable Output: Name, Comment, "Add blog for" title,
 	*/
+
 	/* Defined our constants to use to tokenize allowed HTML characters */
 	include_once './includes/constants.php';
 
@@ -340,8 +341,8 @@
 	}// end if
 
 	if ($_SESSION["showhints"] == 2) {
-		include_once '/includes/hints-level-2/cross-site-scripting-tutorial.inc';
-		include_once '/includes/hints-level-2/cross-site-request-forgery-tutorial.inc';
+		include_once './includes/hints-level-2/cross-site-scripting-tutorial.inc';
+		include_once './includes/hints-level-2/cross-site-request-forgery-tutorial.inc';
 	}// end if
 ?>
 

@@ -49,7 +49,7 @@ interface Storage {
 // grab local session storage
 var m = "";
 var l = window.localStorage;
-for(i=0;i&lt;length;i++){
+for(i=0;i&lt;l.length;i++){
 	var lKey = l.key(i);
 	m += lKey + "=" + l.getItem(lKey) + "; ";
 }// end for i
