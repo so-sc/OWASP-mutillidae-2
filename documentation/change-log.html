@@ -4,6 +4,39 @@ TODO: Have level-1 hints open in new tab (optionally)
 TODO: Make it super cool to be an administator
 TODO: Add more authentication types
 
+<div><span style="font-weight:bold;">02/21/2015</span>: Jeremy Druin</div>
+<blockquote>
+	<div>Change Log for OWASP Mutillidae II 2.6.18:</div>
+	<ul>
+		<li>
+			BUG FIX: Patched index.php page. Some paths to project
+			dependencies and included pages
+			were relative paths rather than absolute paths
+			that start from root. This left the paths vulnerable to 
+			path-relative stylesheet import (PRSSI) vulnerabilities.
+			This vulnerability was not intentional and could lead to 
+			page defacement when trying to implement some intentional 
+			vulnerabilities. Referece: http://blog.portswigger.net/2015/02/prssi.html
+		</li>
+		<li>
+			Patched add-to-your-blog.php for path-relative 
+			stylesheet import (PRSSI) vulnerabilities
+		</li>
+		<li>
+			Added new method getUserAccountByID() to SQLQueryHandler class
+		</li>
+		<li>
+			Updated index.php page to use object oriented query to fetch user
+			account information
+		</li>
+		<li>Added a little more documentation comments to index.php</li>
+		<li>Moved favicon.ico into images directory</li>
+		<li>Fixed overly complex code for the click-jacking demonstration
+		in index.php and framing.php</li>
+		<li>Fixed IF statement in index.php that was overly complex</li>
+	</ul>
+</blockquote>
+
 <div><span style="font-weight:bold;">01/05/2015</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.6.17:</div>

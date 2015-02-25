@@ -281,6 +281,17 @@ class SQLQueryHandler {
 		return $this->mMySQLHandler->executeQuery($lQueryString);
 	}//end public function getNonSensitiveAccountInformation
 
+	public function getUserAccountByID($pUserID){
+	
+		if ($this->stopSQLInjection == TRUE){
+			$pUserID = $this->mMySQLHandler->escapeDangerousCharacters($pUserID);
+		}// end if
+	
+		$lQueryString = "SELECT * FROM accounts WHERE cid='" . $pUserID . "'";
+			
+		return $this->mMySQLHandler->executeQuery($lQueryString);
+	}//end public function getUserAccountByID
+
 	public function getUserAccount($pUsername, $pPassword){
    		/* 
   		 * Note: While escaping works ok in some case, it is not the best defense.

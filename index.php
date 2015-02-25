@@ -147,7 +147,7 @@
 	 * ------------------------------------------ */
 	/*
 	if (!is_object($_SESSION["Objects"]["ESAPIHandler"])){
-		$_SESSION["Objects"]["ESAPIHandler"] = new ESAPI('owasp-esapi-php/src/ESAPI.xml');
+		$_SESSION["Objects"]["ESAPIHandler"] = new ESAPI(__ROOT__.'/owasp-esapi-php/src/ESAPI.xml');
 		$_SESSION["Objects"]["ESAPIEncoder"] = $_SESSION["Objects"]["ESAPIHandler"]->getEncoder();
 		$_SESSION["Objects"]["ESAPIRandomizer"] = $_SESSION["Objects"]["ESAPIHandler"]->getRandomizer();
 	}// end if
@@ -157,7 +157,7 @@
 	$Encoder = &$_SESSION["Objects"]["ESAPIEncoder"];
 	$ESAPIRandomizer = &$_SESSION["Objects"]["ESAPIRandomizer"];
 	*/
-	$ESAPI = new ESAPI('owasp-esapi-php/src/ESAPI.xml');
+	$ESAPI = new ESAPI(__ROOT__.'/owasp-esapi-php/src/ESAPI.xml');
 	$Encoder = $ESAPI->getEncoder();
 	$ESAPIRandomizer = $ESAPI->getRandomizer();
 
@@ -194,36 +194,36 @@
 	 * ------------------------------------------ */
 	/*
 	if (!is_object($_SESSION["Objects"]["CustomErrorHandler"])){
-		$_SESSION["Objects"]["CustomErrorHandler"] = new CustomErrorHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
+		$_SESSION["Objects"]["CustomErrorHandler"] = new CustomErrorHandler(__ROOT__.'/owasp-esapi-php/src/', $_SESSION["security-level"]);
 	}// end if
 	
 	$CustomErrorHandler = &$_SESSION["Objects"]["CustomErrorHandler"];
 	*/
-	$CustomErrorHandler = new CustomErrorHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
+	$CustomErrorHandler = new CustomErrorHandler(__ROOT__.'/owasp-esapi-php/src/', $_SESSION["security-level"]);
 	
 	/* ------------------------------------------
  	* initialize log handler
  	* ------------------------------------------ */
 	/*
 	if (!is_object($_SESSION["Objects"]["LogHandler"])){
-		$_SESSION["Objects"]["LogHandler"] = new LogHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
+		$_SESSION["Objects"]["LogHandler"] = new LogHandler(__ROOT__.'/owasp-esapi-php/src/', $_SESSION["security-level"]);
 	}// end if
 	
 	$LogHandler = &$_SESSION["Objects"]["LogHandler"];
 	*/
-	$LogHandler = new LogHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);	
+	$LogHandler = new LogHandler(__ROOT__.'/owasp-esapi-php/src/', $_SESSION["security-level"]);	
 		
 	/* ------------------------------------------
  	* initialize MySQL handler
  	* ------------------------------------------ */
 	/*
 	if (!is_object($_SESSION["Objects"]["MySQLHandler"])){
-		$_SESSION["Objects"]["MySQLHandler"] = new MySQLHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
+		$_SESSION["Objects"]["MySQLHandler"] = new MySQLHandler(__ROOT__.'/owasp-esapi-php/src/', $_SESSION["security-level"]);
 	}// end if
 	
 	$MySQLHandler = &$_SESSION["Objects"]["MySQLHandler"];
 	*/
-	$MySQLHandler = new MySQLHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
+	$MySQLHandler = new MySQLHandler(__ROOT__.'/owasp-esapi-php/src/', $_SESSION["security-level"]);
 	$MySQLHandler->connectToDefaultDatabase();
 
 	/* ------------------------------------------
@@ -231,25 +231,25 @@
  	* ------------------------------------------ */
 	/*
 	if (!is_object($_SESSION["Objects"]["SQLQueryHandler"])){
-		$_SESSION["Objects"]["SQLQueryHandler"] = new SQLQueryHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
+		$_SESSION["Objects"]["SQLQueryHandler"] = new SQLQueryHandler(__ROOT__.'/owasp-esapi-php/src/', $_SESSION["security-level"]);
 	}// end if
 	
 	$SQLQueryHandler = &$_SESSION["Objects"]["SQLQueryHandler"];
 	*/
-	$SQLQueryHandler = new SQLQueryHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
+	$SQLQueryHandler = new SQLQueryHandler(__ROOT__.'/owasp-esapi-php/src/', $_SESSION["security-level"]);
 	
 	/* ------------------------------------------
  	* initialize balloon-hint handler
  	* ------------------------------------------ */
 	/*
    	if (!is_object($_SESSION["Objects"]["BubbleHintHandler"])){
-		$_SESSION["Objects"]["BubbleHintHandler"] = new BubbleHintHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
+		$_SESSION["Objects"]["BubbleHintHandler"] = new BubbleHintHandler(__ROOT__.'/owasp-esapi-php/src/', $_SESSION["security-level"]);
 	}// end if
 	
 	// Set up an alias by reference so object can be referenced in memory without copying
 	$BubbleHintHandler = &$_SESSION["Objects"]["BubbleHintHandler"];
 	*/
-	$BubbleHintHandler = new BubbleHintHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
+	$BubbleHintHandler = new BubbleHintHandler(__ROOT__.'/owasp-esapi-php/src/', $_SESSION["security-level"]);
 	
 	if ($_SESSION["showhints"] != $BubbleHintHandler->getHintLevel()){
 		$BubbleHintHandler->setHintLevel($_SESSION["showhints"]);
@@ -258,25 +258,25 @@
 	/* ------------------------------------------
  	* initialize remote file handler
  	* ------------------------------------------ */
-	$RemoteFileHandler = new RemoteFileHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
+	$RemoteFileHandler = new RemoteFileHandler(__ROOT__.'/owasp-esapi-php/src/', $_SESSION["security-level"]);
 
 	/* ------------------------------------------
 	 * initialize required software handler
 	* ------------------------------------------ */
-	$RequiredSoftwareHandler = new RequiredSoftwareHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
+	$RequiredSoftwareHandler = new RequiredSoftwareHandler(__ROOT__.'/owasp-esapi-php/src/', $_SESSION["security-level"]);
 	
 	/* ------------------------------------------
 	* PROCESS REQUESTS
 	* ------------------------------------------ */
 	if (isset($_GET["do"])){
-		include_once("process-commands.php");
+		include_once(__ROOT__.'/process-commands.php');
 	}// end if
     
 	/* ------------------------------------------
 	* PROCESS LOGIN ATTEMPT (IF ANY)
 	* ------------------------------------------ */
 	if (isset($_POST["login-php-submit-button"])){
-		include_once("includes/process-login-attempt.php");
+		include_once(__ROOT__.'/includes/process-login-attempt.php');
 	}// end if
 
 	/* ------------------------------------------
@@ -295,9 +295,8 @@
    			if (isset($_COOKIE['uid'])){
  
 				try{
-					$lQueryString = "SELECT * FROM accounts WHERE cid='" . $_COOKIE['uid'] . "'";
-					$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
-
+					$lQueryResult = $SQLQueryHandler->getUserAccountByID($_COOKIE['uid']);
+					
 				    // Switch to whatever cookie the user sent to simulate sites
 				    // that use client-side authorization tokens. Auth information
 				    // should never be in cookies.
@@ -500,7 +499,7 @@
     * "PAGE" VARIABLE INJECTION
     * ------------------------------------------ */
    	global $lPage;
-   	$lPage = "home.php";
+   	$lPage = __ROOT__.'/home.php';
 	switch ($_SESSION["security-level"]){
    		case "0": // This code is insecure
    		case "1": // This code is insecure
@@ -519,14 +518,15 @@
   			 * neccesary to spell the Mutillidae file names. This requires 
   			 * alpha, hyphen, and period.
   			 */
-		    // Get the value of the "page" URL query parameter without accepting POST.
+		    // Get the value of the "page" URL query parameter without accepting POST
+		    // to prevent method tampering.
 		    if (isset($_GET["page"])) {
 		    	$lPage = $_GET["page"];
 		    }// end if
    			
    			$lPageIsAllowed = (preg_match("/^[a-zA-Z0-9\.\-\/]+$/", $lPage) == 1);    			
    			if (!$lPageIsAllowed){
-		    	$lPage = "page-not-found.php";
+		    	$lPage = __ROOT__.'/page-not-found.php';
    			}// end if
    		break;
    	}// end switch
@@ -557,7 +557,7 @@
    			switch ($_SESSION["security-level"]){
 		   		case "0": // This code is insecure
 		   		case "1": // This code is insecure
-	    			$lPage="phpinfo.php";
+	    			$lPage=__ROOT__.'/phpinfo.php';
 		   		break;
 		
 		   		case "2":
@@ -575,9 +575,9 @@
 		   			}// end if isseet $_SESSION['is_admin']
 		   			
 		   			if($lUserAuthorized){
-		   				$lPage="phpinfo.php";
+		   				$lPage=__ROOT__.'/phpinfo.php';
 		   			}else{
-		   				$lPage="authorization-required.php";
+		   				$lPage=__ROOT__.'/authorization-required.php';
 		   			}// end if $lUserAuthorized
 		   			
 		   		break;//case 5
@@ -598,21 +598,13 @@
 	/* ------------------------------------------
 	* BEGIN OUTPUT RESPONSE
 	* ------------------------------------------ */
+	require_once (__ROOT__."/includes/header.php");
+	
 	if (strlen($lPage)==0 || !isset($lPage)){
 		/* Default Page */
-		require_once (__ROOT__."/includes/header.php");
 		require_once(__ROOT__."/home.php");
-		require_once (__ROOT__."/includes/footer.php");
-	}elseif($lPage=="rene-magritte.php") {
-		/* Framing Demonstration */
-		/* The page goes in an iframe so we dont want to
-		 * show the header and footer again. They will
-		 * already show in the outer frame.
-		 */    	
-	    	require_once ($lPage);
 	}else{
 		/* All Other Pages */
-		require_once (__ROOT__."/includes/header.php");  
 
 		/* Note: PHP uses lazy evaluation so if file_exists then PHP wont execute remote_file_exists */
 		if (file_exists($lPage) || $RemoteFileHandler->remoteSiteIsReachable($lPage)){
@@ -624,10 +616,11 @@
 			require_once (__ROOT__."/page-not-found.php");
 		}//end if
 		
-		require_once (__ROOT__."/includes/information-disclosure-comment.php");		
-		require_once (__ROOT__."/includes/footer.php");
-	}// end if
+	}// end if page variable not set
 
+	require_once (__ROOT__."/includes/information-disclosure-comment.php");
+	require_once (__ROOT__."/includes/footer.php");
+	
    	/* ------------------------------------------
    	 * LOG USER VISIT TO PAGE
    	* ------------------------------------------ */

@@ -19,7 +19,7 @@
 	scrolling="no" 
 	width="500px" 
 	height="600px" 
-	src="index.php?page=rene-magritte.php" 
+	src="rene-magritte.php" 
 	style="margin-left:auto; margin-right:auto;"
 	>
 </iframe>

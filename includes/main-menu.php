@@ -263,6 +263,7 @@
 								<li><a href="index.php?page=register.php">Register User</a></li>
 								<li><a href="index.php?page=browser-info.php">Browser Info</a></li>
 								<li><a href="index.php?page=back-button-discussion.php">Those "Back" Buttons</a></li>
+								<li><a href="index.php?page=styling-frame.php&page-to-frame=styling.php%3Fpage-title%3DStyling+with+Mutillidae">Styling with Mutilidae</a></li>
 							</ul>
 						</li>
 						<li>

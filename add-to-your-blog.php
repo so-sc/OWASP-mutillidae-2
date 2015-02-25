@@ -10,11 +10,11 @@
 	*/
 
 	/* Defined our constants to use to tokenize allowed HTML characters */
-	include_once './includes/constants.php';
+	include_once (__ROOT__.'/includes/constants.php');
 
 	/* Instantiate CSRF Protection object */
 	require_once (__ROOT__.'/classes/CSRFTokenHandler.php');
-	$lCSRFTokenHandler = new CSRFTokenHandler("owasp-esapi-php/src/", $_SESSION["security-level"], "register-user");
+	$lCSRFTokenHandler = new CSRFTokenHandler(__ROOT__.'/owasp-esapi-php/src/', $_SESSION["security-level"], "register-user");
 	
 	if (!isSet($logged_in_user)) {
 		throw new Exception("$logged_in_user is not set. Page add-to-your-blog.php requires this variable.");
@@ -341,8 +341,8 @@
 	}// end if
 
 	if ($_SESSION["showhints"] == 2) {
-		include_once './includes/hints-level-2/cross-site-scripting-tutorial.inc';
-		include_once './includes/hints-level-2/cross-site-request-forgery-tutorial.inc';
+		include_once (__ROOT__.'/includes/hints-level-2/cross-site-scripting-tutorial.inc');
+		include_once (__ROOT__.'/includes/hints-level-2/cross-site-request-forgery-tutorial.inc');
 	}// end if
 ?>
 

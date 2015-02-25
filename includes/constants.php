@@ -3,15 +3,17 @@
 	/* ------------------------------------------
 	 * @VERSION
 	 * ------------------------------------------*/
-	$C_VERSION = "2.6.17";
+	$C_VERSION = "2.6.18";
 	$C_VERSION_STRING = "Version: " . $C_VERSION;
 	$C_MAX_HINT_LEVEL = 2;
 	
 	/* ------------------------------------------
-	 * Document Root
+	 * Document Root (considering this file is in 
+	 * includes folder)
 	 * ------------------------------------------*/
 	define('__ROOT__', dirname(dirname(__FILE__)));
-	
+	define('__DOCUMENT_ROOT__', dirname($_SERVER['PHP_SELF']));
+
 	/* ------------------------------------------
 	 * @DANGEROUS TAG TOKENIZATION CONSTANTS
 	 * ------------------------------------------*/

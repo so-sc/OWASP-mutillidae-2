@@ -100,14 +100,14 @@
 <head>
 	<meta content="text/html; charset=us-ascii" http-equiv="content-type">
 
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-	<link rel="stylesheet" type="text/css" href="./styles/global-styles.css" />
-	<link rel="stylesheet" type="text/css" href="./styles/ddsmoothmenu/ddsmoothmenu.css" />
-	<link rel="stylesheet" type="text/css" href="./styles/ddsmoothmenu/ddsmoothmenu-v.css" />
+	<link rel="shortcut icon" href="/mutillidae/images/favicon.ico" type="image/x-icon" />	
+	<link rel="stylesheet" type="text/css" href="/mutillidae/styles/global-styles.css" />
+	<link rel="stylesheet" type="text/css" href="/mutillidae/styles/ddsmoothmenu/ddsmoothmenu.css" />
+	<link rel="stylesheet" type="text/css" href="/mutillidae/styles/ddsmoothmenu/ddsmoothmenu-v.css" />
 
-	<script type="text/javascript" src="./javascript/bookmark-site.js"></script>
-	<script type="text/javascript" src="./javascript/ddsmoothmenu/ddsmoothmenu.js"></script>
-	<script type="text/javascript" src="./javascript/ddsmoothmenu/jquery.min.js">
+	<script type="text/javascript" src="/mutillidae/javascript/bookmark-site.js"></script>
+	<script type="text/javascript" src="/mutillidae/javascript/ddsmoothmenu/ddsmoothmenu.js"></script>
+	<script type="text/javascript" src="/mutillidae/javascript/ddsmoothmenu/jquery.min.js">
 		/***********************************************
 		* Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
 		* This notice MUST stay intact for legal use
