@@ -411,6 +411,14 @@ try{
 			('source-viewer.php', 39, 1),
 			('source-viewer.php', 40, 1),
 			('source-viewer.php', 48, 1),
+			('styling-frame.php', 11, 1),
+			('styling-frame.php', 12, 1),
+			('styling-frame.php', 16, 1),
+			('styling-frame.php', 39, 1),
+			('styling-frame.php', 40, 1),
+			('styling-frame.php', 41, 1),
+			('styling-frame.php', 48, 1),
+			('styling-frame.php', 50, 1),
 			('sqlmap-targets.php', 10, 1),
 			('ssl-misconfiguration.php', 1, 1),
 			('text-file-viewer.php', 11, 1),
@@ -522,7 +530,8 @@ try{
 		(45, 'user-agent-impersonation-hint.inc'),
 		(46, 'unrestricted-file-upload-hint.inc'),
 		(48, 'application-log-injection.inc'),
-		(49, 'xpath-injection-hint.inc')";
+		(49, 'xpath-injection-hint.inc'),
+		(50, 'path-relative-stylesheet-injection.inc')";
 					
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {
@@ -597,7 +606,8 @@ try{
 		(46, '<span class=\"label\">Unrestricted File Upload</span>: This page allows dangerous files to be uploaded.'),
 		(47, '<span class=\"label\">Username Enumeration</span>: This page allows usernames to be enumerated.'),
 		(48, '<span class=\"label\">Application Log Injection</span>: Some inputs on this page are recorded into log records which can be read by visiting the Show Log page. Vulnerabilities on the Show Log page may allow injections in log records to execute.'),
-		(49, '<span class=\"label\">XPath Injection</span>: Some inputs on this page are vulnerable to XPath injection.')";
+		(49, '<span class=\"label\">XPath Injection</span>: Some inputs on this page are vulnerable to XPath injection.'),
+		(50, '<span class=\"label\">Path Relative Stylesheet Injection</span>: Within this page is an iframe containing another page. The page being framed is vulnerable to path relative stylesheet injection.')";
 	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {
@@ -671,7 +681,10 @@ try{
 			('ReflectedXSSExecutionPoint', 2, 'This output is vulnerable to cross-site scripting. Determine which input field contributes output here and inject scripts'),
 			('HTMLEventReflectedXSSExecutionPoint', 0, 'This location contains dynamic output'),
 			('HTMLEventReflectedXSSExecutionPoint', 1, 'Lack of output encoding controls often result in cross-site scripting; in this case via HTML Event injection.'),
-			('HTMLEventReflectedXSSExecutionPoint', 2, 'This output is vulnerable to cross-site scripting because the input is not encoded prior to be used as a value in an HTML event. Determine which input field contributes output here and inject scripts.')
+			('HTMLEventReflectedXSSExecutionPoint', 2, 'This output is vulnerable to cross-site scripting because the input is not encoded prior to be used as a value in an HTML event. Determine which input field contributes output here and inject scripts.'),
+			('PathRelativeStylesheetInjectionPoint', 0, 'This location contains dynamic output'),
+			('PathRelativeStylesheetInjectionPoint', 1, 'Lack of output encoding controls often result in cross-site scripting; in this case via Path Relaive Stylesheet Injection.'),
+			('PathRelativeStylesheetInjectionPoint', 2, 'This output is vulnerable to path relative stylesheet injection because the input is not encoded prior to be used as a value in an HTML text element. Determine which input field contributes output here and inject CSS.')
 			;";
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {

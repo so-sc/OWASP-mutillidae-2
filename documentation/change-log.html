@@ -34,6 +34,24 @@ TODO: Add more authentication types
 		<li>Fixed overly complex code for the click-jacking demonstration
 		in index.php and framing.php</li>
 		<li>Fixed IF statement in index.php that was overly complex</li>
+		<li>
+			Removed hard-coded document-type meta tag from header element 
+			of each page
+		</li>
+		<li>
+			Added a new vulnerability: Path Relative Stylesheet Injection.
+			The page in Mutillidae that implements is styling.php. It is
+			acessible from several menus including XSS.
+			This is described by Gareth Heyes at 
+			http://www.thespanner.co.uk/2014/03/21/rpo/
+			and again on the Portswigger blog at http://blog.portswigger.net/.
+		</li>
+		<li>
+			Added Path Relative Stylesheet Injection to the bubble hints, the
+			"Help" button and the built-in hints. Extensive help is available in 
+			the built-in hints. The user has to click the "Toggle Hints" to activate the
+			hints system.
+		</li>		
 	</ul>
 </blockquote>
 

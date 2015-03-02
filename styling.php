@@ -1,4 +1,12 @@
-<?php 
+<?php
+	/*
+	 * If you are trying to cause path relative stylesheet
+	 * injection, a test case is
+	 * 
+	 * http://172.16.0.130/mutillidae/index.php?page=styling-frame.php&page-to-frame=styling.php/foo/bar/%0A{}*{color:red;}///
+	 * This works in IE 11 if the browser is in compatibility mode
+	 */
+
 	try{
     	switch ($_SESSION["security-level"]){
     		case "0": // This code is insecure
@@ -39,11 +47,11 @@
    	};// end try;
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="./styles/global-styles.css" />
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+	<link rel="stylesheet" type="text/css" href="./styles/global-styles.css" />	
 	<title><?php echo $lPageTitle?></title>
 </head>
 <body>
@@ -52,27 +60,16 @@
 		<tr><td><div class="page-title"><?php echo $lPageTitle?></div></td></tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr>
-			<td colspan="2" class="form-header">
-				This page implements Path Relative Style Sheet Injection
-			</td>
-		</tr>
-		<tr><td>&nbsp;</td></tr>
-		<tr>
-			<td class="informative-message">
-			Hint: Toggle through the security levels. What happens at security level 5?<br/>
-			Is there a new HTTP header at security level 5? Burp-Suite might be useful.
+			<td class="form-header">
+				I've been framed!
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<div style="text-align: center;">
-					<img src="./images/coykillericon.png" width="65px" height="50px" style="vertical-align: middle;" />
-					&nbsp;&nbsp;
-					<a href="index.php" style="text-decoration: none; font-weight: bold; font-size: 18pt;">Return to Mutillidae</a>
-				</div>
+				I've been framed by <?php echo $_SERVER['PHP_SELF']; ?>
 			</td>
 		</tr>
-		<tr><td></td></tr>
+		<tr><td>&nbsp;</td></tr>
 	</table>
 </body>
 </html>

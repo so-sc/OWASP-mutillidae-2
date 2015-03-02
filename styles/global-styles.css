@@ -70,6 +70,10 @@ div.footer{
 	font-weight: bold;
 }
 
+*.important{
+	font-weight: bold;
+}
+
 *.non-wrapping-label{
 	font-weight: bold;
 	white-space: nowrap;
@@ -456,7 +460,7 @@ div.database-failure-message{
 }
 
 /* ------------------------------------------------- */
-/* Success */
+/* Success Messages */
 /* ------------------------------------------------- */
 
 table tr td.success-header{
@@ -482,6 +486,10 @@ table tr td.success-header{
 	padding-right: 30px;
 }
 
+/* ------------------------------------------------- */
+/* Informative Messages */
+/* ------------------------------------------------- */
+
 *.informative-message{
 	border-color: #000000;
 	border-width: 1px;
@@ -494,6 +502,10 @@ table tr td.success-header{
 	padding-right: 30px;
 	border-radius: 3px;
 }
+
+/* ------------------------------------------------- */
+/* Warning Messages */
+/* ------------------------------------------------- */
 
 *.warning-message{
 	border-color: #000000;

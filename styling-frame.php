@@ -34,13 +34,21 @@
 				$lPageToFrame = $Encoder->encodeForHTML($lPageToFrame);
 			};// end if
 		};// end if $lFormSubmitted
-	
+
+		try {
+			$LogHandler->writeToLog("Styling Frame: Framing URL " . $lPageToFrame . " based on user choice.");
+		} catch (Exception $e) {
+			//Do nothing. Do not interrupt page for failed log attempt.
+		}//end try
+		
 	} catch (Exception $e) {
 		echo $CustomErrorHandler->FormatError($e, $lQueryString);
 	};// end try;
 
 ?>
 
+<?php include_once (__ROOT__.'/includes/back-button.inc');?>
+<?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-wrapper.inc'); ?>
 <iframe src="<?php echo $lPageToFrame; ?>" 
 		seamless="seamless" frameborder="0" 
 		marginheight="0px" marginwidth="0px" 
