@@ -107,6 +107,7 @@ class YouTubeVideoHandler {
 	public $DetermineHTTPMethodsusingNetcat = 69;
 	public $ISSAIntroductiontoXMLExternalEntityInjection = 70;
 	public $IntroductiontoUseragentImpersonation = 71;
+	public $IntroductiontoPathRelativeStyleSheetInjection = 72;
 	
 	/* private methods */
 	private function doSetSecurityLevel($pSecurityLevel){

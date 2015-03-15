@@ -86,6 +86,7 @@
 								<li><a href="index.php?page=register.php">Register User</a></li>
 								<li><a href="index.php?page=login.php">Login</a></li>
 								<li><a href="index.php?page=back-button-discussion.php">Those "Back" Buttons</a></li>
+								<li><a href="index.php?page=styling-frame.php&page-to-frame=styling.php%3Fpage-title%3DStyling+with+Mutillidae">Styling with Mutilidae</a></li>
 							</ul>
 						</li>
 						<li>
@@ -113,6 +114,7 @@
 							<a href="">Frame Source Injection</a>
 							<ul>
 								<li><a href="index.php?page=document-viewer.php&PathToDocument=documentation/how-to-access-Mutillidae-over-Virtual-Box-network.php">Document Viewer</a></li>
+								<li><a href="index.php?page=styling-frame.php&page-to-frame=styling.php%3Fpage-title%3DStyling+with+Mutillidae">Styling with Mutilidae</a></li>
 							</ul>
 						</li>
 						<li>
@@ -347,6 +349,12 @@
 								<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
 							</ul>
 						</li>						
+						<li>
+							<a href="">Via Path Relative Style Sheet Injection</a>
+							<ul>
+								<li><a href="index.php?page=styling-frame.php&page-to-frame=styling.php%3Fpage-title%3DStyling+with+Mutillidae">Styling with Mutilidae</a></li>
+							</ul>
+						</li>
 						<li>
 							<a href="">BeeF Framework Targets</a>
 							<ul>

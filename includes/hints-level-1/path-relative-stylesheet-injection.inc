@@ -25,11 +25,11 @@
 			Stylesheets, JavaScript and other &quot;includes&quot; are often linked
 			using &quot;link&quot; tags and &quot;script&quot; tags respectively. In the 
 			case of a link tag, the &quot;href&quot; attribute specifies the path
-			of the include file. For script tags the &quot;attribute&quot; does the 
+			of the include file. For script tags the &quot;src&quot; attribute does the 
 			same.
 			<br/><br/>
 			Links can be &quot;relative&quot; or &quot;absolute&quot;. Absolute links
-			specfify the full path to the resource file. An example would be
+			specify the full path to the resource file. An example would be
 			<br/><br/>
 			<span class="important-code">
 			&lt;a href=&quot;<?php echo $lStyleSheetAbsolutePath; ?>&quot; target=&quot;_blank&quot;&gt;<a href="<?php echo $lStyleSheetAbsolutePath; ?>" target="_blank">
@@ -188,11 +188,65 @@
 			<br/><br/>
 			<span class="report-header">Exploitation</span>
 			<br/><br/>
-			TO DO
+			To exploit the site, several conditions need to be met. The browser 
+			should be encouraged to enter compatibility mode. It may help to
+			frame the target page to make this easier. Note that Mutillidae
+			has already provided a framed page to help with this step.
+			<br/><br/>
+			The browser should be capible of downgrading into compatibility
+			mode so that HTML pages will be parsed by the CSS interpreter 
+			desipte the fact that the content type of the page is HTML. 
+			Internet Explorer up through version 11 is confirmed to 
+			work in this mode.
+			<br/><br/>
+			Assuming the prerequisites are met, the page needs to be injected with
+			a cascading stylesheet (CSS) command. If the page is possible to inject,
+			the injection opportunity will vary. In the case of Mutillidae, the 
+			styling.php page will reflect the address of the framing page. If the
+			malicious CSS can be incorporated into the URL itself, the CSS
+			will be reflected giving the browser a chance to interpret the 
+			CSS.
+			<br/><br/>
+			<span class="important"><span style="color:black">http://172.16.0.130/mutillidae/index.php?page=styling-frame.php</span><span style="color:blue">&amp;page-to-frame=styling.php</span><span style="color:red">/foo/bar/%0A{}*{color:red;}///</span></span>
+			<br/><br/>
+			In the preceding URL, the first portion (black) is the common home
+			page all pages in Mutillidae share. The &quot;page&quot; parameter
+			tells index.php which page the user would like to view. So far, this
+			is normal operation.
+			<br/><br/> 
+			The next parameter &quot;page-to-frame&quot; (blue) determines what
+			page styling-frame.php will frame. Note that the page being framed,
+			styling.php, also accepts a &quot;page-title&quot; parameter. This 
+			parameter is not mandatory for this attack but is useful for other
+			types of cross-site scripting.
+			<br/><br/> 
+			The additional text at the end (red) is the attack. Injection attacks
+			can be broken down into their three components: prefix, payload and
+			suffix. 
+			<br/><br/>
+			<span class="important">/foo/bar/%0A{}*{<span style="color:red">color:red;</span>}///</span>
+			<br/><br/>
+			The prefix in this case is two parts. The path /foo/bar/ triggers the 
+			PRSSI vulnerability by having the browser try to fetch a CSS document
+			that includes the page name in the path. The web server does not parse
+			paths like browsers and will recognize the page name then ignore the
+			rest of the path. The rest of the prefix opens a &quot;selector&quot;
+			in CSS terms. The selector in this example is asterisk. 
+			Selectors choose to which element to apply the style. The asterisk 
+			matches	any element making the payload more likely to be applied 
+			(execute). The portion in red is the payload. This payload turns
+			text red. The third portion of the attack is the suffix which properly
+			closes out the prefix to form a syntactically correct statement.
 			<br/><br/>
 			<span class="report-header">Example</span>
 			<br/><br/>
+			The following link is confirmed to reproduce the vulnerability in a 
+			fully patched Internet Explorer 11 (Compatibility mode) running on 
+			Windows 7
+			<br/><br/>
+			<span class="important-code">
 			http://172.16.0.130/mutillidae/index.php?page=styling-frame.php&amp;page-to-frame=styling.php/foo/bar/%0A{}*{color:red;}///
+			</span>
 			<br/><br/>
 			<span class="report-header">References</span>
 			<br/><br/>
@@ -200,6 +254,20 @@
 			<br/>
 			<a href="http://blog.portswigger.net/" target="_blank">PortSwigger Web Security Blog</a>
 			<br/><br/>
+			<span class="report-header">Cross Site Scripting Defenses</span>
+			<br/><br/>
+			To defend against Cross-Site Scripting, encode all output per context.
+			Just because the application sanitized/validated/filtered the input 
+			when the user sent the input doesnt mean the application is safe. The 
+			database could be altered by a rouge insider, a database attack such as 
+			ASPROX, or a mallicious programmer. Developers should not have access to 
+			production database data; ever. Developers should not be able to copy 
+			their own code into production; ever. That is what change control is for.
+			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>			
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoPathRelativeStyleSheetInjection);?>
+			<br/><br/>			
 		</td>
 	</tr>
 </table>

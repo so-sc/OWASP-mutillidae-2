@@ -682,9 +682,9 @@ try{
 			('HTMLEventReflectedXSSExecutionPoint', 0, 'This location contains dynamic output'),
 			('HTMLEventReflectedXSSExecutionPoint', 1, 'Lack of output encoding controls often result in cross-site scripting; in this case via HTML Event injection.'),
 			('HTMLEventReflectedXSSExecutionPoint', 2, 'This output is vulnerable to cross-site scripting because the input is not encoded prior to be used as a value in an HTML event. Determine which input field contributes output here and inject scripts.'),
-			('PathRelativeStylesheetInjectionPoint', 0, 'This location contains dynamic output'),
-			('PathRelativeStylesheetInjectionPoint', 1, 'Lack of output encoding controls often result in cross-site scripting; in this case via Path Relaive Stylesheet Injection.'),
-			('PathRelativeStylesheetInjectionPoint', 2, 'This output is vulnerable to path relative stylesheet injection because the input is not encoded prior to be used as a value in an HTML text element. Determine which input field contributes output here and inject CSS.')
+			('PathRelativeStylesheetInjectionArea', 0, 'This area is vulnerable to Path Relaive Stylesheet Injection'),
+			('PathRelativeStylesheetInjectionArea', 1, 'Lack of output encoding controls often result in cross-site scripting; in this case via Path Relaive Stylesheet Injection.'),
+			('PathRelativeStylesheetInjectionArea', 2, 'This output is vulnerable to path relative stylesheet injection because the input is not encoded prior to be used as a value in an HTML text element. Determine which input field contributes output here and inject CSS.')
 			;";
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {
@@ -775,7 +775,8 @@ try{
 			(68, 'DJaX4HN2gwQ', 'Introduction to XML External Entity Injection'),
 			(69, 'MxiVx7e_FbM', 'Determine HTTP Methods using Netcat'),
 			(70, 'Zl8U2YVp2lw', 'ISSA KY September 2013 Workshop - Introduction to XML External Entity Injection'),
-			(71, 'VAGG4uC1ogw', 'Introduction to User-agent Impersonation')
+			(71, 'VAGG4uC1ogw', 'Introduction to User-agent Impersonation'),
+			(72, 'yh3S8YzrysE', 'Introduction to Path Relative Style Sheet Injection')
 	";
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {

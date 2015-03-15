@@ -47,10 +47,34 @@
 
 ?>
 
+<?php 
+	try{
+   		$lPathRelativeStylesheetInjectionAreaBallonTip = $BubbleHintHandler->getHint("PathRelativeStylesheetInjectionArea");
+ 	} catch (Exception $e) {
+		echo $CustomErrorHandler->FormatError($e, "Error attempting to execute query to fetch bubble hints.");
+	}// end try	
+?>
+
+<script type="text/javascript">
+	$(function() {
+		$('[PathRelativeStylesheetInjectionArea]').attr("title", "<?php echo $lPathRelativeStylesheetInjectionAreaBallonTip; ?>");
+		$('[PathRelativeStylesheetInjectionArea]').balloon();
+	});
+</script>
+
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
 <?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-wrapper.inc'); ?>
-<iframe src="<?php echo $lPageToFrame; ?>" 
+<!-- Note: To encourage IE into compatibility mode add the following
+	meta tag into the HTML head section -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<iframe src="<?php echo $lPageToFrame; ?>"
+		PathRelativeStylesheetInjectionArea="1"
 		seamless="seamless" frameborder="0" 
 		marginheight="0px" marginwidth="0px" 
 		width="100%" height="500px" 
 		scrolling="auto"></iframe>
+<?php
+	if ($_SESSION["showhints"] == 2) {
+		include_once (__ROOT__.'/includes/hints-level-2/cross-site-scripting-tutorial.inc');
+	}// end if
+?>
