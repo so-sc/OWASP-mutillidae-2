@@ -710,7 +710,7 @@
 					</a>
 				</li>
 				<li><a href="index.php?page=installation.php">Installation Instructions</a></li>
-				<li><a href="/mutillidae/documentation/mutillidae-installation-on-xampp-win7.pdf">Installation Instructions: Windows 7 (PDF)</a></li>
+				<li><a href="./documentation/mutillidae-installation-on-xampp-win7.pdf" target="_blank">Installation Instructions: Windows 7 (PDF)</a></li>
 				<li><a href="index.php?page=documentation/vulnerabilities.php">Listing of Vulnerabilities</a></li>
 				<li>
 					<a href="https://www.sans.org/reading-room/whitepapers/application/introduction-owasp-mutillidae-ii-web-pen-test-training-environment-34380" target="_blank">

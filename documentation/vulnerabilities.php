@@ -43,6 +43,7 @@
 				<li>O/S Command injection</li>
 				<li>Parameter addition</li>
 				<li>Password field submitted using GET method</li>
+				<li>Path Relative Style Sheet Injection</li>
 				<li>PHPMyAdmin Console</li>
 				<li>PHP server configuration disclosure</li>
 				<li>Phishing</li>
@@ -486,6 +487,15 @@
 			Discusses SSL downgrade attack due to a vulnerability in the site globally.
 			No known vulnerabilities on the page itself.
 		</li>
+	</ul>
+</div>
+
+<p class="label">styling.php</p>
+<div style="padding-left: 40px;">
+	<ul>
+		<li>Path Relative Style Sheet Injection</li>
+		<li>HTML Injection</li>
+		<li>Cross Site Scripting</li>
 	</ul>
 </div>
 

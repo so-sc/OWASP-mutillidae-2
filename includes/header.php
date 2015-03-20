@@ -98,14 +98,14 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html>
 <head>
-	<link rel="shortcut icon" href="/mutillidae/images/favicon.ico" type="image/x-icon" />	
-	<link rel="stylesheet" type="text/css" href="/mutillidae/styles/global-styles.css" />
-	<link rel="stylesheet" type="text/css" href="/mutillidae/styles/ddsmoothmenu/ddsmoothmenu.css" />
-	<link rel="stylesheet" type="text/css" href="/mutillidae/styles/ddsmoothmenu/ddsmoothmenu-v.css" />
+	<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />	
+	<link rel="stylesheet" type="text/css" href="./styles/global-styles.css" />
+	<link rel="stylesheet" type="text/css" href="./styles/ddsmoothmenu/ddsmoothmenu.css" />
+	<link rel="stylesheet" type="text/css" href="./styles/ddsmoothmenu/ddsmoothmenu-v.css" />
 
-	<script type="text/javascript" src="/mutillidae/javascript/bookmark-site.js"></script>
-	<script type="text/javascript" src="/mutillidae/javascript/ddsmoothmenu/ddsmoothmenu.js"></script>
-	<script type="text/javascript" src="/mutillidae/javascript/ddsmoothmenu/jquery.min.js">
+	<script type="text/javascript" src="./javascript/bookmark-site.js"></script>
+	<script type="text/javascript" src="./javascript/ddsmoothmenu/ddsmoothmenu.js"></script>
+	<script type="text/javascript" src="./javascript/ddsmoothmenu/jquery.min.js">
 		/***********************************************
 		* Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
 		* This notice MUST stay intact for legal use
@@ -192,7 +192,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td style="vertical-align:top;text-align:left;background-color:#ccccff;width:10%">
+		<td style="vertical-align:top;text-align:left;background-color:#ccccff;width:125pt;">
 		<?php require_once 'main-menu.php'; ?>			
 		<div>&nbsp;</div>
 		<div>&nbsp;</div>
