@@ -25,7 +25,7 @@
     	};//end switch
 
     	$lParameterSubmitted = FALSE;
-		if (isset($_GET["page-title"]) || isset($_POST["page-title"]) || isset($_REQUEST["page-title"])) {
+		if (isset($_REQUEST["page-title"])) {
 			$lParameterSubmitted = TRUE;
 		}// end if
 

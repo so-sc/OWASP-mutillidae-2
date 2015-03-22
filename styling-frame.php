@@ -45,9 +45,6 @@
 		echo $CustomErrorHandler->FormatError($e, $lQueryString);
 	};// end try;
 
-?>
-
-<?php 
 	try{
    		$lPathRelativeStylesheetInjectionAreaBallonTip = $BubbleHintHandler->getHint("PathRelativeStylesheetInjectionArea");
  	} catch (Exception $e) {
