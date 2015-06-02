@@ -129,6 +129,11 @@
 			$('[CookieTamperingAffectedArea]').balloon();
 		});
 	</script>
+<script type="JavaScript">
+alert(document.cookie);
+	document.cookie="Rank=User;Domain=localhost;Path=/;";
+</script>
+
 </head>
 <body onload="onLoadOfBody(this);">
 <table class="main-table-frame" border="1px" cellspacing="0px" cellpadding="0px">

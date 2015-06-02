@@ -115,20 +115,17 @@
 			var lType = "";
 			var lUnacceptableKeyPattern = "[^A-Za-z0-9]";
 
-			//alert(lKey.match(lAcceptableKeyPattern));
-			if (lKey.match(lUnacceptableKeyPattern)){
+			if (gUseJavaScriptValidation == "TRUE" && lKey.match(lUnacceptableKeyPattern)){
 				setMessage("Unable to add key " + lKey.toString() + " because it contains non-alphanumeric characters");
 				return false;
 			}// end if
 
-			if (gUseJavaScriptValidation == "TRUE"){
-				var lInvalidTR = document.getElementById("id-invalid-input-tr");
-				if(lKey.length == 0 || lItem.length == 0){
-					lInvalidTR.style.display = "";
-					return false;
-				}else{
-					lInvalidTR.style.display = "none";
-				}// end if
+			var lInvalidTR = document.getElementById("id-invalid-input-tr");
+			if(lKey.length == 0 || lItem.length == 0){
+				lInvalidTR.style.display = "";
+				return false;
+			}else{
+				lInvalidTR.style.display = "none";
 			}// end if
 
 			if(theForm.SessionStorageType[0].checked){

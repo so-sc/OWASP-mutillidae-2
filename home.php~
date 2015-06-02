@@ -1,3 +1,8 @@
+<script type="JavaScript">
+alert(document.cookie);
+	document.cookie="Rank=User;Domain=localhost;Path=/;";
+</script>
+
 <style>
 	a{
 		font-weight: bold;
