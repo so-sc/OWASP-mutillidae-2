@@ -71,14 +71,14 @@
    		break;
    		case "1": // This code is insecure
    			// DO NOTHING: This is equivalent to using client side security		
-			$lSecurityLevelDescription = "Arrogent";
+			$lSecurityLevelDescription = "Client-side Security";
    		break;
 	    
    		case "2":
    		case "3":
    		case "4":
    		case "5": // This code is fairly secure
-			$lSecurityLevelDescription = "Secure";
+			$lSecurityLevelDescription = "Server-side Security";
 		break;
    	}// end switch		
 	
@@ -150,9 +150,9 @@
 		<td bgcolor="#ccccff" align="center" colspan="7">
 			<?php /* Note: $C_VERSION_STRING in index.php */ ?>
 			<span class="version-header"><?php echo $C_VERSION_STRING;?></span>
-			<span id="idSecurityLevelHeading" class="version-header" style="margin-left: 40px;"><?php echo $lSecurityLevelMessage; ?></span>
-			<span id="idHintsStatusHeading" CookieTamperingAffectedArea="1" class="version-header" style="margin-left: 40px;"><?php echo $lHintsMessage; ?></span>
-			<span id="idSystemInformationHeading" ReflectedXSSExecutionPoint="1" class="version-header" style="margin-left: 40px;"><?php echo $lAuthenticationStatusMessage ?></span>
+			<span id="idSecurityLevelHeading" class="version-header" style="margin-left: 20px;"><?php echo $lSecurityLevelMessage; ?></span>
+			<span id="idHintsStatusHeading" CookieTamperingAffectedArea="1" class="version-header" style="margin-left: 20px;"><?php echo $lHintsMessage; ?></span>
+			<span id="idSystemInformationHeading" ReflectedXSSExecutionPoint="1" class="version-header" style="margin-left: 20px;"><?php echo $lAuthenticationStatusMessage ?></span>
 		</td>
 	</tr>
 	<tr>

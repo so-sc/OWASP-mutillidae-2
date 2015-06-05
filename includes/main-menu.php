@@ -85,14 +85,14 @@
 								<li><a href="index.php?page=user-poll.php">Poll Question</a></li>
 								<li><a href="index.php?page=register.php">Register User</a></li>
 								<li><a href="index.php?page=login.php">Login</a></li>
-								<li><a href="index.php?page=back-button-discussion.php">Those "Back" Buttons</a></li>
+								<li><a href="index.php?page=back-button-discussion.php">Those &quot;Back&quot; Buttons</a></li>
 								<li><a href="index.php?page=styling-frame.php&page-to-frame=styling.php%3Fpage-title%3DStyling+with+Mutillidae">Styling with Mutilidae</a></li>
 							</ul>
 						</li>
 						<li>
 							<a href="">HTMLi via HTTP Headers</a>
 							<ul>
-								<li><a href="index.php?page=back-button-discussion.php">Those "Back" Buttons</a></li>
+								<li><a href="index.php?page=back-button-discussion.php">Those &quot;Back&quot; Buttons</a></li>
 								<li><a href="index.php?page=browser-info.php">Browser Info</a></li>
 								<li><a href="index.php?page=site-footer-xss-discussion.php">Site Footer</a><li>
 								<li><a href="">HTTP Response Splitting (Hint: Difficult)</a></li>
@@ -127,7 +127,7 @@
 						<li>
 							<a href="">JavaScript Injection</a>
 							<ul>
-								<li><a href="index.php?page=back-button-discussion.php">Those "Back" Buttons</a></li>
+								<li><a href="index.php?page=back-button-discussion.php">Those &quot;Back&quot; Buttons</a></li>
 								<li>
 									<a href="index.php?page=password-generator.php&username=<?php echo $logged_in_user ?>">
 										Password Generator
@@ -264,7 +264,7 @@
 								<li><a href="index.php?page=user-poll.php">Poll Question</a></li>
 								<li><a href="index.php?page=register.php">Register User</a></li>
 								<li><a href="index.php?page=browser-info.php">Browser Info</a></li>
-								<li><a href="index.php?page=back-button-discussion.php">Those "Back" Buttons</a></li>
+								<li><a href="index.php?page=back-button-discussion.php">Those &quot;Back&quot; Buttons</a></li>
 								<li><a href="index.php?page=styling-frame.php&page-to-frame=styling.php%3Fpage-title%3DStyling+with+Mutillidae">Styling with Mutilidae</a></li>
 							</ul>
 						</li>
@@ -304,7 +304,7 @@
 								<li><a href="index.php?page=browser-info.php">Browser Info</a></li>
 								<li><a href="index.php?page=show-log.php">Show Log</a><li>
 								<li><a href="index.php?page=site-footer-xss-discussion.php">Site Footer</a><li>
-								<li><a href="index.php?page=html5-storage.php">Those &quot;BACK&quot; Buttons</a></li>
+								<li><a href="index.php?page=back-button-discussion.php">Those &quot;Back&quot; Buttons</a></li>
 							</ul>
 						</li>
 						<li>
@@ -638,6 +638,12 @@
 			<a href="#">Others</a>
 			<ul>
 				<li>
+					<a href="framer.html">Cross-Frame Framing (Third-party Framing)</a>
+					<ul>
+						<li><a href="index.php?page=framer.html">Framer</a></li>
+					</ul>
+				</li>
+				<li>
 					<a href="">Unrestricted File Upload</a>
 					<ul>
 						<li><a href="index.php?page=upload-file.php">File Upload</a></li>
@@ -696,7 +702,6 @@
 						<li><a href="index.php?page=captured-data.php">View Captured Data</a></li>
 					</ul>		
 				</li>
-				
 			</ul>
 		</li>
 		<li style="border-color: #ffffff;border-style: solid;border-width: 1px">

@@ -10,11 +10,18 @@
 		
 	switch ($_SESSION["security-level"]){
    		case "0": // This code is insecure
-   		case "1": // This code is insecure
    			// DO NOTHING: This is insecure		
 			$lEncodeOutput = FALSE;
 			$lProtectAgainstMethodSwitching = FALSE;
 			$lHTTPParameterPollutionDetected = FALSE;
+			$lEnableHTMLControls = FALSE;
+		break;
+		case "1": // This code is insecure
+   			// DO NOTHING: This is insecure		
+			$lEncodeOutput = FALSE;
+			$lProtectAgainstMethodSwitching = FALSE;
+			$lHTTPParameterPollutionDetected = FALSE;
+			$lEnableHTMLControls = TRUE;
 		break;
 	    		
 		case "2":
@@ -37,7 +44,8 @@
    			// this will be HTML encoding because we are outputting data into HTML
 			$lEncodeOutput = TRUE;
 			$lProtectAgainstMethodSwitching = TRUE;
-			
+			$lEnableHTMLControls = TRUE;
+				
 			// Detect multiple params with same name (HTTP Parameter Pollution)
 			$lQueryString  = explode('&', $_SERVER['QUERY_STRING']);
 			$lKeys = array();
@@ -129,10 +137,40 @@
 			<tr><td></td></tr>
 			<tr>
 				<td style="text-align:left;">
-					<input name="PathToDocument" id="id_path_to_document" type="radio" value="documentation/change-log.html" checked="checked" />&nbsp;&nbsp;Change Log<br />
-					<input name="PathToDocument" id="id_path_to_document" type="radio" value="robots.txt" checked="checked" />&nbsp;&nbsp;Robots.txt<br />
-					<input name="PathToDocument" id="id_path_to_document" type="radio" value="documentation/mutillidae-installation-on-xampp-win7.pdf" checked="checked" />&nbsp;&nbsp;Installation Instructions: Windows 7 (PDF)<br />
-					<input name="PathToDocument" id="id_path_to_document" type="radio" value="documentation/how-to-access-Mutillidae-over-Virtual-Box-network.php" checked="checked" />&nbsp;&nbsp;How to access Mutillidae over Virtual-Box-network<br />
+					<input 	name="PathToDocument" id="id_path_to_document" type="radio" 
+							value="documentation/change-log.html"
+							checked="checked"
+							autofocus="1"
+							<?php
+								if ($lEnableHTMLControls) {
+									echo('required="true"');
+								}// end if
+							?>					
+					/>&nbsp;&nbsp;Change Log<br />
+					<input	name="PathToDocument" id="id_path_to_document" type="radio" 
+							value="robots.txt"
+							<?php
+								if ($lEnableHTMLControls) {
+									echo('required="true"');
+								}// end if
+							?>
+					/>&nbsp;&nbsp;Robots.txt<br />
+					<input	name="PathToDocument" id="id_path_to_document" type="radio"
+							value="documentation/mutillidae-installation-on-xampp-win7.pdf" 
+							<?php
+								if ($lEnableHTMLControls) {
+									echo('required="true"');
+								}// end if
+							?>
+					/>&nbsp;&nbsp;Installation Instructions: Windows 7 (PDF)<br />
+					<input	name="PathToDocument" id="id_path_to_document" type="radio"
+							value="documentation/how-to-access-Mutillidae-over-Virtual-Box-network.php" 
+							<?php
+								if ($lEnableHTMLControls) {
+									echo('required="true"');
+								}// end if
+							?>
+					/>&nbsp;&nbsp;How to access Mutillidae over Virtual-Box-network<br />
 				</td>
 			</tr>
 			<tr><td></td></tr>
@@ -171,11 +209,3 @@
 		include_once './includes/hints-level-2/cross-site-scripting-tutorial.inc';
 	}// end if
 ?>
-
-<script type="text/javascript">
-	try{
-		document.getElementById("id_path_to_document").focus();
-	}catch(e){
-		alert('Error trying to set focus on field path_to_document: ' + e.message);
-	}// end try
-</script>

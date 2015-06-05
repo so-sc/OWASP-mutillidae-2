@@ -8,6 +8,7 @@
     	switch ($_SESSION["security-level"]){
     		case "0": // This code is insecure. No input validation is performed.
 				$lEnableJavaScriptValidation = FALSE;
+				$lEnableHTMLControls = FALSE;
 				$lProtectAgainstMethodTampering = FALSE;
 				$lProtectAgainstCommandInjection=FALSE;
 				$lProtectAgainstXSS = FALSE;
@@ -15,6 +16,7 @@
 
     		case "1": // This code is insecure. No input validation is performed.
 				$lEnableJavaScriptValidation = TRUE;
+				$lEnableHTMLControls = TRUE;
 				$lProtectAgainstMethodTampering = FALSE;
 				$lProtectAgainstCommandInjection=FALSE;
 				$lProtectAgainstXSS = FALSE;
@@ -25,6 +27,7 @@
 	   		case "4":
     		case "5": // This code is fairly secure
     			$lProtectAgainstCommandInjection=TRUE;
+				$lEnableHTMLControls = TRUE;
     			$lEnableJavaScriptValidation = TRUE;
    				$lProtectAgainstMethodTampering = TRUE;
    				$lProtectAgainstXSS = TRUE; 			
@@ -138,7 +141,17 @@
 		<tr><td></td></tr>
 		<tr>
 			<td class="label">Hostname/IP</td>
-			<td><input type="text" id="idTargetHostInput" name="target_host" size="20" OSCommandInjectionPoint="1" /></td>
+			<td>
+				<input 	type="text" id="idTargetHostInput" name="target_host" size="20" 
+						autofocus="1"
+						OSCommandInjectionPoint="1"
+						<?php
+							if ($lEnableHTMLControls) {
+								echo('minlength="1" maxlength="20" required="true"');
+							}// end if
+						?>
+				/>
+			</td>
 		</tr>
 		<tr><td></td></tr>
 		<tr>
@@ -150,16 +163,6 @@
 		<tr><td></td></tr>
 	</table>
 </form>
-
-<script type="text/javascript">
-<!--
-	try{
-		document.getElementById("idTargetHostInput").focus();
-	}catch(/*Exception*/ e){
-		alert("Error trying to set focus: " + e.message);
-	}// end try
-//-->
-</script>
 
 <?php
 	if ($lFormSubmitted){

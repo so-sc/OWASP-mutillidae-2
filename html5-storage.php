@@ -4,11 +4,12 @@
     		case "0": // This code is insecure.
     			$lUseClientSideStorageForSensitiveData = TRUE;
     			$lUseJavaScriptValidation = FALSE;
+				$lEnableHTMLControls = FALSE;
     		break;
-
     		case "1": // This code is insecure.
     			$lUseClientSideStorageForSensitiveData = TRUE;
     			$lUseJavaScriptValidation = TRUE;
+				$lEnableHTMLControls = TRUE;
     		break;
 
 	   		case "2":
@@ -17,6 +18,7 @@
     		case "5": // This code is fairly secure
     			$lUseClientSideStorageForSensitiveData = FALSE;
     			$lUseJavaScriptValidation = TRUE;
+				$lEnableHTMLControls = TRUE;
     		break;
     	}// end switch
 	}catch(Exception $e){
@@ -195,17 +197,42 @@
 		<tbody id="idSessionStorageTableBody" style="font-weight:bold;"></tbody>
 		<tr><td>&nbsp;</td></tr>
 		<tr>
-			<td><input type="text" id="idDOMStorageKeyInput" name="DOMStorageKey" size="20"></td>
-			<td><input type="text" id="idDOMStorageItemInput" name="DOMStorageItem" size="20"></td>
+			<td><input	type="text" id="idDOMStorageKeyInput" name="DOMStorageKey" size="20"
+						autofocus="1"
+				<?php
+					if ($lEnableHTMLControls) {
+						echo('minlength="1" maxlength="20" required="true"');
+					}// end if
+				?>			
+			></td>
+			<td><input type="text" id="idDOMStorageItemInput" name="DOMStorageItem" size="20"
+				<?php
+					if ($lEnableHTMLControls) {
+						echo('minlength="1" maxlength="20" required="true"');
+					}// end if
+				?>
+			></td>
 			<td class="label">
-				<input type="radio" name="SessionStorageType" value="Session" checked="checked" />Session
-				<input type="radio" name="SessionStorageType" value="Local" />Local
+				<input type="radio" name="SessionStorageType" value="Session" checked="checked" 
+					<?php
+						if ($lEnableHTMLControls) {
+							echo('required="true"');
+						}// end if
+					?>
+				/>Session
+				<input type="radio" name="SessionStorageType" value="Local"
+					<?php
+						if ($lEnableHTMLControls) {
+							echo('required="true"');
+						}// end if
+					?>
+				/>Local
 			</td>
 			<td>
-				<input	onclick="addItemToStorage(this.form);" 
-						class="button" 
-						type="button" 
-						value="Add New" />
+			<input 	onclick="addItemToStorage(this.form);"
+					class="button" 
+					type="button" 
+					value="Add New" />
 			</td>
 		</tr>
 		<tr><td>&nbsp;</td></tr>
@@ -230,17 +257,13 @@
 	</span>
 </div>
 
-<script type="text/javascript">
-<!--
+<script>
 	try{
-		document.getElementById("idDOMStorageKeyInput").focus();
 		init();
-	}catch(/*Exception*/ e){
-		alert("Error trying to set focus: " + e.message);
-	}// end try
-//-->
+	}catch(e){
+		alert("Error when calling init()"+e.message);
+	}
 </script>
-
 <?php
 	if ($_SESSION["showhints"] == 2) {
 		include_once './includes/hints-level-2/cross-site-scripting-tutorial.inc';

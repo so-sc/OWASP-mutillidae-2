@@ -3,17 +3,20 @@
     	switch ($_SESSION["security-level"]){
     		case "0": // This code is insecure.
 				$lEnableJavaScriptValidation = FALSE;
-    		break;
+				$lEnableHTMLControls = FALSE;
+			break;
 
     		case "1": // This code is insecure.
 				$lEnableJavaScriptValidation = TRUE;
-    		break;
+				$lEnableHTMLControls = TRUE;
+			break;
 
 	   		case "2":
 	   		case "3":
 	   		case "4":
     		case "5": // This code is fairly secure
     			$lEnableJavaScriptValidation = TRUE;
+				$lEnableHTMLControls = TRUE;
     		break;
     	}// end switch
     	

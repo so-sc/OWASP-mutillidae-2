@@ -28,6 +28,7 @@
 			$lTokenizeAllowedMarkup = FALSE;
 			$lProtectAgainstSQLInjection = FALSE;
 			$lEnableJavaScriptValidation = FALSE;
+			$lEnableHTMLControls = FALSE;
 			$lProtectAgainstMethodTampering = FALSE;
 		break;	   		
 
@@ -38,6 +39,7 @@
 			$lTokenizeAllowedMarkup = FALSE;
 			$lProtectAgainstSQLInjection = FALSE;
 			$lEnableJavaScriptValidation = TRUE;
+			$lEnableHTMLControls = TRUE;
 			$lProtectAgainstMethodTampering = FALSE;
 		break;	   		
 
@@ -94,6 +96,7 @@
 			 * JS is easy to bypass.
 			 */
 			$lEnableJavaScriptValidation = TRUE;
+			$lEnableHTMLControls = TRUE;
 			$lProtectAgainstMethodTampering = TRUE;
    		break;
    	}// end switch
@@ -216,7 +219,7 @@
 			enctype="application/x-www-form-urlencoded" 
 			onsubmit="return onSubmitBlogEntry(this);"
 			id="idBlogForm"
-			>		
+			>
 		<input name="csrf-token" type="hidden" value="<?php echo $lNewCSRFTokenForNextRequest; ?>" />
 		<span>
 			<a href="./index.php?page=view-someones-blog.php" style="text-decoration: none;">
@@ -232,12 +235,27 @@
 			</tr>
 			<tr><td></td></tr>
 			<tr>
-				<td id="id-blog-form-header-td" ReflectedXSSExecutionPoint="1" class="form-header">Add blog for <?php echo $lLoggedInUser?></td>
+				<td id="id-blog-form-header-td" ReflectedXSSExecutionPoint="1" class="form-header">
+					Add blog for <?php echo $lLoggedInUser?>
+				</td>
 			</tr>
 			<tr><td></td></tr>
-			<tr><td class="report-header">Note: &lt;b&gt;,&lt;/b&gt;,&lt;i&gt;,&lt;/i&gt;,&lt;u&gt; and &lt;/u&gt; are now allowed in blog entries</td></tr>
 			<tr>
-				<td><textarea name="blog_entry" HTMLandXSSandSQLInjectionPoint="1" rows="10" cols="65"></textarea></td>
+				<td class="report-header">
+					Note: &lt;b&gt;,&lt;i&gt; and &lt;u&gt; are now allowed in blog entries
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea 	name="blog_entry" HTMLandXSSandSQLInjectionPoint="1" rows="8" cols="65"
+								autofocus="1"
+						<?php 
+							if ($lEnableHTMLControls) {
+								echo('minlength="1" maxlength="100" required="true"');
+							}// end if
+						?>
+					></textarea>
+				</td>
 			</tr>
 			<tr><td></td></tr>
 			<tr>
@@ -345,11 +363,3 @@
 		include_once (__ROOT__.'/includes/hints-level-2/cross-site-request-forgery-tutorial.inc');
 	}// end if
 ?>
-
-<script type="text/javascript">
-	try{
-		document.getElementById("idBlogForm").blog_entry.focus();
-	}catch(e){
-		alert('Error trying to set focus on field blog_entry: ' + e.message);
-	}// end try
-</script>

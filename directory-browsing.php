@@ -23,7 +23,7 @@
 			folder (i.e. - http://localhost/mutillidae/&lt;folder&gt;).
 			<br>
 			<br>
-			If help is needed figuring out folder names, try activating the hints below.
+			If help is needed figuring out folder names, try activating hints.
 		</td>
 	</tr>
 	<tr><td>&nbsp;</td></tr>
