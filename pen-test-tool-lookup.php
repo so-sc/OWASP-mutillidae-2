@@ -204,14 +204,6 @@
 		}// end try
 	};//end JavaScript function addRow
 
-	var initializePage = function(){
-		try{
-			document.getElementById("idToolSelect").focus();
-		}catch(/*Exception*/ e){
-			alert("Error trying to initialize page: " + e.message);
-		}// end try
-	};// end function
-	
 	var displayError = function(){
 		try{
 			if(gDisplayError == "TRUE"){
@@ -274,7 +266,7 @@
 			<tr>
 				<td class="label" style="text-align: right;">Pen Test Tool</td>
 				<td>
-					<select id="idToolSelect" JSONInjectionPoint="1" name="ToolID">
+					<select id="idToolSelect" JSONInjectionPoint="1" name="ToolID" autofocus="1">
 						<option value="0923ac83-8b50-4eda-ad81-f1aac6168c5c" selected="selected">Please Choose Tool</option>
 						<option value="c84326e4-7487-41d3-91fd-88280828c756">Show All</option>
 						<?php echo $lPenTestToolsOptions; ?>
@@ -310,7 +302,6 @@
 
 <script type="text/javascript">
 <!--
-	initializePage();
 	displayError();
 	displayPenTestTools();
 //-->

@@ -87,6 +87,7 @@
 								<li><a href="index.php?page=login.php">Login</a></li>
 								<li><a href="index.php?page=back-button-discussion.php">Those &quot;Back&quot; Buttons</a></li>
 								<li><a href="index.php?page=styling-frame.php&page-to-frame=styling.php%3Fpage-title%3DStyling+with+Mutillidae">Styling with Mutilidae</a></li>
+								<li><a href="index.php?page=password-generator.php&username=<?php echo $logged_in_user ?>">Password Generator</a></li>
 							</ul>
 						</li>
 						<li>
@@ -102,6 +103,7 @@
 							<a href="">HTMLi Via DOM Injection</a>
 							<ul>
 								<li><a href="index.php?page=html5-storage.php">HTML5 Storage</a></li>
+								<li><a href="index.php?page=password-generator.php&username=<?php echo $logged_in_user ?>">Password Generator</a></li>
 							</ul>
 						</li>								
 						<li>
@@ -128,11 +130,7 @@
 							<a href="">JavaScript Injection</a>
 							<ul>
 								<li><a href="index.php?page=back-button-discussion.php">Those &quot;Back&quot; Buttons</a></li>
-								<li>
-									<a href="index.php?page=password-generator.php&username=<?php echo $logged_in_user ?>">
-										Password Generator
-									</a>
-								</li>
+								<li><a href="index.php?page=password-generator.php&username=<?php echo $logged_in_user ?>">Password Generator</a></li>
 								<li><a href="index.php?page=browser-info.php">Browser Info</a></li>
 							</ul>
 						</li>
@@ -266,6 +264,7 @@
 								<li><a href="index.php?page=browser-info.php">Browser Info</a></li>
 								<li><a href="index.php?page=back-button-discussion.php">Those &quot;Back&quot; Buttons</a></li>
 								<li><a href="index.php?page=styling-frame.php&page-to-frame=styling.php%3Fpage-title%3DStyling+with+Mutillidae">Styling with Mutilidae</a></li>
+								<li><a href="index.php?page=password-generator.php&username=<?php echo $logged_in_user ?>">Password Generator</a></li>
 							</ul>
 						</li>
 						<li>
@@ -280,6 +279,7 @@
 							<a href="">DOM Injection</a>
 							<ul>
 								<li><a href="index.php?page=html5-storage.php">HTML5 Storage</a></li>
+								<li><a href="index.php?page=password-generator.php&username=<?php echo $logged_in_user ?>">Password Generator</a></li>
 							</ul>
 						</li>								
 						<li>
@@ -374,6 +374,7 @@
 								<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
 								<li><a href="index.php?page=user-poll.php">Poll Question</a></li>
 								<li><a href="index.php?page=register.php">Register User</a></li>
+								<li><a href="index.php?page=password-generator.php&username=<?php echo $logged_in_user ?>">Password Generator</a></li>
 							</ul>
 						</li>
 					</ul>

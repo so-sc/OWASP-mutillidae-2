@@ -136,11 +136,15 @@
 			<tr><td></td></tr>
 			<tr>
 				<td class="label">Username</td>
-				<td><input HTMLandXSSandSQLInjectionPoint="1" type="text" name="username" size="20"></td>
+				<td><input HTMLandXSSandSQLInjectionPoint="1" type="text" name="username" size="20" /></td>
 			</tr>
 			<tr>
 				<td class="label">Password</td>
-				<td><input SQLInjectionPoint="1" type="password" name="password" size="20"></td>
+				<td>
+					<input SQLInjectionPoint="1" type="password" name="password" size="20"/>
+					&nbsp;
+					<a href="index.php?page=password-generator.php&username=<?php echo $logged_in_user ?>" target="_blank">Password Generator
+				</td>
 			</tr>
 			<tr>
 				<td class="label">Confirm Password</td>

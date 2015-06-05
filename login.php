@@ -114,12 +114,29 @@
 			</tr>
 			<tr><td></td></tr>
 			<tr>
-				<td class="label">Name</td>
-				<td><input SQLInjectionPoint="1" type="text" name="username" maxlength="20" size="20"></td>
+				<td class="label">Username</td>
+				<td>
+					<input	SQLInjectionPoint="1" type="text" name="username" size="20"
+							autofocus="1"
+					<?php
+						if ($lEnableHTMLControls) {
+							echo('minlength="1" maxlength="15" required="true"');
+						}// end if
+					?>
+					/>
+				</td>
 			</tr>
 			<tr>
 				<td class="label">Password</td>
-				<td><input SQLInjectionPoint="1" type="password" name="password" maxlength="20" size="20"></td>
+				<td>
+					<input SQLInjectionPoint="1" type="password" name="password" size="20"
+					<?php
+						if ($lEnableHTMLControls) {
+							echo('minlength="1" maxlength="15" required="true"');
+						}// end if
+					?>
+					/>
+				</td>
 			</tr>
 			<tr><td></td></tr>
 			<tr>
@@ -199,11 +216,3 @@
 		include_once './includes/insufficient-transport-layer-protection.inc';
 	}// end if	
 ?>
-
-<script type="text/javascript">
-	try{
-		document.getElementById("idLoginForm").username.focus();
-	}catch(e){
-		alert('Error trying to set focus on field idLoginForm: ' + e.message);
-	}// end try
-</script>

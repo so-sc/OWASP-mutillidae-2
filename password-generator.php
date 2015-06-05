@@ -1,4 +1,11 @@
 <?php
+/*
+ * Vulnerabilities
+ * Reflected Cross-site Scripting
+ * JavaScript Injection
+ * Method Tampering
+ * DOM-based Cross-site Scripting
+ */
 	try {
 		$lUsernameForJS = "";
 		$lPasswordJSMessage = "";
@@ -99,7 +106,7 @@
 			<tr><td></td></tr>
 			<tr>
 				<td style="text-align:center;">
-					<input name="password-generator-php-submit-button" class="button" type="button" value="Generate Password" onclick="onSubmitOfGeneratorForm(this.form);" />
+					<input name="password-generator-php-submit-button" autofocus="1" class="button" type="button" value="Generate Password" onclick="onSubmitOfGeneratorForm(this.form);" />
 				</td>
 			</tr>
 			<tr><td></td></tr>
