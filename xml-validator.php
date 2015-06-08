@@ -57,12 +57,12 @@
     	}else{
     		$lHTMLControlAttributes="";
     	}// end if
-    	
+
     	$lFormSubmitted = FALSE;
 		if (isset($_POST["xml-validator-php-submit-button"]) || isset($_REQUEST["xml-validator-php-submit-button"])) {
 			$lFormSubmitted = TRUE;
 		}// end if
-    	
+
 		if ($lFormSubmitted){
 	    	if ($lProtectAgainstMethodTampering) {
 	    			$lXMLValidatorSubmitButton = $_POST["xml-validator-php-submit-button"];
@@ -71,7 +71,7 @@
 	    			$lXMLValidatorSubmitButton = $_REQUEST["xml-validator-php-submit-button"];
 	    			$lXML = $_REQUEST["xml"];
 	    	}// end if $lProtectAgainstMethodTampering
-	
+
 	    	try {
 	    		if ($lEnableXMLEncoding){
 	    			$lXMLToLog = $Encoder->encodeForXML($lXML);
