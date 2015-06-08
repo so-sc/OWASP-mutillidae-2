@@ -5,12 +5,16 @@
 	switch ($_SESSION["security-level"]){
 		case "0": // This code is insecure
 			// DO NOTHING: This is equivalent to using client side security
+			$lEnableJavaScriptValidation = FALSE;
+			$lEnableHTMLControls = FALSE;
 			$lProtectAgainstMethodTampering = FALSE;
 			$lEncodeOutput = FALSE;
 			break;
 	
 		case "1": // This code is insecure
 			// DO NOTHING: This is equivalent to using client side security
+			$lEnableJavaScriptValidation = TRUE;
+			$lEnableHTMLControls = TRUE;
 			$lProtectAgainstMethodTampering = FALSE;
 			$lEncodeOutput = FALSE;
 			break;
@@ -23,6 +27,8 @@
 			 * Concerning SQL Injection, use parameterized stored procedures. Parameterized
 			 * queries is not good enough. You cannot use least privilege with queries.
 			 */
+			$lEnableJavaScriptValidation = TRUE;
+			$lEnableHTMLControls = TRUE;
 			$lProtectAgainstMethodTampering = TRUE;
 			$lEncodeOutput = TRUE;
 			break;
@@ -94,6 +100,41 @@
 	}// end if (isset($_POST["register-php-submit-button"])){
 ?>
 
+<script type="text/javascript">
+<!--
+	<?php 
+		if($lEnableJavaScriptValidation){
+			echo "var lValidateInput = \"TRUE\"" . PHP_EOL;
+		}else{
+			echo "var lValidateInput = \"FALSE\"" . PHP_EOL;
+		}// end if		
+	?>
+
+	function onSubmitOfForm(/*HTMLFormElement*/ theForm){
+		try{
+			if(lValidateInput == "TRUE"){
+				var lUnsafeCharacters = /[`~!@#$%^&*()-_=+\[\]{}\\|;':",./<>?]/;
+				if (theForm.username.value.length > 15 || 
+					theForm.password.value.length > 15){
+						alert('Username too long. We dont want to allow too many characters.\n\nSomeone might have enough room to enter a hack attempt.');
+						return false;
+				};// end if
+				
+				if (theForm.username.value.search(lUnsafeCharacters) > -1 || 
+					theForm.password.value.search(lUnsafeCharacters) > -1){
+						alert('Dangerous characters detected. We can\'t allow these. This all powerful blacklist will stop such attempts.\n\nMuch like padlocks, filtering cannot be defeated.\n\nBlacklisting is l33t like l33tspeak.');
+						return false;
+				};// end if
+			};// end if(lValidateInput)
+			
+			return true;
+		}catch(e){
+			alert("Error: " + e.message);
+		};// end catch
+	};// end function onSubmitOfLoginForm(/*HTMLFormElement*/ theForm)
+//-->
+</script>
+
 <!-- Bubble hints code -->
 <?php 
 	try{
@@ -121,7 +162,9 @@
 </span>
 
 <div id="id-registration-form-div">
-	<form action="index.php?page=register.php" method="post" enctype="application/x-www-form-urlencoded">
+	<form	action="index.php?page=register.php" method="post" enctype="application/x-www-form-urlencoded"
+			onsubmit="return onSubmitOfForm(this);"
+			>
 		<input name="csrf-token" type="hidden" value="<?php echo $lNewCSRFTokenForNextRequest; ?>" />
 		<table style="margin-left:auto; margin-right:auto;">
 			<tr id="id-bad-cred-tr" style="display: none;">
@@ -129,38 +172,68 @@
 					Authentication Error: Bad user name or password
 				</td>
 			</tr>
-			<tr><td></td></tr>
+			<tr><td>&nbsp;</td></tr>
 			<tr>
 				<td colspan="2" class="form-header">Please choose your username, password and signature</td>
 			</tr>
-			<tr><td></td></tr>
+			<tr><td>&nbsp;</td></tr>
 			<tr>
 				<td class="label">Username</td>
-				<td><input HTMLandXSSandSQLInjectionPoint="1" type="text" name="username" size="20" /></td>
+				<td>
+					<input HTMLandXSSandSQLInjectionPoint="1" type="text" name="username" size="15" autofocus="1"
+						<?php
+							if ($lEnableHTMLControls) {
+								echo('minlength="1" maxlength="15" required="true"');
+							}// end if
+						?>
+					/>
+				</td>
 			</tr>
 			<tr>
 				<td class="label">Password</td>
 				<td>
-					<input SQLInjectionPoint="1" type="password" name="password" size="20"/>
+					<input SQLInjectionPoint="1" type="password" name="password" size="15" 
+						<?php
+							if ($lEnableHTMLControls) {
+								echo('minlength="1" maxlength="15" required="true"');
+							}// end if
+						?>
+					/>
 					&nbsp;
 					<a href="index.php?page=password-generator.php&username=<?php echo $logged_in_user ?>" target="_blank">Password Generator
 				</td>
 			</tr>
 			<tr>
 				<td class="label">Confirm Password</td>
-				<td><input SQLInjectionPoint="1" type="password" name="confirm_password" size="20"></td>
+				<td>
+					<input SQLInjectionPoint="1" type="password" name="confirm_password" size="15"
+						<?php
+							if ($lEnableHTMLControls) {
+								echo('minlength="1" maxlength="15" required="true"');
+							}// end if
+						?>
+					/>
+				</td>
 			</tr>
 			<tr>
 				<td class="label">Signature</td>
-				<td><textarea HTMLandXSSandSQLInjectionPoint="1" rows="10" cols="50" name="my_signature"></textarea></td>
+				<td>
+					<textarea HTMLandXSSandSQLInjectionPoint="1" rows="3" cols="50" name="my_signature"
+						<?php
+							if ($lEnableHTMLControls) {
+								echo('minlength="1" maxlength="100" required="true"');
+							}// end if
+						?>
+					></textarea>
+				</td>
 			</tr>			
-			<tr><td></td></tr>
+			<tr><td>&nbsp;</td></tr>
 			<tr>
 				<td colspan="2" style="text-align:center;">
 					<input name="register-php-submit-button" class="button" type="submit" value="Create Account" />
 				</td>
 			</tr>
-			<tr><td></td></tr>
+			<tr><td>&nbsp;</td></tr>
 		</table>
 	</form>
 </div>

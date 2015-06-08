@@ -13,9 +13,16 @@
 
 	switch ($_SESSION["security-level"]){
    		case "0": // This code is insecure
+   			$lEnableHTMLControls = FALSE;
+   			$lEncodeOutput = FALSE;
+   			$lProtectAgainstMethodTampering = FALSE;
+   			$lHTTPParameterPollutionDetected = FALSE;
+   		break;
+   			   			
    		case "1": // This code is insecure
    			// DO NOTHING: This is insecure		
-			$lEncodeOutput = FALSE;
+			$lEnableHTMLControls = TRUE;
+   			$lEncodeOutput = FALSE;
 			$lProtectAgainstMethodTampering = FALSE;
 			$lHTTPParameterPollutionDetected = FALSE;
 		break;
@@ -24,7 +31,9 @@
 		case "3":
 		case "4":
 		case "5": // This code is fairly secure
-  			/* 
+			$lEnableHTMLControls = TRUE;
+				
+			/* 
   			 * NOTE: Input validation is excellent but not enough. The output must be
   			 * encoded per context. For example, if output is placed in HTML,
   			 * then HTML encode it. Blacklisting is a losing proposition. You 
@@ -60,6 +69,12 @@
    		break;
    	}// end switch		
 
+   	if ($lEnableHTMLControls) {
+   		$lHTMLControlAttributes='required="true"';
+   	}else{
+   		$lHTMLControlAttributes="";
+   	}// end if
+   	   	
    	$lNewCSRFTokenForNextRequest = $lCSRFTokenHandler->generateCSRFToken();
    	   	
    	// initialize message
@@ -158,23 +173,23 @@
 			<tr><td></td></tr>
 			<tr>
 				<td>
-					<input name="choice" id="id_choice" type="radio" value="nmap" checked="checked" />&nbsp;&nbsp;nmap<br />
-					<input name="choice" id="id_choice" type="radio" value="wireshark" />&nbsp;&nbsp;wireshark<br />
-					<input name="choice" id="id_choice" type="radio" value="tcpdump" />&nbsp;&nbsp;tcpdump<br />
-					<input name="choice" id="id_choice" type="radio" value="netcat" />&nbsp;&nbsp;netcat<br />
-					<input name="choice" id="id_choice" type="radio" value="metasploit" />&nbsp;&nbsp;metasploit<br />
-					<input name="choice" id="id_choice" type="radio" value="kismet" />&nbsp;&nbsp;kismet<br />
-					<input name="choice" id="id_choice" type="radio" value="Cain" />&nbsp;&nbsp;Cain<br />
-					<input name="choice" id="id_choice" type="radio" value="Ettercap" />&nbsp;&nbsp;Ettercap<br />
-					<input name="choice" id="id_choice" type="radio" value="Paros" />&nbsp;&nbsp;Paros<br />
-					<input name="choice" id="id_choice" type="radio" value="Burp Suite" />&nbsp;&nbsp;Burp Suite<br />
-					<input name="choice" id="id_choice" type="radio" value="Sysinternals" />&nbsp;&nbsp;Sysinternals<br />
-					<input name="choice" id="id_choice" type="radio" value="inSIDDer" />&nbsp;&nbsp;inSIDDer
+					<input name="choice" id="id_choice" type="radio" <?php echo $lHTMLControlAttributes ?> value="nmap" checked="checked" />&nbsp;&nbsp;nmap<br />
+					<input name="choice" id="id_choice" type="radio" <?php echo $lHTMLControlAttributes ?> value="wireshark" />&nbsp;&nbsp;wireshark<br />
+					<input name="choice" id="id_choice" type="radio" <?php echo $lHTMLControlAttributes ?> value="tcpdump" />&nbsp;&nbsp;tcpdump<br />
+					<input name="choice" id="id_choice" type="radio" <?php echo $lHTMLControlAttributes ?> value="netcat" />&nbsp;&nbsp;netcat<br />
+					<input name="choice" id="id_choice" type="radio" <?php echo $lHTMLControlAttributes ?> value="metasploit" />&nbsp;&nbsp;metasploit<br />
+					<input name="choice" id="id_choice" type="radio" <?php echo $lHTMLControlAttributes ?> value="kismet" />&nbsp;&nbsp;kismet<br />
+					<input name="choice" id="id_choice" type="radio" <?php echo $lHTMLControlAttributes ?> value="Cain" />&nbsp;&nbsp;Cain<br />
+					<input name="choice" id="id_choice" type="radio" <?php echo $lHTMLControlAttributes ?> value="Ettercap" />&nbsp;&nbsp;Ettercap<br />
+					<input name="choice" id="id_choice" type="radio" <?php echo $lHTMLControlAttributes ?> value="Paros" />&nbsp;&nbsp;Paros<br />
+					<input name="choice" id="id_choice" type="radio" <?php echo $lHTMLControlAttributes ?> value="Burp Suite" />&nbsp;&nbsp;Burp Suite<br />
+					<input name="choice" id="id_choice" type="radio" <?php echo $lHTMLControlAttributes ?> value="Sysinternals" />&nbsp;&nbsp;Sysinternals<br />
+					<input name="choice" id="id_choice" type="radio" <?php echo $lHTMLControlAttributes ?> value="inSIDDer" />&nbsp;&nbsp;inSIDDer
 				</td>
 			</tr>
 			<tr>
 				<td class="label">
-					Your Initials:<input type="text" name="initials" ParameterPollutionInjectionPoint="1" value="<?php echo $lUserInitials; ?>"/>
+					Your Initials:<input type="text" name="initials" <?php echo $lHTMLControlAttributes ?> ParameterPollutionInjectionPoint="1" value="<?php echo $lUserInitials; ?>"/>
 				</td>
 			</tr>
 			<tr><td></td></tr>

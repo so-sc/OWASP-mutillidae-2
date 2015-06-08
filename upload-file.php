@@ -5,13 +5,17 @@
 	try{
     	switch ($_SESSION["security-level"]){
     		case "0": // This code is insecure. No input validation is performed.
-				$lValidateFileUpload = FALSE;
+				$lEnableJavaScriptValidation = FALSE;
+    			$lEnableHTMLControls = FALSE;
+    			$lValidateFileUpload = FALSE;
 				$lAllowedFileSize = 2000000;
 				$lUploadDirectoryFlag = "CLIENT_DECIDES";
 			break;
 
     		case "1": // This code is insecure. No input validation is performed.
-				$lValidateFileUpload = FALSE;
+				$lEnableJavaScriptValidation = TRUE;
+    			$lEnableHTMLControls = TRUE;
+    			$lValidateFileUpload = FALSE;
 				$lAllowedFileSize = 2000000;
 				$lUploadDirectoryFlag = "CLIENT_DECIDES";
 			break;
@@ -20,7 +24,9 @@
 	   		case "3":
 	   		case "4":
     		case "5": // This code is fairly secure
-				$lValidateFileUpload = TRUE;
+				$lEnableJavaScriptValidation = TRUE;
+    			$lEnableHTMLControls = TRUE;
+    			$lValidateFileUpload = TRUE;
 				$lAllowedFileSize = 20000;
 				$lUploadDirectoryFlag = "TEMP_DIRECTORY";
 			break;
@@ -129,6 +135,36 @@
 	});
 </script>
 
+<script type="text/javascript">
+	var onSubmitOfForm = function(/* HTMLForm */ theForm){
+
+		try{
+
+			<?php 
+			if($lEnableJavaScriptValidation){
+				echo "var lValidateInput = \"TRUE\"" . PHP_EOL;
+			}else{
+				echo "var lValidateInput = \"FALSE\"" . PHP_EOL;
+			}// end if		
+			?>
+
+		    var lMAX_FILE_SIZE = <?php echo $lAllowedFileSize;?>;
+
+			if(lValidateInput == "TRUE"){
+				if (theForm.id_max_file_size.value > lMAX_FILE_SIZE){
+					alert('Maximum file size is not allowed to be larger than '+lMAX_FILE_SIZE);
+					return false;
+				};// end if
+			};// end if(lValidateInput)
+			
+			return true;
+		}catch(e){
+			alert("Error: " + e.message);
+		};// end catch
+
+	};// end JavaScript function onSubmitOfForm()
+</script>
+
 <div class="page-title">Upload a File</div>
 <div>&nbsp;</div>
 
@@ -152,7 +188,7 @@
 ?>
 
 <div>
-	<form enctype="multipart/form-data" action="./index.php?page=upload-file.php" method="POST">
+	<form enctype="multipart/form-data" action="./index.php?page=upload-file.php" method="POST" onsubmit="return onSubmitOfForm(this);">
 		<table style="margin-left:auto; margin-right:auto;">
 			<tr id="id-bad-cred-tr" style="display: none;">
 				<td colspan="2" class="error-message">
@@ -169,7 +205,7 @@
 					<!-- UPLOAD_DIRECTORY hidden input is only considered in security level 0 -->
 					<input type="hidden" name="UPLOAD_DIRECTORY" value="<?php echo $lWebServerUploadDirectory; ?>" />
 				    <!-- MAX_FILE_SIZE must precede the file input field -->
-				    <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo $lAllowedFileSize; ?>" />
+				    <input type="hidden" name="MAX_FILE_SIZE" id="id_max_file_size" value="<?php echo $lAllowedFileSize; ?>" />
 					<label for="filename-text" class="label">Filename</label>
 					<input type="text" HTMLandXSSandSQLInjectionPoint="1" style="background-color:#ffffff;color:#000000;font-family:courier" disabled="disabled" name="filename-text" id="idFilenameText" size="50" />
 					<img src="./images/upload-32-32.png" align="middle" onclick="idFilename.click();" />

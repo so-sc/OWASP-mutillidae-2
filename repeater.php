@@ -3,6 +3,7 @@
     	switch ($_SESSION["security-level"]){
     		case "0": // This code is insecure.
 				$lEnableJavaScriptValidation = FALSE;
+				$lEnableHTMLControls = FALSE;
 				$lEnableBufferOverflowProtection = FALSE;
 				$lProtectAgainstMethodSwitching = FALSE;
 				$lCreateParameterAdditionVulnerability = TRUE;
@@ -10,6 +11,7 @@
 
     		case "1": // This code is insecure.
 				$lEnableJavaScriptValidation = TRUE;
+				$lEnableHTMLControls = TRUE;
 				$lEnableBufferOverflowProtection = FALSE;
 				$lProtectAgainstMethodSwitching = FALSE;
 				$lCreateParameterAdditionVulnerability = TRUE;
@@ -20,7 +22,8 @@
 	   		case "4":
     		case "5": // This code is fairly secure
     			$lEnableJavaScriptValidation = TRUE;
-				$lEnableBufferOverflowProtection = TRUE;
+				$lEnableHTMLControls = TRUE;
+    			$lEnableBufferOverflowProtection = TRUE;
 				$lProtectAgainstMethodSwitching = TRUE;
 				$lCreateParameterAdditionVulnerability = FALSE;
     		break;
@@ -62,19 +65,19 @@
 	    			$lErrorMessage = "The times to repeat string does not appear to be an integer.";
 	    			throw new Exception($lErrorMessage);	
 	    		}// end if
-	    		    		
+
 	    		if(!$lStringToRepeatIsReasonable){
 	    			$lErrorMessage = "The string to repeat does not appear to be reasonable.";
 	    			throw new Exception($lErrorMessage);	
 	    		}// end if
-	    		    		
+
 	    		if(($lTimesToRepeatString * strlen($lStringToRepeat)) > $lMaximumPHPStringBufferSize){
 	    			$lErrorMessage = "The buffer that would need to be allocated exceeds the PHP maximum string buffer size.";
 	    			throw new Exception($lErrorMessage);	
 	    		}// end if
-	    		
+
 	    	}// end if($lEnableBufferOverflowProtection)
-	    	
+
 	    	/* Cast second number to integer to make the hack easier to pull off. Users will be tempted
 	    	 * put in a number so large, that the $lTimesToRepeatString number will overflow
 	    	 * before the str_repeat function gets a chance to run.
@@ -187,11 +190,27 @@
 			<tr><td></td></tr>
 			<tr>
 				<td class="label" style="text-align: left;">String to repeat</td>
-				<td style="text-align: left;"><input HTMLandXSSInjectionPoint="1" type="text" name="string_to_repeat" maxlength="256" size="40"></td>
+				<td style="text-align: left;">
+					<input HTMLandXSSInjectionPoint="1" type="text" name="string_to_repeat" size="40" autofocus="1"
+						<?php
+							if ($lEnableHTMLControls) {
+								echo('minlength="1" maxlength="40" required="true"');
+							}// end if
+						?>
+					/>
+				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">Number of times to repeat</td>
-				<td style="text-align: left;"><input BufferOverflowInjectionPoint="1" type="text" name="times_to_repeat_string" maxlength="20" size="20"></td>
+				<td style="text-align: left;">
+					<input BufferOverflowInjectionPoint="1" type="text" name="times_to_repeat_string" size="30"
+						<?php
+							if ($lEnableHTMLControls) {
+								echo('minlength="1" maxlength="30" required="true"');
+							}// end if
+						?>
+					/>
+				</td>
 			</tr>
 			<tr><td></td></tr>
 			<tr>
@@ -218,12 +237,6 @@
 	if (l_submit_occured){
 		document.getElementById("id-repeater-output-div").style.display="";		
 	}// end if l_submit_occured	
-
-	try{
-		document.getElementById("idRepeaterForm").string_to_repeat.focus();
-	}catch(e){
-		alert('Error trying to set focus on field idRepeaterForm: ' + e.message);
-	}// end try
 </script>
 
 <?php

@@ -63,8 +63,8 @@
 			$lHTTPParameterPollutionDetected = ($lCountUnique < $lCountTotal);
 			
    		break;
-   	}// end switch		
-
+   	}// end switch
+   	
    	// initialize message
   	$lDocumentToBeFramedMessage="No choice selected";
    	$lDocumentChosen=(isset($_REQUEST["PathToDocument"]));

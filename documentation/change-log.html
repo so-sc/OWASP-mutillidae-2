@@ -17,7 +17,7 @@ TODO: Add password hashes into the project
 TODO: Resize pictures to needed size
 <br />
 <br />
-<div><span style="font-weight:bold;">03/16/2015</span>: Jeremy Druin</div>
+<div><span style="font-weight:bold;">06/08/2015</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.6.20:</div>
 	<ul>
@@ -26,12 +26,21 @@ TODO: Resize pictures to needed size
 			back buttons was pointing to the HTML5 web storage page
 		</li>
 		<li>
+			BUG FIX: Fixed name of JavaScript validation function in DNS
+			lookup page, user-info and user-info-xpath
+		</li>
+		<li>
 			BUG FIX: The directory browsing page pointed to the wrong
 			place for hints
 		</li>
 		<li>
 			BUG FIX: All of the radio buttons on the document viewer page
 			were checked by default
+		</li>
+		<li>
+			BUG FIX: Added output encoding to source viewer page in security level 5.
+			Otherwise their was a cross-site scripting vulnerability in the page
+			in security level 5.
 		</li>
 		<li>
 			BUG FIX: Removed the maxlength attribute from the login page
@@ -46,6 +55,9 @@ TODO: Resize pictures to needed size
 			reflected cross-site scripting, and	DOM-based cross-site scripting 
 			menus
 		</li>
+		<li>BUG FIX: Added autofocus to username field on register user page</li>
+		<li>BUG FIX: Repaired errant encoding for ReflectedXSSExecutionPoint in footer.php</li>
+		<li>BUG FIX: Repaired errant encoding for SQLInjectionPoint in view-someones-blog.php</li>
 		<li>
 			Updated XSS examples in the level 1 hints for XSS
 		</li>
@@ -76,10 +88,25 @@ TODO: Resize pictures to needed size
 			Updated titles for security levels to Security Level: 1 (Client-side Security)
 			and Security Level: 5 (Server-side Security)
 		</li>
+		<li>Added password generator link to register user page</li>
+		<li>Added JavaScript validation to register user page in security level 1</li>
+		<li>Added JavaScript validation to set background color page in security level 1</li>
+		<li>Added JavaScript validation to upload file page in security level 1</li>
+		<li>Added JavaScript validation to user info in security level 1</li>
+		<li>Added JavaScript validation to user info xpath page in security level 1</li>
 		<li>Added client-side HTML controls to Add blog page in security level 1</li>
 		<li>Added client-side HTML controls to DNS Lookup page in security level 1</li>
 		<li>Added client-side HTML controls to document viewer page in security level 1</li>
 		<li>Added client-side HTML controls to web storage page in security level 1</li>
+		<li>Added client-side HTML controls to register user page in security level 1</li>
+		<li>Added client-side HTML controls to source code viewer page in security level 1</li>
+		<li>Added client-side HTML controls to text file viewer page in security level 1</li>
+		<li>Added client-side HTML controls to upload file page in security level 1</li>
+		<li>Added client-side HTML controls to user info page in security level 1</li>
+		<li>Added client-side HTML controls to user info xpath page in security level 1</li>
+		<li>Added client-side HTML controls to user poll page in security level 1</li>
+		<li>Added client-side HTML controls to view someones blog page in security level 1</li>
+		<li>Added client-side HTML controls to xml validator in security level 1</li>
 	</ul>
 </blockquote>		
 

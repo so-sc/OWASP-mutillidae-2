@@ -16,17 +16,33 @@
 	try {	    	
 		switch ($_SESSION["security-level"]){
 	   		case "0": // This code is insecure
+	   			$lEnableHTMLControls = FALSE;
+	   			$lValidateAndTokenize = FALSE;
+	   			$lEncodeOutput = FALSE;
+	   		break;
+	   			 
 	   		case "1": // This code is insecure 
-				$lBeSmart = FALSE;
+				$lEnableHTMLControls = TRUE;
+	   			$lValidateAndTokenize = FALSE;
+				$lEncodeOutput = FALSE;
 	   		break;
 	    		
 			case "2":
 			case "3":
 			case "4":
 	   		case "5": // This code is fairly secure
-				$lBeSmart = TRUE;
+				$lEnableHTMLControls = TRUE;
+	   			$lValidateAndTokenize = TRUE;
+				$lEncodeOutput = TRUE;
 	   		break;
 	   	}// end switch ($_SESSION["security-level"])
+	   	
+	   	if ($lEnableHTMLControls) {
+	   		$lHTMLControlAttributes='required="true"';
+	   	}else{
+	   		$lHTMLControlAttributes="";
+	   	}// end if
+
 	}catch(Exception $e){
 		echo $CustomErrorHandler->FormatError($e, "Error in text file viewer. Cannot load file.");
 	}// end try
@@ -81,14 +97,14 @@
 			<td class="label">Source File Name</td>
 			<td>
 				<input type="hidden" name="page" value="<?php echo $_REQUEST['page']?>">
-				<select name="phpfile" id="id_file_select" HTMLandXSSandSQLInjectionPoint="1">
+				<select name="phpfile" id="id_file_select" HTMLandXSSandSQLInjectionPoint="1" autofocus="1" <?php echo $lHTMLControlAttributes ?>>
 				<?php 
 					$_SESSION['source-viewer-files-array'] = "";						
-					if(!$lBeSmart){
+					if(!$lValidateAndTokenize){
 						// Just print raw filenames as values
 						foreach ($DirectoryIterator as $fileInfo) {
 							$lPHPFileName = $fileInfo->getFilename();
-							if ($fileInfo->GetExtension() == "php" and !$fileInfo->isDot() and ($lPHPFileName != "set-up-database.php")) {
+							if ($fileInfo->GetExtension() == "php" and !$fileInfo->isDot()) {
 						   		echo '<option value="' . $lPHPFileName . '">' . $lPHPFileName . "</option>";
 							}// end if
 						}// end for each
@@ -98,7 +114,7 @@
 						$lCounter = 0;
 						foreach ($DirectoryIterator as $fileInfo) {
 							$lPHPFileName = $fileInfo->getFilename();
-							if ($fileInfo->GetExtension() == "php" and !$fileInfo->isDot() and ($lPHPFileName != "set-up-database.php")) {
+							if ($fileInfo->GetExtension() == "php" and !$fileInfo->isDot()) {
 						   		echo '<option value="' . $lCounter . '">' . $lPHPFileName . "</option>";
 								$aAllowedPHPFiles[$lCounter]=$lPHPFileName;
 								$lCounter += 1;							
@@ -124,7 +140,7 @@
 	try {	    	
 		if (isset($_POST['source-file-viewer-php-submit-button'])){
 
-			if (!$lBeSmart) {
+			if (!$lValidateAndTokenize) {
 	   			/* This code is insecure. Direct object references in the form of the "file"
 	   			 parameter give the user complete control of the input. Contrary to popular belief, 
 	   			 input validation, blacklisting, etc is not the best defense. The best defenses are 
@@ -168,13 +184,14 @@
 
 				$LogHandler->writeToLog("Page source-viewer.php loaded file: " . $lFilename);
 
-			}elseif ($lBeSmart){
+			}elseif ($lValidateAndTokenize){
 	   			/* The "phpfile" is expected to be integer, so validate as such. Also,
 	   			 * dont use _REQUEST as this would allow a POSTed "phpfile" to be sent 
 	   			 * along with a URL query parameter "phpfile" as well. This type of sloppy
 	   			 * variable fetching can result in HTTP Parameter Pollution. 
 	   			 */
-	   			$pPHPFile=$_POST["phpfile"];
+	   			$pPHPFile=$Encoder->encodeForHTML($_POST["phpfile"]);
+	   			
 	   			$laAllowedPHPFiles = $_SESSION['source-viewer-files-array'];
 	   			$lArrayCount = count($laAllowedPHPFiles);
 	   			
@@ -211,8 +228,8 @@
 				$lFilename = $laAllowedPHPFiles[$pPHPFile];
 
 				$LogHandler->writeToLog("Page source-viewer.php loaded file: " . $lFilename);				
-		   	}// end if $lBeSmart
-
+		   	}// end if $lValidateAndTokenize
+		   	
 		   	// try to display the file
 		   	try {
 	   			echo '<span ReflectedXSSExecutionPoint=\"1\" class="label">File: '.$lFilename.'</span>';

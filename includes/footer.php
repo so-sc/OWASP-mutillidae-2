@@ -59,7 +59,7 @@
 </script>
 
 	<div style="border: 1px solid black;">
-		<div ReflectedXSSExecutionPoint=\"1\" class="footer">Browser: <?php echo $lUserAgentString; ?></div>
+		<div ReflectedXSSExecutionPoint="1" class="footer">Browser: <?php echo $lUserAgentString; ?></div>
 		<div class="footer"><?php echo $lPHPVersion; ?></div>
 	</div>
 </body>

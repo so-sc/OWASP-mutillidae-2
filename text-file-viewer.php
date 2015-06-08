@@ -14,21 +14,36 @@
 	try {	    	
 		switch ($_SESSION["security-level"]){
    			case "0": // This code is insecure
-   			case "1": // This code is insecure
-				$lUseTokenization = FALSE;
+				$lEnableHTMLControls = FALSE;
+   				$lUseTokenization = FALSE;
 				$lEncodeOutput = FALSE;
 				$lProtectAgainstMethodTampering = FALSE;
 			break;
-	    		
+
+   			case "1": // This code is insecure
+				$lEnableHTMLControls = TRUE;
+   				$lUseTokenization = FALSE;
+				$lEncodeOutput = FALSE;
+				$lProtectAgainstMethodTampering = FALSE;
+			break;
+
 			case "2":
 			case "3":
 			case "4":
 	   		case "5": // This code is fairly secure
-				$lUseTokenization = TRUE;
+				$lEnableHTMLControls = TRUE;
+	   			$lUseTokenization = TRUE;
 				$lEncodeOutput = TRUE;
 				$lProtectAgainstMethodTampering = TRUE;
 			break;
 	   	}// end switch ($_SESSION["security-level"])
+
+	   	if ($lEnableHTMLControls) {
+	   		$lHTMLControlAttributes='required="true"';
+	   	}else{
+	   		$lHTMLControlAttributes="";
+	   	}// end if
+
 	}catch(Exception $e){
 		echo $CustomErrorHandler->FormatError($e, "Error in text file viewer. Cannot load file.");
 	}// end try
@@ -76,7 +91,7 @@
 		<tr>
 			<td class="label">Text File Name</td>
 			<td>
-				<select size="1" name="textfile" id="id_textfile_select" HTMLandXSSandSQLInjectionPoint="1">
+				<select size="1" name="textfile" id="id_textfile_select" HTMLandXSSandSQLInjectionPoint="1" autofocus="1" <?php echo $lHTMLControlAttributes ?>>
 					<option value="<?php if ($lUseTokenization){echo 1;}else{echo 'http://www.textfiles.com/hacking/auditool.txt';}?>">Intrusion Detection in Computers by Victor H. Marshall (January 29, 1991)</option>
 					<option value="<?php if ($lUseTokenization){echo 2;}else{echo 'http://www.textfiles.com/hacking/atms';}?>">An Overview of ATMs and Information on the Encoding System</option>
 					<option value="<?php if ($lUseTokenization){echo 3;}else{echo 'http://www.textfiles.com/hacking/backdoor.txt';}?>">How to Hold Onto UNIX Root Once You Have It</option>

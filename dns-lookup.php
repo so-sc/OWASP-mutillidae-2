@@ -88,7 +88,7 @@
     
 <!-- BEGIN HTML OUTPUT  -->
 <script type="text/javascript">
-	var onSubmitBlogEntry = function(/* HTMLForm */ theForm){
+	var onSubmitOfForm = function(/* HTMLForm */ theForm){
 
 		<?php 
 		if($lEnableJavaScriptValidation){
@@ -113,7 +113,7 @@
 		}else{
 			return true;
 		}// end if
-	};// end JavaScript function onSubmitBlogEntry()
+	};// end JavaScript function onSubmitOfForm()
 </script>
 
 <span>
@@ -126,7 +126,7 @@
 <form 	action="index.php?page=dns-lookup.php" 
 			method="post" 
 			enctype="application/x-www-form-urlencoded" 
-			onsubmit="return onSubmitBlogEntry(this);"
+			onsubmit="return onSubmitOfForm(this);"
 			id="idDNSLookupForm">		
 	<table style="margin-left:auto; margin-right:auto;">
 		<tr id="id-bad-cred-tr" style="display: none;">

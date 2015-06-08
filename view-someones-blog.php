@@ -4,17 +4,27 @@
 
 	switch ($_SESSION["security-level"]){
    		case "0": // This code is insecure
+   			// DO NOTHING: This is insecure
+   			$lEnableHTMLControls = FALSE;
+   			$lEncodeOutput = FALSE;
+   			$lTokenizeAllowedMarkup = FALSE;
+   			$lProtectAgainstMethodTampering = FALSE;
+   		break;
+   		
    		case "1": // This code is insecure
    			// DO NOTHING: This is insecure		
-			$lEncodeOutput = FALSE;
+			$lEnableHTMLControls = TRUE;
+   			$lEncodeOutput = FALSE;
 			$lTokenizeAllowedMarkup = FALSE;
 			$lProtectAgainstMethodTampering = FALSE;
-			break;
+		break;
 	    		
-			case "2":
-			case "3":
-			case "4":
-			case "5": // This code is fairly secure
+		case "2":
+		case "3":
+		case "4":
+		case "5": // This code is fairly secure
+			$lEnableHTMLControls = TRUE;
+				
   			/* 
   			 * NOTE: Input validation is excellent but not enough. The output must be
   			 * encoded per context. For example, if output is placed in HTML,
@@ -50,7 +60,13 @@
 			/* If we are in secure mode, we need to protect against SQLi */
 			$lProtectAgainstMethodTampering = TRUE;
    		break;
-   	}// end switch		
+   	}// end switch
+
+   	if ($lEnableHTMLControls) {
+   		$lHTMLControlAttributes='required="true"';
+   	}else{
+   		$lHTMLControlAttributes="";
+   	}// end if
 ?>
 
 
@@ -100,8 +116,8 @@
 			<tr><td></td></tr>
 			<tr>
 				<td>
-					<select name="author" id="id_author_select" SQLInjectionPoint=\"1\">
-						<option value="53241E83-76EC-4920-AD6D-503DD2A6BA68">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please Choose Author&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+					<select name="author" id="id_author_select" SQLInjectionPoint="1" autofocus="1" <?php echo $lHTMLControlAttributes ?>>
+						<option value="53241E83-76EC-4920-AD6D-503DD2A6BA68">&nbsp;&nbsp;&nbsp;Please Choose Author&nbsp;&nbsp;&nbsp;</option>
 						<option value="6C57C4B5-B341-4539-977B-7ACB9D42985A">Show All</option>
 						<?php
 							try {

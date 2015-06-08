@@ -22,6 +22,7 @@
 	try {	    	
     	switch ($_SESSION["security-level"]){
     		case "0": // This code is insecure
+				$lEnableHTMLControls = FALSE;
     			$lFormMethod = "GET";
 				$lEnableJavaScriptValidation = FALSE;
 				$lEnableXMLValidation = FALSE;
@@ -30,6 +31,7 @@
 			break;
     		
     		case "1": // This code is insecure
+				$lEnableHTMLControls = TRUE;
     			$lFormMethod = "GET";
 				$lEnableJavaScriptValidation = TRUE;
 				$lEnableXMLValidation = FALSE;
@@ -41,6 +43,7 @@
 			case "3":
 			case "4":
     		case "5": // This code is fairly secure
+				$lEnableHTMLControls = TRUE;
     			$lFormMethod = "POST";
 				$lEnableJavaScriptValidation = TRUE;
 				$lEnableXMLValidation = TRUE;
@@ -49,6 +52,12 @@
 			break;
     	}//end switch
 
+    	if ($lEnableHTMLControls) {
+    		$lHTMLControlAttributes='required="true"';
+    	}else{
+    		$lHTMLControlAttributes="";
+    	}// end if
+    	
     	$lFormSubmitted = FALSE;
 		if (isset($_POST["xml-validator-php-submit-button"]) || isset($_REQUEST["xml-validator-php-submit-button"])) {
 			$lFormSubmitted = TRUE;
@@ -158,7 +167,9 @@
 		</tr>
 		<tr>
 			<td class="label">XML</td>
-			<td><textarea name="xml" rows="8" cols="50" id="idXMLTextArea" title="Please enter XML to validate"></textarea></td>
+			<td>
+				<textarea name="xml" rows="8" cols="50" id="idXMLTextArea" title="Please enter XML to validate" autofocus="1" <?php echo $lHTMLControlAttributes ?>></textarea>
+			</td>
 		</tr>
 		<tr><td></td></tr>
 		<tr>

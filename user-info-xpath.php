@@ -11,6 +11,7 @@
 	try{
     	switch ($_SESSION["security-level"]){
     		case "0": // This code is insecure
+				$lEnableHTMLControls = FALSE;
     			$lFormMethod = "GET";
 				$lEnableJavaScriptValidation = FALSE;
 				$lProtectAgainstMethodTampering = FALSE;
@@ -19,6 +20,7 @@
 				break;
 
     		case "1": // This code is insecure
+				$lEnableHTMLControls = TRUE;
     			$lFormMethod = "GET";
 				$lEnableJavaScriptValidation = TRUE;
 				$lProtectAgainstMethodTampering = FALSE;
@@ -30,6 +32,7 @@
 			case "3":
 			case "4":
     		case "5": // This code is fairly secure
+				$lEnableHTMLControls = TRUE;
     			$lFormMethod = "POST";
 				$lEnableJavaScriptValidation = TRUE;
 				$lProtectAgainstMethodTampering = TRUE;
@@ -69,7 +72,7 @@
 	}// end if		
 	?>
 
-	function onSubmitOfLoginForm(/*HTMLFormElement*/ theForm){
+	function onSubmitOfForm(/*HTMLFormElement*/ theForm){
 		try{
 			var lUnsafeCharacters = /[`~!@#$%^&*()-_=+\[\]{}\\|;':",./<>?]/;
 
@@ -91,7 +94,7 @@
 		}catch(e){
 			alert("Error: " + e.message);
 		}// end catch
-	}// end function onSubmitOfLoginForm(/*HTMLFormElement*/ theForm)
+	}// end function onSubmitOfForm(/*HTMLFormElement*/ theForm)
 	
 </script>
 <!-- Bubble hints code -->
@@ -135,7 +138,7 @@
 <form 	action="./index.php?page=user-info-xpath.php"
 		method="<?php echo $lFormMethod; ?>" 
 		enctype="application/x-www-form-urlencoded"
-		onsubmit="return onSubmitOfLoginForm(this);"
+		onsubmit="return onSubmitOfForm(this);"
 >
 	<input type="hidden" name="page" value="user-info-xpath.php" />	
 	<table style="margin-left:auto; margin-right:auto;">
@@ -151,11 +154,27 @@
 		<tr><td></td></tr>
 		<tr>
 			<td class="label">Name</td>
-			<td><input SQLInjectionPoint="1" type="text" name="username" size="20"></td>
+			<td>
+				<input SQLInjectionPoint="1" type="text" name="username" size="20" autofocus="1" 
+					<?php
+						if ($lEnableHTMLControls) {
+							echo('minlength="1" maxlength="20" required="true"');
+						}// end if
+					?>
+				/>
+			</td>
 		</tr>
 		<tr>
 			<td class="label">Password</td>
-			<td><input SQLInjectionPoint="1" type="password" name="password" size="20"></td>
+			<td>
+				<input SQLInjectionPoint="1" type="password" name="password" size="20"
+					<?php
+						if ($lEnableHTMLControls) {
+							echo('minlength="1" maxlength="20" required="true"');
+						}// end if
+					?>
+				/>
+			</td>
 		</tr>
 		<tr><td></td></tr>
 		<tr>
