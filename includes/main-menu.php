@@ -265,6 +265,7 @@
 								<li><a href="index.php?page=back-button-discussion.php">Those &quot;Back&quot; Buttons</a></li>
 								<li><a href="index.php?page=styling-frame.php&page-to-frame=styling.php%3Fpage-title%3DStyling+with+Mutillidae">Styling with Mutilidae</a></li>
 								<li><a href="index.php?page=password-generator.php&username=<?php echo $logged_in_user ?>">Password Generator</a></li>
+								<li><a href="index.php?page=client-side-control-challenge.php">Client-side Control Challenge</a></li>
 							</ul>
 						</li>
 						<li>
@@ -450,8 +451,9 @@
 				<li>
 					<a href="https://www.owasp.org/index.php/Top_10_2013-A7-Missing_Function_Level_Access_Control" target="_blank">A7 - Missing Function Level Access Control</a>
 					<ul>
-						<li><a href="index.php?page=robots-txt.php">Robots.txt</a></li>
 						<li><a href="index.php?page=secret-administrative-pages.php">"Secret" Administrative Pages</a></li>
+						<li><a href="index.php?page=client-side-control-challenge.php">Client-side Control Challenge</a></li>
+						<li><a href="index.php?page=robots-txt.php">Robots.txt</a></li>
 					</ul>
 				</li>
 				<li>
@@ -637,9 +639,15 @@
 		</li>
 		<li style="border-color: #ffffff; border-style: solid;border-width: 1px">
 			<a href="#">Others</a>
-			<ul>
+			<ul>			
 				<li>
-					<a href="framer.html">Cross-Frame Framing (Third-party Framing)</a>
+					<a href="">Client-side "Security" Controls</a>
+					<ul>
+						<li><a href="index.php?page=client-side-control-challenge.php">Client-side Control Challenge</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="">Cross-Frame Framing (Third-party Framing)</a>
 					<ul>
 						<li><a href="index.php?page=framer.html">Framer</a></li>
 					</ul>

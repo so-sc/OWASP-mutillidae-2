@@ -178,12 +178,6 @@
 			onsubmit="return onSubmitOfRepeaterForm(this);"
 			id="idRepeaterForm">
 		<table style="margin-left:auto; margin-right:auto;">
-			<tr id="id-bad-cred-tr" style="display: none;">
-				<td colspan="2" class="error-message">
-					Authentication Error: Bad input
-				</td>
-			</tr>
-			<tr><td></td></tr>
 			<tr>
 				<td colspan="2" class="form-header">Please enter string to repeat</td>
 			</tr>
