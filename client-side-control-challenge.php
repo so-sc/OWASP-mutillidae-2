@@ -30,63 +30,57 @@
     	 * Create a random value for the user to submit.
     	 */
     	$lRandomFlag = $_SESSION['cscc-random-flag'] = mt_rand(0, mt_getrandmax());
-    	
+   
 		// if we want to enforce POST method, we need to be careful to specify $_POST
 	   	if(!$lProtectAgainstMethodSwitching){
 			$lSubmitButtonClicked = isset($_REQUEST["client-side-control-challenge-php-submit-button"]);
 	   	}else{
 			$lSubmitButtonClicked = isset($_POST["client-side-control-challenge-php-submit-button"]);
-	   	}//end if    	
-
+	   	}//end if !$lProtectAgainstMethodSwitching
+	   	
 	   	if($lSubmitButtonClicked){
 
 			// if we want to enforce POST method, we need to be careful to specify $_POST
 		   	if(!$lProtectAgainstMethodSwitching){
-		   		$lStringToRepeat = $_REQUEST["string_to_repeat"];
-		   		$lTimesToRepeatString = $_REQUEST["times_to_repeat_string"];
+		   		$lTextbox = isset($_REQUEST["textbox"])?$_REQUEST["textbox"]:0;
+		   		$lReadonlyTextbox = isset($_REQUEST["readonly_textbox"])?$_REQUEST["readonly_textbox"]:0;
+		   		$lShortTextbox = isset($_REQUEST["short_textbox"])?$_REQUEST["short_textbox"]:0;
+		   		$lDisabledTextbox = isset($_REQUEST["disabled_textbox"])?$_REQUEST["disabled_textbox"]:0;
+		   		$lHiddenTextbox = isset($_REQUEST["hidden_textbox"])?$_REQUEST["hidden_textbox"]:0;
+		   		$lDefectiveTextbox = isset($_REQUEST["defective_textbox"])?$_REQUEST["defective_textbox"]:0;
+		   		$lTrickyTextbox = isset($_REQUEST["tricky_textbox"])?$_REQUEST["tricky_textbox"]:0;
+		   		$lVanishingTextbox = isset($_REQUEST["vanishing_textbox"])?$_REQUEST["vanishing_textbox"]:0;
+		   		$lShyTextbox = isset($_REQUEST["shy_textbox"])?$_REQUEST["shy_textbox"]:0;
+		   		$lPassword = isset($_REQUEST["password"])?$_REQUEST["password"]:0;
+		   		$lCheckbox = isset($_REQUEST["checkbox"])?$_REQUEST["checkbox"]:0;
+		   		$lRadio = isset($_REQUEST["radio"])?$_REQUEST["radio"]:0;
+		   		$lEmail = isset($_REQUEST["email"])?$_REQUEST["email"]:0;
+		   		$lFile = isset($_REQUEST["file"])?$_REQUEST["file"]:0;
+		   		$lNumber = isset($_REQUEST["number"])?$_REQUEST["number"]:0;
+		   		$lRange = isset($_REQUEST["range"])?$_REQUEST["range"]:0;
+		   		$lSearch = isset($_REQUEST["search"])?$_REQUEST["search"]:0;
+		   		$lSubmitButton = isset($_REQUEST["client-side-control-challenge-php-submit-button"])?$_REQUEST["client-side-control-challenge-php-submit-button"]:0;
 		   	}else{
-		   		$lStringToRepeat = $_POST["string_to_repeat"];
-		   		$lTimesToRepeatString = $_POST["times_to_repeat_string"];
-		   	}//end if    	
-	   		
-	    	if($lEnableBufferOverflowProtection){
-	   			/* NOTE: We expect total integer that is less than 134,217,728 when mutilplied 
-	   			 * by length of the string.
-	   			 * Validate positive integer.
-	   			 * Regex pattern makes sure the user doesnt send in characters that
-	   			 * are not actually digits but can be cast to digits.
-	   			 */
-	    		$lMaximumPHPStringBufferSize = 134217728;
-	    		$lLengthOfNullTerminator = 1;
-	    		$lMaximumPHPStringBufferSize = $lMaximumPHPStringBufferSize - $lLengthOfNullTerminator;
-	    		$lTimesToRepeatStringIsDigits = (preg_match("/^[0-9]{1,9}$/", $lTimesToRepeatString) == 1);
-	    		$lStringToRepeatIsReasonable = (preg_match("/^[A-Za-z0-9\.\!\@\#\$\%\^\&\*\(\)\{\}\,\<\.\>\/\?\=\+\-\_]{1,256}$/", $lStringToRepeat) == 1);
-	    		$lErrorMessage = "See exception for error message";
-	
-	    		if(!$lTimesToRepeatStringIsDigits){
-	    			$lErrorMessage = "The times to repeat string does not appear to be an integer.";
-	    			throw new Exception($lErrorMessage);	
-	    		}// end if
+		   		$lTextbox = isset($_POST["textbox"])?$_POST["textbox"]:0;
+		   		$lReadonlyTextbox = isset($_POST["readonly_textbox"])?$_POST["readonly_textbox"]:0;
+		   		$lShortTextbox = isset($_POST["short_textbox"])?$_POST["short_textbox"]:0;
+		   		$lDisabledTextbox = isset($_POST["disabled_textbox"])?$_POST["disabled_textbox"]:0;
+		   		$lHiddenTextbox = isset($_POST["hidden_textbox"])?$_POST["hidden_textbox"]:0;
+		   		$lDefectiveTextbox = isset($_POST["defective_textbox"])?$_POST["defective_textbox"]:0;
+		   		$lTrickyTextbox = isset($_POST["tricky_textbox"])?$_POST["tricky_textbox"]:0;
+		   		$lVanishingTextbox = isset($_POST["vanishing_textbox"])?$_POST["vanishing_textbox"]:0;
+		   		$lShyTextbox = isset($_POST["shy_textbox"])?$_POST["shy_textbox"]:0;
+		   		$lPassword = isset($_POST["password"])?$_POST["password"]:0;
+		   		$lCheckbox = isset($_POST["checkbox"])?$_POST["checkbox"]:0;
+		   		$lRadio = isset($_POST["radio"])?$_POST["radio"]:0;
+		   		$lEmail = isset($_POST["email"])?$_POST["email"]:0;
+		   		$lFile = isset($_POST["file"])?$_POST["file"]:0;
+		   		$lNumber = isset($_POST["number"])?$_POST["number"]:0;
+		   		$lRange = isset($_POST["range"])?$_POST["range"]:0;
+		   		$lSearch = isset($_POST["search"])?$_POST["search"]:0;
+		   		$lSubmitButton = isset($_POST["client-side-control-challenge-php-submit-button"])?$_POST["client-side-control-challenge-php-submit-button"]:0;
+		   	}//end if !$lProtectAgainstMethodSwitching	
 
-	    		if(!$lStringToRepeatIsReasonable){
-	    			$lErrorMessage = "The string to repeat does not appear to be reasonable.";
-	    			throw new Exception($lErrorMessage);	
-	    		}// end if
-
-	    		if(($lTimesToRepeatString * strlen($lStringToRepeat)) > $lMaximumPHPStringBufferSize){
-	    			$lErrorMessage = "The buffer that would need to be allocated exceeds the PHP maximum string buffer size.";
-	    			throw new Exception($lErrorMessage);	
-	    		}// end if
-
-	    	}// end if($lEnableBufferOverflowProtection)
-
-	    	/* Cast second number to integer to make the hack easier to pull off. Users will be tempted
-	    	 * put in a number so large, that	   	if($lSubmitButtonClicked){
- the $lTimesToRepeatString number will overflow
-	    	 * before the str_repeat function gets a chance to run.
-	    	 */
- 			$lBuffer = str_repeat($lStringToRepeat, (integer)$lTimesToRepeatString);
-    	
 	   	}//end if $lSubmitButtonClicked
 
 	} catch(Exception $e){
@@ -97,13 +91,7 @@
 
 <script type="text/javascript">
 <!--
-	<?php 
-		if ($lSubmitButtonClicked) {
-			echo "var l_submit_occured = true;" . PHP_EOL;
-		}else {
-			echo "var l_submit_occured = false;" . PHP_EOL;
-		}// end if
-
+	<?php
 		if($lEnableJavaScriptValidation){
 			echo "var lValidateInput = true" . PHP_EOL;
 		}else{
@@ -111,25 +99,74 @@
 		}// end if		
 	?>
 
+	function validationFailed(){
+		alert('Only letters are allowed into fields');
+		return false;
+	}
+
 	function onSubmitOfForm(/*HTMLFormElement*/ theForm){
 		try{
-			var lTimesToRepeatStringAcceptablePattern = RegExp("^[0-9]{1,9}$","gi");
-			var lStringToRepeatAcceptablePattern = RegExp("^[A-Za-z0-9\.\!\@\#\$\%\^\&\*\(\)\{\}\,\<\.\>\/\?\=\+\-\_]{1,256}$", "gi");
-
 			if(lValidateInput){
+				var lValidationPattern = RegExp("^[A-Za-z]$","gi");
+				var lMessage = 'Only letters are allowed into fields';
+
+				if (theForm.id_textbox.value.match(lValidationPattern) == null){
+					alert("Textbox: "+lMessage);return false;
+				}// end if
+				if (theForm.id_readonly_textbox.value.match(lValidationPattern) == null){
+					alert("Read-only Textbox: "+lMessage);return false;
+				}// end if
+				if (theForm.id_short_textbox.value.match(lValidationPattern) == null){
+					alert("Short Textbox: "+lMessage);return false;
+				}// end if
+				if (theForm.id_disabled_textbox.value.match(lValidationPattern) == null){
+					alert("Disabled Textbox: "+lMessage);return false;
+				}// end if
+				if (theForm.id_hidden_textbox.value.match(lValidationPattern) == null){
+					alert("Hidden Textbox: "+lMessage);return false;
+				}// end if
+				if (theForm.id_defective_textbox.value.match(lValidationPattern) == null){
+					alert("Defective Textbox: "+lMessage);return false;
+				}// end if
+				if (theForm.id_tricky_textbox.value.match(lValidationPattern) == null){
+					alert("Tricky Textbox: "+lMessage);return false;
+				}// end if
+				if (theForm.id_vanishing_textbox.value.match(lValidationPattern) == null){
+					alert("Vanishing Textbox: "+lMessage);return false;
+				}// end if
+				if (theForm.id_shy_textbox.value.match(lValidationPattern) == null){
+					alert("Shy Textbox: "+lMessage);return false;
+				}// end if
+				if (theForm.id_password.value.match(lValidationPattern) == null){
+					alert("Password Textbox: "+lMessage);return false;
+				}// end if
+				if (theForm.id_checkbox.value.match(lValidationPattern) == null){
+					alert("Textbox: "+lMessage);return false;
+				}// end if
+				if (theForm.id_radio.value.match(lValidationPattern) == null){
+					alert("Radio: "+lMessage);return false;
+				}// end if
+				if (theForm.id_email.value.match(lValidationPattern) == null){
+					alert("Email: "+lMessage);return false;
+				}// end if
+				if (theForm.id_file.value.match(lValidationPattern) == null){
+					alert("File: "+lMessage);return false;
+				}// end if
+				if (theForm.id_number.value.match(lValidationPattern) == null){
+					alert("Number: "+lMessage);return false;
+				}// end if
+				if (theForm.id_range.value.match(lValidationPattern) == null){
+					alert("Range: "+lMessage);return false;
+				}// end if	
+				if (theForm.id_search.value.match(lValidationPattern) == null){
+					alert("Search: "+lMessage);return false;
+				}// end if
+				if (theForm.id_client-side-control-challenge-php-submit-button.value.match(lValidationPattern) == null){
+					alert("Submit Button: "+lMessage);return false;
+				}// end if	
 				
-				if (theForm.string_to_repeat.value.match(lStringToRepeatAcceptablePattern) == null){
-							alert('Dangerous characters detected in string to repeat. We can\'t allow these. This all powerful blacklist will stop such attempts.\n\nMuch like padlocks, filtering cannot be defeated.\n\nBlacklisting is l33t like l33tspeak.');
-							return false;
-					}// end if
-
-				if (theForm.times_to_repeat_string.value.match(lTimesToRepeatStringAcceptablePattern) == null){
-							alert('Times to repeat string does not appear to be a number.');
-							return false;
-					}// end if
-
 			}// end if(lValidateInput)
-			
+
 			return true;
 		}catch(e){
 			alert("Error: " + e.message);
@@ -160,18 +197,20 @@
 	});
 </script>
 
+<style>
+	input.box:hover {
+	    left: 200px;
+	}
+	input.box {
+	    position: relative;
+	    left: 0px;
+	}
+</style>
+
 <div class="page-title">Client-side Control Challenge (Prototype Only - Just Testing)</div>
 
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
 <?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-wrapper.inc'); ?>
-
-<?php 
-	if ($lEncodeOutput) {
-		echo "<!-- Diagnostics: Request Parameters - ";
-		echo var_dump($_REQUEST);
-		echo "-->";
-	}// end if
-?>
 
 <div id="id-client-side-control-challenge-form-div" style="text-align:center;">
 	<form 	action="index.php?page=client-side-control-challenge.php" 
@@ -212,7 +251,7 @@
 			</tr>			<tr>
 				<td class="label" style="text-align: left;">Read-only Text Box</td>
 				<td style="text-align: left;">
-					<input HTMLandXSSInjectionPoint="1" type="text" name="textbox" id="id_textbox" size="15" maxlength="15" required="true" autofocus="1" readonly="1" value="42" />
+					<input HTMLandXSSInjectionPoint="1" type="text" name="readonly_textbox" id="id_readonly_textbox" size="15" maxlength="15" required="true" autofocus="1" readonly="1" value="42" />
 				</td>
 			</tr>			
 			<tr>
@@ -252,6 +291,13 @@
 				</td>
 			</tr>
 			<tr>
+				<td class="label" style="text-align: left;">Shy Text Box</td>
+				<td style="text-align: left;">
+					<input HTMLandXSSInjectionPoint="1" type="text" name="shy_textbox" id="id_shy_textbox" size="15" maxlength="15" required="true" class="box" />
+				</td>
+			</tr>
+			
+			<tr>
 				<td class="label" style="text-align: left;">Password</td>
 				<td style="text-align: left;">
 					<input HTMLandXSSInjectionPoint="1" type="password" name="password" id="id_password" size="15" maxlength="15" required="true" />
@@ -277,30 +323,46 @@
 					<input type="radio" name="radio" id="id_radio" value="<?php echo $lRandomFlag;?>" required="true" disabled="1" /><span class="label"><?php echo $lRandomFlag;?></span><br/>
 				</td>
 			</tr>
-						
-checkbox
-color
-date
-datetime
-datetime-local
-email
-file
-hidden
-image
-month
-number
-radio
-range
-reset
-search
-tel
-time
-url
-week 			
+			<tr>
+				<td class="label" style="text-align: left;">Email Control</td>
+				<td style="text-align: left;">
+					<input type="email" name="email" id="id_email" required="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label" style="text-align: left;">File Upload</td>
+				<td style="text-align: left;">
+					<input type="file" name="file" id="id_file" required="true" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label" style="text-align: left;">Image</td>
+				<td style="text-align: left;">
+					<input type="image" name="image" id="id_image" src="images/twitter-bird-48-48.png" required="true" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label" style="text-align: left;">Number</td>
+				<td style="text-align: left;">
+					<input type="number" name="number" id="id_number" min="0" max="999" step="1" required="true" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label" style="text-align: left;">Range</td>
+				<td style="text-align: left;">
+					<input type="range" name="range" id="id_range" min="0" max="999" step="1" required="true" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label" style="text-align: left;">Search</td>
+				<td style="text-align: left;">
+					<input type="search" name="search" id="id_search" pattern="[a-zA-z]" required="true" />
+				</td>
+			</tr>		
 			<tr><td>&nbsp;</td></tr>
 			<tr>
 				<td colspan="2" style="text-align:center;">
-					<input name="client-side-control-challenge-php-submit-button" class="button" type="submit" value="Submit" />
+					<input name="client-side-control-challenge-php-submit-button" id="id_client-side-control-challenge-php-submit-button" class="button" type="submit" value="Submit" />
 				</td>
 			</tr>
 			<tr><td>&nbsp;</td></tr>
@@ -309,12 +371,30 @@ week
 </div>
 
 <div id="id-client-side-control-challenge-output-div" style="text-align: center; display: none;">
-	<table align="center">
-		<tr><td></td></tr>
-		<tr>
-			<td ReflectedXSSExecutionPoint="1" colspan="2" class="hint-header"><?php echo $lBuffer; ?></td>
+	<table class="main-table-frame" id="idLogRecords">
+		<tr class="report-header">
+			<td colspan="10">	
+				<span>
+					<img width="32px" height="32px" src="./images/information-icon-64-64.png" />
+					<?php echo $lQueryResult->num_rows; ?> log records found
+				</span>
+				<span title="Click to refresh log file" onclick="document.location.href=document.location.href.replace('&deleteLogs=deleteLogs','').replace('&popUpNotificationCode=LFD1','').concat('&popUpNotificationCode=LFR1');" style="cursor: pointer;margin-left:35px;margin-right:35px;white-space:nowrap;font-weight:bold;">
+					<img width="32px" height="32px" src="./images/refresh-button-48px-by-48px.png" />
+					Refresh Logs
+				</span>
+				<span title="Click to delete log file" onclick="document.location='./index.php?page=show-log.php&deleteLogs=deleteLogs&popUpNotificationCode=LFD1';" style="cursor: pointer;white-space:nowrap;font-weight:bold;">
+					<img width="32px" height="32px" src="./images/delete-icon-256-256.png" />
+					Delete Logs
+				</span>
+			</td>
+		</tr>		
+		<tr class="report-header">
+		    <td style="font-weight:bold;">Hostname</td>
+		    <td style="font-weight:bold;">IP</td>
+		    <td style="font-weight:bold;">Browser Agent</td>
+		    <td style="font-weight:bold;">Page Viewed</td>
+		    <td style="font-weight:bold;">Date/Time</td>
 		</tr>
-		<tr><td></td></tr>
 	</table>	
 </div>
 
@@ -329,3 +409,4 @@ week
 		include_once './includes/hints-level-2/cross-site-scripting-tutorial.inc';
 	}// end if
 ?>
+
