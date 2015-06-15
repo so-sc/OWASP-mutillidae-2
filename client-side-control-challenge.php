@@ -1,4 +1,49 @@
-<?php 
+<?php
+
+	class ClientField{
+
+		private $mFieldname = "";
+		private $mValue = "";
+		private $mIsCorrect = FALSE;
+		
+		function __construct ($pFieldname, $pValue){
+			$this->mFieldname = $pFieldname;
+			$this->mValue = $pValue;
+		}//end constructor
+		
+		function getFieldname(){
+			return $this->mFieldname;
+		}//end method
+
+		function getValue(){
+			return $this->mValue;
+		}//end method
+		
+	}// end class
+
+	class ClientFields{
+	
+		private $mQueue = NULL;
+
+		function __construct (){
+			$this->mQueue = new SplDoublyLinkedList();
+			$this->mQueue->setIteratorMode(SplDoublyLinkedList::IT_MODE_FIFO|SplDoublyLinkedList::IT_MODE_KEEP);
+		}//end constructor
+
+		function addField($pClientField){
+			$this->mQueue->enqueue($pClientField);
+		}//end method
+
+		function prettyPrintFields(){
+			$lHTMLElements = "";
+			for ($this->mQueue->rewind(); $this->mQueue->valid(); $this->mQueue->next()) {
+				$lHTMLElements .= '<tr class="report-data"><td>'.$this->mQueue->current()->getFieldname().'</td><td>'.$this->mQueue->current()->getValue().'</td></tr>';
+			}//end for
+			return $lHTMLElements;
+		}//end method
+
+	}// end class
+	
 	try{
     	switch ($_SESSION["security-level"]){
     		case "0": // This code is insecure.
@@ -81,6 +126,27 @@
 		   		$lSubmitButton = isset($_POST["client-side-control-challenge-php-submit-button"])?$_POST["client-side-control-challenge-php-submit-button"]:0;
 		   	}//end if !$lProtectAgainstMethodSwitching	
 
+		   	$lFields = new ClientFields();
+		   	
+		   	$lFields->addField(new ClientField("Textbox", $lTextbox));
+		   	$lFields->addField(new ClientField("Readonly Textbox", $lReadonlyTextbox));
+		   	$lFields->addField(new ClientField("Short Textbox", $lShortTextbox));
+		   	$lFields->addField(new ClientField("Disabled Textbox", $lDisabledTextbox));
+		   	$lFields->addField(new ClientField("Hidden Textbox", $lHiddenTextbox));
+		   	$lFields->addField(new ClientField("Defective Textbox", $lDefectiveTextbox));
+		   	$lFields->addField(new ClientField("Tricky Textbox", $lTrickyTextbox));
+		   	$lFields->addField(new ClientField("Vanishing Textbox", $lVanishingTextbox));
+		   	$lFields->addField(new ClientField("Shy Textbox", $lShyTextbox));
+		   	$lFields->addField(new ClientField("Password Textbox", $lPassword));
+		   	$lFields->addField(new ClientField("Checkbox", $lCheckbox));
+		   	$lFields->addField(new ClientField("Radio Button", $lRadio));
+		   	$lFields->addField(new ClientField("Email Control", $lEmail));
+		   	$lFields->addField(new ClientField("File Control", $lFile));
+		   	$lFields->addField(new ClientField("Number Control", $lNumber));
+		   	$lFields->addField(new ClientField("Range Control", $lRange));
+		   	$lFields->addField(new ClientField("Search Textbox", $lSearch));
+		   	$lFields->addField(new ClientField("Submit Button", $lSubmitButton));
+		   	
 	   	}//end if $lSubmitButtonClicked
 
 	} catch(Exception $e){
@@ -92,6 +158,12 @@
 <script type="text/javascript">
 <!--
 	<?php
+		if($lSubmitButtonClicked){
+			echo "var lSubmitOccured = true" . PHP_EOL;
+		}else{
+			echo "var lSubmitOccured = false" . PHP_EOL;
+		}// end if		
+
 		if($lEnableJavaScriptValidation){
 			echo "var lValidateInput = true" . PHP_EOL;
 		}else{
@@ -99,16 +171,11 @@
 		}// end if		
 	?>
 
-	function validationFailed(){
-		alert('Only letters are allowed into fields');
-		return false;
-	}
-
 	function onSubmitOfForm(/*HTMLFormElement*/ theForm){
 		try{
 			if(lValidateInput){
 				var lValidationPattern = RegExp("^[A-Za-z]$","gi");
-				var lMessage = 'Only letters are allowed into fields';
+				var lMessage = 'Only letters are allowed into fields which is weird considering you are supposed to enter a number';
 
 				if (theForm.id_textbox.value.match(lValidationPattern) == null){
 					alert("Textbox: "+lMessage);return false;
@@ -141,7 +208,7 @@
 					alert("Password Textbox: "+lMessage);return false;
 				}// end if
 				if (theForm.id_checkbox.value.match(lValidationPattern) == null){
-					alert("Textbox: "+lMessage);return false;
+					alert("Checkbox: "+lMessage);return false;
 				}// end if
 				if (theForm.id_radio.value.match(lValidationPattern) == null){
 					alert("Radio: "+lMessage);return false;
@@ -159,7 +226,7 @@
 					alert("Range: "+lMessage);return false;
 				}// end if	
 				if (theForm.id_search.value.match(lValidationPattern) == null){
-					alert("Search: "+lMessage);return false;
+					alert("Search Textbox: "+lMessage);return false;
 				}// end if
 				if (theForm.id_client-side-control-challenge-php-submit-button.value.match(lValidationPattern) == null){
 					alert("Submit Button: "+lMessage);return false;
@@ -304,12 +371,6 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="label" style="text-align: left;">Button</td>
-				<td style="text-align: left;">
-					<input HTMLandXSSInjectionPoint="1" type="button" name="button" id="id_button" value="Button" />
-				</td>
-			</tr>
-			<tr>
 				<td class="label" style="text-align: left;">Checkbox</td>
 				<td style="text-align: left;">
 					<input type="checkbox" name="checkbox" id="id_checkbox" value="<?php echo $lRandomFlag;?>" required="true" disabled="1" /><span class="label">Select <?php echo $lRandomFlag;?>?</span><br/>
@@ -336,12 +397,6 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="label" style="text-align: left;">Image</td>
-				<td style="text-align: left;">
-					<input type="image" name="image" id="id_image" src="images/twitter-bird-48-48.png" required="true" />
-				</td>
-			</tr>
-			<tr>
 				<td class="label" style="text-align: left;">Number</td>
 				<td style="text-align: left;">
 					<input type="number" name="number" id="id_number" min="0" max="999" step="1" required="true" />
@@ -354,7 +409,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="label" style="text-align: left;">Search</td>
+				<td class="label" style="text-align: left;">Search Textbox</td>
 				<td style="text-align: left;">
 					<input type="search" name="search" id="id_search" pattern="[a-zA-z]" required="true" />
 				</td>
@@ -371,37 +426,20 @@
 </div>
 
 <div id="id-client-side-control-challenge-output-div" style="text-align: center; display: none;">
-	<table class="main-table-frame" id="idLogRecords">
+	<table class="main-table-frame" id="idClientFields">	
 		<tr class="report-header">
-			<td colspan="10">	
-				<span>
-					<img width="32px" height="32px" src="./images/information-icon-64-64.png" />
-					<?php echo $lQueryResult->num_rows; ?> log records found
-				</span>
-				<span title="Click to refresh log file" onclick="document.location.href=document.location.href.replace('&deleteLogs=deleteLogs','').replace('&popUpNotificationCode=LFD1','').concat('&popUpNotificationCode=LFR1');" style="cursor: pointer;margin-left:35px;margin-right:35px;white-space:nowrap;font-weight:bold;">
-					<img width="32px" height="32px" src="./images/refresh-button-48px-by-48px.png" />
-					Refresh Logs
-				</span>
-				<span title="Click to delete log file" onclick="document.location='./index.php?page=show-log.php&deleteLogs=deleteLogs&popUpNotificationCode=LFD1';" style="cursor: pointer;white-space:nowrap;font-weight:bold;">
-					<img width="32px" height="32px" src="./images/delete-icon-256-256.png" />
-					Delete Logs
-				</span>
-			</td>
-		</tr>		
-		<tr class="report-header">
-		    <td style="font-weight:bold;">Hostname</td>
-		    <td style="font-weight:bold;">IP</td>
-		    <td style="font-weight:bold;">Browser Agent</td>
-		    <td style="font-weight:bold;">Page Viewed</td>
-		    <td style="font-weight:bold;">Date/Time</td>
+		    <td>Field</td>
+		    <td>Value Submitted</td>
+		    <td>Correct?</td>
 		</tr>
+		<?php $lFields->prettyPrintFields(); ?>		
 	</table>	
 </div>
 
 <script type="text/javascript">
-	if (l_submit_occured){
+	if (lSubmitOccured){
 		document.getElementById("id-client-side-control-challenge-output-div").style.display="";		
-	}// end if l_submit_occured	
+	}// end if lSubmitOccured	
 </script>
 
 <?php
