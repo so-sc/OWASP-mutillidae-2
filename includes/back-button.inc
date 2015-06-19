@@ -56,7 +56,7 @@
 <div style="margin: 5px;">
 	<span style="font-weight: bold; margin-right: 50px;" HTMLEventReflectedXSSExecutionPoint="1">
 	<a 	onclick="document.location.href='<?php echo $lHTTPReferer; ?>';">
-		<img	src="./images/back-button-128px-by-128px.png" 
+		<img	src="./images/back-button-64-64.png" 
 				alt="Go Back" 
 				width="64px" 
 				height="64px" 

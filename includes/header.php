@@ -211,10 +211,14 @@
 				<br/>
 				Video<br/>Tutorials
 			</a>
-		</div>		
-		<div style="text-align: center;">
+		</div>
+		<div>&nbsp;</div>
+		<div>&nbsp;</div>	
+		<div class="label" style="text-align: center;">
 			<a href="https://www.owasp.org" target="_blank">
-				<img alt="OWASP" style="border-width: 0px;" height="90px" width="120px" src="./images/owasp-logo-400-300.png" />
+				<img alt="OWASP" style="border-width: 0px;" height="90px" width="120px" src="./images/owasp-logo-120-90.png" />
+				<br/>
+				OWASP
 			</a>
 		</div>
 	</td>
