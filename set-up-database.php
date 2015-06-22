@@ -342,6 +342,11 @@ try{
 			('capture-data.php', 48, 1),
 			('captured-data.php', 11, 1),
 			('captured-data.php', 12, 1),
+			('client-side-control-challenge.php', 11, 1),
+			('client-side-control-challenge.php', 12, 1),
+			('client-side-control-challenge.php', 13, 1),
+			('client-side-control-challenge.php', 30, 1),
+			('client-side-control-challenge.php', 51, 1),
 			('credits.php', 19, 1),
 			('directory-browsing.php', 9, 1),
 			('dns-lookup.php', 11, 1),
@@ -531,8 +536,9 @@ try{
 		(46, 'unrestricted-file-upload-hint.inc'),
 		(48, 'application-log-injection.inc'),
 		(49, 'xpath-injection-hint.inc'),
-		(50, 'path-relative-stylesheet-injection.inc')";
-					
+		(50, 'path-relative-stylesheet-injection.inc'),
+		(51, 'client-side-security-control-bypass.inc')";
+	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {
 		$lErrorDetected = TRUE;
@@ -607,7 +613,8 @@ try{
 		(47, '<span class=\"label\">Username Enumeration</span>: This page allows usernames to be enumerated.'),
 		(48, '<span class=\"label\">Application Log Injection</span>: Some inputs on this page are recorded into log records which can be read by visiting the Show Log page. Vulnerabilities on the Show Log page may allow injections in log records to execute.'),
 		(49, '<span class=\"label\">XPath Injection</span>: Some inputs on this page are vulnerable to XPath injection.'),
-		(50, '<span class=\"label\">Path Relative Stylesheet Injection</span>: Within this page is an iframe containing another page. The page being framed is vulnerable to path relative stylesheet injection.')";
+		(50, '<span class=\"label\">Path Relative Stylesheet Injection</span>: Within this page is an iframe containing another page. The page being framed is vulnerable to path relative stylesheet injection.'),
+		(51, '<span class=\"label\">Client-side Security Control Bypass</span>: This page attempts to implement security using client-side security controls. Any page using such controls, including this page, is vulnerable to security control bypass.')";
 	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {
