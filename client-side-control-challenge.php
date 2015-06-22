@@ -9,6 +9,7 @@
 		function __construct ($pFieldname, $pValue){
 			$this->mFieldname = $pFieldname;
 			$this->mValue = $pValue;
+			$this->mIsCorrect = FALSE;
 		}//end constructor
 		
 		function getFieldname(){
@@ -18,7 +19,15 @@
 		function getValue(){
 			return $this->mValue;
 		}//end method
+
+		function setIsCorrect($pIsCorrect){
+			$this->mIsCorrect = $pIsCorrect;
+		}//end method
 		
+		function getIsCorrect(){
+			return $this->mIsCorrect;
+		}//end method
+
 	};// end class
 
 	class ClientFields{
@@ -37,6 +46,8 @@
 
 		protected function addFieldHelper(/*ClientField*/ $pClientField){
 			try{
+				$lIsCorrect=($this->mTargetNumber==$pClientField->getValue());
+				$pClientField->setIsCorrect($lIsCorrect);
 				$this->mDLList->push($pClientField);
 			} catch(Exception $e){
 				echo $CustomErrorHandler->FormatError($e, "ClientFields.addFieldHelper()");
@@ -54,27 +65,35 @@
 		public function setTargetNumber(/*Integer*/ $pTargetNumber){
 			$this->mTargetNumber = $pTargetNumber;
 		}//end method
-			
+
 		public function prettyPrintFields(){
 			try{
-				$lHTMLElements = "";
+				$lHTMLHeader = "";
+				$lHTMLDetails = "";
 				$lImage = "";
+				$lCountOfCorrectAnswers = 0;
 				for ($this->mDLList->rewind(); $this->mDLList->valid(); $this->mDLList->next()) {
-					
-					$lValue = $this->mDLList->current()->getValue();
-					if ($this->mTargetNumber==$lValue){
-						$lImage = 'green-checkmark-48-48.png';
+
+					if ($this->mDLList->current()->getIsCorrect()){
+						$lImage = 'green-checkmark-36-36.png';
+						$lCountOfCorrectAnswers += 1;
 					}else{
 						$lImage = 'red-x-24-24.png';
 					}// end if
-					
-					$lHTMLElements .= '<tr><td style="font-weight:bold;">'.
-					$this->mDLList->current()->getFieldname().'</td><td>'.
-					$lValue.'</td><td><img src="images/'.
-					$lImage.
-					'" /></td></tr>';
+
+					$lHTMLDetails .= '<tr><td style="font-weight:bold;">'.
+						$this->mDLList->current()->getFieldname().
+						'</td><td>'.$this->mDLList->current()->getValue().
+						'</td><td style="text-align:center;"><img src="images/'.$lImage.
+						'" /></td></tr>';
+
 				}//end for
-				return $lHTMLElements;
+
+				$lHTMLHeader = '<tr><td>&nbsp;<td></tr><tr><td style="font-weight:bold;text-align:center;" colspan="3">You got '.
+						$lCountOfCorrectAnswers.' out of '.
+						$this->mDLList->count().' correct</td></tr><tr><td>&nbsp;<td></tr>';
+								
+				return $lHTMLHeader.$lHTMLDetails;
 			} catch(Exception $e){
 				echo $CustomErrorHandler->FormatError($e, "ClientFields.prettyPrintFields()");
 			}// end try		
@@ -118,7 +137,11 @@
 	   	
 	   	if($lSubmitButtonClicked){
 
-	   		$lCurrentRandomFlag = $_SESSION['cscc-random-flag'];
+	   		if (isset($_SESSION['cscc-random-flag'])) {
+	   			$lCurrentRandomFlag = $_SESSION['cscc-random-flag'];
+	   		}else{
+	   			$lCurrentRandomFlag = 0;
+	   		}//end if
 	   		
 			// if we want to enforce POST method, we need to be careful to specify $_POST
 		   	if(!$lProtectAgainstMethodSwitching){
@@ -127,7 +150,6 @@
 		   		$lShortTextbox = isset($_REQUEST["short_textbox"])?$_REQUEST["short_textbox"]:"";
 		   		$lDisabledTextbox = isset($_REQUEST["disabled_textbox"])?$_REQUEST["disabled_textbox"]:"";
 		   		$lHiddenTextbox = isset($_REQUEST["hidden_textbox"])?$_REQUEST["hidden_textbox"]:"";
-		   		$lDefectiveTextbox = isset($_REQUEST["defective_textbox"])?$_REQUEST["defective_textbox"]:"";
 		   		$lTrickyTextbox = isset($_REQUEST["tricky_textbox"])?$_REQUEST["tricky_textbox"]:"";
 		   		$lVanishingTextbox = isset($_REQUEST["vanishing_textbox"])?$_REQUEST["vanishing_textbox"]:"";
 		   		$lShyTextbox = isset($_REQUEST["shy_textbox"])?$_REQUEST["shy_textbox"]:"";
@@ -147,7 +169,6 @@
 		   		$lShortTextbox = isset($_POST["short_textbox"])?$_POST["short_textbox"]:"";
 		   		$lDisabledTextbox = isset($_POST["disabled_textbox"])?$_POST["disabled_textbox"]:"";
 		   		$lHiddenTextbox = isset($_POST["hidden_textbox"])?$_POST["hidden_textbox"]:"";
-		   		$lDefectiveTextbox = isset($_POST["defective_textbox"])?$_POST["defective_textbox"]:"";
 		   		$lTrickyTextbox = isset($_POST["tricky_textbox"])?$_POST["tricky_textbox"]:"";
 		   		$lVanishingTextbox = isset($_POST["vanishing_textbox"])?$_POST["vanishing_textbox"]:"";
 		   		$lShyTextbox = isset($_POST["shy_textbox"])?$_POST["shy_textbox"]:"";
@@ -171,7 +192,6 @@
 		   	$lFields->addField(new ClientField("Short Textbox", $lShortTextbox));
 		   	$lFields->addField(new ClientField("Disabled Textbox", $lDisabledTextbox));
 		   	$lFields->addField(new ClientField("Hidden Textbox", $lHiddenTextbox));
-		   	$lFields->addField(new ClientField("Defective Textbox", $lDefectiveTextbox));
 		   	$lFields->addField(new ClientField("Tricky Textbox", $lTrickyTextbox));
 		   	$lFields->addField(new ClientField("Vanishing Textbox", $lVanishingTextbox));
 		   	$lFields->addField(new ClientField("Shy Textbox", $lShyTextbox));
@@ -191,8 +211,20 @@
 	   	/*
 	   	 * Create a random value for the user to submit.
 	   	*/
-	   	$lRandomFlag = $_SESSION['cscc-random-flag'] = mt_rand(0, mt_getrandmax());
 	   	
+	   	// if we want to enforce POST method, we need to be careful to specify $_POST
+	   	if(!$lProtectAgainstMethodSwitching){
+	   		$lResetTargetValue = isset($_REQUEST["resetTargetValue"])?$_REQUEST["resetTargetValue"]:"";
+	   	}else{
+	   		$lResetTargetValue = isset($_POST["resetTargetValue"])?$_POST["resetTargetValue"]:"";
+	   	}//end if !$lProtectAgainstMethodSwitching
+
+	   	if (!isset($_SESSION['cscc-random-flag']) || $lResetTargetValue == 1) {
+	   		$_SESSION['cscc-random-flag'] = mt_rand(0, mt_getrandmax());;
+	   	}//end if
+	   	
+	   	$lRandomFlag = $_SESSION['cscc-random-flag'];
+
 	} catch(Exception $e){
 		$lSubmitButtonClicked = FALSE;
 		echo $CustomErrorHandler->FormatError($e, "Error creating client-side challenge");
@@ -239,9 +271,6 @@
 				}// end if
 				if (theForm.id_hidden_textbox.value.match(lAlphaValidationPattern) == null){
 					alert("Hidden Textbox: "+lMessage);return false;
-				}// end if
-				if (theForm.id_defective_textbox.value.match(lAlphaValidationPattern) == null){
-					alert("Defective Textbox: "+lMessage);return false;
 				}// end if
 				if (theForm.id_tricky_textbox.value.match(lAlphaValidationPattern) == null){
 					alert("Tricky Textbox: "+lMessage);return false;
@@ -310,7 +339,7 @@
 	}
 </style>
 
-<div class="page-title">Client-side Control Challenge (Prototype Only - Just Testing)</div>
+<div class="page-title">Client-side Control Challenge</div>
 
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
 <?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-wrapper.inc'); ?>
@@ -343,72 +372,72 @@
 			<tr><td>&nbsp;</td></tr>
 			<tr>
 				<td class="label" style="text-align: left;">Flag</td>
-				<td class="label" style="color: blue;text-align: left;"><?php echo $lRandomFlag;?></td>
+				<td class="label" style="text-align: left;">
+					<?php echo $lRandomFlag;?>
+					<a 	href="index.php?page=client-side-control-challenge.php&resetTargetValue=1"
+						style="margin-left: 50px;">
+						Get New Value
+					</a>
+				</td>
 			</tr>
 			<tr><td>&nbsp;</td></tr>
 			<tr>
 				<td class="label" style="text-align: left;">Text Box</td>
 				<td style="text-align: left;">
-					<input value="a" HTMLandXSSInjectionPoint="1" type="text" name="textbox" id="id_textbox" size="15" maxlength="15" required="true" autofocus="1" />
+					<input HTMLandXSSInjectionPoint="1" type="text" name="textbox" id="id_textbox" size="15" maxlength="15" required="true" autofocus="1" />
 				</td>
 			</tr>			<tr>
 				<td class="label" style="text-align: left;">Read-only Text Box</td>
 				<td style="text-align: left;">
-					<input value="a" HTMLandXSSInjectionPoint="1" type="text" name="readonly_textbox" id="id_readonly_textbox" size="15" maxlength="15" required="true" autofocus="1" readonly="1" value="42" />
+					<input HTMLandXSSInjectionPoint="1" type="text" name="readonly_textbox" id="id_readonly_textbox" size="15" maxlength="15" required="true" autofocus="1" readonly="1" value="42" />
 				</td>
 			</tr>			
 			<tr>
 				<td class="label" style="text-align: left;">Short Text Box</td>
 				<td style="text-align: left;">
-					<input value="a" HTMLandXSSInjectionPoint="1" type="text" name="short_textbox" id="id_short_textbox" size="3" maxlength="3" required="true" />
+					<input HTMLandXSSInjectionPoint="1" type="text" name="short_textbox" id="id_short_textbox" size="3" maxlength="3" required="true" />
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">Disabled Text Box</td>
 				<td style="text-align: left;">
-					<input value="a" HTMLandXSSInjectionPoint="1" type="text" name="disabled_textbox" id="id_disabled_textbox" size="15" maxlength="15" required="true" disabled="1" style="background-color:#dddddd;" />
+					<input HTMLandXSSInjectionPoint="1" type="text" name="disabled_textbox" id="id_disabled_textbox" size="15" maxlength="15" required="true" disabled="1" style="background-color:#dddddd;" />
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">Hidden Text Box</td>
 				<td style="text-align: left;">
-					<input value="a" HTMLandXSSInjectionPoint="1" type="hidden" name="hidden_textbox" id="id_hidden_textbox" size="15" maxlength="15" required="true" />
+					<input HTMLandXSSInjectionPoint="1" type="hidden" name="hidden_textbox" id="id_hidden_textbox" size="15" maxlength="15" required="true" />
 				</td>
 			</tr>
 			<tr>
-				<td class="label" style="text-align: left;">Defective Text Box</td>
+				<td class="label" style="text-align: left;">"Secured by JavaScript" Text Box</td>
 				<td style="text-align: left;">
-					<input value="a" HTMLandXSSInjectionPoint="1" type="text" name="defective_textbox" id="id_defective_textbox" size="3" maxlength="0" required="true" />
-				</td>
-			</tr>
-			<tr>
-				<td class="label" style="text-align: left;">Tricky Text Box</td>
-				<td style="text-align: left;">
-					<input value="a" HTMLandXSSInjectionPoint="1" type="text" name="tricky_textbox" id="id_tricky_textbox" size="15" maxlength="15" required="true" onfocus="javascript:this.blur();" />
+					<input HTMLandXSSInjectionPoint="1" type="text" name="tricky_textbox" id="id_tricky_textbox" size="15" maxlength="15" required="true" onfocus="javascript:this.blur();" />
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">Vanishing Text Box</td>
 				<td style="text-align: left;">
-					<input value="a" HTMLandXSSInjectionPoint="1" type="text" name="vanishing_textbox" id="id_vanishing_textbox" size="15" maxlength="15" required="true" onmouseover="javascript:this.type='hidden';" />
+					<input HTMLandXSSInjectionPoint="1" type="text" name="vanishing_textbox" id="id_vanishing_textbox" size="15" maxlength="15" required="true" onmouseover="javascript:this.type='hidden';" />
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">Shy Text Box</td>
 				<td style="text-align: left;">
-					<input value="a" HTMLandXSSInjectionPoint="1" type="text" name="shy_textbox" id="id_shy_textbox" size="15" maxlength="15" required="true" class="box" />
+					<input HTMLandXSSInjectionPoint="1" type="text" name="shy_textbox" id="id_shy_textbox" size="15" maxlength="15" required="true" class="box" />
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">Search Textbox</td>
 				<td style="text-align: left;">
-					<input value="a" type="search" name="search" id="id_search" pattern="[a-zA-z]" required="true" />
+					<input type="search" name="search" id="id_search" pattern="[a-zA-z]" required="true" />
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">Password</td>
 				<td style="text-align: left;">
-					<input value="a" HTMLandXSSInjectionPoint="1" type="password" name="password" id="id_password" size="15" maxlength="15" required="true" />
+					<input HTMLandXSSInjectionPoint="1" type="password" name="password" id="id_password" size="15" maxlength="15" required="true" />
 				</td>
 			</tr>
 			<tr>
@@ -417,7 +446,7 @@
 					<select HTMLandXSSInjectionPoint="1" name="select" id="id_select" required="true">
 						<option value="1">One</option>
 						<option value="2">Two</option>
-						<option value="3">Three</option>
+						<option value="3">Buckle my shoe</option>
 					</select>
 				</td>
 			</tr>			
@@ -438,25 +467,25 @@
 			<tr>
 				<td class="label" style="text-align: left;">Email Control</td>
 				<td style="text-align: left;">
-					<input value="aaa@baa.com" type="email" name="email" id="id_email" required="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" />
+					<input type="email" name="email" id="id_email" required="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" />
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">File Upload</td>
 				<td style="text-align: left;">
-					<input value="examples.desktop" type="file" name="file" id="id_file" required="true" />
+					<input type="file" name="file" id="id_file" required="true" />
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">Number</td>
 				<td style="text-align: left;">
-					<input value="1" type="number" name="number" id="id_number" min="0" max="999" step="1" required="true" />
+					<input type="number" name="number" id="id_number" min="0" max="999" step="1" required="true" />
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">Range</td>
 				<td style="text-align: left;">
-					<input value="1" type="range" name="range" id="id_range" min="0" max="999" step="1" required="true" />
+					<input type="range" name="range" id="id_range" min="0" max="999" step="1" required="true" />
 				</td>
 			</tr>		
 			<tr><td>&nbsp;</td></tr>
@@ -477,7 +506,8 @@
 		    <td>Value Submitted</td>
 		    <td>&nbsp;</td>	
 		</tr>
-		<?php echo $lFields->prettyPrintFields(); ?>		
+		<?php echo $lFields->prettyPrintFields(); ?>
+		<tr><td>&nbsp;</td></tr>
 	</table>	
 </div>
 

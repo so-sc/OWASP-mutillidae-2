@@ -198,7 +198,7 @@
 		<div>&nbsp;</div>
 		<div class="label" style="text-align: center;">
 			<a href="https://twitter.com/webpwnized" target="_blank">
-				<img align="middle" alt="Webpwnized Twitter Channel" src="./images/twitter-bird-48-48.png" width="48px" height="48px" />
+				<img align="middle" alt="Webpwnized Twitter Channel" src="./images/twitter-bird-48-48.png" />
 				<br/>
 				Release Announcements
 			</a>
@@ -207,7 +207,7 @@
 		<div>&nbsp;</div>
 		<div class="label" style="text-align: center;">
 			<a href="http://www.youtube.com/user/webpwnized" style="white-space:nowrap;" target="_blank">
-				<img align="middle" alt="Webpwnized YouTube Channel" src="./images/youtube-48-48.png" width="48px" height="48px" />
+				<img align="middle" alt="Webpwnized YouTube Channel" src="./images/youtube-48-48.png" />
 				<br/>
 				Video<br/>Tutorials
 			</a>
@@ -216,7 +216,7 @@
 		<div>&nbsp;</div>	
 		<div class="label" style="text-align: center;">
 			<a href="https://www.owasp.org" target="_blank">
-				<img alt="OWASP" style="border-width: 0px;" height="90px" width="120px" src="./images/owasp-logo-120-90.png" />
+				<img alt="OWASP" style="border-width: 0px;" src="./images/owasp-logo-120-90.png" />
 				<br/>
 				OWASP
 			</a>

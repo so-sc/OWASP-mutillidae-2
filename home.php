@@ -32,7 +32,7 @@
  	<tr>
 	    <td>
 			<a title="Usage Instructions" href="./index.php?page=usage-instructions.php">
-				<img alt="What Should I Do?" align="middle" src="./images/question-mark-229-347.png" width="40px" height="60px" />
+				<img alt="What Should I Do?" align="middle" src="./images/question-mark-40-61.png" />
 				What Should I Do?
 			</a>
 		</td>
@@ -50,7 +50,7 @@
 		</td>
 		<td>
 			<a href="./index.php?page=./documentation/vulnerabilities.php">
-				<img alt="Help" align="middle" src="./images/siren-128-128.png" width="48px" height="48px" />
+				<img alt="Help" align="middle" src="./images/siren-48-48.png" />
 				Listing of vulnerabilities
 			</a>
 		</td>
@@ -65,7 +65,7 @@
 		</td>
 		<td>
 			<a href="" onclick="alert('The email account is webpwnized. Its a gmail account.');">
-				<img alt="Help" align="middle" src="./images/mail-icon-48-48.png" width="48px" height="48px" />
+				<img alt="Help" align="middle" src="./images/mail-icon-48-48.png" />
 				Bug Report Email Address 
 			</a>
 		</td>
@@ -74,7 +74,7 @@
 	<tr>
 		<td>
 			<a href="./index.php?page=documentation/change-log.html">
-				<img alt="See the latest vulnerabilities in Mutillidae" align="middle" src="./images/new-icon-96-96.png" width="48px" height="48px" />
+				<img alt="See the latest vulnerabilities in Mutillidae" align="middle" src="./images/new-icon-48-48.png" />
 				What's New? Click Here
 			</a>
 		</td>
@@ -129,7 +129,7 @@
 						<img 	title="Pentesting Tools" 
 								alt="Tools" 
 								align="middle" 
-								src="./images/tools-icon-64-64.png" width="48px" height="48px" />
+								src="./images/tools-icon-48-48.png" />
 						Tools
 					</td>
 				</tr>

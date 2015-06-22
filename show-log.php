@@ -86,7 +86,7 @@
 			Refresh Logs
 		</span>
 		<span title="Click to delete log file" onclick="document.location='./index.php?page=show-log.php&deleteLogs=deleteLogs&popUpNotificationCode=LFD1';" style="cursor: pointer;white-space:nowrap;font-weight:bold;">
-			<img width="32px" height="32px" src="./images/delete-icon-256-256.png" />
+			<img width="32px" height="32px" src="./images/delete-icon-48-48.png" />
 			Delete Logs
 		</span>
 	</td>

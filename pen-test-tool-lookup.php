@@ -241,7 +241,7 @@
 </script>
 <span>
 	<a style="text-decoration: none; cursor: pointer;" href="./index.php?page=pen-test-tool-lookup-ajax.php">
-		<img style="vertical-align: middle;" src="./images/ajax_logo-285x300.jpg" height="75px" width="78px" />
+		<img style="vertical-align: middle;" src="./images/ajax_logo-75-79.jpg" height="75px" width="78px" />
 		<span style="font-weight:bold;">Switch to AJAX Version of page</span>
 	</a>
 </span>

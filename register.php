@@ -156,7 +156,7 @@
 
 <span>
 	<a style="text-decoration: none; cursor: pointer;" href="./webservices/rest/ws-user-account.php">
-		<img style="vertical-align: middle;" src="./images/ajax_logo-285x300.jpg" height="75px" width="78px" />
+		<img style="vertical-align: middle;" src="./images/ajax_logo-75-79.jpg" height="75px" width="78px" />
 		<span style="font-weight:bold;">Switch to RESTful Web Service Version of this Page</span>
 	</a>
 </span>
