@@ -36,12 +36,10 @@
 			controls.
 			<br/><br/>
 			<span class="label">HTML</span>
-			<br/><br/>
 			<ul>
 			<li>Button, input, select, textarea, optgroup, option or fieldset elements that have a "disabled" attribute</li>
 			<li>Input elements with the "required","maxlength","readonly","pattern" or "hidden" attribute</li>
 			</ul>
-			<br/><br/>
 			This gives to us the following list of keywords
 			<ul>
 				<li>disabled</li>
@@ -50,55 +48,125 @@
 				<li>readonly</li>
 				<li>pattern</li>
 				<li>hidden</li>
-				<li>attribute</li>
 			</ul>			
+			Text boxes allow any characters so tend to be paired with the controls mentioned above. 
+			But some HTML input elements such as select elements (drop-down boxes) are restrictive 
+			by their nature. Developers may employ these "implicit controls" believing users
+			cannot choose options other than those offered.
 			<br/><br/>
-			Text boxes allow any characters so tend to be paired with the controls above. 
-			Some HTML input elements are are restrictive by their nature.
-			
-			
-			<br/><br/>
+			These are some "implicit controls" that restrict input by their nature. 
+			<ul>
+				<li>select</li>
+				<li>radio</li>
+				<li>checkbox</li>
+				<li>file</li>
+				<li>number</li>
+				<li>range</li>
+				<li>button</li>
+				<li>submit</li>
+			</ul>			
 			<span class="label">CSS</span>
 			<br/><br/>
-			
+			Styles can prevent browsers from drawing certain inputs, move inputs off screen and 
+			layer inputs under other elements. Some sites may use these tecniques in an attempt
+			to prevent users from entering data under some conditions.
 			<br/><br/>
+			One of the common CSS properties that hides content is "display".
+			<ul>
+				<li>display</li>
+			</ul>			
 			<span class="label">JavaScript</span>
 			<br/><br/>
-			
+			JavaScript tightly integrates with the Document Object Model. JS may hide any element,
+			alter the contents, interupt form submission or rewrite all or part of a page. 
+			Since any JS, inline or imported, may place restrictions on elements it is neccesary
+			to examine all JavaScript functions if they are to be bypassed.
+			<br/><br/>
+			JavaScript that is associated with onblur, onfocus, onsubmit and onclick events may
+			be more likely to be implementing client-side controls on average.
+			<ul>
+				<li>onblur</li>
+				<li>onfocus</li>
+				<li>onsubmit</li>
+				<li>onclick</li>
+			</ul>
+			Because JavaScript can be complex and be comprised of many lines of code, a 
+			better approach may be to disable or ignore the JavaScript validation entirely.
+			<br/><br/>
+			Using the keywords above combined with a tool like grep can locate the most likely
+			locations of client-side controls in HTML, CSS and JavaScript source code.
+			<br/><br/>
+			<span class="report-header">Discovery Methodology (Dynamic source-code analysis)</span>
+			<br/><br/>
+			Detection of client-side controls using dynamic testing is relatively easy. Fill in
+			all fields available, noting any restrictions experienced and submit the request. Fields
+			that disallow some or all choices are likely client-side controls. Observe if the request 
+			is sent to the web server or blocked inline. If the application refuses to send the 
+			request, usually a JavaScript or HTML5 control (i.e. pattern) is stopping the 
+			request. 
 			<br/><br/>
 			<span class="report-header">Exploitation</span>
 			<br/><br/>
-
+			It is worth noting bypassing client-side controls is not standard practice. Usually the
+			controls are ignored entirely by capturing a "valid" request/response pair using an
+			interception proxy such as Burp-Suite. The baseline request is fuzzed, manipulated or attacked one 
+			parameter at a time to generate reponses. Each response can be compared against the
+			original baseline reponse.
 			<br/><br/>
-			<span class="report-header">Example</span>
-			<br/><br/>				
-			<br/><br/> 
-		  	The goal is to modify the 
-		  	initialization vector (IV) in order to cause the user ID and group ID
-		  	to both be "000". When this occurs a message will appear.
+			Asssuming bypass of individual client-side controls is desired the following tecniques
+			are one possible solution.
 			<br/><br/>
-			Note that in security level 0 the user ID and group ID are already "100". 
-			Only the first
-			character ("1") needs to be modified. Try to leave the "00" alone.
+			<span class="label">Tools</span>
 			<br/><br/>
-	  		First, determine which of the bytes affects the user ID and group ID respectively.
-	  		Modify each byte until the user ID and group ID are affected. Note the position
-	  		of the bytes carefully. One byte in the IV will affect the "1" in the user
-	  		ID and another byte will affect the "1" in the group ID.
+			There are many plug-ins and add-ons that are useful. For Firefox some can be found in 			
+			<a href="https://addons.mozilla.org/en-US/firefox/collections/jdruin/pro-web-developer-qa-pack/">this
+			Mozilla Add-on Collection</a>. However the developer tools built-into modern browsers may be
+			the best choice for most testing.
+			<ul>
+				<li>Firefox Web Developer Tools</li>
+				<li>Safari Web Inspector</li>
+				<li>Internet Explorer Developer Tools</li>
+			</ul> 
+			<br/>
+			<span class="label">HTML</span>
+			The following attribute values can be changed to remove restrictions
+			<ul>
+				<li>maxlength</li>
+				<li>pattern</li>
+				<li>hidden (change to "text")</li>
+			</ul>	
+			The following attributes can be deleted to remove restrictions
+			<ul>
+				<li>disabled</li>
+				<li>required</li>
+				<li>readonly</li>
+				<li>pattern</li>
+			</ul>				
+			<span class="label">CSS</span>
 			<br/><br/>
-	  		A byte can only have 255 distinct values. One way to solve this problem
-	  		is to brute force the answer by trying all 255 bytes until a "0" appears
-	  		where the "1" is currently shown.
+			Settings the CSS property "display" to block, inline or and empty string will allow the 
+			browser to display elements in the hidden scope		
 			<br/><br/>
-	  		A much better way is to XOR the value you input with the value that appears
-	  		in the User ID or Group ID. This is the respective byte of the cipher text.
-	  		Next, XOR this byte of cipher text with the byte you want to appear; "0" which
-	  		is 0X30. Input this result into the IV in the same position that was tampered
-	  		with to modify the "1" in the User ID or Group ID.
+			<span class="label">JavaScript</span>
 			<br/><br/>
-		  	The answer is "6bc24fc1aa650b24b4114e93a98f1eba" for security level 0 but
-		  	not for security level 1. Note the initial user ID in security level
-		  	1 is more challenging to change correctly.
+			JavaScript can generally be dealth with in one of three ways:
+			<br/><br/>
+			<span class="label">Rewrite the JavaScript</span>
+			<br/><br/>
+			Since JavaScript is under the control of the user, it is possible to create, alter or delete 
+			JavaScript code.
+			<br/><br/>
+			<span class="label">Delete or negate the event that triggers the JavaScript</span>
+			<br/><br/>
+			JavaScript that performs validation is usually called by the browser in response to an event
+			since it is neccesary for the user to enter the value before the value can be validated.
+			Deleting this event or setting the event to TRUE may be an easy way to circumvent validation 
+			<br/><br/>
+			<span class="label">Submit requests outside the browser using proxy</span>
+			<br/><br/>
+			The easiest and most reliable method to bypass any client-side control is to capture
+			 a "valid" request/response pair using an interception proxy such as Burp-Suite. By this time
+			 any JavaScript has already run and can be ignored entirely.
 			<br/><br/>
 			<span class="report-header">Videos</span>
 			<br/><br/>

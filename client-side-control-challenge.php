@@ -437,7 +437,7 @@
 			<tr>
 				<td class="label" style="text-align: left;">Password</td>
 				<td style="text-align: left;">
-					<input HTMLandXSSInjectionPoint="1" type="password" name="password" id="id_password" size="15" maxlength="15" required="true" />
+					<input HTMLandXSSInjectionPoint="1" type="password" name="password" id="id_password" size="15" maxlength="15" required="true" value="Hint: If you use Burp-Suite this exercise is much easier" />
 				</td>
 			</tr>
 			<tr>
