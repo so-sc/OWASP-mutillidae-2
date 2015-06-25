@@ -129,19 +129,36 @@
 			</ul> 
 			<br/>
 			<span class="label">HTML</span>
+			<br/><br/>
 			The following attribute values can be changed to remove restrictions
 			<ul>
 				<li>maxlength</li>
 				<li>pattern</li>
 				<li>hidden (change to "text")</li>
-			</ul>	
+				<li>value</li>
+			</ul>
 			The following attributes can be deleted to remove restrictions
 			<ul>
 				<li>disabled</li>
 				<li>required</li>
 				<li>readonly</li>
 				<li>pattern</li>
-			</ul>				
+			</ul>
+			HTML input elements which are implicit controls can be bypassed using the same techniques
+			<br/><br/>
+			Select elements contain child elements known as "options". The value sent for the
+			select element is the value of the option chosen. To send a different value than 
+			the options offered, either add a new option with the desired value or change the 
+			value of an existing option. When done, pick the option that has the value wanted.
+			<br/><br/>
+			Radio buttons and checkboxes are similar except the value sent is the value of the 
+			checkbox or radio button itself. Again either add a new checkbox/radio button or
+			change the value of an existing checkbox/radio button.
+			<br/><br/>
+			The input elements of type file, number, range, button and submit have an attribute
+			called "value" that is sent to the server when the form is submitted. Altering these
+			values is trivial and is the easiest way to bypass these controls.	
+			<br/><br/>
 			<span class="label">CSS</span>
 			<br/><br/>
 			Settings the CSS property "display" to block, inline or and empty string will allow the 

@@ -138,7 +138,7 @@
 				<tr>
 					<td style="text-align:center;">
 						<span style="text-align:center; font-weight: bold; font-size:30px; text-align: center;">
-						<img style="vertical-align: middle; margin-right: 10px;" border="0px" width="50px" height="40px" align="top" src="./images/coykillericon.png"/>
+						<img style="vertical-align: middle; margin-right: 10px;" border="0px" align="top" src="images/coykillericon-50-38.png"/>
 							OWASP Mutillidae II: Web Pwn in Mass Production 
 						</span>
 					</td>

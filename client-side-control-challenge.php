@@ -6,25 +6,25 @@
 		private $mValue = "";
 		private $mIsCorrect = FALSE;
 
-		function __construct ($pFieldname, $pValue){
+		public function __construct ($pFieldname, $pValue){
 			$this->mFieldname = $pFieldname;
 			$this->mValue = $pValue;
 			$this->mIsCorrect = FALSE;
 		}//end constructor
 		
-		function getFieldname(){
+		public function getFieldname(){
 			return $this->mFieldname;
 		}//end method
 
-		function getValue(){
+		public function getValue(){
 			return $this->mValue;
 		}//end method
 
-		function setIsCorrect($pIsCorrect){
+		public function setIsCorrect($pIsCorrect){
 			$this->mIsCorrect = $pIsCorrect;
 		}//end method
 		
-		function getIsCorrect(){
+		public function getIsCorrect(){
 			return $this->mIsCorrect;
 		}//end method
 
@@ -34,17 +34,33 @@
 	
 		private $mDLList = NULL;
 		private $mTargetNumber = -1;
-
-		function __construct (){
+		private $mEncodeOutput = FALSE;
+		private $Encoder = null;
+		
+		public function __construct ($pPathToESAPI){
 			try{
 				$this->mDLList = new SplDoublyLinkedList();
 				$this->mDLList->setIteratorMode(SplDoublyLinkedList::IT_MODE_FIFO|SplDoublyLinkedList::IT_MODE_KEEP);
+				
+				//initialize OWASP ESAPI for PHP
+				require_once $pPathToESAPI . 'ESAPI.php';
+				$this->ESAPI = new ESAPI($pPathToESAPI . 'ESAPI.xml');
+				$this->Encoder = $this->ESAPI->getEncoder();
+								
 			} catch(Exception $e){
 				echo $CustomErrorHandler->FormatError($e, "ClientFields.__construct()");
 			}// end try
 		}//end constructor
-
-		protected function addFieldHelper(/*ClientField*/ $pClientField){
+		
+		public function EnableOutputEncoding(){
+			$this->mEncodeOutput = TRUE;
+		}// end try
+		
+		public function DisableOutputEncoding(){
+			$this->mEncodeOutput = FALSE;
+		}// end try
+		
+		public function addFieldHelper(/*ClientField*/ $pClientField){
 			try{
 				$lIsCorrect=($this->mTargetNumber==$pClientField->getValue());
 				$pClientField->setIsCorrect($lIsCorrect);
@@ -72,7 +88,18 @@
 				$lHTMLDetails = "";
 				$lImage = "";
 				$lCountOfCorrectAnswers = 0;
+				$lFieldName = "";
+				$lFieldValue = "";
+				
 				for ($this->mDLList->rewind(); $this->mDLList->valid(); $this->mDLList->next()) {
+
+					$lFieldName = $this->mDLList->current()->getFieldname();
+					$lFieldValue = $this->mDLList->current()->getValue();
+					
+					if ($this->mEncodeOutput) {
+						$lFieldName = $this->Encoder->encodeForHTML($lFieldName);
+						$lFieldValue = $this->Encoder->encodeForHTML($lFieldValue);
+					}//end if
 
 					if ($this->mDLList->current()->getIsCorrect()){
 						$lImage = 'green-checkmark-36-36.png';
@@ -81,15 +108,15 @@
 						$lImage = 'red-x-24-24.png';
 					}// end if
 
-					$lHTMLDetails .= '<tr><td style="font-weight:bold;">'.
-						$this->mDLList->current()->getFieldname().
-						'</td><td>'.$this->mDLList->current()->getValue().
+					$lHTMLDetails .= 
+						'<tr><td style="font-weight:bold;">'.$lFieldName.
+						'</td><td>'.$lFieldValue.
 						'</td><td style="text-align:center;"><img src="images/'.$lImage.
 						'" /></td></tr>';
-
 				}//end for
 
-				$lHTMLHeader = '<tr><td>&nbsp;<td></tr><tr><td style="font-weight:bold;text-align:center;" colspan="3">You got '.
+				$lHTMLHeader = 
+						'<tr><td>&nbsp;<td></tr><tr><td style="font-weight:bold;text-align:center;" colspan="3">You got '.
 						$lCountOfCorrectAnswers.' out of '.
 						$this->mDLList->count().' correct</td></tr><tr><td>&nbsp;<td></tr>';
 								
@@ -184,8 +211,11 @@
 		   		$lSubmitButton = isset($_POST["client_side_control_challenge_php_submit_button"])?$_POST["client_side_control_challenge_php_submit_button"]:"";
 		   	}//end if !$lProtectAgainstMethodSwitching	
 
-		   	$lFields = new ClientFields();
+		   	$lFields = new ClientFields("owasp-esapi-php/src/");
 		   	$lFields->setTargetNumber($lCurrentRandomFlag);
+		   	if ($lEncodeOutput){
+		   		$lFields->EnableOutputEncoding();
+		   	}//end if
 		   	
 		   	$lFields->addField(new ClientField("Textbox", $lTextbox));
 		   	$lFields->addField(new ClientField("Readonly Textbox", $lReadonlyTextbox));

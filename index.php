@@ -47,7 +47,7 @@
     	case "0": // This code is insecure
     	case "1": // This code is insecure
 		    if ($_SESSION["EnforceSSL"] == "True"){
-		    	if($_SERVER['HTTPS']!="on"){
+		    	if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS']!="on"){
 		    		$lSecureRedirect = "https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 		    		header("Location: $lSecureRedirect");
 		    		exit();
@@ -60,9 +60,7 @@
     	case "4":
     	case "5": // This code is fairly secure
 		    if ($_SESSION["EnforceSSL"] == "True"){
-		    	if($_SERVER['HTTPS']!="on"){
-		    		//$lSecureRedirect = "http://".$_SERVER['HTTP_HOST']."/mutillidae/index.php?page=ssl-enforced.php";
-		    		//header("Location: $lSecureRedirect");
+		    	if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS']!="on"){
 		    		require_once('ssl-enforced.php');
 		    		exit();
 		    	}//end if
