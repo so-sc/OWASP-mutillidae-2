@@ -15,7 +15,6 @@
 				<li>Cascading style sheet injection</li>
 				<li>CBC bit flipping (latest)</li>
 				<li>Click-jacking</li>
-				<li>Client-side Security</li>
 				<li>Comments with sensitive data</li>
 				<li>Content type is not specified</li>
 				<li>Cookie scoped to parent domain</li>
@@ -153,20 +152,6 @@
 			HTML injection via any GET, POST, or Cookie sent to the capture
 			data page
 		</li>
-	</ul>
-</div>
-
-<p class="label">client-side-control-challenge.php</p>
-<div style="padding-left: 40px;">
-	<ul>
-		<li>
-			Reflected cross-site scripting
-		</li>
-		<li>
-			HTML injection
-		</li>
-		<li>Method tampering</li>
-		<li>Client-side control bypass</li>
 	</ul>
 </div>
 
