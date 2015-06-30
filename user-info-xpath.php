@@ -130,7 +130,7 @@
 &nbsp;&nbsp;&nbsp;
 <span>
 	<a style="text-decoration: none; cursor: pointer;" href="index.php?page=user-info.php">
-		<img style="vertical-align: middle;" src="./images/sql-logo-128-by-128.png" height="64px" width="64px" />
+		<img style="vertical-align: middle;" src="./images/sql-logo-64-64.png" />
 		<span style="font-weight:bold;">Switch to SQL version</span>
 	</a>
 </span>

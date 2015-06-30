@@ -58,8 +58,6 @@
 	<a 	onclick="document.location.href='<?php echo $lHTTPReferer; ?>';">
 		<img	src="./images/back-button-64-64.png" 
 				alt="Go Back" 
-				width="64px" 
-				height="64px" 
 				align="middle" 
 		/>
 		&nbsp;

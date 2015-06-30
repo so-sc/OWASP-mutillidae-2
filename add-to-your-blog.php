@@ -360,6 +360,5 @@
 
 	if ($_SESSION["showhints"] == 2) {
 		include_once (__ROOT__.'/includes/hints-level-2/cross-site-scripting-tutorial.inc');
-		include_once (__ROOT__.'/includes/hints-level-2/cross-site-request-forgery-tutorial.inc');
 	}// end if
 ?>

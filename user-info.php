@@ -118,7 +118,7 @@
 &nbsp;&nbsp;&nbsp;
 <span>
 	<a style="text-decoration: none; cursor: pointer;" href="index.php?page=user-info-xpath.php">
-		<img style="vertical-align: middle;" src="./images/xml-logo-128-by-128.png" height="64px" width="64px" />
+		<img style="vertical-align: middle;" src="./images/xml-logo-64-64.png" />
 		<span style="font-weight:bold;">Switch to XPath version</span>
 	</a>
 </span>

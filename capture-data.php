@@ -171,7 +171,7 @@
 
 <div>
 	<a href="./index.php?page=captured-data.php" style="text-decoration: none;">
-	<img style="vertical-align: middle;" src="./images/cage.png" height="50px" width="50px" />
+	<img style="vertical-align: middle;" src="./images/cage-48-48.png" />
 	<span style="font-weight:bold; cursor: pointer;">&nbsp;View Captured Data</span>
 	</a>
 </div>

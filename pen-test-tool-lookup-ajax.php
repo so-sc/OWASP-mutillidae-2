@@ -213,7 +213,7 @@
 </script>
 <span>
 	<a style="text-decoration: none; cursor: pointer;" href="./index.php?page=pen-test-tool-lookup.php">
-		<img style="vertical-align: middle;" src="./images/sign_post_471_588.gif" height="60px" width="75px" />
+		<img style="vertical-align: middle;" src="./images/sign-post-60-75.gif" height="60px" width="75px" />
 		<span style="font-weight:bold;">Switch to POST Version of page</span>
 	</a>
 </span>

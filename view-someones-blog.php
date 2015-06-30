@@ -98,7 +98,7 @@
 	<legend>View Blog Entries</legend>
 	<span>
 		<a href="./index.php?page=add-to-your-blog.php" style=" text-decoration: none;">
-		<img style="vertical-align: middle;" src="./images/add_icon.png" height="32px" width="32px" />
+		<img style="vertical-align: middle;" src="./images/add-icon-32-32.png" />
 		<span style="font-weight:bold;">&nbsp;Add To Your Blog</span>
 		</a>
 	</span>
