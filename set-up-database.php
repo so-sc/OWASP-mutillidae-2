@@ -851,14 +851,19 @@ try{
 	}// end if
 	
 	/* ***********************************************************************************
-	 * Create accounts.xml file from MySQL accounts table 
+	 * Create accounts.xml password.txt file from MySQL accounts table 
 	 * ************************************************************************************/
-	$lAccountXMLFilePath="./data/accounts.xml";
+	$lAccountXMLFilePath="data/accounts.xml";
+	$lPasswordFilePath="passwords/accounts.txt";
 	
 	echo format("Trying to build XML version of accounts table to update accounts XML ".$lAccountXMLFilePath,"I");
 	echo format("Do not worry. A default version of the file is included if this does not work.","I");
+
+	echo format("Trying to build text version of accounts table to update password text file ".$lPasswordFilePath,"I");
+	echo format("Do not worry. A default version of the file is included if this does not work.","I");
 	
 	$lAccountsXML = "";
+	$lAccountsText = "";
 	$lQueryString = "SELECT username, password, mysignature, is_admin FROM accounts;";
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	
@@ -883,9 +888,11 @@ try{
 		   	$lAccountsXML.=$cTAB.'<Employee ID="'.$lCounter.'">'.PHP_EOL;
 		   	$lAccountsXML.=$cTAB.$cTAB.'<UserName>'.$row->username.'</UserName>'.PHP_EOL;
 		   	$lAccountsXML.=$cTAB.$cTAB.'<Password>'.$row->password.'</Password>'.PHP_EOL;
-		   	$lAccountsXML.=$cTAB.$cTAB.'<Signature>'.$row->username.'</Signature>'.PHP_EOL;
+		   	$lAccountsXML.=$cTAB.$cTAB.'<Signature>'.$row->mysignature.'</Signature>'.PHP_EOL;
 		   	$lAccountsXML.=$cTAB.$cTAB.'<Type>'.$lAccountType.'</Type>'.PHP_EOL;
 		   	$lAccountsXML.=$cTAB.'</Employee>'.PHP_EOL;
+		   	
+		   	$lAccountsText.=$lCounter.",".$row->username.",".$row->password.",".$row->mysignature.",".$lAccountType.PHP_EOL;
 		   	$lCounter+=1;
 		}// end while
 
@@ -903,13 +910,29 @@ try{
 				throw new Exception("Oh snap. Trying to create an XML version of the accounts file did not work out.");
 			}//end if
 		}catch(Exception $e){
-			echo format("Could not write accounts XML to ".$lAccountXMLFilePath,"W");
+			echo format("Could not write accounts XML to ".$lAccountXMLFilePath." - ".$e->getMessage(),"W");
 			echo format("Using default version of accounts.xml","W");			
+		};// end try
+		
+		try{
+			/* Ubuntu 12.04LTS PHP cannot parse short syntax of
+			 * is_writable(pathinfo($lAccountXMLFilePath)['dirname']).
+			 * Replacing with long form version.
+			 */
+			if (is_writable(pathinfo($lPasswordFilePath, PATHINFO_DIRNAME))) {
+				file_put_contents($lPasswordFilePath,$lAccountsText);
+				echo format("Wrote accounts to ".$lPasswordFilePath,"S");
+			}else{
+				throw new Exception("Oh snap. Trying to create an text version of the accounts file did not work out.");
+			}//end if
+		}catch(Exception $e){
+			echo format("Could not write accounts XML to ".$lPasswordFilePath." - ".$e->getMessage(),"W");
+			echo format("Using default version of accounts.txt","W");			
 		};// end try
 		
 	} else {
 		$lErrorDetected = TRUE;
-		echo format("Warning: No records found when trying to build XML version of accounts table ".$lQueryResult,"W");
+		echo format("Warning: No records found when trying to build XML and text version of accounts table ".$lQueryResult,"W");
 	}// end if ($lResultsFound)	
 			
 	$MySQLHandler->closeDatabaseConnection();
