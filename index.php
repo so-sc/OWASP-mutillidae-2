@@ -100,7 +100,7 @@
 	if (isset($_COOKIE["showhints"])){
 		$l_showhints = $_COOKIE["showhints"];
 	}else{
-		$l_showhints = 0;
+		$l_showhints = 1;
 
 		/*
 		 * If in secure mode, we want the cookie to be protected

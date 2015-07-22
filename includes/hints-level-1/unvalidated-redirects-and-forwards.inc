@@ -1,17 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idURFHintHeader"
-		title="Click to open this section"
-		onclick="toggleBody(this, window.document.getElementById('idURFHintBody'), window.document.getElementById('idURFHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idURFHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand Unvalidated Redirects and Forwards Hints" src="./images/down_arrow_16_16.png" />
-			Unvalidated Redirects and Forwards Hints
-		</td>
-	</tr>
-	<tr id="idURFHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -77,6 +63,3 @@
 	http://localhost/mutillidae/index.php?page=redirectandlog.php&amp;forwardurl=http://localhost/mutillidae/capture-data.php
 </code>
 			<br/>
-		</td>
-	</tr>
-</table>

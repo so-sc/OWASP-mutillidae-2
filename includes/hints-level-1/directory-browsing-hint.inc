@@ -1,17 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idDirBrowsingHintHeader"
-		title="Click to open this section"
-		onclick="toggleBody(this, window.document.getElementById('idDirBrowsingHintBody'), window.document.getElementById('idDirBrowsingHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idDirBrowsingHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand Directory Browsing Hints" src="./images/down_arrow_16_16.png" />
-			Directory Browsing Hints
-		</td>
-	</tr>
-	<tr id="idDirBrowsingHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -31,6 +17,3 @@
 			discovered during spidering. Use a tool such as Burp-Intruder to brute-force
 			sub-directory names in the root directory and other discovered directories. 
 			<br/><br/>
-		</td>
-	</tr>
-</table>

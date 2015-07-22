@@ -1,9 +1,6 @@
 <?php
-	require_once (__ROOT__.'/classes/YouTubeVideoHandler.php');
-	$YouTubeVideoHandler = new YouTubeVideoHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
-
 	if ($_SESSION["showhints"] > 0) {
-		require_once 'level-1-hints.js.inc';
+		require_once 'level-1-hints-menu.js.inc';
 		$lDisplayHintStyle = "block";
 	}else{
 		$lDisplayHintStyle = "none";
@@ -22,18 +19,31 @@
 	Hints
 </div>
 <div id="idHintWrapperBody" class="hint-wrapper-body" style="display: none;">
-	<?php 
+	<?php
+	try{
 		if ($_SESSION["showhints"] > 0) {
 			$lPageName = $_GET["page"];
 			$lIncludeFileRecords = $SQLQueryHandler->getPageLevelOneHelpIncludeFiles($lPageName);
-			
+
 			if ($SQLQueryHandler->affected_rows()>0) {
 				while($lRecord = $lIncludeFileRecords->fetch_object()){
-					include_once (__ROOT__.'/includes/hints-level-1/'.$lRecord->level_1_help_include_file);
+					echo
+						'<div class="hint-header">'.
+						'<img src="images/link-icon-16-16.png" style="margin-right: 5px;" />'.
+						'<a class="hint-header" href="level-1-hints-page-wrapper.php?level1HintIncludeFile='.
+							$lRecord->level_1_help_include_file_key.
+						'" title="Click to open '.$lRecord->level_1_help_include_file_description.' hint in new tab" target="_blank" />'.
+							$lRecord->level_1_help_include_file_description.
+						'</a>'.
+						'</div>';
 				}// end while
 			}else{
 				include_once (__ROOT__.'/includes/hints-level-1/hints-not-found.inc');
 			}// end if
 		}//end if $_SESSION["showhints"] > 0
+
+   	} catch (Exception $e) {
+		echo $CustomErrorHandler->FormatError($e, $lQueryString);
+   	}// end try;
 	?>
 </div>

@@ -161,7 +161,7 @@
 <div class="page-title">Repeater</div>
 
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
-<?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-wrapper.inc'); ?>
+<?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-menu-wrapper.inc'); ?>
 
 <?php 
 	if ($lCreateParameterAdditionVulnerability) {

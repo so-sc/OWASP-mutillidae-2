@@ -1,17 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idClickJackingHintHeader"
-		title="Click to open this section"
-		onclick="toggleBody(this, window.document.getElementById('idClickJackingHintBody'), window.document.getElementById('idClickJackingHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idClickJackingHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand Click Jacking Hints" src="./images/down_arrow_16_16.png" />
-			Click-Jacking Hints
-		</td>
-	</tr>
-	<tr id="idClickJackingHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -38,6 +24,3 @@
 			When the user clicks anywhere, they inevitably click the div which then executes
 			the JavaScript in the onclick event.  
 			<br/><br/>
-		</td>
-	</tr>
-</table>

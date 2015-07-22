@@ -1,15 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idApplicationPathDisclosureHintHeader"
-		title="Click to open this section" 
-		onclick="toggleBody(this, window.document.getElementById('idApplicationPathDisclosureHintBody'), window.document.getElementById('idApplicationPathDisclosureHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idApplicationPathDisclosureHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand Application Path Disclosure Hints" src="./images/down_arrow_16_16.png" />Application Path Disclosure Hints</td>
-	</tr>
-	<tr id="idApplicationPathDisclosureHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -30,6 +18,3 @@
 			Burp-Suite to seach for application path patterns that match
 			the web application framework type. 
 			<br/><br/>
-		</td>
-	</tr>
-</table>

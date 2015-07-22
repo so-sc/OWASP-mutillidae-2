@@ -1,15 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idUnrestrictedFileUploadHintHeader"
-		title="Click to open this section" 
-		onclick="toggleBody(this, window.document.getElementById('idUnrestrictedFileUploadHintBody'), window.document.getElementById('idUnrestrictedFileUploadHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idUnrestrictedFileUploadHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand Unrestricted File Upload Hints" src="./images/down_arrow_16_16.png" />Unrestricted File Upload Hints</td>
-	</tr>
-	<tr id="idUnrestrictedFileUploadHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -505,6 +493,3 @@ echo rtrim($padding . $_SESSION[&#39;output&#39;]);
 			<br/><br/>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->ISSA2013WebPentestingWorkshopPart6LocalRemoteFileInclusion);?>
 			<br/><br/>
-		</td>
-	</tr>
-</table>

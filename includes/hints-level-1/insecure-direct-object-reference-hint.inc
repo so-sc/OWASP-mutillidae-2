@@ -1,15 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idIDORHintHeader"
-		title="Click to open this section" 
-		onclick="toggleBody(this, window.document.getElementById('idIDORHintBody'), window.document.getElementById('idIDORHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idIDORHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand Insecure Direct Object Reference Hints" src="./images/down_arrow_16_16.png" />Insecure Direct Object Reference Hints</td>
-	</tr>
-	<tr id="idIDORHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -49,18 +37,18 @@
 			<br/><br/>
 			<span class="report-header">Example: Accessing system files</span>
 			<br/><br/>
-			Step 1: Recon: Obtain list of files<br/>
+			Step 1: Recon: Obtain list of files<br/><br/>
 			Possible Technique: Use command injection<br/>
 			Page: dns-lookup.php<br/>
 			Value (Windows): &amp;&amp; dir /w<br/>
 			Value (Linux): &amp;&amp; pwd &amp;&amp; ls -l<br/>
-			<br/><br/>		
+			<br/>
 			Possible Technique: Use robots.txt<br/>
 			Possible Technique: Use directory browsing<br/>
 			Possible Technique: Use directory brute-forcing<br/>
 			Possible Technique: Guess<br/>
 			<br/><br/>
-			Step 2: Gaining Access: Retrive system files<br/>
+			Step 2: Gaining Access: Retrive system files
 			<br/><br/>
 			Page: source-viewer.php<br/>
 			Technique: Use an interception proxy like Burp to change the value of the phpfile parameter. Use parent directory (..) to bypass jails.<br/>
@@ -68,6 +56,3 @@
 			Field: phpfile<br/>
 			Value: &lt;system file path&gt;, ../../../boot.ini, ..\..\..\WINDOW\System32\drivers\etc\hosts, ../../../etc/passwd
 			<br/><br/>
-		</td>
-	</tr>
-</table>

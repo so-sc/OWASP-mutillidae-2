@@ -1,7 +1,6 @@
 TODO: Add "edit my account page"
 TODO: Add privilege levels
 TODO: Merge level-2 hints into level-1 hints
-TODO: Have level-1 hints open in new tab (optionally)
 TODO: Make it super cool to be an administator
 TODO: Add more authentication types
 TODO: Add password recovery page
@@ -12,6 +11,32 @@ TODO: Add mad-libs for XSS, AJAX and CSRF XSS
 TODO: Add password hashes into the project
 <br />
 <br />
+
+<div><span style="font-weight:bold;">07/22/2015</span>: Jeremy Druin</div>
+<blockquote>
+	<div>Change Log for OWASP Mutillidae II 2.6.23:</div>
+	<ul>
+		<li>
+			Installed new hint handling system that displays the hints into a new tab rather than
+			having the hint shown inline on the target web page. This frees up a lot of 
+			space on the target page and makes it possible to move back and forth
+			between the hint and the page.
+		</li>
+		<li>Hints now show by default but are contained in a hidden div element</li>
+		<li>Created new page level-1-hints-page-wrapper.php</li>
+		<li>Renamed level-1-hints-wrapper.inc to level-1-hints-menu-wrapper.inc</li>
+		<li>Renamed level-1-hints.js.inc to level-1-hints-menu.js.inc</li>
+		<li>Added new column level_1_help_include_file_description to table level_1_help_include_files</li>
+		<li>
+			BUG FIX: The YouTubeVideoHandlerClass was missing a reference to the remote file handler class.
+			This error went unnoticed because the index.php already included a reference that the 
+			You Tube handler happended to be able to use.
+		</li>
+		<li>BUG FIX: Minor documentation errors in SQLQueryHandler.php</li>
+		<li>BUG FIX: Minor formatting improvements on teh Insecure Direct Object References (IDOR) Hint page</li>
+		<li>Removed TODO item "Have level-1 hints open in new tab"" from todo list
+	</ul>
+</blockquote>
 
 <div><span style="font-weight:bold;">06/28/2015</span>: Jeremy Druin</div>
 <blockquote>

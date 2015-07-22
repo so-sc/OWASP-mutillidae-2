@@ -1,15 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idSQLInjectionHintHeader"
-		title="Click to open this section" 
-		onclick="toggleBody(this, window.document.getElementById('idSQLInjectionHintBody'), window.document.getElementById('idSQLInjectionHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idSQLInjectionHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand SQL Injection Hints" src="./images/down_arrow_16_16.png" />SQL Injection Hints</td>
-	</tr>
-	<tr id="idSQLInjectionHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -414,6 +402,3 @@ netsh firewall add portopening protocol=TCP port=23 name=telnet mode=enable scop
 			<br/>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofusingsqlmapISSAKYWorkshopFebruary2013);	?>
 			<br/>
-		</td>
-	</tr>
-</table>

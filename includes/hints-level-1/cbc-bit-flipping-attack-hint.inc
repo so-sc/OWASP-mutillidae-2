@@ -1,15 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idCBCBitFlippingHintHeader"
-		title="Click to open this section" 
-		onclick="toggleBody(this, window.document.getElementById('idCBCBitFlippingHintBody'), window.document.getElementById('idCBCBitFlippingHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idCBCBitFlippingHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand CBC Bit Flipping Hints" src="./images/down_arrow_16_16.png" />CBC Bit Flipping Hints</td>
-	</tr>
-	<tr id="idCBCBitFlippingHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -66,6 +54,3 @@
 			<br/><br/>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoCBCBitFlippingAttack);?>
 		  	<br/><br/>
-		</td>
-	</tr>
-</table>

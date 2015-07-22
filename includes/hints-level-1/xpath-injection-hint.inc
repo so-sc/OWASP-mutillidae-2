@@ -1,15 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idXPathInjectionHintHeader"
-		title="Click to open this section" 
-		onclick="toggleBody(this, window.document.getElementById('idXPathInjectionHintBody'), window.document.getElementById('idXPathInjectionHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idXPathInjectionHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand XPath Injection Hints" src="./images/down_arrow_16_16.png" />XPath Injection Hints</td>
-	</tr>
-	<tr id="idXPathInjectionHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -42,6 +30,3 @@
 	admin&apos; or &apos;1&apos; = &apos;1
 </code>	
 			<br/><br/>
-</td>
-	</tr>
-</table>

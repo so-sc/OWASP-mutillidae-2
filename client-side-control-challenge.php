@@ -372,7 +372,7 @@
 <div class="page-title">Client-side Control Challenge</div>
 
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
-<?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-wrapper.inc'); ?>
+<?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-menu-wrapper.inc'); ?>
 
 <div id="id-client-side-control-challenge-form-div" style="text-align:center;">
 	<form 	action="index.php?page=client-side-control-challenge.php" 

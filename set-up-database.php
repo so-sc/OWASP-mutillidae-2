@@ -482,6 +482,7 @@ try{
 	$lQueryString = 
 		'CREATE TABLE level_1_help_include_files('.
 			'level_1_help_include_file_key INT, '.
+			'level_1_help_include_file_description TEXT, '.
 			'level_1_help_include_file TEXT, '.
 			'PRIMARY KEY(level_1_help_include_file_key)'.
 		')';
@@ -498,46 +499,48 @@ try{
 	 */
 	$lQueryString ="
 		INSERT INTO level_1_help_include_files (
-			level_1_help_include_file_key, 
+			level_1_help_include_file_key,
+			level_1_help_include_file_description,
 			level_1_help_include_file
 		) VALUES
-		(1, 'ssl-misconfiguration-hint.inc'),
-		(9, 'directory-browsing-hint.inc'),
-		(10, 'sql-injection-hint.inc'),
-		(11, 'cross-site-scripting-hint.inc'),
-		(12, 'html-injection-hint.inc'),
-		(13, 'javascript-validation-bypass-hint.inc'),
-		(14, 'cross-site-request-forgery-hint.inc'),
-		(16, 'insecure-direct-object-reference-hint.inc'),
-		(18, 'javascript-injection-hint.inc'),
-		(19, 'unvalidated-redirects-and-forwards.inc'),
-		(20, 'command-injection-hint.inc'),
-		(21, 'parameter-pollution-hint.inc'),
-		(22, 'click-jacking-hint.inc'),
-		(23, 'dom-injection-hint.inc'),
-		(25, 'authentication-bypass-hint.inc'),
-		(26, 'json-injection-hint.inc'),		
-		(27, 'platform-path-disclosure-hint.inc'),
-		(28, 'application-path-disclosure-hint.inc'),
-		(29, 'information-disclosure-hint.inc'),
-		(30, 'method-tampering-hint.inc'),
-		(31, 'parameter-addition-hint.inc'),
-		(32, 'buffer-overflow-hint.inc'),
-		(33, 'cascading-style-sheet-injection-hint.inc'),
-		(36, 'xml-external-entity-attack-hint.inc'),
-		(38, 'cbc-bit-flipping-attack-hint.inc'),
-		(39, 'local-file-inclusion-hint.inc'),
-		(40, 'remote-file-inclusion-hint.inc'),
-		(41, 'frame-source-injection-hint.inc'),
-		(42, 'html5-web-storage-hint.inc'),
-		(43, 'robots-txt-hint.inc'),
-		(44, 'secret-administrative-pages-hint.inc'),
-		(45, 'user-agent-impersonation-hint.inc'),
-		(46, 'unrestricted-file-upload-hint.inc'),
-		(48, 'application-log-injection.inc'),
-		(49, 'xpath-injection-hint.inc'),
-		(50, 'path-relative-stylesheet-injection.inc'),
-		(51, 'client-side-security-control-bypass.inc')";
+		(1, 'SSL Misconfiguration', 'ssl-misconfiguration-hint.inc'),
+		(9, 'Directory Browsing', 'directory-browsing-hint.inc'),
+		(10, 'SQL Injection (SQLi)', 'sql-injection-hint.inc'),
+		(11, 'Cross-site Scripting (XSS)', 'cross-site-scripting-hint.inc'),
+		(12, 'HTML Injection (HTMLi)', 'html-injection-hint.inc'),
+		(13, 'JavaScript Validation Bypass', 'javascript-validation-bypass-hint.inc'),
+		(14, 'Cross-site Request Forgery (CSRF)', 'cross-site-request-forgery-hint.inc'),
+		(16, 'Insecure Direct Object References (IDOR)', 'insecure-direct-object-reference-hint.inc'),
+		(18, 'JavaScript Injection', 'javascript-injection-hint.inc'),
+		(19, 'Unvalidated Redirects', 'unvalidated-redirects-and-forwards.inc'),
+		(20, 'Command Injection (CMDi)', 'command-injection-hint.inc'),
+		(21, 'Parameter Pollution', 'parameter-pollution-hint.inc'),
+		(22, 'Click-Jacking', 'click-jacking-hint.inc'),
+		(23, 'Document Object Model (DOM) Injection', 'dom-injection-hint.inc'),
+		(25, 'Authentication Bypass', 'authentication-bypass-hint.inc'),
+		(26, 'JavaScript Object Notation (JSON) Injection', 'json-injection-hint.inc'),		
+		(27, 'Platform Path Disclosure', 'platform-path-disclosure-hint.inc'),
+		(28, 'Application Path Disclosure', 'application-path-disclosure-hint.inc'),
+		(29, 'Information Disclosure', 'information-disclosure-hint.inc'),
+		(30, 'Method Tampering', 'method-tampering-hint.inc'),
+		(31, 'Parameter Addition', 'parameter-addition-hint.inc'),
+		(32, 'Buffer Overflow', 'buffer-overflow-hint.inc'),
+		(33, 'Cascading Style Sheet (CSS) Injection', 'cascading-style-sheet-injection-hint.inc'),
+		(36, 'XML External Entity (XXE) Injection', 'xml-external-entity-attack-hint.inc'),
+		(38, 'CBC Bit-flipping Attack', 'cbc-bit-flipping-attack-hint.inc'),
+		(39, 'Local File Inclusion', 'local-file-inclusion-hint.inc'),
+		(40, 'Remote File Inclusion', 'remote-file-inclusion-hint.inc'),
+		(41, 'Frame Source Injection', 'frame-source-injection-hint.inc'),
+		(42, 'HTML-5 Web Storage Injection', 'html5-web-storage-hint.inc'),
+		(43, 'Robots.txt', 'robots-txt-hint.inc'),
+		(44, 'Secret Administrative Pages', 'secret-administrative-pages-hint.inc'),
+		(45, 'User-agent Impersonation', 'user-agent-impersonation-hint.inc'),
+		(46, 'Unrestricted File Upload', 'unrestricted-file-upload-hint.inc'),
+		(48, 'Application Log Injection', 'application-log-injection.inc'),
+		(49, 'XPath Injection', 'xpath-injection-hint.inc'),
+		(50, 'Path Relative Style-sheet Injection', 'path-relative-stylesheet-injection.inc'),
+		(51, 'Client-side Security Control Bypass', 'client-side-security-control-bypass.inc'),
+		(52, 'Hints Not Found', 'hints-not-found.inc')";
 	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {

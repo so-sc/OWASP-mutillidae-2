@@ -3,18 +3,6 @@
 	$lStyleSheetRelativePath = "styles/global.css";
 	$lStyleSheetAbsolutePath = $lParentPagePath . "/" . $lStyleSheetRelativePath;
 ?>
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idPathRelativeStylesheetInjectionHintHeader"
-		title="Click to open this section" 
-		onclick="toggleBody(this, window.document.getElementById('idPathRelativeStylesheetInjectionHintBody'), window.document.getElementById('idPathRelativeStylesheetInjectionHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idPathRelativeStylesheetInjectionHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand Path Relative Stylesheet Injection Hints" src="./images/down_arrow_16_16.png" />Path Relative Stylesheet Injection Hints</td>
-	</tr>
-	<tr id="idPathRelativeStylesheetInjectionHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -267,7 +255,4 @@
 			<span class="report-header">Videos</span>
 			<br/><br/>			
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoPathRelativeStyleSheetInjection);?>
-			<br/><br/>			
-		</td>
-	</tr>
-</table>
+			<br/><br/>

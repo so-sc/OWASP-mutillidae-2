@@ -1,15 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idJavascriptValidationBypassHintHeader"
-		title="Click to open this section" 
-		onclick="toggleBody(this, window.document.getElementById('idJavascriptValidationBypassHintBody'), window.document.getElementById('idJavascriptValidationBypassHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idJavascriptValidationBypassHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand Javascript Validation Bypass Hints" src="./images/down_arrow_16_16.png" />Javascript Validation Bypass Hints</td>
-	</tr>
-	<tr id="idJavascriptValidationBypassHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -37,7 +25,4 @@
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->TwoMethodstoBypassJavaScriptValidation);?>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->XSSbypassingJavaScriptValidation);?>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoBypassMaxlengthRestrictionsonHTMLInputFields);?>
-			<br/><br/>			
-		</td>
-	</tr>
-</table>
+			<br/><br/>

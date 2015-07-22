@@ -1,17 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idRobotsTxtHintHeader"
-		title="Click to open this section"
-		onclick="toggleBody(this, window.document.getElementById('idRobotsTxtHintBody'), window.document.getElementById('idRobotsTxtHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idRobotsTxtHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand Robots.txt Hints" src="./images/down_arrow_16_16.png" />
-			Robots.txt Hints
-		</td>
-	</tr>
-	<tr id="idRobotsTxtHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -31,6 +17,3 @@
 			<br/><br/>
 			Robots.txt is located at localhost/mutillidae/robots.txt
 			<br/><br/>
-		</td>
-	</tr>
-</table>

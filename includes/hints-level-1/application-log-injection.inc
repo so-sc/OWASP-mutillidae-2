@@ -1,15 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idApplicationLogInjectionHintHeader"
-		title="Click to open this section" 
-		onclick="toggleBody(this, window.document.getElementById('idApplicationLogInjectionHintBody'), window.document.getElementById('idApplicationLogInjectionHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idApplicationLogInjectionHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand Application Log Injection Hints" src="./images/down_arrow_16_16.png" />Application Log Injection Hints</td>
-	</tr>
-	<tr id="idApplicationLogInjectionHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -36,6 +24,3 @@
 			a cross-site script in the user name field. Visit the 
 			<a href="index.php?page=show-log.php">View Log</a> page. Check that the XSS works.
 			<br/><br/>
-		</td>
-	</tr>
-</table>

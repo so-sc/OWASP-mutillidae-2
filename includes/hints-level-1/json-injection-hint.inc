@@ -1,18 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idJSONInjectionHintHeader"
-		title="Click to open this section" 
-		onclick="toggleBody(this, window.document.getElementById('idJSONInjectionHintBody'), window.document.getElementById('idJSONInjectionHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td>
-			<img id="idJSONInjectionHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand JSON Injection Hints" src="./images/down_arrow_16_16.png" />
-			JSON Injection Hints
-		</td>
-	</tr>
-	<tr id="idJSONInjectionHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -323,6 +308,3 @@ try{ var lAction = &quot;http://localhost/mutillidae/capture-data.php?cookie=&qu
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->WebPenTestingHTML5WebStorageusingJSONInjection);?>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->StealingHTML5StorageviaJSONInjection);?>
 			<br/><br/>
-		</td>
-	</tr>
-</table>

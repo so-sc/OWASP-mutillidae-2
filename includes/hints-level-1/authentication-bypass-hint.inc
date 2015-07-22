@@ -1,15 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idAuthenticationBypassHintHeader"
-		title="Click to open this section" 
-		onclick="toggleBody(this, window.document.getElementById('idAuthenticationBypassHintBody'), window.document.getElementById('idAuthenticationBypassHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idAuthenticationBypassHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand Authentication Bypass Hints" src="./images/down_arrow_16_16.png" />Authentication Bypass Hints</td>
-	</tr>
-	<tr id="idAuthenticationBypassHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -112,6 +100,3 @@ Password: whatever
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BypassAuthenticationviaAuthenticationTokenManipulation);	?>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->UsingHydratoBruteForceWebFormsBasedAuthentication);	?>
 			<br/><br/>
-		</td>
-	</tr>
-</table>

@@ -87,7 +87,7 @@
 <div class="page-title">Browser Information</div>
 
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
-<?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-wrapper.inc'); ?>
+<?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-menu-wrapper.inc'); ?>
 
 <table border="1px" width="75%" class="main-table-frame">
 	<tr class="report-header"><td colspan="3">Info obtained by PHP</td></tr>

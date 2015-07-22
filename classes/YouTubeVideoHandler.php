@@ -1,5 +1,6 @@
 <?php
 require_once ('SQLQueryHandler.php');
+require_once ('RemoteFileHandler.php');
 
 class YouTubeVideo{
 	public $mIdentificationToken = "";

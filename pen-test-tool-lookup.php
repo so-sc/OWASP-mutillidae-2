@@ -136,7 +136,7 @@
 <div class="page-title">Pen Test Tool Lookup</div>
 
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
-<?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-wrapper.inc'); ?>
+<?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-menu-wrapper.inc'); ?>
 
 <!-- BEGIN HTML OUTPUT  -->
 <script type="text/javascript">

@@ -1,17 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idDOMInjectionHintHeader"
-		title="Click to open this section"
-		onclick="toggleBody(this, window.document.getElementById('idDOMInjectionHintBody'), window.document.getElementById('idDOMInjectionHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idDOMInjectionHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand DOM Injection Hints" src="./images/down_arrow_16_16.png" />
-			DOM Injection Hints
-		</td>
-	</tr>
-	<tr id="idDOMInjectionHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -38,6 +24,3 @@
 			into the message. Craft a XSS to read the DOM storage or perform other 
 			action.  
 			<br/><br/>
-		</td>
-	</tr>
-</table>

@@ -1,17 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idParameterPollutionHintHeader"
-		title="Click to open this section"
-		onclick="toggleBody(this, window.document.getElementById('idParameterPollutionHintBody'), window.document.getElementById('idParameterPollutionHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idParameterPollutionHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand Parameter Pollution Hints" src="./images/down_arrow_16_16.png" />
-			Parameter Pollution Hints
-		</td>
-	</tr>
-	<tr id="idParameterPollutionHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -38,6 +24,3 @@
 			<br/><br/>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoHTTPParameterPollution);?>
 			<br/><br/>
-					</td>
-	</tr>
-</table>

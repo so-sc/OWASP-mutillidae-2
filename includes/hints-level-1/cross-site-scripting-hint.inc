@@ -1,15 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idXSSHintHeader"
-		title="Click to open this section" 
-		onclick="toggleBody(this, window.document.getElementById('idXSSHintBody'), window.document.getElementById('idXSSHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idXSSHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand Cross Site Scripting Hints" src="./images/down_arrow_16_16.png" />Cross Site Scripting Hints</td>
-	</tr>
-	<tr id="idXSSHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -218,6 +206,3 @@
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoCrossSiteScriptingXSSviaJavaScriptStringInjection);?>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->ExplanationofHTTPOnlyCookiesinPresenceCrossSiteScripting);?>
 			<br/><br/>
-		</td>
-	</tr>
-</table>

@@ -1,17 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idSecretAdministrativePagesHintHeader"
-		title="Click to open this section"
-		onclick="toggleBody(this, window.document.getElementById('idSecretAdministrativePagesHintBody'), window.document.getElementById('idSecretAdministrativePagesHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idSecretAdministrativePagesHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand Secret Administrative Pages Hints" src="./images/down_arrow_16_16.png" />
-			Secret Administrative Pages Hints
-		</td>
-	</tr>
-	<tr id="idSecretAdministrativePagesHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -41,6 +27,3 @@
 			<br/><br/>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->GainingAdministrativeShellAccessviaCommandInjection);?>
 			<br/><br/>
-		</td>
-	</tr>
-</table>

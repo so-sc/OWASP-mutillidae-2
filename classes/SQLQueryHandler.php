@@ -95,7 +95,8 @@ class SQLQueryHandler {
 		}// end if
 
 		$lQueryString  = "
-			SELECT level_1_help_include_files.level_1_help_include_file
+			SELECT	level_1_help_include_files.level_1_help_include_file_key,
+					level_1_help_include_files.level_1_help_include_file_description
 			FROM page_help
 			INNER JOIN level_1_help_include_files
 			ON 	page_help.help_text_key = 
@@ -103,12 +104,27 @@ class SQLQueryHandler {
 			WHERE page_help.page_name = '" . $pPageName . "'";
 
 		return $this->mMySQLHandler->executeQuery($lQueryString);
-	}//end public function getPageHelpTexts
+	}//end public function getPageLevelOneHelpIncludeFiles
+
+	public function getLevelOneHelpIncludeFile($pIncludeFileKey){
+		
+		if ($this->stopSQLInjection == TRUE){
+			$pPageName = $this->mMySQLHandler->escapeDangerousCharacters($pIncludeFileKey);
+		}// end if
+
+		$lQueryString  = "
+			SELECT	level_1_help_include_files.level_1_help_include_file,
+					level_1_help_include_files.level_1_help_include_file_description
+			FROM level_1_help_include_files
+			WHERE level_1_help_include_files.level_1_help_include_file_key = " . $pIncludeFileKey;
+
+		return $this->mMySQLHandler->executeQuery($lQueryString);
+	}//end public function getPageLevelOneHelpIncludeFiles
 
 	public function deleteCapturedData(){
 			$lQueryString = "TRUNCATE TABLE captured_data";
 			return $this->mMySQLHandler->executeQuery($lQueryString);
-	}//end public function deleteBlogRecord
+	}//end public function deleteCapturedData
 	
 	public function getCapturedData(){
 		$lQueryString = "

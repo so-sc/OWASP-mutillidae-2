@@ -1,15 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idXMLExternalEntityAttackHintHeader"
-		title="Click to open this section" 
-		onclick="toggleBody(this, window.document.getElementById('idXMLExternalEntityAttackHintBody'), window.document.getElementById('idXMLExternalEntityAttackHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idXMLExternalEntityAttackHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand XML External Entity Attack Hints" src="./images/down_arrow_16_16.png" />XML External Entity Attack Hints</td>
-	</tr>
-	<tr id="idXMLExternalEntityAttackHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -169,6 +157,3 @@
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoXMLExternalEntityInjection);?>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->ISSAIntroductiontoXMLExternalEntityInjection);?>
 			<br/><br/>
-</td>
-	</tr>
-</table>

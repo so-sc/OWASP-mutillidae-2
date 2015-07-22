@@ -75,7 +75,7 @@
 <div class="page-title">Captured Data</div>
 
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
-<?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-wrapper.inc'); ?>
+<?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-menu-wrapper.inc'); ?>
 
 <!-- BEGIN HTML OUTPUT  -->
 <table style="margin-left:auto; margin-right:auto; width: 600px;">

@@ -1,7 +1,7 @@
 <div class="page-title">Hackers for Charity</div>
 
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
-<?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-wrapper.inc'); ?>
+<?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-menu-wrapper.inc'); ?>
 
 <table style="margin-left:auto; margin-right:auto; width: 650px;">
 	<tr>
@@ -17,7 +17,7 @@
 				</a>
 			</span>
 			to help	his mission in Uganda. 
-			<a href="http://www.hackersforcharity.org/johnny/about-johnny/" target="_blank">Who’s Johnny?</a>
+			<a href="http://www.hackersforcharity.org/johnny/about-johnny/" target="_blank">Whoï¿½s Johnny?</a>
 			Consider checking out his page at 
 			<a href="http://www.hackersforcharity.org/johnny/about-johnny/" target="_blank">Hackers for Charity</a>
 			and donating directly to the Long Family.

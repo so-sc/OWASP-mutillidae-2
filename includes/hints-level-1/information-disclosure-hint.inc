@@ -1,15 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idInformationDisclosureHintHeader"
-		title="Click to open this section" 
-		onclick="toggleBody(this, window.document.getElementById('idInformationDisclosureHintBody'), window.document.getElementById('idInformationDisclosureHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idInformationDisclosureHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand Information Disclosure Hints" src="./images/down_arrow_16_16.png" />Information Path Hints</td>
-	</tr>
-	<tr id="idInformationDisclosureHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -41,6 +29,3 @@
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->UsingNmaptoFingerprintHTTPserversandWebApplications);?>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->FindingCommentsandFileMetadatausingMultipleTechniques);?>
 			<br/><br/>
-		</td>
-	</tr>
-</table>

@@ -1,15 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idHTMLIHintHeader"
-		title="Click to open this section" 
-		onclick="toggleBody(this, window.document.getElementById('idHTMLIHintBody'), window.document.getElementById('idHTMLIHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idHTMLIHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand HTML Injection Hints" src="./images/down_arrow_16_16.png" />HTML Injection Hints</td>
-	</tr>
-	<tr id="idHTMLIHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -151,6 +139,3 @@
 			<br/><br/>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoHTMLInjectionHTMLiandCrossSiteScriptingXSSUsingMutillidae);?>
 			<br/><br/>
-		</td>
-	</tr>
-</table>

@@ -1,17 +1,3 @@
-<table class="hint-table">
-	<tr class="hint-header" 
-		id="idBufferOverflowHintHeader"
-		title="Click to open this section"
-		onclick="toggleBody(this, window.document.getElementById('idBufferOverflowHintBody'), window.document.getElementById('idBufferOverflowHintHeaderImage'));"
-		onmouseover="this.style.backgroundColor='#cccccc';this.style.color='#ffffff';"
-		onmouseout="this.style.backgroundColor='#FFFFFF';this.style.color='#000000';"
-	>
-		<td><img id="idBufferOverflowHintHeaderImage" align="left" style="padding-right: 5px;" alt="Expand Buffer Overflow Hints" src="./images/down_arrow_16_16.png" />
-			Buffer Overflow Hints
-		</td>
-	</tr>
-	<tr id="idBufferOverflowHintBody" style="display: none;">
-		<td class="hint-body">
 			<br/><br/>
 			<span class="report-header">Overview</span>
 			<br/><br/>
@@ -47,6 +33,4 @@
 			The data type of this buffer is PHP:String.
 			<br/><br/>
 			PHP:String can hold a lot of data but the size is not infinite.
-		</td>
-	</tr>
-</table>
+			<br/><br/>
