@@ -8,6 +8,14 @@
 	 */
 
 	try{
+		$ESAPI = NULL;
+		$Encoder = NULL;
+		
+		/* We use the session on this page */
+		if (!isset($_SESSION["security-level"])){
+			session_start();
+		}// end if
+		
     	switch ($_SESSION["security-level"]){
     		case "0": // This code is insecure
     		case "1": // This code is insecure
@@ -19,7 +27,11 @@
 			case "3":
 			case "4":
     		case "5": // This code is fairly secure
-				$lProtectAgainstMethodTampering = TRUE;
+				require_once ('./includes/constants.php');
+    			require_once (__ROOT__.'/owasp-esapi-php/src/ESAPI.php');
+				$ESAPI = new ESAPI(__ROOT__.'/owasp-esapi-php/src/ESAPI.xml');
+				$Encoder = $ESAPI->getEncoder();
+    			$lProtectAgainstMethodTampering = TRUE;
 				$lEncodeOutput = TRUE;
 			break;
     	};//end switch

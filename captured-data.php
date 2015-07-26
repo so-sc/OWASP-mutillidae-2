@@ -72,6 +72,14 @@
 	});
 </script>
 
+<script>
+	var DeleteCapturedData = function(){
+		if (window.confirm("Please confirm all captured data should be deleted")){
+			document.location="index.php?page=captured-data.php&deleteLogs=deleteLogs";
+		};
+	};
+</script>
+
 <div class="page-title">Captured Data</div>
 
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
@@ -97,7 +105,9 @@
 	<img width="32px" height="32px" src="./images/refresh-button-48px-by-48px.png" style="vertical-align:middle;" />
 	Refresh
 </span>
-<span title="Click to delete captured data log. This deletes the database table only. The text file is not affected." onclick="document.location='./index.php?page=captured-data.php&deleteLogs=deleteLogs';" style="margin-right:35px;cursor: pointer;font-weight: bold;">
+<span 	title="Click to delete captured data log. This deletes the database table only. The text file is not affected." 
+		onclick="DeleteCapturedData();" 
+		style="margin-right:35px;cursor: pointer;font-weight: bold;">
 	<img width="32px" height="32px" src="./images/delete-icon-48-48.png" style="vertical-align:middle;" />
 	Delete Capured Data
 </span>
