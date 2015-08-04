@@ -19,6 +19,7 @@ class CSRFTokenHandler{
 	protected $mTokenValid = "Validation not performed";
 	
 	private function doSetSecurityLevel($pSecurityLevel){
+		
 		$this->mSecurityLevel = $pSecurityLevel;
 	
 		switch ($this->mSecurityLevel){
@@ -43,6 +44,7 @@ class CSRFTokenHandler{
 				$this->mProtectAgainstCSRF = TRUE;
 			break;
 		}// end switch
+		
 	}// end function
 	
 	public function __construct($pPathToESAPI, $pSecurityLevel, $pPageBeingProtected){
@@ -124,7 +126,7 @@ class CSRFTokenHandler{
 			$lNewCSRFTokenForNextRequest = $this->mNewCSRFTokenForNextRequest;
 			$lTokenStoredInSession = $_SESSION[$this->mPageBeingProtected]['csrf-token'];
 		}// end if
-		
+
 		return
 			'<div>&nbsp;</div>'.PHP_EOL.
 			'<div>&nbsp;</div>'.PHP_EOL.
