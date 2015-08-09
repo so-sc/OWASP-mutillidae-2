@@ -70,6 +70,7 @@ class CSRFTokenHandler{
 
 	private function doGenerateCSRFToken(){
 	
+		$lCurrentCSRFToken = 0;
 		switch ($this->mCSRFTokenStrength){
 			case "HIGH":
 				$lCSRFToken = $this->ESAPIRandomizer->getRandomString(32, "ABCDEFGEHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890");
@@ -78,7 +79,10 @@ class CSRFTokenHandler{
 				$lCSRFToken = mt_rand();
 			break;
 			case "LOW":
-				$lCSRFToken = 7777;
+				if (isset($_SESSION[$this->mPageBeingProtected]['csrf-token'])) {
+					$lCurrentCSRFToken = $_SESSION[$this->mPageBeingProtected]['csrf-token'];
+				}// end if
+				$lCSRFToken = 7777 + $lCurrentCSRFToken;
 			break;
 			case "NONE":
 				$lCSRFToken = "";

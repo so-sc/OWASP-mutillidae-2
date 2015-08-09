@@ -28,6 +28,7 @@
 				$lEnableXMLValidation = FALSE;
 				$lEnableXMLEncoding = FALSE;
 				$lProtectAgainstMethodTampering = FALSE;
+				libxml_disable_entity_loader(FALSE);
 			break;
     		
     		case "1": // This code is insecure
@@ -36,7 +37,8 @@
 				$lEnableJavaScriptValidation = TRUE;
 				$lEnableXMLValidation = FALSE;
 				$lEnableXMLEncoding = FALSE;
-				$lProtectAgainstMethodTampering = FALSE;				
+				$lProtectAgainstMethodTampering = FALSE;
+				libxml_disable_entity_loader(FALSE);
 			break;
 	    		
 			case "2":
@@ -49,6 +51,7 @@
 				$lEnableXMLValidation = TRUE;
 				$lEnableXMLEncoding = TRUE;
 				$lProtectAgainstMethodTampering = TRUE;
+				libxml_disable_entity_loader(TRUE);
 			break;
     	}//end switch
 
@@ -197,6 +200,7 @@
 					
 					$lDOMDocument = new DOMDocument();
 					$lDOMDocument->resolveExternals = true;
+					$lDOMDocument->substituteEntities = true;
 					$lDOMDocument->preserveWhiteSpace=true;
 					$lDOMDocument->loadXML($lXML);
 

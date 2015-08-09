@@ -705,7 +705,7 @@ try{
 
 	$lQueryString = 'CREATE TABLE youTubeVideos( '.
 			'recordIndetifier INT NOT NULL, '.
-			'identificationToken varchar(16), '.
+			'identificationToken VARCHAR(32), '.
 			'title VARCHAR(128),
 			PRIMARY KEY (recordIndetifier),
 			UNIQUE KEY (identificationToken))';
