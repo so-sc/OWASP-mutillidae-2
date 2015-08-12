@@ -204,6 +204,9 @@
 								<li><a href="index.php?page=text-file-viewer.php">Text File Viewer</a></li>
 							</ul>
 						</li>
+						<li>
+							<a href="index.php?page=view-user-privilege-level.php&iv=6bc24fc1ab650b25b4114e93a98f1eba">CBC-bit Flipping</a>
+						</li>
 					</ul>
 				</li>
 				<li>
@@ -230,7 +233,7 @@
 							<ul>
 								<li><a href="index.php?page=privilege-escalation.php">Via Cookies</a></li>
 								<li><a href="index.php?page=login.php">Login</a></li>
-								<li><a href="index.php?page=view-user-privilege-level.php&iv=6bc24fc1ab650b25b4114e93a98f1eba">View User Privileges</a></li>
+								<li><a href="index.php?page=view-user-privilege-level.php&iv=6bc24fc1ab650b25b4114e93a98f1eba">Via CBC-bit Flipping</a></li>
 							</ul>								
 						</li>
 						<li><a href="">Username Enumeration</a>
@@ -469,6 +472,7 @@
 					<ul>
 						<li><a href="index.php?page=phpmyadmin.php">PHP MyAdmin Console</a></li>
 						<li><a href="index.php?page=phpinfo.php">PHP Info Page</a></li>
+						<li><a href="index.php?page=view-user-privilege-level.php&iv=6bc24fc1ab650b25b4114e93a98f1eba">CBC-bit Flipping</a></li>
 					</ul>
 				</li>
 				<li>
