@@ -74,9 +74,6 @@
 		}
 	?>
 
-	window.sessionStorage.setItem("AuthorizationLevel", "0");
-	window.localStorage.setItem("MessageOfTheDay","Go Cats!");
-
 	var addRow = function(pKey, pItem, pStorageType){
 		try{
 			var lDocRoot = window.document;
@@ -147,21 +144,21 @@
 	};// end JavaScript function
 
 	var init = function(){
-		var s = sessionStorage;
-		var l = localStorage;
-		var m = "";
-				
+		var s = window.sessionStorage;
+		var l = window.localStorage;
+		var lKey = "";
+
 		// grab local storage
-		for(i=0;i<s.length;i++){
-			var lKey = s.key(i);
-			if(lKey.match(/^[^Secure]/)){addRow(lKey, s.getItem(lKey), "Session");};
-		}
-	
+		for(var i=0;i<s.length;i++){
+			lKey = s.key(i);
+			if(!lKey.match(/^Secure/)){addRow(lKey, s.getItem(lKey), "Session");};
+		}//end for
+
 		// grab session storage
-		for(i=0;i<l.length;i++){
-			var lKey = l.key(i);
-			if(lKey.match(/^[^Secure]/)){addRow(lKey, l.getItem(lKey), "Local");};
-		}// end if
+		for(var i=0;i<l.length;i++){
+			lKey = l.key(i);
+			if(!lKey.match(/^Secure/)){addRow(lKey, l.getItem(lKey), "Local");};
+		}// end for
 
 	};//end JavaScript function init
 	

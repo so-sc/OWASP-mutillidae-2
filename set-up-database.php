@@ -362,6 +362,7 @@ try{
 			('document-viewer.php', 41, 1),
 			('document-viewer.php', 48, 1),
 			('framing.php', 22, 1),
+			('html5-storage.php', 12, 1),
 			('html5-storage.php', 23, 1),
 			('html5-storage.php', 42, 1),
 			('login.php', 1, 1),

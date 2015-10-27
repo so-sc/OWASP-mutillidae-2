@@ -9,6 +9,9 @@ TODO: Add dedicated Beef page
 TODO: Store user poll results into database
 TODO: Add mad-libs for XSS, AJAX and CSRF XSS
 TODO: Add password hashes into the project
+TODO: Add examples to CSRF hints
+TODO: Repair LFI in level 5 on page parameter (Josh Mitchell)
+TODO: Audit help files
 <br />
 <br />
 
@@ -18,12 +21,28 @@ TODO: Add password hashes into the project
 	<ul>
 		<li>
 			Added link to CBC-bit flipping challenge to 3 addition menus 
-			(injection, componenets with known vulnerabilities and 
+			(injection, components with known vulnerabilities and 
 			privilege escalation)
 		</li>
 		<li>
 			Greatly improved the CBC-bit flipping hints with additional 
 			material
+		</li>
+		<li>Added HTML Injection hints to the HTML5 web storage page</li>
+		<li>Repaired format error on Unvalidated Redirect help file</li>
+		<li>Improved main menu slightly</li>
+		<li>
+			Replaced HTML5 values with new values that are placed into session
+			and local storage when the user visits any page if the session or local
+			storage is empty. There are more values now.
+		</li>
+		<li>
+			BUG FIX: The JavaScript on the HTML5 storage page was not displaying
+			all values
+		</li>
+		<li>
+			Added code to the JavaScript on the HTML5 storage page to not display
+			some values as a challenge to the user
 		</li>
 	</ul>
 </blockquote>

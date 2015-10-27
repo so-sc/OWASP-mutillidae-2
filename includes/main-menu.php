@@ -77,7 +77,7 @@
 								<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
 								<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
 								<li><a href="index.php?page=set-background-color.php">Set Background Color</a></li>
-								<li><a href="index.php?page=html5-storage.php">HTML5 Storage</a></li>
+								<li><a href="index.php?page=html5-storage.php">HTML5 Web Storage</a></li>
 								<li><a href="index.php?page=capture-data.php">Capture Data Page</a></li>
 								<li><a href="index.php?page=captured-data.php">View Captured Data</a></li>
 								<li><a href="index.php?page=document-viewer.php&PathToDocument=documentation/how-to-access-Mutillidae-over-Virtual-Box-network.php">Document Viewer</a></li>
@@ -102,7 +102,7 @@
 						<li>
 							<a href="">HTMLi Via DOM Injection</a>
 							<ul>
-								<li><a href="index.php?page=html5-storage.php">HTML5 Storage</a></li>
+								<li><a href="index.php?page=html5-storage.php">HTML5 Web Storage</a></li>
 								<li><a href="index.php?page=password-generator.php&username=<?php echo $logged_in_user ?>">Password Generator</a></li>
 							</ul>
 						</li>								
@@ -256,7 +256,7 @@
 								<li><a href="index.php?page=text-file-viewer.php">Text File Viewer</a></li>
 								<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
 								<li><a href="index.php?page=set-background-color.php">Set Background Color</a></li>
-								<li><a href="index.php?page=html5-storage.php">HTML5 Storage</a></li>
+								<li><a href="index.php?page=html5-storage.php">HTML5 Web Storage</a></li>
 								<li><a href="index.php?page=capture-data.php">Capture Data Page</a></li>
 								<li><a href="index.php?page=document-viewer.php&PathToDocument=documentation/how-to-access-Mutillidae-over-Virtual-Box-network.php">Document Viewer</a></li>
 								<li><a href="index.php?page=arbitrary-file-inclusion.php">Arbitrary File Inclusion</a></li>
@@ -280,9 +280,9 @@
 							</ul>
 						</li>
 						<li>
-							<a href="">DOM Injection</a>
+							<a href="">DOM-Based</a>
 							<ul>
-								<li><a href="index.php?page=html5-storage.php">HTML5 Storage</a></li>
+								<li><a href="index.php?page=html5-storage.php">HTML5 Web Storage</a></li>
 								<li><a href="index.php?page=password-generator.php&username=<?php echo $logged_in_user ?>">Password Generator</a></li>
 							</ul>
 						</li>								
@@ -324,9 +324,9 @@
 							</ul>
 						</li>
 						<li>
-							<a href="">Against HTML 5 Storage</a>
+							<a href="">Against HTML5 Web Storage</a>
 							<ul>
-								<li><a href="index.php?page=html5-storage.php">HTML5 Storage</a></li>
+								<li><a href="index.php?page=html5-storage.php">HTML5 Web Storage</a></li>
 							</ul>
 						</li>
 						<li>
@@ -370,7 +370,7 @@
 								<li><a href="index.php?page=text-file-viewer.php">Text File Viewer</a></li>
 								<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
 								<li><a href="index.php?page=set-background-color.php">Set Background Color</a></li>
-								<li><a href="index.php?page=html5-storage.php">HTML5 Storage</a></li>
+								<li><a href="index.php?page=html5-storage.php">HTML5 Web Storage</a></li>
 								<li><a href="index.php?page=capture-data.php">Capture Data Page</a></li>
 								<li><a href="index.php?page=document-viewer.php&PathToDocument=documentation/how-to-access-Mutillidae-over-Virtual-Box-network.php">Document Viewer</a></li>
 								<li><a href="index.php?page=arbitrary-file-inclusion.php">Arbitrary File Inclusion</a></li>
@@ -426,7 +426,7 @@
 								<li><a href="index.php?page=phpinfo.php">PHP Info Page</a></li>
 								<li><a href="index.php?page=robots-txt.php">Robots.txt</a></li>
 								<li><a href="index.php?page=secret-administrative-pages.php">"Secret" Administrative Pages</a></li>
-								<li><a href="index.php?page=html5-storage.php">HTML5 Storage</a></li>
+								<li><a href="index.php?page=html5-storage.php">HTML5 Web Storage</a></li>
 								<li><a href="index.php">Cache-Control</a></li>
 								<li><a href="index.php">X-Powered-By HTTP Header</a></li>
 								<li><a href="index.php">HTML/JavaScript Comments</a></li>
@@ -498,7 +498,7 @@
 					<ul>
 						<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
 						<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
-						<li><a href="index.php?page=html5-storage.php">HTML5 Storage</a></li>
+						<li><a href="index.php?page=html5-storage.php">HTML5 Web Storage</a></li>
 						<li><a href="index.php?page=view-user-privilege-level.php&iv=6bc24fc1ab650b25b4114e93a98f1eba">View User Privileges</a></li>
 					</ul>
 				</li>
@@ -544,7 +544,7 @@
 						<li><a href="index.php">HTML/JavaScript Comments</a></li>
 						<li><a href="index.php?page=framing.php">Click-Jacking</a></li>
 						<li><a href="framer.html">Cross-Site Framing (Third-Party Framing)</a></li>
-						<li><a href="index.php?page=html5-storage.php">HTML5 Storage</a></li>
+						<li><a href="index.php?page=html5-storage.php">HTML5 Web Storage</a></li>
 						<li><a href="index.php?page=phpmyadmin.php">PHP MyAdmin Console</a></li>
 						<li><a href="index.php?page=phpinfo.php">PHP Info Page</a></li>
 						<li><a href="index.php?page=robots-txt.php">Robots.txt</a></li>
@@ -623,7 +623,7 @@
 				<li>
 					<a href="">HTML 5 Web Storage</a>
 					<ul>
-						<li><a href="index.php?page=html5-storage.php">HTML5 Storage</a></li>
+						<li><a href="index.php?page=html5-storage.php">HTML5 Web Storage</a></li>
 					</ul>
 				</li>
 				<li>
@@ -700,7 +700,7 @@
 						<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
 						<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
 						<li><a href="index.php?page=add-to-your-blog.php">Add to your blog</a></li>
-						<li><a href="index.php?page=html5-storage.php">HTML5 Storage</a></li>
+						<li><a href="index.php?page=html5-storage.php">HTML5 Web Storage</a></li>
 						<li><a href="index.php?page=dns-lookup.php">DNS Lookup</a></li>
 						<li><a href="index.php?page=repeater.php">Repeater</a></li>
 					</ul>		

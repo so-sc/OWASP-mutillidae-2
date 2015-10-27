@@ -101,27 +101,27 @@
 		   		$lUserInitials = $_GET["initials"];
 		   		$lPostedCSRFToken = $_GET["csrf-token"];
 		   	}//end if
-	
+
 		   	if (!$lCSRFTokenHandler->validateCSRFToken($lPostedCSRFToken)){
 		   		throw (new Exception("Security Violation: Cross Site Request Forgery attempt detected.", 500));
 		   	}// end if
-		   		  
+
 		   	// Encode output to protect against cross site scripting 
 			if ($lEncodeOutput){
 				$lUserInitials = $Encoder->encodeForHTML($lUserInitials);
 				$lUserChoice = $Encoder->encodeForHTML($lUserChoice);
 			}// end if
-	
+
 			// if parameter pollution is not detected, print user choice 
 		   	if (!$lHTTPParameterPollutionDetected){
 				$lUserChoiceMessage = "Your choice was {$lUserChoice}";
 				$LogHandler->writeToLog("User voted for: " . $lUserChoice);
 		   	}// end if isSet($_POST["user-poll-php-submit-button"])
-	   	
+
 	   	} catch (Exception $e) {
 	   		echo $CustomErrorHandler->FormatError($e, "Vote was not counted");
 	   	}// end try
-	   		  
+
    	}//end if lFormSubmitted
 
 ?>
