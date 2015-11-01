@@ -379,26 +379,30 @@ netsh firewall add portopening protocol=TCP port=23 name=telnet mode=enable scop
 		echo &quot;&lt;/pre&gt;&quot;;	
 	?&gt;
 </code>
-			<br/><br/>
-			<span class="report-header">Videos</span>
-			<br/><br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BypassAuthenticationusingSQLInjection);	?>
-			<br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AutomateSQLInjectionusingsqlmap);	?>
-			<br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofSQLInjectionTimingAttacks);	?>
-			<br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoUnionBasedSQLInjection);	?>
-			<br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofInsertingDatawithSQLInjection);	?>
-			<br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->InjectWebShellBackdoorviaSQLInjection);	?>
-			<br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofusingSQLInjectiontoReadFiles);	?>
-			<br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->GenerateCrossSiteScriptswithSQLInjection);	?>
-			<br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->SQLInjectionviaAJAXrequestwithJSONresponse);	?>
-			<br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofusingsqlmapISSAKYWorkshopFebruary2013);	?>
-			<br/>
+<br/><br/>
+<span class="report-header">Videos</span>
+<br/><br/>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BypassAuthenticationusingSQLInjection);?>
+<br/>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AutomateSQLInjectionusingsqlmap);?>
+<br/>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofSQLInjectionTimingAttacks);?>
+<br/>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoUnionBasedSQLInjection);?>
+<br/>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofInsertingDatawithSQLInjection);?>
+<br/>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->InjectWebShellBackdoorviaSQLInjection);?>
+<br/>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofusingSQLInjectiontoReadFiles);?>
+<br/>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->GenerateCrossSiteScriptswithSQLInjection);?>
+<br/>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->SQLInjectionviaAJAXrequestwithJSONresponse);?>
+<br/>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofusingsqlmapISSAKYWorkshopFebruary2013);	?>
+<br/>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoSQLInjectionforBeginners);?>
+<br/>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoSQLInjectionwithSQLMap);?>
+<br/>

@@ -122,16 +122,16 @@
 		$lQueryResult = $SQLQueryHandler->getCapturedData();
 
 		// we have rows. Begin drawing output.
-		echo '<table border="1px" width="100%" class="main-table-frame">';
-		echo '<tr class="report-header"><td colspan="10">'.$lQueryResult->num_rows.' captured records found</td></tr>';
+		echo '<table border="1px;" width="100%" class="main-table-frame">';
+		echo '<tr class="report-header"><td colspan="7">'.$lQueryResult->num_rows.' captured records found</td></tr>';
 	    echo '<tr class="report-header">
-			    <td><b>Hostname</b></td>
-			    <td><b>Client IP Address</b></td>
-			    <td><b>Client Port</b></td>
-    			<td><b>User Agent</b></td>
-    			<td><b>Referrer</b></td>			    
-			    <td><b>Data</b></td>
-			    <td><b>Date/Time</b></td>
+			    <td>Hostname</td>
+			    <td>Client IP Address</td>
+			    <td>Client Port</td>
+    			<td>User Agent</td>
+    			<td>Referrer</td>			    
+			    <td>Data</td>
+			    <td>Date/Time</td>
 		    </tr>';
 
 	    if ($lLimitOutput){

@@ -6,17 +6,50 @@
 		Application Exception Output,
 		HTML injection,
 		HTTP Parameter Pollution
+		SQL Injection
 	*/
 
 	require_once (__ROOT__.'/classes/CSRFTokenHandler.php');
 	$lCSRFTokenHandler = new CSRFTokenHandler("owasp-esapi-php/src/", $_SESSION["security-level"], "register-user");
 
+	if (!isSet($logged_in_user)) {
+		throw new Exception("$logged_in_user is not set. Page add-to-your-blog.php requires this variable.");
+	}// end if
+	
+	function isParameterPollutionDetected(/*String*/ $pQueryString){
+		
+		try {
+			// Detect multiple params with same name (HTTP Parameter Pollution)
+			$lQueryString  = explode('&', $pQueryString);
+			$lKeys = array();
+			$lPair = array();
+			$lParameter = "";
+			$lCountUnique = 0;
+			$lCountTotal = 0;
+				
+			foreach ($lQueryString as $lParameter){
+				$lPair = explode('=', $lParameter);
+				array_push($lKeys, $lPair[0]);
+			}//end for each
+			
+			$lCountUnique = count(array_unique($lKeys));
+			$lCountTotal = count($lKeys);
+				
+			return ($lCountUnique < $lCountTotal);
+
+		} catch (Exception $e) {
+				return FALSE;
+		}//end catch
+				
+	}//end function isParameterPollutionDetected()
+	
 	switch ($_SESSION["security-level"]){
    		case "0": // This code is insecure
    			$lEnableHTMLControls = FALSE;
    			$lEncodeOutput = FALSE;
    			$lProtectAgainstMethodTampering = FALSE;
    			$lHTTPParameterPollutionDetected = FALSE;
+   			$lLoggedInUser = $logged_in_user;
    		break;
    			   			
    		case "1": // This code is insecure
@@ -25,6 +58,7 @@
    			$lEncodeOutput = FALSE;
 			$lProtectAgainstMethodTampering = FALSE;
 			$lHTTPParameterPollutionDetected = FALSE;
+			$lLoggedInUser = $logged_in_user;
 		break;
 	    		
 		case "2":
@@ -32,40 +66,10 @@
 		case "4":
 		case "5": // This code is fairly secure
 			$lEnableHTMLControls = TRUE;
-				
-			/* 
-  			 * NOTE: Input validation is excellent but not enough. The output must be
-  			 * encoded per context. For example, if output is placed in HTML,
-  			 * then HTML encode it. Blacklisting is a losing proposition. You 
-  			 * cannot blacklist everything. The business requirements will usually
-  			 * require allowing dangerous charaters. In the example here, we can 
-  			 * validate username but we have to allow special characters in passwords
-  			 * least we force weak passwords. We cannot validate the signature hardly 
-  			 * at all. The business requirements for text fields will demand most
-  			 * characters. Output encoding is the answer. Validate what you can, encode it
-  			 * all.
-  			 */
-   			// encode the output following OWASP standards
-   			// this will be HTML encoding because we are outputting data into HTML
 			$lEncodeOutput = TRUE;
 			$lProtectAgainstMethodTampering = TRUE;
-			
-			// Detect multiple params with same name (HTTP Parameter Pollution)
-			$lQueryString  = explode('&', $_SERVER['QUERY_STRING']);
-			$lKeys = array();
-			$lPair = array();
-			$lParameter = "";
-			
-			foreach ($lQueryString as $lParameter){
-				$lPair = explode('=', $lParameter);
-				array_push($lKeys, $lPair[0]);
-			}//end for each
-
-			$lCountUnique = count(array_unique($lKeys));
-			$lCountTotal = count($lKeys);
-			
-			$lHTTPParameterPollutionDetected = ($lCountUnique < $lCountTotal);
-			
+			$lHTTPParameterPollutionDetected = isParameterPollutionDetected($_SERVER['QUERY_STRING']);
+			$lLoggedInUser = $MySQLHandler->escapeDangerousCharacters($logged_in_user);
    		break;
    	}// end switch		
 
@@ -106,24 +110,31 @@
 		   		throw (new Exception("Security Violation: Cross Site Request Forgery attempt detected.", 500));
 		   	}// end if
 
-		   	// Encode output to protect against cross site scripting 
-			if ($lEncodeOutput){
-				$lUserInitials = $Encoder->encodeForHTML($lUserInitials);
-				$lUserChoice = $Encoder->encodeForHTML($lUserChoice);
-			}// end if
-
 			// if parameter pollution is not detected, print user choice 
 		   	if (!$lHTTPParameterPollutionDetected){
 				$lUserChoiceMessage = "Your choice was {$lUserChoice}";
-				$LogHandler->writeToLog("User voted for: " . $lUserChoice);
-		   	}// end if isSet($_POST["user-poll-php-submit-button"])
+				$LogHandler->writeToLog("User voted for {$lUserChoice}");
+		   	}// end if
+
+		   	// Encode output to protect against cross site scripting
+		   	if ($lEncodeOutput){
+		   		$lUserInitials = $Encoder->encodeForHTML($lUserInitials);
+		   		$lUserChoice = $Encoder->encodeForHTML($lUserChoice);
+	   			$lUserChoiceMessage = $Encoder->encodeForHTML($lUserChoiceMessage);
+		   	}// end if
+		   	
+		   	//Insert vote into database
+		   	try {
+		   		$SQLQueryHandler->insertVoteIntoUserPoll($lUserChoice, $lLoggedInUser);
+		   	} catch (Exception $e) {
+		   		echo $CustomErrorHandler->FormatError($e, "Error inserting user vote for " . $lLoggedInUser);
+		   	}//end try
 
 	   	} catch (Exception $e) {
 	   		echo $CustomErrorHandler->FormatError($e, "Vote was not counted");
 	   	}// end try
 
    	}//end if lFormSubmitted
-
 ?>
 
 <!-- Bubble hints code -->
@@ -202,18 +213,60 @@
 			<tr><td></td></tr>
 			<tr>
 				<td class="report-header" ReflectedXSSExecutionPoint="1">
-				<?php 
-					if (!$lEncodeOutput){
-						echo $lUserChoiceMessage; 
-					}else{
-						echo $Encoder->encodeForHTML($lUserChoiceMessage);
-					}// end if 
-				?>
+				<?php echo $lUserChoiceMessage; ?>
 				</td>
 			</tr>
 		</table>
 	</form>
 </fieldset>
+
+<?php
+	try{// to draw table
+		//Get votes from database
+		try {
+			$lQueryResult = $SQLQueryHandler->getUserPollVotes();
+		} catch (Exception $e) {
+			echo $CustomErrorHandler->FormatError($e, "Error getting user votes");
+		}//end try
+		
+		if($lQueryResult->num_rows > 0){
+
+			// we have rows. Begin drawing output.
+			echo '<br/>';
+			echo '<fieldset>';
+			echo '<legend>Poll Results</legend>';
+			echo '<table border="1px;" width="50%" class="main-table-frame">';
+			echo '<tr class="report-header"><td colspan="2">'.$lQueryResult->num_rows.' Records Found</td></tr>';
+		    echo '<tr class="report-header">
+				    <td>Tool</td>
+				    <td>Votes</td>
+			    </tr>';
+	
+		    $lRowNumber = 0;
+		    while($row = $lQueryResult->fetch_object()){
+		    	$lRowNumber++;
+			
+				if(!$lEncodeOutput){
+					$lToolName = $row->tool_name;
+					$lToolCount = $row->tool_count;
+				}else{
+					$lToolName = $Encoder->encodeForHTML($row->tool_name);
+					$lToolCount = $Encoder->encodeForHTML($row->tool_count);
+				}// end if
+								
+				echo "<tr>
+						<td ReflectedXSSExecutionPoint=\"1\">{$lToolName}</td>
+						<td>{$lToolCount}</td>
+					</tr>\n";
+			}//end while $row
+			echo '</table>';
+			echo '</fieldset>';
+		}//end if
+		
+	} catch (Exception $e) {
+		echo $CustomErrorHandler->FormatError($e, "Error writing rows.");
+	}// end try;
+?>
 
 <script type="text/javascript">
 	try{

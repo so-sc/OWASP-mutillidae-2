@@ -1,7 +1,7 @@
 <div id="smoothmenu1" class="ddsmoothmenu">
 	<ul>
-		<li style="border-color: #ffffff;border-style: solid;border-width: 1px">
-			<a href="#">OWASP 2013</a>
+		<li style="border-color: #ffffff;border-style: solid;border-width: 1px;">
+			<a href="">OWASP 2013</a>
 			<ul>
 				<li>
 					<a href="https://www.owasp.org/index.php/Top_10_2013-A1-Injection" target="_blank">A1 - Injection (SQL)</a>
@@ -482,7 +482,7 @@
 						<?php if (isset($_COOKIE["uid"]) && $_COOKIE["uid"]==1) { ?>		
 						<li><a href="set-up-database.php">Setup/reset the DB</a></li>
 						<?php } else { ?>
-						<a href="#">Setup/reset the DB (Disabled: Not Admin)</a></li>
+						<a href="">Setup/reset the DB (Disabled: Not Admin)</a></li>
 						<?php }; ?>		
 					</ul>
 				</li>
@@ -490,8 +490,8 @@
 		</li>
 	</ul>
 	<ul>
-		<li style="border-color: #ffffff;border-style: solid;border-width: 1px">
-			<a href="#">OWASP 2010</a>
+		<li style="border-color: #ffffff;border-style: solid;border-width: 1px;">
+			<a href="">OWASP 2010</a>
 			<ul>
 				<li>
 					<a href="http://www.owasp.org/index.php/Top_10_2010-A7" target="_blank">2010 A7 - Insecure Cryptographic Storage</a>
@@ -526,8 +526,8 @@
 		</li>
 	</ul>	
 	<ul>
-		<li style="border-color: #ffffff;border-style: solid;border-width: 1px">
-			<a href="#">OWASP 2007</a>
+		<li style="border-color: #ffffff;border-style: solid;border-width: 1px;">
+			<a href="">OWASP 2007</a>
 			<ul>
 				<li>
 					<a href="http://www.owasp.org/index.php/Top_10_2007-A3" target="_blank">OWASP 2007 A3 - Malicious File Execution</a>
@@ -566,8 +566,8 @@
 		</li>
 	</ul>	
 	<ul>
-		<li style="border-color: #ffffff; border-style: solid;border-width: 1px">
-			<a href="#">Web Services</a>
+		<li style="border-color: #ffffff; border-style: solid;border-width: 1px;">
+			<a href="">Web Services</a>
 			<ul>
 				<li>
 					<a href="">SOAP</a>
@@ -617,8 +617,8 @@
 				</li>						
 			</ul>
 		</li>
-		<li style="border-color: #ffffff; border-style: solid;border-width: 1px">
-			<a href="#">HTML 5</a>
+		<li style="border-color: #ffffff; border-style: solid;border-width: 1px;">
+			<a href="">HTML 5</a>
 			<ul>
 				<li>
 					<a href="">HTML 5 Web Storage</a>
@@ -641,8 +641,8 @@
 				</li>
 			</ul>
 		</li>
-		<li style="border-color: #ffffff; border-style: solid;border-width: 1px">
-			<a href="#">Others</a>
+		<li style="border-color: #ffffff; border-style: solid;border-width: 1px;">
+			<a href="">Others</a>
 			<ul>			
 				<li>
 					<a href="">Client-side "Security" Controls</a>
@@ -717,7 +717,7 @@
 				</li>
 			</ul>
 		</li>
-		<li style="border-color: #ffffff;border-style: solid;border-width: 1px">
+		<li style="border-color: #ffffff;border-style: solid;border-width: 1px;">
 			<a href="">Documentation</a>
 			<ul>
 				<li><a href="index.php?page=documentation/change-log.html">Change Log</a></li>
@@ -737,8 +737,8 @@
 				</li>
 			</ul>
 		</li>
-		<li style="border-color: #ffffff;border-style: solid;border-width: 1px">
-			<a href="#">Resources</a>
+		<li style="border-color: #ffffff;border-style: solid;border-width: 1px;">
+			<a href="">Resources</a>
 			<ul>
 				<li>
 					<a onclick="bookmarkSite();" href="">

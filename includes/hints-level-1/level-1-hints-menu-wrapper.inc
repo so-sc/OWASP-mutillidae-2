@@ -16,7 +16,7 @@
 		style="display: <?php echo $lDisplayHintStyle; ?>";
 >
 	<img id="idHintWrapperHeaderImage" align="left" style="padding-right: 5px;" alt="Expand Hints" src="./images/down_arrow_16_16.png" />
-	Hints
+	Hints and Videos
 </div>
 <div id="idHintWrapperBody" class="hint-wrapper-body" style="display: none;">
 	<?php

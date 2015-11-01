@@ -24,8 +24,8 @@
 		<div class="database-success-message">HTML 5 Local and Session Storage cleared unless error popped-up already.</div>
 <?php
 
-	//Here because of very weird error
-	session_start();
+//Here because of very weird error
+session_start();
 
 //initialize custom error handler
 require_once 'classes/CustomErrorHandler.php';
@@ -87,7 +87,20 @@ try{
 	}else{
 		echo format("Executed query 'USE DATABASE' " . MySQLHandler::$mMySQLDatabaseName . " with result ".$lQueryResult,"I");
 	}// end if
-			
+
+	$lQueryString = 'CREATE TABLE user_poll_results( '.
+			'cid INT NOT NULL AUTO_INCREMENT, '.
+			'tool_name TEXT, '.
+			'username TEXT, '.
+			'date DATETIME, '.
+			'PRIMARY KEY(cid))';
+	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
+	if (!$lQueryResult) {
+		$lErrorDetected = TRUE;
+	}else{
+		echo format("Executed query 'CREATE TABLE' with result ".$lQueryResult,"S");
+	}// end if
+	
 	$lQueryString = 'CREATE TABLE blogs_table( '.
 			 'cid INT NOT NULL AUTO_INCREMENT, '.
 	         'blogger_name TEXT, '.
@@ -453,6 +466,7 @@ try{
 			('user-info-xpath.php', 13, 1),
 			('user-info-xpath.php', 30, 1),
 			('user-info-xpath.php', 49, 1),
+			('user-poll.php', 10, 1),
 			('user-poll.php', 11, 1),
 			('user-poll.php', 12, 1),
 			('user-poll.php', 14, 1),
@@ -787,7 +801,9 @@ try{
 			(69, 'MxiVx7e_FbM', 'Determine HTTP Methods using Netcat'),
 			(70, 'Zl8U2YVp2lw', 'ISSA KY September 2013 Workshop - Introduction to XML External Entity Injection'),
 			(71, 'VAGG4uC1ogw', 'Introduction to User-agent Impersonation'),
-			(72, 'yh3S8YzrysE', 'Introduction to Path Relative Style Sheet Injection')
+			(72, 'yh3S8YzrysE', 'Introduction to Path Relative Style Sheet Injection'),
+			(73, 'rQ6R4B9m-nk', 'Introduction to SQL Injection for Beginners'),	
+			(74, 'dzj9Y2ahYx8', 'Introduction to SQL Injection with SQLMap ')
 	";
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {
@@ -951,9 +967,14 @@ try{
 if(!$lErrorDetected){
 	/*If the user came from the database error page but we do not have 
 	 * database errors anymore, send them to the home page.
-	 */	
-	$lReferredFromDBOfflinePage = preg_match("/database-offline.php/", $_SERVER["HTTP_REFERER"]);
-	$lReferredFromPageWithURLParameters = preg_match("/\?/", $_SERVER["HTTP_REFERER"]);
+	 */
+	$lHTTPReferer = "";
+	if (isset($_SERVER["HTTP_REFERER"])) {
+		$lHTTPReferer = $_SERVER["HTTP_REFERER"];	
+	}//end if
+	
+	$lReferredFromDBOfflinePage = preg_match("/database-offline.php/", $lHTTPReferer);
+	$lReferredFromPageWithURLParameters = preg_match("/\?/", $lHTTPReferer);
 	
 	if ($lReferredFromDBOfflinePage || $lReferredFromPageWithURLParameters){
 		$lPopUpNotificationCode = "&popUpNotificationCode=SUD1";
@@ -961,7 +982,7 @@ if(!$lErrorDetected){
 		$lPopUpNotificationCode = "?popUpNotificationCode=SUD1";
 	}// end if any parameters in referrer
 
-	$lRedirectLocation = str_ireplace("database-offline.php", "index.php?page=home.php", $_SERVER["HTTP_REFERER"]).$lPopUpNotificationCode;
+	$lRedirectLocation = str_ireplace("database-offline.php", "index.php?page=home.php", $lHTTPReferer).$lPopUpNotificationCode;
 	echo "<script>if(confirm(\"No PHP or MySQL errors were detected when resetting the database.\\n\\nClick OK to proceed to ".$lRedirectLocation." or Cancel to stay on this page.\")){document.location=\"".$lRedirectLocation."\"};</script>";
 }// end if
 

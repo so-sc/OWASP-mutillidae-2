@@ -109,6 +109,8 @@ class YouTubeVideoHandler {
 	public $ISSAIntroductiontoXMLExternalEntityInjection = 70;
 	public $IntroductiontoUseragentImpersonation = 71;
 	public $IntroductiontoPathRelativeStyleSheetInjection = 72;
+	public $IntroductiontoSQLInjectionforBeginners = 73;
+	public $IntroductiontoSQLInjectionwithSQLMap = 74;
 	
 	/* private methods */
 	private function doSetSecurityLevel($pSecurityLevel){

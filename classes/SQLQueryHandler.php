@@ -137,7 +137,34 @@ class SQLQueryHandler {
 	    }// end if
 
 		return $this->mMySQLHandler->executeQuery($lQueryString);
-	}//end public function deleteBlogRecord
+	}//end public function getCapturedData()
+
+	public function insertVoteIntoUserPoll(/*Text*/ $pToolName, /*Text*/ $pUserName){
+	
+		if ($this->stopSQLInjection == TRUE){
+			$pToolName = $this->mMySQLHandler->escapeDangerousCharacters($pToolName);
+			$pUserName = $this->mMySQLHandler->escapeDangerousCharacters($pUserName);
+		}// end if
+	
+		$lQueryString  = "
+			INSERT INTO user_poll_results(tool_name, username, date) VALUES ('".
+				$pToolName . "', '".
+				$pUserName  . "', " .
+				" now() );";
+
+		return $this->mMySQLHandler->executeQuery($lQueryString);
+	}//end public function insertVoteIntoUserPoll
+	
+	public function getUserPollVotes(){
+		
+		$lQueryString  = "
+			SELECT tool_name, COUNT(tool_name) as tool_count
+			FROM user_poll_results
+			GROUP BY tool_name";
+	
+		return $this->mMySQLHandler->executeQuery($lQueryString);
+	}//end public function insertVoteIntoUserPoll
+	
 	
 	public function insertBlogRecord($pBloggerName, $pBlogEntry){
 		
@@ -168,7 +195,7 @@ class SQLQueryHandler {
 			LIMIT 0 , 100";
 				
 		return $this->mMySQLHandler->executeQuery($lQueryString);
-	}//end public function insertBlogRecord
+	}//end public function getBlogRecord
 
 	public function getPenTestTool($pPostedToolID){
    		/* 
