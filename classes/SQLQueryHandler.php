@@ -83,7 +83,7 @@ class SQLQueryHandler {
 			INNER JOIN help_texts
 			ON page_help.help_text_key = help_texts.help_text_key
 			WHERE page_help.page_name = '" . $pPageName . "' " .
-			"ORDER BY order_preference";
+			"ORDER BY page_help.order_preference";
 		
 		return $this->mMySQLHandler->executeQuery($lQueryString);
 	}//end public function getPageHelpTexts
@@ -101,7 +101,8 @@ class SQLQueryHandler {
 			INNER JOIN level_1_help_include_files
 			ON 	page_help.help_text_key = 
 				level_1_help_include_files.level_1_help_include_file_key
-			WHERE page_help.page_name = '" . $pPageName . "'";
+			WHERE page_help.page_name = '" . $pPageName . "' " .
+			"ORDER BY page_help.order_preference";
 
 		return $this->mMySQLHandler->executeQuery($lQueryString);
 	}//end public function getPageLevelOneHelpIncludeFiles

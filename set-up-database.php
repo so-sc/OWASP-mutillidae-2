@@ -327,7 +327,8 @@ try{
 			('home.php', 39, 1),
 			('home.php', 40, 1),
 			('add-to-your-blog.php', 8, 0),
-			('add-to-your-blog.php', 10, 1),
+			('add-to-your-blog.php', 10, 2),
+			('add-to-your-blog.php', 53, 2),
 			('add-to-your-blog.php', 11, 1),
 			('add-to-your-blog.php', 12, 1),
 			('add-to-your-blog.php', 13, 1),
@@ -349,7 +350,8 @@ try{
 			('browser-info.php', 12, 1),
 			('browser-info.php', 18, 1),
 			('capture-data.php', 1, 1),
-			('capture-data.php', 10, 1),
+			('capture-data.php', 10, 2),
+			('capture-data.php', 53, 2),
 			('capture-data.php', 11, 1),
 			('capture-data.php', 12, 1),
 			('capture-data.php', 48, 1),
@@ -379,7 +381,8 @@ try{
 			('html5-storage.php', 23, 1),
 			('html5-storage.php', 42, 1),
 			('login.php', 1, 1),
-			('login.php', 10, 1),
+			('login.php', 10, 2),
+			('login.php', 53, 2),
 			('login.php', 11, 1),
 			('login.php', 12, 1),
 			('login.php', 13, 1),
@@ -395,7 +398,8 @@ try{
 			('phpinfo.php', 27, 1),
 			('phpinfo.php', 28, 1),
 			('phpinfo.php', 29, 1),
-			('register.php', 10, 1),
+			('register.php', 10, 2),
+			('register.php', 53, 2),
 			('register.php', 11, 1),
 			('register.php', 12, 1),
 			('register.php', 14, 1),
@@ -438,7 +442,8 @@ try{
 			('styling-frame.php', 41, 1),
 			('styling-frame.php', 48, 1),
 			('styling-frame.php', 50, 1),
-			('sqlmap-targets.php', 10, 1),
+			('sqlmap-targets.php', 10, 2),
+			('sqlmap-targets.php', 53, 2),
 			('ssl-misconfiguration.php', 1, 1),
 			('text-file-viewer.php', 11, 1),
 			('text-file-viewer.php', 12, 1),
@@ -455,7 +460,8 @@ try{
 			('user-agent-impersonation.php', 18, 1),
 			('user-agent-impersonation.php', 45, 1),
 			('user-info.php', 1, 1),
-			('user-info.php', 10, 1),
+			('user-info.php', 10, 2),
+			('user-info.php', 53, 2),
 			('user-info.php', 11, 1),
 			('user-info.php', 12, 1),
 			('user-info.php', 13, 1),
@@ -466,7 +472,8 @@ try{
 			('user-info-xpath.php', 13, 1),
 			('user-info-xpath.php', 30, 1),
 			('user-info-xpath.php', 49, 1),
-			('user-poll.php', 10, 1),
+			('user-poll.php', 10, 2),
+			('user-poll.php', 53, 2),
 			('user-poll.php', 11, 1),
 			('user-poll.php', 12, 1),
 			('user-poll.php', 14, 1),
@@ -555,7 +562,8 @@ try{
 		(49, 'XPath Injection', 'xpath-injection-hint.inc'),
 		(50, 'Path Relative Style-sheet Injection', 'path-relative-stylesheet-injection.inc'),
 		(51, 'Client-side Security Control Bypass', 'client-side-security-control-bypass.inc'),
-		(52, 'Hints Not Found', 'hints-not-found.inc')";
+		(53, 'SQL Injection with SQLMap', 'sqlmap-hint.inc'),
+		(99, 'Hints Not Found', 'hints-not-found.inc')";
 	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {
@@ -632,7 +640,8 @@ try{
 		(48, '<span class=\"label\">Application Log Injection</span>: Some inputs on this page are recorded into log records which can be read by visiting the Show Log page. Vulnerabilities on the Show Log page may allow injections in log records to execute.'),
 		(49, '<span class=\"label\">XPath Injection</span>: Some inputs on this page are vulnerable to XPath injection.'),
 		(50, '<span class=\"label\">Path Relative Stylesheet Injection</span>: Within this page is an iframe containing another page. The page being framed is vulnerable to path relative stylesheet injection.'),
-		(51, '<span class=\"label\">Client-side Security Control Bypass</span>: This page attempts to implement security using client-side security controls. Any page using such controls, including this page, is vulnerable to security control bypass.')";
+		(51, '<span class=\"label\">Client-side Security Control Bypass</span>: This page attempts to implement security using client-side security controls. Any page using such controls, including this page, is vulnerable to security control bypass.'),
+		(53, '<span class=\"label\">SQL Injection with SQLMap</span>: This page contains an sql injection vulnerability. The SQLMap tool may be able to automate testing and confirming this vulnerability.')";
 	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {

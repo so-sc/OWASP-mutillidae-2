@@ -209,9 +209,6 @@
 
 <?php
 	if ($_SESSION["showhints"] == 2) {
-		include_once './includes/hints-level-2/sql-injection-tutorial.inc';
-	}// end if
-	if ($_SESSION["showhints"] == 2) {
 		include_once './includes/insufficient-transport-layer-protection.inc';
 	}// end if	
 ?>

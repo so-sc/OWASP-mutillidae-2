@@ -247,10 +247,6 @@
 
 <?php	
 	if ($_SESSION["showhints"] == 2) {
-		include_once (__ROOT__.'/includes/hints-level-2/sql-injection-tutorial.inc');
-	}// end if	
-
-	if ($_SESSION["showhints"] == 2) {
 		include_once (__ROOT__.'/includes/hints-level-2/cross-site-scripting-tutorial.inc');
 	}// end if
 ?>
