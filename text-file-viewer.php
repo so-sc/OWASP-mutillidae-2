@@ -255,9 +255,3 @@
 		echo $CustomErrorHandler->FormatError($e, "Error in text file viewer. Cannot load file.");
 	}// end try
 ?>
-
-<?php
-	if ($_SESSION["showhints"] == 2) {
-		include_once './includes/hints-level-2/cross-site-scripting-tutorial.inc';
-	}// end if
-?>

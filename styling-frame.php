@@ -70,8 +70,3 @@
 		marginheight="0px" marginwidth="0px" 
 		width="100%" height="600px" 
 		scrolling="auto"></iframe>
-<?php
-	if ($_SESSION["showhints"] == 2) {
-		include_once (__ROOT__.'/includes/hints-level-2/cross-site-scripting-tutorial.inc');
-	}// end if
-?>

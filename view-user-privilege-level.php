@@ -226,9 +226,3 @@
 		document.getElementById("id-user-privilege-message").style.display="";		
 	}// end if l_user_is_root
 </script>
-
-<?php
-	if ($_SESSION["showhints"] == 2) {
-		include_once './includes/hints-level-2/cross-site-scripting-tutorial.inc';
-	}// end if
-?>

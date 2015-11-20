@@ -153,27 +153,3 @@
 	   	<tr><td colspan="3"></td></tr>
 	</table>
 </fieldset>
-
-<?php
-	// Begin hints section
-	if ($_SESSION["showhints"]) {
-		echo '
-			<br/ >
-			<table style="width:90%">
-				<tr><td class="hint-header">Hints</td></tr>
-				<tr>
-					<td class="hint-body">
-						<ul class="hints">
-						  	<li>This page is vulnerable to XSS via JavaScript string injection.
-						  	Change the string for user-agent (for example) to a script.
-							</li>
-						</ul>
-					</td>
-				</tr>
-			</table>'; 
-	}//end if ($_SESSION["showhints"])
-
-	if ($_SESSION["showhints"] == 2) {
-		include_once (__ROOT__.'/includes/hints-level-2/cross-site-scripting-tutorial.inc');
-	}// end if
-?>

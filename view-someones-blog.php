@@ -241,13 +241,3 @@
 		}// end try		
 	}// end if isSet($_POST["view-someones-blog-php-submit-button"])
 ?>
-
-<?php
-	if ($_SESSION["showhints"] == 2) {
-		include_once './includes/hints-level-2/cross-site-scripting-tutorial.inc';
-	}// end if
-	
-	if ($_SESSION["showhints"] == 2) {
-		include_once './includes/sql-injection.inc';
-	}// end if	
-?>

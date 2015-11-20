@@ -162,9 +162,3 @@
 	}//end try
 	
 </script>
-
-<?php
-	if ($_SESSION["showhints"] == 2) {
-		include_once './includes/hints-level-2/cross-site-scripting-tutorial.inc';
-	}// end if
-?>

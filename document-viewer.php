@@ -201,10 +201,3 @@
 		echo '<script>document.getElementById("id-bad-path-to-document-tr").style.display="";</script>'; 
 	}// end if ($lHTTPParameterPollutionDetected)
 ?>
-
-<?php
-	// Begin hints section
-	if ($_SESSION["showhints"] == 2) {
-		include_once './includes/hints-level-2/cross-site-scripting-tutorial.inc';
-	}// end if
-?>

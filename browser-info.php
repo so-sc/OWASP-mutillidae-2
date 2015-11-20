@@ -202,9 +202,3 @@
 		outputValue("id_plug_ins_td", l_plugins, g_beSmart, g_usingIE);
 	}// end if
 </script>
-
-<?php
-	if ($_SESSION["showhints"] == 2) {
-		include_once './includes/hints-level-2/cross-site-scripting-tutorial.inc';
-	}// end if
-?>
