@@ -527,7 +527,7 @@
 		    	$lPage = $_GET["page"];
 		    }// end if
    			
-   			$lPageIsAllowed = (preg_match("/^[a-zA-Z0-9\.\-\/]+$/", $lPage) == 1);    			
+   			$lPageIsAllowed = (preg_match("/^[a-zA-Z0-9\.\-\/]+[\.php|\.html]$/", $lPage) == 1);    			
    			if (!$lPageIsAllowed){
 		    	$lPage = __ROOT__.'/page-not-found.php';
    			}// end if
@@ -542,20 +542,8 @@
      * ------------------------------------------ */
 	switch ($lPage){
    		case "secret.php":
-   		case "admin.php":
-   		case "_adm.php":
-   		case "_admin.php":
-   		case "root.php":
-   		case "administrator.php":
-   		case "auth.php":
-   		case "hidden.php":
-   		case "console.php":
-   		case "conf.php":
-   		case "_private.php":
-   		case "private.php":
-   		case "access.php":
-   		case "control.php":
-   		case "control-panel.php":
+   		case "admin.php":		case "_adm.php":		case "_admin.php":		case "root.php":		case "administrator.php":
+		case "auth.php":		case "hidden.php":		case "console.php":		case "conf.php":		case "_private.php":		case "private.php":		case "access.php":		case "control.php":		case "control-panel.php":		case "bash_history":		case ".history":		case ".htaccess":		case ".htpasswd":
 
    			switch ($_SESSION["security-level"]){
 		   		case "0": // This code is insecure
@@ -592,11 +580,6 @@
 	/* ------------------------------------------
 	* END SIMULATE "SECRET" PAGES
 	* ------------------------------------------ */
-
-	function startsWith($haystack, $needle){
-	     $length = strlen($needle);
-	     return (substr($haystack, 0, $length) === $needle);
-	}// end startsWith()
 
 	/* ------------------------------------------
 	* BEGIN OUTPUT RESPONSE

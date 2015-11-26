@@ -3,9 +3,9 @@
 	/* ------------------------------------------
 	 * @VERSION
 	 * ------------------------------------------*/
-	$C_VERSION = "2.6.29";
+	$C_VERSION = "2.6.30";
 	$C_VERSION_STRING = "Version: " . $C_VERSION;
-	$C_MAX_HINT_LEVEL = 2;
+	$C_MAX_HINT_LEVEL = 1;
 	
 	/* ------------------------------------------
 	 * Document Root (considering this file is in 

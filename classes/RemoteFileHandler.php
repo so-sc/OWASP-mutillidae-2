@@ -24,6 +24,11 @@ class RemoteFileHandler {
 		}// end switch
 	}// end function
 
+	private function startsWith($haystack, $needle){
+		$length = strlen($needle);
+		return (substr($haystack, 0, $length) === $needle);
+	}// end startsWith()
+	
 	/* public methods */
 	/* constructor */
 	public function __construct($pPathToESAPI, $pSecurityLevel){
@@ -58,7 +63,7 @@ class RemoteFileHandler {
 				$data = curl_exec($ch);
 				$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 				/* Status 4xx: Client messed up, Status 5xx: Server messed up */
-				return (startsWith($httpCode, '2') || startsWith($httpCode, '3') || startsWith($httpCode, '1'));
+				return ($this->startsWith($httpCode, '2') || $this->startsWith($httpCode, '3') || $this->startsWith($httpCode, '1'));
 			}// end if $this->mRequiredSoftwareHandler->isPHPCurlIsInstalled()
 		} catch (Exception $e) {
 			return false;

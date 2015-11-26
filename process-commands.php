@@ -114,6 +114,15 @@
 				$lSecurityLevel = '0';
 		    }// end if
 
+		    /* If we have looped back around to security level 0,
+		     * show the hints again
+		     */
+		    if ($lSecurityLevel == 0){
+		    	$_SESSION["showhints"] = 1;
+		    	$_SESSION["hints-enabled"] = "Enabled (1 - 5cr1pt K1dd1e))";
+		    	setcookie("showhints", "1");
+		    }// end if
+		    
 		    /* Disable hints unless we are on security level 0.
 		     * There is a way to defeat this.
 		     */
@@ -128,8 +137,10 @@
 		    $LogHandler->setSecurityLevel($lSecurityLevel);
 		    $BubbleHintHandler->setSecurityLevel($lSecurityLevel);
 		   	$MySQLHandler->setSecurityLevel($lSecurityLevel);		    
-		   	$SQLQueryHandler->setSecurityLevel($lSecurityLevel);		    
-		   	
+		   	$SQLQueryHandler->setSecurityLevel($lSecurityLevel);
+		   	$RemoteFileHandler->setSecurityLevel($lSecurityLevel);
+		   	$RequiredSoftwareHandler->setSecurityLevel($lSecurityLevel);
+
 		    $_SESSION["security-level"] = $lSecurityLevel;
 
 			switch ($lSecurityLevel){

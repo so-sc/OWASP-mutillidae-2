@@ -9,10 +9,46 @@ TODO: Add dedicated Beef page
 TODO: Add mad-libs for XSS, AJAX and CSRF XSS
 TODO: Add password hashes into the project
 TODO: Add examples to CSRF hints
-TODO: Repair LFI in level 5 on page parameter (Josh Mitchell)
 TODO: Audit help files
 <br />
 <br />
+
+<div><span style="font-weight:bold;">11/26/2015</span>: Jeremy Druin</div>
+<blockquote>
+	<div>Change Log for OWASP Mutillidae II 2.6.30:</div>
+	<ul>
+		<li>
+			BUG FIX: Function startsWith() was orphaned on the index.php page. Moved into the 
+			RemoteFileHandler.php as a private function
+		</li>
+		<li>
+			BUG FIX: Patched Local File Inclusion vunerability in Level 5 - Secure 
+			discovered by Josh Mitchell. Added a more restricted regular expression
+			to validate the page name.
+		</li>
+		<li>
+			Added more secret page names that will pull up the phpinfo.php page
+			if a user fuzzes one of the secret page name values into the index.php PAGE
+			parameter. The values are filenames from the FuzzDB. The file is from SkipFish. 
+			The file can be found on GitHub at 
+			fuzzdb/discovery/predictable-filepaths/filename-dirname-bruteforce/WordlistSkipfish.fuzz.txt.
+			This will make it easier for instructors to do demos and students to 
+			successfully fuzz.
+		</li>
+		<li>
+			Eliminated level 2 hints entirely. All have been merged into level 2 hints
+			so the user can find all the hints in the same place
+		</li>
+		<li>
+			BUG FIX: When the user has looped back around to security level 0,
+		    the hints were not showing again
+		</li>
+		<li>
+			BUG FIX: $RemoteFileHandler and $RequiredSoftwareHandler classes did not have
+			security level corrected when the user changes to a new security level
+		</li>
+	</ul>
+</blockquote>
 
 <div><span style="font-weight:bold;">11/01/2015</span>: Jeremy Druin</div>
 <blockquote>

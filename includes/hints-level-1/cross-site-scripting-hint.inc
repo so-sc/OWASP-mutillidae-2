@@ -52,6 +52,22 @@
 			or none of them. If the values are not reflected immediately but presented on a later page (for example
 			in search results) then it should be assumed the value is stored in a database.   
 			<br/><br/>
+			<span class="report-header">Remediation</span>
+			<br/><br/>
+			Cross-Site Scripting occurs because a script is displayed in page output but is not properly encoded.
+			Because of the lack of proper encoding, the browser will execute the script rather than display it as data.
+			Pages that encode all dynamic output are generally immune. The page will simply display the script as text
+			rather than execute the script as code.		 
+			<br/><br/>
+			The first step to Cross-Site Scripting is to determine which of the sites input is displayed as output.
+			Some input is immediately output on the same or next page. These pages are candidates for reflected 
+			Cross-Site Scripting. Some input may be stored in a database and output later on the appropriate page.
+			These situations may be ripe for the most dangerous type of XSS; persistent XSS.
+			<br/><br/>
+			Developers may treat input from forms carefully, while completely ignoring input passed via URL Query
+			Parameters, Cookies, HTTP Headers, Logs, Emails, etc. The key is to encode ALL output and not just output
+			that came into the site via forms/POST.
+			<br/><br/>
 			<span class="report-header">Exploitation</span>
 			<br/><br/>
 			Determine the prefix and suffix needed to make the injected code "fit" syntatically
