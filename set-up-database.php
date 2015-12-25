@@ -335,6 +335,7 @@ try{
 			('add-to-your-blog.php', 14, 1),
 			('add-to-your-blog.php', 30, 1),
 			('add-to-your-blog.php', 48, 1),
+			('add-to-your-blog.php', 54, 1),
 			('arbitrary-file-inclusion.php', 11, 1),
 			('arbitrary-file-inclusion.php', 12, 1),
 			('arbitrary-file-inclusion.php', 15, 0),
@@ -389,6 +390,7 @@ try{
 			('login.php', 25, 1),
 			('login.php', 47, 1),
 			('login.php', 48, 1),
+			('login.php', 54, 1),
 			('password-generator.php', 1, 1),
 			('password-generator.php', 11, 1),
 			('password-generator.php', 12, 1),
@@ -405,6 +407,7 @@ try{
 			('register.php', 14, 1),
 			('register.php', 30, 1),
 			('register.php', 48, 1),
+			('register.php', 54, 1),
 			('rene-magritte.php', 22, 1),
 			('robots-txt.php', 9, 1),
 			('robots-txt.php', 29, 1),
@@ -456,6 +459,7 @@ try{
 			('upload-file.php', 46, 1),
 			('upload-file.php', 11, 2),
 			('upload-file.php', 12, 2),
+			('upload-file.php', 54, 2),
 			('user-agent-impersonation.php', 11, 1),
 			('user-agent-impersonation.php', 18, 1),
 			('user-agent-impersonation.php', 45, 1),
@@ -466,12 +470,14 @@ try{
 			('user-info.php', 12, 1),
 			('user-info.php', 13, 1),
 			('user-info.php', 30, 1),
+			('user-info.php', 54, 1),
 			('user-info-xpath.php', 1, 1),
 			('user-info-xpath.php', 11, 1),
 			('user-info-xpath.php', 12, 1),
 			('user-info-xpath.php', 13, 1),
 			('user-info-xpath.php', 30, 1),
 			('user-info-xpath.php', 49, 1),
+			('user-info-xpath.php', 54, 1),
 			('user-poll.php', 10, 2),
 			('user-poll.php', 53, 2),
 			('user-poll.php', 11, 1),
@@ -479,10 +485,12 @@ try{
 			('user-poll.php', 14, 1),
 			('user-poll.php', 21, 1),
 			('user-poll.php', 30, 1),
+			('user-poll.php', 54, 1),
 			('view-someones-blog.php', 11, 1),
 			('view-someones-blog.php', 12, 1),
 			('view-someones-blog.php', 14, 1),
 			('view-someones-blog.php', 30, 1),
+			('view-someones-blog.php', 54, 1),
 			('view-user-privilege-level.php', 11, 1),
 			('view-user-privilege-level.php', 12, 1),
 			('view-user-privilege-level.php', 25, 1),
@@ -563,6 +571,7 @@ try{
 		(50, 'Path Relative Style-sheet Injection', 'path-relative-stylesheet-injection.inc'),
 		(51, 'Client-side Security Control Bypass', 'client-side-security-control-bypass.inc'),
 		(53, 'SQL Injection with SQLMap', 'sqlmap-hint.inc'),
+		(54, 'Insufficient Transport Layer Protection', 'insufficient-transport-layer-protection.inc'),
 		(99, 'Hints Not Found', 'hints-not-found.inc')";
 	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
@@ -641,7 +650,9 @@ try{
 		(49, '<span class=\"label\">XPath Injection</span>: Some inputs on this page are vulnerable to XPath injection.'),
 		(50, '<span class=\"label\">Path Relative Stylesheet Injection</span>: Within this page is an iframe containing another page. The page being framed is vulnerable to path relative stylesheet injection.'),
 		(51, '<span class=\"label\">Client-side Security Control Bypass</span>: This page attempts to implement security using client-side security controls. Any page using such controls, including this page, is vulnerable to security control bypass.'),
-		(53, '<span class=\"label\">SQL Injection with SQLMap</span>: This page contains an sql injection vulnerability. The SQLMap tool may be able to automate testing and confirming this vulnerability.')";
+		(53, '<span class=\"label\">SQL Injection with SQLMap</span>: This page contains an sql injection vulnerability. The SQLMap tool may be able to automate testing and confirming this vulnerability.'),
+		(54, '<span class=\"label\">Insufficent Transport Layer Protection</span>: This page is vulnerable to interception with wireshark or tcpdump.')";
+	
 	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {

@@ -206,9 +206,3 @@
 		document.getElementById("id-log-out-div").style.display="";		
 	}// end if l_loggedIn	
 </script>
-
-<?php
-	if ($_SESSION["showhints"] == 2) {
-		include_once './includes/insufficient-transport-layer-protection.inc';
-	}// end if	
-?>
