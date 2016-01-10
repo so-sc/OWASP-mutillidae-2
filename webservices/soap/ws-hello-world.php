@@ -13,7 +13,26 @@ $server->register('hello',                // method name
     'urn:hellowsdl#hello',                // soapaction
     'rpc',                                // style
     'encoded',                            // use
-    'Says hello to the caller'            // documentation
+    'Says hello to the caller
+	<br/><br/>
+	Sample Request (Copy and paste into Burp Repeater)<br/>
+		<br/>POST /mutillidae/webservices/soap/ws-hello-world.php HTTP/1.1
+		<br/>Accept-Encoding: gzip,deflate
+		<br/>Content-Type: text/xml;charset=UTF-8
+		<br/>SOAPAction: &quot;urn:hellowsdl#hello&quot;
+		<br/>Content-Length: 438
+		<br/>Host: localhost
+		<br/>Connection: Keep-Alive
+		<br/>User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
+		<br/>
+		<br/>&lt;soapenv:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:urn=&quot;urn:hellowsdl&quot;&gt;
+		<br/>   &lt;soapenv:Header/&gt;
+		<br/>   &lt;soapenv:Body&gt;
+		<br/>      &lt;urn:hello soapenv:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;
+		<br/>         &lt;name xsi:type=&quot;xsd:string&quot;&gt;Fred&lt;/name&gt;
+		<br/>      &lt;/urn:hello&gt;
+		<br/>   &lt;/soapenv:Body&gt;
+		<br/>&lt;/soapenv:Envelope&gt;'            // end documentation
 );
 // Define the method as a PHP function
 function hello($name) {

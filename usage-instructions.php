@@ -48,7 +48,7 @@
 			<br/><br/><br/>
 			<span class="report-header">Page Hints</span>
 			<br/><br/>
-						Besides the menus, this will be the most important feature for newcomers. To enable hints,
+			Besides the menus, this will be the most important feature for newcomers. To enable hints,
 			toggle the "Show Hints" button (top menu bar). A hints section will appear IF the page contains
 			vulnerabilities. The Hints are "smart" showing only those hints that will help on the particular
 			page. 

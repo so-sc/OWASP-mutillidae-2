@@ -17,7 +17,27 @@
 	    'urn:commandinjwsdl#commandinj',    	// soapaction
 	    'rpc',                              	// style
 	    'encoded',                          	// use
-	    'Returns the results of the DNS lookup' // documentation
+	    'Returns the results of the DNS lookup
+		<br/>
+		<br/>Sample Request (Copy and paste into Burp Repeater)
+		<br/>
+		<br/>POST /mutillidae/webservices/soap/ws-lookup-dns-record.php HTTP/1.1
+		<br/>Accept-Encoding: gzip,deflate
+		<br/>Content-Type: text/xml;charset=UTF-8
+		<br/>SOAPAction: &quot;urn:commandinjwsdl#commandinj&quot;
+		<br/>Content-Length: 473
+		<br/>Host: localhost
+		<br/>Connection: Keep-Alive
+		<br/>User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
+		<br/>
+		<br/>&lt;soapenv:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:urn=&quot;urn:commandinjwsdl&quot;&gt;
+		<br/>   &lt;soapenv:Header/&gt;
+		<br/>   &lt;soapenv:Body&gt;
+		<br/>      &lt;urn:lookupDNS soapenv:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;
+		<br/>         &lt;targetHost xsi:type=&quot;xsd:string&quot;&gt;www.google.com&lt;/targetHost&gt;
+		<br/>      &lt;/urn:lookupDNS&gt;
+		<br/>   &lt;/soapenv:Body&gt;
+		<br/>&lt;/soapenv:Envelope&gt;' // documentation
 	);
 
 	// Define the method as a PHP function

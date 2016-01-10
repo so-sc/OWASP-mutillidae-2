@@ -55,7 +55,26 @@
 	    'urn:ws-user-account#getUser',                					// soapaction
 	    'rpc',                                							// style
 	    'encoded',                            							// use
-	    'Fetches user information is user exists else returns message'	// documentation
+	    'Fetches user information is user exists else returns error message
+		<br/>
+		<br/>Sample Request (Copy and paste into Burp Repeater)
+		<br/>
+		<br/>POST /mutillidae/webservices/soap/ws-user-account.php HTTP/1.1
+		<br/>Accept-Encoding: gzip,deflate
+		<br/>Content-Type: text/xml;charset=UTF-8
+		<br/>Content-Length: 458
+		<br/>Host: localhost
+		<br/>Connection: Keep-Alive
+		<br/>User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
+		<br/>
+		<br/>&lt;soapenv:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:urn=&quot;urn:ws-user-account&quot;&gt;
+		<br/>   &lt;soapenv:Header/&gt;
+		<br/>   &lt;soapenv:Body&gt;
+		<br/>      &lt;urn:getUser soapenv:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;
+		<br/>         &lt;username xsi:type=&quot;xsd:string&quot;&gt;Jeremy&lt;/username&gt;
+		<br/>      &lt;/urn:getUser&gt;
+		<br/>   &lt;/soapenv:Body&gt;
+		<br/>&lt;/soapenv:Envelope&gt;'	// end documentation
 	);
 
 	// Register the method to expose
@@ -70,7 +89,28 @@
 			'urn:ws-user-account#createUser',                				// soapaction
 			'rpc',                                							// style
 			'encoded',                            							// use
-			'Creates new user account'										// documentation
+			'Creates new user account
+			<br/>
+			<br/>Sample Request (Copy and paste into Burp Repeater)
+			<br/>
+			<br />POST /mutillidae/webservices/soap/ws-user-account.php HTTP/1.1
+			<br />Accept-Encoding: gzip,deflate
+			<br />Content-Type: text/xml;charset=UTF-8
+			<br />Content-Length: 587
+			<br />Host: localhost
+			<br />Connection: Keep-Alive
+			<br />User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
+			<br />
+			<br />&lt;soapenv:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:urn=&quot;urn:ws-user-account&quot;&gt;
+			<br />   &lt;soapenv:Header/&gt;
+			<br />   &lt;soapenv:Body&gt;
+			<br />      &lt;urn:createUser soapenv:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;
+			<br />         &lt;username xsi:type=&quot;xsd:string&quot;&gt;Joe2&lt;/username&gt;
+			<br />         &lt;password xsi:type=&quot;xsd:string&quot;&gt;Holly&lt;/password&gt;
+			<br />         &lt;signature xsi:type=&quot;xsd:string&quot;&gt;Try Harder&lt;/signature&gt;
+			<br />      &lt;/urn:createUser&gt;
+			<br />   &lt;/soapenv:Body&gt;
+			<br />&lt;/soapenv:Envelope&gt;'	// end documentation
 	);
 
 	// Register the method to expose
@@ -85,8 +125,29 @@
 			'urn:ws-user-account#updateUser',                				// soapaction
 			'rpc',                                							// style
 			'encoded',                            							// use
-			'If account exists, updates existing user account else creates new user account'	// documentation
-	);
+			'If account exists, updates existing user account else creates new user account
+			<br/>
+			<br/>Sample Request (Copy and paste into Burp Repeater)
+			<br/>
+			<br />POST /mutillidae/webservices/soap/ws-user-account.php HTTP/1.1
+			<br />Accept-Encoding: gzip,deflate
+			<br />Content-Type: text/xml;charset=UTF-8
+			<br />Content-Length: 587
+			<br />Host: localhost
+			<br />Connection: Keep-Alive
+			<br />User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
+			<br />
+			<br />&lt;soapenv:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:urn=&quot;urn:ws-user-account&quot;&gt;
+			<br />   &lt;soapenv:Header/&gt;
+			<br />   &lt;soapenv:Body&gt;
+			<br />      &lt;urn:updateUser soapenv:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;
+			<br />         &lt;username xsi:type=&quot;xsd:string&quot;&gt;Joe2&lt;/username&gt;
+			<br />         &lt;password xsi:type=&quot;xsd:string&quot;&gt;Holly&lt;/password&gt;
+			<br />         &lt;signature xsi:type=&quot;xsd:string&quot;&gt;Try Harder&lt;/signature&gt;
+			<br />      &lt;/urn:updateUser&gt;
+			<br />   &lt;/soapenv:Body&gt;
+			<br />&lt;/soapenv:Envelope&gt;'	// end documentation
+				);
 
 	// Register the method to expose
 	$lSOAPWebService->register('deleteUser',			                	// method name
@@ -99,7 +160,28 @@
 			'urn:ws-user-account#deleteUser',           // soapaction
 			'rpc',                                		// style
 			'encoded',                            		// use
-			'If account exists, deletes user account'	// documentation
+			'If account exists, deletes user account
+			<br/>
+			<br/>Sample Request (Copy and paste into Burp Repeater)
+			<br/>
+			<br/>POST /mutillidae/webservices/soap/ws-user-account.php HTTP/1.1
+			<br/>Accept-Encoding: gzip,deflate
+			<br/>Content-Type: text/xml;charset=UTF-8
+			<br/>Content-Length: 587
+			<br/>Host: localhost
+			<br/>Connection: Keep-Alive
+			<br/>User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
+			<br/>
+			<br/>&lt;soapenv:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:urn=&quot;urn:ws-user-account&quot;&gt;
+			<br/>   &lt;soapenv:Header/&gt;
+			<br/>   &lt;soapenv:Body&gt;
+			<br/>      &lt;urn:deleteUser soapenv:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;
+			<br/>         &lt;username xsi:type=&quot;xsd:string&quot;&gt;Joe&lt;/username&gt;
+			<br/>         &lt;password xsi:type=&quot;xsd:string&quot;&gt;Holly&lt;/password&gt;
+			<br/>      &lt;/urn:deleteUser&gt;
+			<br/>   &lt;/soapenv:Body&gt;
+			<br/>&lt;/soapenv:Envelope&gt;
+			'	// documentation
 	);
 	
 	function doXMLEncodeQueryResults($pUsername, $pQueryResult, $pEncodeOutput){
