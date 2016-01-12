@@ -853,6 +853,12 @@ class nusoap_base {
     */
 	function getmicrotime() {
 		if (function_exists('gettimeofday')) {
+			// BEGIN Added by JD to fix warning stating in PHP 5.3
+			// set default time zone if not set at php.ini
+			if (!date_default_timezone_get('date.timezone')){
+				date_default_timezone_set('America/New_York'); // insert here default timezone
+			}//end if
+			//END ADDED BY JD
 			$tod = gettimeofday();
 			$sec = $tod['sec'];
 			$usec = $tod['usec'];
