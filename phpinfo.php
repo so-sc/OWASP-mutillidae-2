@@ -1,4 +1,14 @@
 
+<style>
+<!--
+	div.phpinfodisplay table
+	{
+	    table-layout: fixed;
+	    width: 95%;
+	}
+-->
+</style>
+
 <div class="page-title">Secret PHP Server Configuration Page</div>
 
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>

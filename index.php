@@ -541,10 +541,13 @@
      * SIMULATE "SECRET" PAGES
      * ------------------------------------------ */
 	switch ($lPage){
-   		case "secret.php":
+		case ".htaccess":
+		case ".htaccess.php":
+		case "secret.php":
    		case "admin.php":		case "_adm.php":		case "_admin.php":		case "root.php":		case "administrator.php":
-		case "auth.php":		case "hidden.php":		case "console.php":		case "conf.php":		case "_private.php":		case "private.php":		case "access.php":		case "control.php":		case "control-panel.php":		case "bash_history":		case ".history":		case ".htaccess":		case ".htpasswd":
-
+		case "auth.php":		case "hidden.php":		case "console.php":		case "conf.php":		case "_private.php":		case "private.php":		case "access.php":		case "control.php":		case "control-panel.php":		case "bash_history":		case ".history":		case ".htpasswd":
+		case ".htpasswd.php":
+					
    			switch ($_SESSION["security-level"]){
 		   		case "0": // This code is insecure
 		   		case "1": // This code is insecure
