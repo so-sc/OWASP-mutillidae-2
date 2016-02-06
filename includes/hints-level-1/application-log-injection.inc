@@ -24,3 +24,8 @@
 			a cross-site script in the user name field. Visit the 
 			<a href="index.php?page=show-log.php">View Log</a> page. Check that the XSS works.
 			<br/><br/>
+			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->SendingPersistentCrosssiteScriptsintoWebLogstoSnagWebAdmin);?>
+			<br/><br/>

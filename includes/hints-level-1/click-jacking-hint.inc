@@ -22,5 +22,5 @@
 			<br/><br/>
 			Mutillidae overlays the page with a div which follows the mouse around.
 			When the user clicks anywhere, they inevitably click the div which then executes
-			the JavaScript in the onclick event.  
+			the JavaScript in the onclick event.
 			<br/><br/>

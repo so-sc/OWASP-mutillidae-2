@@ -1,0 +1,25 @@
+	<br/><br/>
+	<span class="report-header">Overview</span>
+	<br/><br/>
+	Burp-Suite is a set of tools packaged in a single framework that
+	will be helpful when assessing web applications. A series of videos
+	is provided below to help get started with Burp-Suite.
+	<br/><br/>
+	<span class="report-header">Videos</span>
+	<br/><br/>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoInstallingConfiguringandUsingBurpSuiteProxy);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoinstallandconfigureBurpSuitewithFirefox);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofWebRequestandResponseInterceptionwithBurpSuite);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofBurpSuiteTargetsTab);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->SpideringWebApplicationswithBurpSuite);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->UsingBurpIntruderSnipertoFuzzParameters);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->ComparingBurpSuiteIntruderModesSniperBatteringramPitchforkClusterbomb);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoBurpSuiteComparerTool);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoFuzzingWebApplicationswithBurpSuiteIntruderTool);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BruteForcePageNamesusingBurpSuiteIntruder);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AnalyzeSessionTokenRandomnessusingBurpSuiteSequencer);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->UsingBurpSuiteSequencertoCompareCSRFtokenstrengths);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->ISSA2013WebPentestingWorkshopPart1IntrotoMutillidaeBurpSuiteInjection);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BruteForceAuthenticationusingBurpIntruder);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoExploitLocalFileInclusionVulnerabilityusingBurpSuite);?>
+	<br/><br/>

@@ -95,8 +95,11 @@ Password: whatever
 			<br/><br/>
 			<span class="report-header">Videos</span>
 			<br/><br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BruteForceAuthenticationusingBurpIntruder);	?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BypassAuthenticationusingSQLInjection);	?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BypassAuthenticationviaAuthenticationTokenManipulation);	?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BruteForceAuthenticationusingBurpIntruder);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BypassAuthenticationusingSQLInjection);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BypassAuthenticationviaAuthenticationTokenManipulation);?>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->UsingHydratoBruteForceWebFormsBasedAuthentication);	?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AnalyzeSessionTokenRandomnessusingBurpSuiteSequencer);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->UsingEttercapandSSLstriptoCaptureCredentials);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoPasswordCrackingwithJohntheRipper);?>
 			<br/><br/>

@@ -12,6 +12,8 @@
 			<br/><br/>
 			<span class="report-header">Exploitation</span>
 			<br/><br/>
-			Inject a URI into the parameter found.Prefix and/or suffix the injections to 
-			generate correct syntax.
+			Inject a URI into the parameter found. Prefix and/or suffix the injections to 
+			generate correct syntax. For example, inject http://google.com into the SRC
+			attribute of a frame element, then check if Google home page is displayed
+			in the frame.
 			<br/><br/>

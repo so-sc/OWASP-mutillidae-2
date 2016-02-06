@@ -18,3 +18,7 @@
 			Burp-Suite to seach for application path patterns that match
 			the web application framework type. 
 			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoFuzzingWebApplicationswithBurpSuiteIntruderTool);?>
+			<br/><br/>

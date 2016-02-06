@@ -56,3 +56,10 @@
 			Field: phpfile<br/>
 			Value: &lt;system file path&gt;, ../../../boot.ini, ..\..\..\WINDOW\System32\drivers\etc\hosts, ../../../etc/passwd
 			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoFuzzingWebApplicationswithBurpSuiteIntruderTool);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoExploitLocalFileInclusionVulnerabilityusingBurpSuite);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->ISSA2013WebPentestingWorkshopPart6LocalRemoteFileInclusion);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->MutillidaeHowtoShowSecretPageinSecurityLevel5);?>
+			<br/><br/>

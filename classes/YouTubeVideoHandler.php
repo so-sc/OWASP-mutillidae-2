@@ -111,7 +111,11 @@ class YouTubeVideoHandler {
 	public $IntroductiontoPathRelativeStyleSheetInjection = 72;
 	public $IntroductiontoSQLInjectionforBeginners = 73;
 	public $IntroductiontoSQLInjectionwithSQLMap = 74;
-	
+	public $HowtoSolvetheShowHintsinSecurityLevel5Challenge = 75;
+	public $IntroductiontoPasswordCrackingwithJohntheRipper = 76;
+	public $IntroductiontoFuzzingWebApplicationswithBurpSuiteIntruderTool = 77;
+	public $MutillidaeHowtoShowSecretPageinSecurityLevel5 = 78;
+
 	/* private methods */
 	private function doSetSecurityLevel($pSecurityLevel){
 		$this->mSecurityLevel = $pSecurityLevel;

@@ -332,5 +332,11 @@ for(i=0;i&lt;s.length;i++){var lKey = s.key(i);m += lKey + &quot;=&quot; + s.get
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->InjectingCrossSiteScriptsXSSintoLogPageviaCookie);?>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoHTMLInjectionHTMLiandCrossSiteScriptingXSSUsingMutillidae);?>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoCrossSiteScriptingXSSviaJavaScriptStringInjection);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->ExplanationofHTTPOnlyCookiesinPresenceCrossSiteScripting);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AddingValuestoDOMStorageusingCrosssiteScripting);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AlterValuesinHTML5WebStorageusingCrosssiteScript);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AlterValuesinHTML5WebStorageusingPersistentCrosssiteScript);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AlterValuesinHTML5WebStorageusingReflectedCrosssiteScript);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->WebPenTestingHTML5WebStorageusingJSONInjection);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->StealingHTML5StorageviaJSONInjection);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->ReadingHiddenValuesfromHTML5DomStorage);?>
 			<br/><br/>

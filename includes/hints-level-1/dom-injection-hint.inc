@@ -24,3 +24,7 @@
 			into the message. Craft a XSS to read the DOM storage or perform other 
 			action.  
 			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofInjectingCrossSiteScriptintoHTMLonclickEvent);?>
+			<br/><br/>

@@ -17,3 +17,7 @@
 			discovered during spidering. Use a tool such as Burp-Intruder to brute-force
 			sub-directory names in the root directory and other discovered directories. 
 			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->SpideringWebApplicationswithBurpSuite);?>
+			<br/><br/>

@@ -64,4 +64,6 @@ server and confirm the subnet being used to connect.
 <code>
 	root@ubuntu:~# wireshark /tmp/login-packets.pcap &
 </code>
-<br/><br/>
+	<br/><br/>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->UsingEttercapandSSLstriptoCaptureCredentials);?>
+	<br/><br/>
