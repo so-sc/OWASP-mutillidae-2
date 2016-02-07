@@ -112,8 +112,9 @@
 
 			$lAuthenticationAttemptResult = $cAUTHENTICATION_SUCCESSFUL;
 
-			/* Redirect back to the home page */
+			/* Redirect back to the home page and exit to stop adding to HTTP response*/
 			header('Location: index.php?popUpNotificationCode=AU1', true, 302);
+			exit(0);
 
 		}// end if $lAuthenticationAttemptResultFound
 	   				

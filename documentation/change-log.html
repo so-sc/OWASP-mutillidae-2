@@ -13,6 +13,22 @@ TODO: Audit help files (ongoing)
 
 <div><span style="font-weight:bold;">02/08/2016</span>: Jeremy Druin</div>
 <blockquote>
+	<div>Change Log for OWASP Mutillidae II 2.6.37:</div>
+	<ul>
+		<li>BUG FIX: Login script was missing exit() method that prevented HTTP
+		body from being populated when the HTTP request was only going to 
+		redirect the user anyway
+		</li>
+		<li>
+			BUG FIX: Minor issue that three blank spaces were output between end of
+			HTTP reponse header and begining of HTTP reponse body. Per the RFC only
+			one blank line should appear.
+		</li>
+	</ul>
+</blockquote>
+
+<div><span style="font-weight:bold;">02/08/2016</span>: Jeremy Druin</div>
+<blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.6.36:</div>
 	<ul>
 		<li>Added video tutorials for Burp-Suite into hints</li>

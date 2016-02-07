@@ -84,9 +84,7 @@
 	
 	$lHintsMessage = "Hints: ".$_SESSION["hints-enabled"];
 	$lSecurityLevelMessage = "Security Level: ".$_SESSION["security-level"]." (".$lSecurityLevelDescription.")";
-?>
 
-<?php 
 	try{
    		$lReflectedXSSExecutionPointBallonTip = $BubbleHintHandler->getHint("ReflectedXSSExecutionPoint");
    		$lCookieTamperingAffectedAreaBallonTip = $BubbleHintHandler->getHint("CookieTamperingAffectedArea"); 
@@ -94,7 +92,6 @@
 		echo $CustomErrorHandler->FormatError($e, "Error attempting to execute query to fetch bubble hints.");
 	}// end try	
 ?>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html>
 <head>
