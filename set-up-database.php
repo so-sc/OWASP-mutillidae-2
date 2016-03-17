@@ -894,7 +894,8 @@ try{
 			(75, 'PDpWDojO2yk', 'How to Show hints in security level 5'),
 			(76, 'pNedfUt0F8k', 'Introduction to Password Cracking with John the Ripper'),
 			(77, '_70aJMjBT34', 'Introduction to Fuzzing Web Applications with Burp-Suite Intruder Tool'),
-			(78, 'SiK_vl6MhSo', 'How to Show Secret Page in Security Level 5')
+			(78, 'SiK_vl6MhSo', 'How to Show Secret Page in Security Level 5'),
+			(79, 'xoDzSA9XZQk', 'Solving Password Challenge in Mutillidae with Command Injection')
 	";
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {

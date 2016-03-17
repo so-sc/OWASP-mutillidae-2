@@ -115,6 +115,7 @@ class YouTubeVideoHandler {
 	public $IntroductiontoPasswordCrackingwithJohntheRipper = 76;
 	public $IntroductiontoFuzzingWebApplicationswithBurpSuiteIntruderTool = 77;
 	public $MutillidaeHowtoShowSecretPageinSecurityLevel5 = 78;
+	public $SolvingPasswordChallengeInMutillidaeWithCommandInjection = 79;
 
 	/* private methods */
 	private function doSetSecurityLevel($pSecurityLevel){
