@@ -11,6 +11,33 @@ TODO: Audit help files (ongoing)
 <br />
 <br />
 
+<div><span style="font-weight:bold;">06/05/2016</span>: Jeremy Druin</div>
+<blockquote>
+	<div>Change Log for OWASP Mutillidae II 2.6.38:</div>
+	<ul>
+		<li>
+			BUG FIX: Some folder paths still referred to 'hints' from 
+			the days of multiple levels. Now these paths just refer to 'hints'
+		</li>
+		<li>
+			BUG FIX: New page about HTML and JavaScript comments added called 
+			client-side-comments.php. Link previously went nowhere.
+			Issue found by Lee Baird.
+		</li>
+		<li>BUG FIX: Updated listing of vulnerabilities with missing items</li>
+		<li>
+			BUG FIX: x-frame-options-header menu links were not pointing
+			to correct pages about framing and click-jacking.
+			Issue found by Lee Baird.
+		</li>
+		<li>
+			BUG FIX: Added new page about cache-control. Link
+			was pointing to nowhere.
+			Issue found by Lee Baird.
+		</li>
+	</ul>
+</blockquote>
+
 <div><span style="font-weight:bold;">03/17/2016</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.6.37:</div>
@@ -298,9 +325,9 @@ TODO: Audit help files (ongoing)
 			between the hint and the page.
 		</li>
 		<li>Hints now show by default but are contained in a hidden div element</li>
-		<li>Created new page level-1-hints-page-wrapper.php</li>
-		<li>Renamed level-1-hints-wrapper.inc to level-1-hints-menu-wrapper.inc</li>
-		<li>Renamed level-1-hints.js.inc to level-1-hints-menu.js.inc</li>
+		<li>Created new page hints-page-wrapper.php</li>
+		<li>Renamed hints-wrapper.inc to hints-menu-wrapper.inc</li>
+		<li>Renamed hints.js.inc to hints-menu.js.inc</li>
 		<li>Added new column level_1_help_include_file_description to table level_1_help_include_files</li>
 		<li>
 			BUG FIX: The YouTubeVideoHandlerClass was missing a reference to the remote file handler class.

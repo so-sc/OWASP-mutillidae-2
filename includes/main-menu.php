@@ -427,11 +427,12 @@
 								<li><a href="index.php?page=robots-txt.php">Robots.txt</a></li>
 								<li><a href="index.php?page=secret-administrative-pages.php">"Secret" Administrative Pages</a></li>
 								<li><a href="index.php?page=html5-storage.php">HTML5 Web Storage</a></li>
-								<li><a href="index.php">Cache-Control</a></li>
-								<li><a href="index.php">X-Powered-By HTTP Header</a></li>
-								<li><a href="index.php">HTML/JavaScript Comments</a></li>
+								<li><a href="index.php?page=client-side-comments.php">HTML/JavaScript Comments</a></li>
+								<li><a href="index.php?page=cache-control.php">Cache-Control</a></li>
 								<li><a href="index.php?page=framing.php">Click-Jacking</a></li>
 								<li><a href="framer.html">Cross-Site Framing (Third-Party Framing)</a></li>
+								<li><a href="index.php?page=framing.php">X-Powered-By HTTP Header</a></li>
+								<li><a href="framer.html">X-Powered-By HTTP Header</a></li>
 							</ul>
 						</li>
 						<li>
@@ -541,7 +542,7 @@
 					<ul>
 						<li><a href="index.php">Cache-Control</a></li>
 						<li><a href="index.php">X-Powered-By HTTP Header</a></li>
-						<li><a href="index.php">HTML/JavaScript Comments</a></li>
+						<li><a href="index.php?page=client-side-comments.php">HTML/JavaScript Comments</a></li>
 						<li><a href="index.php?page=framing.php">Click-Jacking</a></li>
 						<li><a href="framer.html">Cross-Site Framing (Third-Party Framing)</a></li>
 						<li><a href="index.php?page=html5-storage.php">HTML5 Web Storage</a></li>

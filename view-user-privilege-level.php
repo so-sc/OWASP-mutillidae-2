@@ -163,7 +163,7 @@
 <div class="page-title">View User Privilege Level</div>
 
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
-<?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-menu-wrapper.inc'); ?>
+<?php include_once (__ROOT__.'/includes/hints/hints-menu-wrapper.inc'); ?>
 
 <?php 
 	if ($lCreateParameterAdditionVulnerability) {

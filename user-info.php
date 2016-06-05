@@ -107,7 +107,7 @@
 <div class="page-title">User Lookup (SQL)</div>
 
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
-<?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-menu-wrapper.inc'); ?>
+<?php include_once (__ROOT__.'/includes/hints/hints-menu-wrapper.inc'); ?>
 
 <span>
 	<a style="text-decoration: none; cursor: pointer;" href="./webservices/soap/ws-user-account.php">

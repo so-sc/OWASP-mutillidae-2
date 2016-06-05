@@ -1,6 +1,6 @@
 <?php
 	if ($_SESSION["showhints"] > 0) {
-		require_once 'level-1-hints-menu.js.inc';
+		require_once 'hints-menu.js.inc';
 		$lDisplayHintStyle = "block";
 	}else{
 		$lDisplayHintStyle = "none";
@@ -30,7 +30,7 @@
 					echo
 						'<div class="hint-header">'.
 						'<img src="images/link-icon-16-16.png" style="margin-right: 5px;" />'.
-						'<a class="hint-header" href="level-1-hints-page-wrapper.php?level1HintIncludeFile='.
+						'<a class="hint-header" href="hints-page-wrapper.php?level1HintIncludeFile='.
 							$lRecord->level_1_help_include_file_key.
 						'" title="Click to open '.$lRecord->level_1_help_include_file_description.' hint in new tab" target="_blank" />'.
 							$lRecord->level_1_help_include_file_description.
@@ -38,7 +38,7 @@
 						'</div>';
 				}// end while
 			}else{
-				include_once (__ROOT__.'/includes/hints-level-1/hints-not-found.inc');
+				include_once (__ROOT__.'/includes/hints/hints-not-found.inc');
 			}// end if
 		}//end if $_SESSION["showhints"] > 0
 

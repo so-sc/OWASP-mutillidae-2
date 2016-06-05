@@ -156,6 +156,15 @@
 	</ul>
 </div>
 
+<p class="label">client-side-comments.php</p>
+<div style="padding-left: 40px;">
+	<ul>
+		<li>
+			Comments with sensitive data
+		</li>
+	</ul>
+</div>
+
 <p class="label">client-side-control-challenge.php</p>
 <div style="padding-left: 40px;">
 	<ul>
@@ -379,6 +388,13 @@
 	</ul>
 </div>
 
+<p class="label">privilege-escalation.php</p>
+<div style="padding-left: 40px;">
+	<ul>
+		<li>None</li>
+	</ul>
+</div>
+
 <p class="label">process-commands.php</p>
 <div style="padding-left: 40px;">
 	<ul>
@@ -495,6 +511,13 @@
 	</ul>
 </div>
 
+<p class="label">sqlmap-targets.php</p>
+<div style="padding-left: 40px;">
+	<ul>
+		<li>None</li>
+	</ul>
+</div>
+
 <p class="label">ssl-misconfiguration.php</p>
 <div style="padding-left: 40px;">
 	<ul>
@@ -534,19 +557,19 @@
 	</ul>
 </div>
 
+<p class="label">usage-instructions.php</p>
+<div style="padding-left: 40px;">
+	<ul>
+		<li>No known vulnerabilities. We should add some.</li>
+	</ul>
+</div>
+
 <p class="label">user-agent-impersonation.php</p>
 <div style="padding-left: 40px;">
 	<ul>
 		<li>Javascript String Injection</li>
 		<li>Cross site scripting</li>
 		<li>User agent impersonation</li>
-	</ul>
-</div>
-
-<p class="label">usage-instructions.php</p>
-<div style="padding-left: 40px;">
-	<ul>
-		<li>No known vulnerabilities. We should add some.</li>
 	</ul>
 </div>
 

@@ -67,7 +67,7 @@
 <div class="page-title">Browser Version Site Footer</div>
 
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
-<?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-menu-wrapper.inc'); ?>
+<?php include_once (__ROOT__.'/includes/hints/hints-menu-wrapper.inc'); ?>
 
 <table style="margin-left:auto; margin-right:auto;">
 	<tr>

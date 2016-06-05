@@ -95,7 +95,7 @@
 <div class="page-title">Login</div>
 
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
-<?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-menu-wrapper.inc'); ?>
+<?php include_once (__ROOT__.'/includes/hints/hints-menu-wrapper.inc'); ?>
 
 <div id="id-log-in-form-div" style="display: none; text-align:center;">
 	<form 	action="index.php?page=login.php"

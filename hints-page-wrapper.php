@@ -69,7 +69,7 @@
 			</tr>
 			<tr>
 				<td class="hint-body">
-					<?php include_once ('./includes/hints-level-1/'.$lIncludeFile); ?>
+					<?php include_once ('./includes/hints/'.$lIncludeFile); ?>
 				</td>
 			</tr>
 		</table>

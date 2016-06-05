@@ -1,6 +1,6 @@
 <?php include_once (__ROOT__.'/classes/FileUploadExceptionHandler.php');?>
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
-<?php include_once (__ROOT__.'/includes/hints-level-1/level-1-hints-menu-wrapper.inc'); ?>
+<?php include_once (__ROOT__.'/includes/hints/hints-menu-wrapper.inc'); ?>
 <?php	
 	try{
     	switch ($_SESSION["security-level"]){
