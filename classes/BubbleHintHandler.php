@@ -97,18 +97,24 @@ class BubbleHintHandler {
 	}// end function
 	
 	public function getHint($pTipKey){
+
+		// if user doesnt want to see hints, return nothing
+		if (!$this->mDisplayHints){
+			return "";
+		}// end if
 		
 		//if system has disabled hints. return innocuous message.
 		if (!$this->mHintsEnabled){
 			return "Not allowed to give hints at this security level.";
 		}// end if
-		
-		// if user doesnt want to see hints, return nothing
-		if (!$this->mDisplayHints){
-			return "";
-		}// end if
 
-		$lQuery  = "SELECT tip FROM balloon_tips WHERE tip_key ='" . $pTipKey . "' AND hint_level = " . $this->mHintLevel . ";";
+		/* There used to be different hint levels. These were merged into the super-hint system.
+		 * Overall this was a big improvement but now the bubble hints can no longer increase
+		 * in verbosity as the hint level increases. Until I get around to fixing this, Im setting
+		 * the bubble hint level to maximum verbosity (level =2).
+		 */
+		//$lQuery  = "SELECT tip FROM balloon_tips WHERE tip_key ='" . $pTipKey . "' AND hint_level = " . $this->mHintLevel . ";";
+		$lQuery  = "SELECT tip FROM balloon_tips WHERE tip_key ='" . $pTipKey . "' AND hint_level = 2;";
 		
 		try{
     		$lResult = $this->mMySQLHandler->executeQuery($lQuery);

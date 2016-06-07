@@ -23,13 +23,16 @@
 			<br/><br/>
 			sqlmap.py --url=&quot;http://192.168.56.102/mutillidae/index.php?page=login.php&quot; --data=&quot;username=asdf&amp;password=asdf&amp;login-php-submit-button=Login&quot; --banner
 			<br/><br/>
-			<span class="report-header">
-				Capturing Request To Pass To SQLMAP
-			</span>
+			<span class="report-header">Capturing Request To Pass To SQLMAP</span>
 			<br/><br/>
-			Note: Save request to a file such as ~/engagements/sqlmap/login.php.request. The -r switch takes the file path.
+			Create a valid HTTP request on the target page. Do not inject malicious input into this request.
+			For example, using Burp-Suite Capture the request in Burp-Proxy --> Intercept 
+			or lookup request in Burp-Proxy --> HTTP History.
 			<br/><br/>
-			URL: http://192.168.56.102/mutillidae/index.php?page=login.php
+			Copy the HTTP request and save to a text file. gedit is a reasonable editor.
+			Save request to a file such as ~/engagements/sqlmap/login.php.request. The -r switch takes the file path.
+			<br/><br/>
+			Here is a sample request for URL: http://192.168.56.102/mutillidae/index.php?page=login.php
 			<br/><br/>
 			Request:
 			<br/>
@@ -48,17 +51,47 @@ Content-Length: 57
 
 username=asdf&amp;password=asdf&amp;login-php-submit-button=Login
 </span>
-						<br/>
-						<span class="report-header">
-						Running SQLMAP with &quot;auto-parse&quot;
-						</span>
-						<br/><br/>
-							sqlmap -r ~/engagements/sqlmap/login.php.request &lt;options&gt;
-						<br/><br/>
-						<span class="report-header">
-						Running SQLMAP with various features
-						</span>
-						<br/><br/>
+			<br/>
+			<span class="report-header">
+			Running SQLMAP with &quot;auto-parse&quot;
+			</span>
+			<br/><br/>
+			Start sqlmap telling sqlmap path to file containing HTTP request. 
+			Attempting to enumerate database server information is a good start (--banner).
+			SQLMap will parse URL and input parameters then attempt to determine database brand and injection points.						
+			<br/><br/>
+				sqlmap -r ~/engagements/sqlmap/login.php.request &lt;options&gt;
+			<br/><br/>
+			sqlmap may find SQL injection automatically. 
+			But performing recon and initial testing on application can greatly enhance chance of success.
+			Fingerprint database and inform SQLMap with --dbms parameter.
+			Determine likely parameter and tell SQLMap with -p parameter.
+			<br/><br/>
+			Example: sqlmap -r /tmp/request -p username --dbms=MySQL --banner
+			<br/><br/>
+			Once a vulnerable parameter identified begin to enumerate data structures
+			<br/><br/>
+			Databases
+			<br/><br/>
+			--dbs
+			<br/><br/>
+			Tables in databases
+			<br/><br/>
+			--tables
+			<br/><br/>
+			Columns in tables
+			<br/><br/>
+			--columns			
+			<br/><br/>
+			Feed each piece of information discovered into next round of testing
+			<br/><br/>
+			Once target information located, extract information with --dump.
+			SQLMap can perform many other attacks depending on the privileges allocated to the application ID
+			<br/><br/>
+			<span class="report-header">
+			Running SQLMAP with various features
+			</span>
+			<br/><br/>
 						sqlmap -r ~/engagements/sqlmap/login.php.request &lt;options&gt;
 						<br/>
 <span style="white-space: pre;">

