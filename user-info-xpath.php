@@ -1,14 +1,8 @@
 <?php 
 	require_once (__ROOT__.'/classes/XMLHandler.php');
 
-	/* ------------------------------------------
-	 * initialize XML handler
-	* ------------------------------------------ */
-	$lXMLAccountFilePath = "./data/accounts.xml";
-	$XMLHandler = new XMLHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
-	$XMLHandler->SetDataSource($lXMLAccountFilePath);
-	
 	try{
+		
     	switch ($_SESSION["security-level"]){
     		case "0": // This code is insecure
 				$lEnableHTMLControls = FALSE;
@@ -58,8 +52,15 @@
 	    	}// end if $lProtectAgainstMethodTampering
 		}// end if $lFormSubmitted
 
-   	} catch (Exception $e) {
-		echo $CustomErrorHandler->FormatError($e, $lQueryString);
+    	/* ------------------------------------------
+    	 * initialize XML handler
+    	* ------------------------------------------ */
+    	$lXMLAccountFilePath = "./data/accounts.xml";
+    	$XMLHandler = new XMLHandler("owasp-esapi-php/src/", $_SESSION["security-level"]);
+    	$XMLHandler->SetDataSource($lXMLAccountFilePath);
+    	 
+	} catch (Exception $e) {
+		echo $CustomErrorHandler->FormatError($e, "Error handled on page user-info-xpath.php");
    	}// end try;
 ?>
 

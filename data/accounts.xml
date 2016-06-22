@@ -128,7 +128,7 @@
 	</Employee>
 	<Employee ID="22">
 		<UserName>james</UserName>
-		<Password>i<3devs</Password>
+		<Password>i&lt;3devs</Password>
 		<Signature>Occupation: Researcher</Signature>
 		<Type>Admin</Type>
 	</Employee>

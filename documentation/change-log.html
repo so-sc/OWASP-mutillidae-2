@@ -16,8 +16,18 @@ TODO: Audit help files (ongoing)
 	<div>Change Log for OWASP Mutillidae II 2.6.40:</div>
 	<ul>
 		<li>
-			Improved hints for Command Injection
+			Improved hints for Command Injectiond
 		</li>
+		<li>
+			BUG FIX: User info XML page did not have XMLHandler instantiation
+			in TRY/CATCH
+		</li>
+		<li>
+			BUG FIX: Setup script did not escape special XML characters when 
+			building XML version of accounts table
+		</li>
+		<li>BUG FIX: User info XML page had multiple undefined variables</li>
+		<li>Added error handling to the XMLParser class</li>
 	</ul>
 </blockquote>
 

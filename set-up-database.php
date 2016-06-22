@@ -998,10 +998,10 @@ try{
 		while($row = $lQueryResult->fetch_object()){
 			$lAccountType = $row->is_admin?"Admin":"User";
 		   	$lAccountsXML.=$cTAB.'<Employee ID="'.$lCounter.'">'.PHP_EOL;
-		   	$lAccountsXML.=$cTAB.$cTAB.'<UserName>'.$row->username.'</UserName>'.PHP_EOL;
-		   	$lAccountsXML.=$cTAB.$cTAB.'<Password>'.$row->password.'</Password>'.PHP_EOL;
-		   	$lAccountsXML.=$cTAB.$cTAB.'<Signature>'.$row->mysignature.'</Signature>'.PHP_EOL;
-		   	$lAccountsXML.=$cTAB.$cTAB.'<Type>'.$lAccountType.'</Type>'.PHP_EOL;
+		   	$lAccountsXML.=$cTAB.$cTAB.'<UserName>'.htmlspecialchars($row->username).'</UserName>'.PHP_EOL;
+		   	$lAccountsXML.=$cTAB.$cTAB.'<Password>'.htmlspecialchars($row->password).'</Password>'.PHP_EOL;
+		   	$lAccountsXML.=$cTAB.$cTAB.'<Signature>'.htmlspecialchars($row->mysignature).'</Signature>'.PHP_EOL;
+		   	$lAccountsXML.=$cTAB.$cTAB.'<Type>'.htmlspecialchars($lAccountType).'</Type>'.PHP_EOL;
 		   	$lAccountsXML.=$cTAB.'</Employee>'.PHP_EOL;
 		   	
 		   	$lAccountsText.=$lCounter.",".$row->username.",".$row->password.",".$row->mysignature.",".$lAccountType.PHP_EOL;
