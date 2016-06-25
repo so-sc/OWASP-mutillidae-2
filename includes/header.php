@@ -190,34 +190,36 @@
 	</tr>
 	<tr>
 		<td style="vertical-align:top;text-align:left;background-color:#ccccff;width:125pt;">
-		<?php require_once 'main-menu.php'; ?>			
-		<div>&nbsp;</div>
-		<div>&nbsp;</div>
-		<div class="label" style="text-align: center;">
-			<a href="https://twitter.com/webpwnized" target="_blank">
-				<img align="middle" alt="Webpwnized Twitter Channel" src="./images/twitter-bird-48-48.png" />
-				<br/>
-				Release Announcements
-			</a>
-		</div>		
-		<div>&nbsp;</div>
+		<?php require_once 'main-menu.php'; ?>
 		<div>&nbsp;</div>
 		<div class="label" style="text-align: center;">
 			<a href="http://www.youtube.com/user/webpwnized" style="white-space:nowrap;" target="_blank">
 				<img align="middle" alt="Webpwnized YouTube Channel" src="./images/youtube-48-48.png" />
 				<br/>
-				Video<br/>Tutorials
+				Video Tutorials
 			</a>
 		</div>
 		<div>&nbsp;</div>
-		<div>&nbsp;</div>	
 		<div class="label" style="text-align: center;">
-			<a href="https://www.owasp.org" target="_blank">
-				<img alt="OWASP" style="border-width: 0px;" src="./images/owasp-logo-120-90.png" />
+			<a href="https://twitter.com/webpwnized" target="_blank">
+				<img align="middle" alt="Webpwnized Twitter Channel" src="./images/twitter-bird-48-48.png" />
 				<br/>
-				OWASP
+				Announcements
+			</a>
+		</div>		
+		<div>&nbsp;</div>
+		<div class="label" style="text-align: center;">
+			<a 
+				href="https://www.sans.org/reading-room/whitepapers/application/introduction-owasp-mutillidae-ii-web-pen-test-training-environment-34380" 
+				target="_blank"
+				title="Whitepaper: Introduction to OWASP Mutillidae II Web Pen Test Training Environment"
+			>			
+				<img align="middle" alt="Webpwnized Twitter Channel" src="./images/pdf-icon-48-48.png" />
+				<br/>
+				Getting Started
 			</a>
 		</div>
+		<div>&nbsp;</div>
 	</td>
 	<td valign="top">
 		<blockquote>

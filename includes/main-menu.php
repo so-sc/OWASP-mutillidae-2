@@ -67,6 +67,48 @@
 					<a href="https://www.owasp.org/index.php/Top_10_2013-A1-Injection" target="_blank">A1 - Injection (Other)</a>
 						<ul>
 						<li>
+							<a href="">Application Log Injection</a>
+							<ul>
+								<li><a href="index.php?page=add-to-your-blog.php">Add to your blog</a></li>
+								<li><a href="index.php?page=dns-lookup.php">DNS Lookup</a></li>
+								<li><a href="index.php?page=document-viewer.php&PathToDocument=documentation/how-to-access-Mutillidae-over-Virtual-Box-network.php">Document Viewer</a></li>
+								<li><a href="index.php?page=capture-data.php">Capture Data Page</a></li>
+								<li><a href="index.php?page=login.php">Login</a></li>
+								<li><a href="index.php?page=register.php">Register User</a></li>
+								<li><a href="index.php?page=source-viewer.php">Source Viewer</a></li>
+								<li><a href="index.php?page=text-file-viewer.php">Text File Viewer</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="">Buffer Overflow</a>
+							<ul>
+								<li><a href="index.php?page=repeater.php">Repeater</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="">Cascading Style Injection</a>
+							<ul>
+								<li><a href="index.php?page=set-background-color.php">Set Background Color</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="index.php?page=view-user-privilege-level.php&iv=6bc24fc1ab650b25b4114e93a98f1eba">CBC-bit Flipping</a>
+						</li>
+						<li>
+							<a href="">Command Injection</a>
+							<ul>
+								<li><a href="index.php?page=dns-lookup.php">DNS Lookup</a></li>
+								<li><a href="./webservices/soap/ws-lookup-dns-record.php">DNS Lookup (SOAP Web Service)</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="">Frame Source Injection</a>
+							<ul>
+								<li><a href="index.php?page=document-viewer.php&PathToDocument=documentation/how-to-access-Mutillidae-over-Virtual-Box-network.php">Document Viewer</a></li>
+								<li><a href="index.php?page=styling-frame.php&page-to-frame=styling.php%3Fpage-title%3DStyling+with+Mutillidae">Styling with Mutilidae</a></li>
+							</ul>
+						</li>
+						<li>
 							<a href="">HTML Injection (HTMLi)</a>
 							<ul>
 								<li><a href="index.php?page=add-to-your-blog.php">Add to your blog</a></li>
@@ -113,17 +155,10 @@
 							</ul>
 						</li>
 						<li>
-							<a href="">Frame Source Injection</a>
+							<a href="">HTTP Parameter Pollution</a>
 							<ul>
+								<li><a href="index.php?page=user-poll.php">Poll Question</a></li>
 								<li><a href="index.php?page=document-viewer.php&PathToDocument=documentation/how-to-access-Mutillidae-over-Virtual-Box-network.php">Document Viewer</a></li>
-								<li><a href="index.php?page=styling-frame.php&page-to-frame=styling.php%3Fpage-title%3DStyling+with+Mutillidae">Styling with Mutilidae</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="">Command Injection</a>
-							<ul>
-								<li><a href="index.php?page=dns-lookup.php">DNS Lookup</a></li>
-								<li><a href="./webservices/soap/ws-lookup-dns-record.php">DNS Lookup (SOAP Web Service)</a></li>
 							</ul>
 						</li>
 						<li>
@@ -135,29 +170,10 @@
 							</ul>
 						</li>
 						<li>
-							<a href="">HTTP Parameter Pollution</a>
-							<ul>
-								<li><a href="index.php?page=user-poll.php">Poll Question</a></li>
-								<li><a href="index.php?page=document-viewer.php&PathToDocument=documentation/how-to-access-Mutillidae-over-Virtual-Box-network.php">Document Viewer</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="">Cascading Style Injection</a>
-							<ul>
-								<li><a href="index.php?page=set-background-color.php">Set Background Color</a></li>
-							</ul>
-						</li>
-						<li>
 							<a href="">JavaScript Object Notation (JSON) Injection</a>
 							<ul>
 								<li><a href="index.php?page=pen-test-tool-lookup.php">Pen Test Tool Lookup</a></li>
 								<li><a href="index.php?page=pen-test-tool-lookup-ajax.php">Pen Test Tool Lookup (AJAX)</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="">Buffer Overflow</a>
-							<ul>
-								<li><a href="index.php?page=repeater.php">Repeater</a></li>
 							</ul>
 						</li>
 						<li>
@@ -190,22 +206,6 @@
 							<ul>
 								<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
 							</ul>
-						</li>
-						<li>
-							<a href="">Application Log Injection</a>
-							<ul>
-								<li><a href="index.php?page=add-to-your-blog.php">Add to your blog</a></li>
-								<li><a href="index.php?page=dns-lookup.php">DNS Lookup</a></li>
-								<li><a href="index.php?page=document-viewer.php&PathToDocument=documentation/how-to-access-Mutillidae-over-Virtual-Box-network.php">Document Viewer</a></li>
-								<li><a href="index.php?page=capture-data.php">Capture Data Page</a></li>
-								<li><a href="index.php?page=login.php">Login</a></li>
-								<li><a href="index.php?page=register.php">Register User</a></li>
-								<li><a href="index.php?page=source-viewer.php">Source Viewer</a></li>
-								<li><a href="index.php?page=text-file-viewer.php">Text File Viewer</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="index.php?page=view-user-privilege-level.php&iv=6bc24fc1ab650b25b4114e93a98f1eba">CBC-bit Flipping</a>
 						</li>
 					</ul>
 				</li>
@@ -772,15 +772,3 @@
 	</ul>
 	<br style="clear: left" />
 </div>
-<div>&nbsp;</div>
-<div class="label" style="text-align: center;">
-	<a 
-		href="https://www.sans.org/reading-room/whitepapers/application/introduction-owasp-mutillidae-ii-web-pen-test-training-environment-34380" 
-		target="_blank"
-		title="Whitepaper: Introduction to OWASP Mutillidae II Web Pen Test Training Environment"
-	>			
-		<img align="middle" alt="Webpwnized Twitter Channel" src="./images/pdf-icon-48-48.png" />
-		<br/>
-		Getting Started: Project Whitepaper
-	</a>
-</div>		
