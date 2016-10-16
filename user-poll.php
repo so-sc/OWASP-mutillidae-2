@@ -235,7 +235,7 @@
 			echo '<br/>';
 			echo '<fieldset>';
 			echo '<legend>Poll Results</legend>';
-			echo '<table border="1px;" width="50%" class="main-table-frame">';
+			echo '<table border="1px;" width="50%" class="results-table">';
 			echo '<tr class="report-header"><td colspan="2">'.$lQueryResult->num_rows.' Records Found</td></tr>';
 		    echo '<tr class="report-header">
 				    <td>Tool</td>

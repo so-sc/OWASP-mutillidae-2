@@ -122,7 +122,7 @@
 		$lQueryResult = $SQLQueryHandler->getCapturedData();
 
 		// we have rows. Begin drawing output.
-		echo '<table border="1px;" width="100%" class="main-table-frame">';
+		echo '<table border="1px;" width="100%" class="results-table">';
 		echo '<tr class="report-header"><td colspan="7">'.$lQueryResult->num_rows.' captured records found</td></tr>';
 	    echo '<tr class="report-header">
 			    <td>Hostname</td>

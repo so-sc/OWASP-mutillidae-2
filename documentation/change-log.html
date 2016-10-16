@@ -11,6 +11,25 @@ TODO: Audit help files (ongoing)
 <br />
 <br />
 
+<div><span style="font-weight:bold;">09/21/2016</span>: Jeremy Druin</div>
+<blockquote>
+	<div>Change Log for OWASP Mutillidae II 2.6.42:</div>
+	<ul>
+		<li>
+			Added more help for remote file inclusion hint about pulling in
+			a web shell
+		</li>
+		<li>BUG FIX: Problems reported with show log and display captured data pages. Report
+		that the page width is very wide. This only occurs if a lot of data is injected
+		such as a buffer overflow. Also the data has to be continuous without a page or line break.
+		The page-break style has been added to the affected pages. This might work in some
+		browsers but probably not because the condition that causes the issue
+		is data that has no breaks built in.
+		</li>
+		<li>BUG FIX: Corrected missing variable name in upload-file.php that was throwing a Warning</li>
+	</ul>
+</blockquote>
+
 <div><span style="font-weight:bold;">06/16/2016</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.6.41:</div>

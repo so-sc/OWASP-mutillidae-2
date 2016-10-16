@@ -52,7 +52,7 @@ div.page-title,span.page-title{
 	font-size: 18pt;
 	font-weight: bold;
 	text-align: center;
-	background-color: #cccccc;
+	background-color: #dddddd;
 	border-color: #000000;
 	border-width: 1px;
 	border-style: solid;
@@ -118,7 +118,7 @@ div.help-text {
 div.help-text-header{
 	border-width: 1px;
 	border-style: solid;
-	background-color: #eeeeee;
+	background-color: #dddddd;
 	text-align: center;
 	font-weight: bold;
 	padding: 5px;
@@ -179,7 +179,7 @@ table.tutorial tr.tutorial-title td{
 /* ------------------------------------------------- */
 
 *.report-header{
-	 background-color: #cccccc;
+	 background-color: #dddddd;
 	 font-weight: bold;
 	 text-align: center;
 	 border-color: #000000;
@@ -215,6 +215,32 @@ table{
 	margin-right:auto;
 }
 
+table tr td.label{
+	font-weight: bold;
+	/*color: white;*/
+	/*background-color: #000099;*/
+}
+
+table tr td{
+	padding:3px;
+}
+
+/* ---------------------------------------------------- */
+/* Main Site Frame */
+/* ---------------------------------------------------- */
+
+table.main-table-frame{
+	border-width: 1px;
+	border-color: #000000;
+	border-style: solid;
+	width:100%;
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+
+/* ---------------------------------------------------- */
+/* Horizontal Menu Table on the Sites Main Header Frame */
+/* ---------------------------------------------------- */
 td.header-menu-table{
 	background-color: #414141;
 }
@@ -262,7 +288,11 @@ table.header-menu-table tr td a:hover{
 	color: white;
 }
 
-table.main-table-frame{
+/* ----------------------------------------------------------------- */
+/* Tables to display results and data like logs, captured data, etc. */
+/* ----------------------------------------------------------------- */
+
+table.results-table{
 	border-width: 1px;
 	border-color: #000000;
 	border-style: solid;
@@ -271,15 +301,9 @@ table.main-table-frame{
 	border-spacing: 0px;
 }
 
-table tr td.label{
-	font-weight: bold;
-	/*color: white;*/
-	/*background-color: #000099;*/
-}
-
-table tr td{
-	padding:3px;
-}
+/* -------------------------- */
+/* Tables that make up forms  */
+/* -------------------------- */
 
 table tr td.form-header{
 	font-weight: bold;
@@ -293,7 +317,7 @@ table tr td.form-header{
 }
 
 /* ------------------------------------------------- */
-/* Sub-tables */
+/* Small embedded tables like HTML5 web storage*/
 /* ------------------------------------------------- */
 
 table tr td.sub-header{
@@ -542,6 +566,10 @@ table tr td.success-header{
 	padding-bottom: 5px;
 	border-radius: 3px;	
 }
+
+/* ------------------------------------------------- */
+/* Messages for results of rebuilding the database   */
+/* ------------------------------------------------- */
 
 div.database-success-message{
 	text-align: center;

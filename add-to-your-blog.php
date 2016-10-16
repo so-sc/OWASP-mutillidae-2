@@ -298,7 +298,7 @@
 						<span style="font-weight:bold; text-decoration: none;">View Blogs</span>
 					</a>
 				</span>';
-		echo '<table border="1px" width="90%" class="main-table-frame">';
+		echo '<table border="1px" width="90%" class="results-table">';
 	    echo ' 	<tr class="report-header">
 		    		<td colspan="4">'.$lQueryResult->num_rows.' Current Blog Entries</td>
 		    	</tr>

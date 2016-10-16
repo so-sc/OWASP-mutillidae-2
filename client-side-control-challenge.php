@@ -530,7 +530,7 @@
 </div>
 
 <div id="id-client-side-control-challenge-output-div" style="text-align: center; display: none;">
-	<table class="main-table-frame" id="idClientFields" style="width: 500px; text-align: left;">	
+	<table class="results-table" id="idClientFields" style="width: 500px; text-align: left;">	
 		<tr class="report-header">
 		    <td>Field</td>
 		    <td>Value Submitted</td>

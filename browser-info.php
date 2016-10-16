@@ -89,7 +89,7 @@
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
 <?php include_once (__ROOT__.'/includes/hints/hints-menu-wrapper.inc'); ?>
 
-<table border="1px" width="75%" class="main-table-frame">
+<table border="1px" width="75%" class="results-table">
 	<tr class="report-header"><td colspan="3">Info obtained by PHP</td></tr>
 	<tr><td class="non-wrapping-label">Client IP</td><td><?php echo $lClientIP; ?></td></tr>
     <tr><td class="non-wrapping-label">Client Hostname</td><td><?php echo $lClientHostname; ?></td></tr>
@@ -111,7 +111,7 @@
 	?>    
 </table>
 <div>&nbsp;</div><div>&nbsp;</div>
-<table border="1px" width="75%" class="main-table-frame">
+<table border="1px" width="75%" class="results-table">
     <tr class="report-header"><td colspan="3">Info obtained by JavaScript</td></tr>
 	<tr>
 		<td class="non-wrapping-label">Browser Name</td>

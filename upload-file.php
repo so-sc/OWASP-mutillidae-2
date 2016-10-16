@@ -109,7 +109,7 @@
 				}else{
 					$lFileMovedSuccessfully = FALSE;
 					$lFileMovedMessage = "Error Detected. Unable to move PHP temp file {$lTempDirectory} to permanent location {$lFilePermanentName}";
-					throw new Exception($lMessage);
+					throw new Exception($lFileMovedMessage);
 				}//end if move_uploaded_file
 			}// end if $lFileValid
 				

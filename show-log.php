@@ -74,7 +74,7 @@
 		vertical-align:middle;
 	}
 </style>
-<table class="main-table-frame" id="idLogRecords">
+<table class="results-table" id="idLogRecords">
 <tr class="report-header">
 	<td colspan="10">	
 		<span>

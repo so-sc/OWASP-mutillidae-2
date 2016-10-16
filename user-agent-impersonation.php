@@ -64,7 +64,7 @@
 <fieldset>
 	<legend>Browser Fingerprint</legend>
 	<div>&nbsp;</div>
-	<table border="1px" width="80%" class="main-table-frame">
+	<table border="1px" width="80%" class="results-table">
 		<tr><td colspan="3" id="id_result"></td></tr>
 	   	<tr><td colspan="3"></td></tr>
 		<tr><td class="non-wrapping-label">User Agent</td><td JavaScriptInjectionPoint="1" id="id_user_agent_td"></td></tr>
