@@ -65,8 +65,7 @@
 	meta tag into the HTML head section -->
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
 <iframe src="<?php echo $lPageToFrame; ?>"
-		PathRelativeStylesheetInjectionArea="1"
-		seamless="seamless" frameborder="0" 
-		marginheight="0px" marginwidth="0px" 
+		style="margin-left:auto; margin-right:auto; border:none; overflow:hidden;"
+		PathRelativeStylesheetInjectionArea="1" 
 		width="100%" height="600px" 
-		scrolling="auto"></iframe>
+		></iframe>

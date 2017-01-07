@@ -122,10 +122,10 @@
 		<tr>
 			<td class="label">Background Color</td>
 			<td>
-				<input CSSInjectionPoint="1" type="text" name="background_color" id="id_background_color" size="6" autofocus="1"
+				<input CSSInjectionPoint="1" type="text" name="background_color" id="id_background_color" size="6" autofocus="autofocus"
 					<?php
 						if ($lEnableHTMLControls) {
-							echo('minlength="6" maxlength="6" required="true"');
+							echo('minlength="6" maxlength="6" required="required"');
 						}// end if
 					?>
 				/>

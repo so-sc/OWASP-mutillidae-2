@@ -38,7 +38,7 @@
 	   	}// end switch ($_SESSION["security-level"])
 	   	
 	   	if ($lEnableHTMLControls) {
-	   		$lHTMLControlAttributes='required="true"';
+	   		$lHTMLControlAttributes='required="required"';
 	   	}else{
 	   		$lHTMLControlAttributes="";
 	   	}// end if
@@ -97,7 +97,7 @@
 			<td class="label">Source File Name</td>
 			<td>
 				<input type="hidden" name="page" value="<?php echo $_REQUEST['page']?>">
-				<select name="phpfile" id="id_file_select" HTMLandXSSandSQLInjectionPoint="1" autofocus="1" <?php echo $lHTMLControlAttributes ?>>
+				<select name="phpfile" id="id_file_select" HTMLandXSSandSQLInjectionPoint="1" autofocus="autofocus" <?php echo $lHTMLControlAttributes ?>>
 				<?php 
 					$_SESSION['source-viewer-files-array'] = "";						
 					if(!$lValidateAndTokenize){

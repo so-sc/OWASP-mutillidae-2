@@ -195,17 +195,17 @@
 		<tr><td>&nbsp;</td></tr>
 		<tr>
 			<td><input	type="text" id="idDOMStorageKeyInput" name="DOMStorageKey" size="20"
-						autofocus="1"
+						autofocus="autofocus"
 				<?php
 					if ($lEnableHTMLControls) {
-						echo('minlength="1" maxlength="20" required="true"');
+						echo('minlength="1" maxlength="20" required="required"');
 					}// end if
 				?>			
 			></td>
 			<td><input type="text" id="idDOMStorageItemInput" name="DOMStorageItem" size="20"
 				<?php
 					if ($lEnableHTMLControls) {
-						echo('minlength="1" maxlength="20" required="true"');
+						echo('minlength="1" maxlength="20" required="required"');
 					}// end if
 				?>
 			></td>
@@ -213,14 +213,14 @@
 				<input type="radio" name="SessionStorageType" value="Session" checked="checked" 
 					<?php
 						if ($lEnableHTMLControls) {
-							echo('required="true"');
+							echo('required="required"');
 						}// end if
 					?>
 				/>Session
 				<input type="radio" name="SessionStorageType" value="Local"
 					<?php
 						if ($lEnableHTMLControls) {
-							echo('required="true"');
+							echo('required="required"');
 						}// end if
 					?>
 				/>Local

@@ -185,10 +185,10 @@
 			<tr>
 				<td class="label" style="text-align: left;">String to repeat</td>
 				<td style="text-align: left;">
-					<input HTMLandXSSInjectionPoint="1" type="text" name="string_to_repeat" size="40" autofocus="1"
+					<input HTMLandXSSInjectionPoint="1" type="text" name="string_to_repeat" size="40" autofocus="autofocus"
 						<?php
 							if ($lEnableHTMLControls) {
-								echo('minlength="1" maxlength="40" required="true"');
+								echo('minlength="1" maxlength="40" required="required"');
 							}// end if
 						?>
 					/>
@@ -200,7 +200,7 @@
 					<input BufferOverflowInjectionPoint="1" type="text" name="times_to_repeat_string" size="30"
 						<?php
 							if ($lEnableHTMLControls) {
-								echo('minlength="1" maxlength="30" required="true"');
+								echo('minlength="1" maxlength="30" required="required"');
 							}// end if
 						?>
 					/>
@@ -218,7 +218,7 @@
 </div>
 
 <div id="id-repeater-output-div" style="text-align: center; display: none;">
-	<table align="center">
+	<table>
 		<tr><td></td></tr>
 		<tr>
 			<td ReflectedXSSExecutionPoint="1" colspan="2" class="hint-header"><?php echo $lBuffer; ?></td>

@@ -15,12 +15,10 @@
 
 <iframe
 	id="id-iframe" 
-	frameborder="0"
-	scrolling="no" 
 	width="500px" 
 	height="600px" 
 	src="rene-magritte.php" 
-	style="margin-left:auto; margin-right:auto;"
+	style="margin-left:auto; margin-right:auto; border:none; overflow:hidden;"
 	>
 </iframe>
 

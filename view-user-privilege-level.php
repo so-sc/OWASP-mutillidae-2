@@ -205,7 +205,7 @@
 </div>
 
 <div id="id-view-user-privilege-level-output-div" style="text-align: center; display: none;">
-	<table align="center">
+	<table>
 		<tr><td></td></tr>
 		<tr>
 			<td ReflectedXSSExecutionPoint="1" colspan="2" class="hint-header"><?php echo $lBuffer; ?></td>

@@ -4,10 +4,6 @@
 	}
 </style>
 
-<div class="page-title">
-	Mutillidae: Deliberately Vulnerable Web Pen-Testing Application
-</div>
-
 <?php
 	/* Check if required software is installed. Issue warning if not. */
  
@@ -21,14 +17,6 @@
 ?>
 
 <table style="margin:0px;margin-top:5px;">
- 	<tr>
-	    <td colspan="2" style="text-align: center;">
-			<a title="Hacker for Charity: Johnny Long" href="./index.php?page=hackers-for-charity.php">
-				<img alt="Hacker for Charity: Johnny Long" align="middle" src="./images/like-icon-48-48.png" />
-				Like Mutillidae? Check out how to help
-			</a>
-		</td>
-	</tr>
  	<tr>
 	    <td>
 			<a title="Usage Instructions" href="./index.php?page=usage-instructions.php">

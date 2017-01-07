@@ -166,7 +166,6 @@ class SQLQueryHandler {
 		return $this->mMySQLHandler->executeQuery($lQueryString);
 	}//end public function insertVoteIntoUserPoll
 	
-	
 	public function insertBlogRecord($pBloggerName, $pBlogEntry){
 		
 		if ($this->stopSQLInjection == TRUE){
@@ -203,13 +202,9 @@ class SQLQueryHandler {
   		 * Note: While escaping works ok in some case, it is not the best defense.
  		 * Using stored procedures is a much stronger defense.
  		 */
-		/* Bummer: Have to protect against SQL injection because the user needs to inject
-		 * a single-quote into the JSON in order to make the JavaScript that parses the JSON 
-		 * syntactically correct.
-		 */
-		//if ($this->stopSQLInjection == TRUE){
+		if ($this->stopSQLInjection == TRUE){
 			$pPostedToolID = $this->mMySQLHandler->escapeDangerousCharacters($pPostedToolID);
-		//}// end if
+		}// end if
 
 		if ($pPostedToolID != "c84326e4-7487-41d3-91fd-88280828c756"){
 			$lWhereClause = " WHERE tool_id = '".$pPostedToolID."';";

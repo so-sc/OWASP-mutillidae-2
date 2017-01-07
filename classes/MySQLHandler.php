@@ -13,7 +13,7 @@ class MySQLHandler {
 	 * If using XAMPP, this is almost certainly localhost.
 	 * 127.0.0.1 might work.
 	 * */
-	static public $mMySQLDatabaseHost = "localhost";
+	static public $mMySQLDatabaseHost = "127.0.0.1";
 
 	/* ----------------------------------------------
 	 * DATABASE USER NAME
@@ -94,7 +94,7 @@ class MySQLHandler {
 
 	private function doOpenDatabaseConnection(){
 		
-		$ACCESS_DENIED = "ccess denied for user";
+		$ACCESS_DENIED = "Access denied for user";
 		$USERNAME = self::$mMySQLDatabaseUsername;
 		$PASSWORD = self::$mMySQLDatabasePassword;
 		$SAMURAI_WTF_PASSWORD = "samurai";
@@ -199,17 +199,16 @@ class MySQLHandler {
 		self::$mDatabaseAvailableMessage = "AVAILABLE";
 		$lMySQLConnection = null;
 		$UNKNOWN_DATABASE = "Unknown database";
-		$ACCESS_DENIED = "ccess denied for user";
+		$ACCESS_DENIED = "Access denied for user";
 		$USERNAME = self::$mMySQLDatabaseUsername;
 		$PASSWORD = self::$mMySQLDatabasePassword;
 		$SAMURAI_WTF_PASSWORD = "samurai";
 		$HOSTNAME = self::$mMySQLDatabaseHost;
 		$INCORRECT_DATABASE_CONFIGURATION_MESSAGE = "Error connecting to MySQL database on host '".$HOSTNAME."' with username '".$USERNAME."' and password '".$PASSWORD."'. First, try to reset the database (ResetDB button on menu). Next, check that the database service is running and that the database username, password, database name, and database location are configured correctly. Note: File /mutillidae/classes/MySQLHandler.php contains the database configuration.";
 		$INCORRECT_DATABASE_CONFIGURATION_MESSAGE_SAMURAI = "Error connecting to MySQL database on host '".$HOSTNAME."' with username '".$USERNAME."' and password '".$PASSWORD."'. Note: In addition to the configured password '".$PASSWORD."', the password 'samurai' was tried as well. First, try to reset the database (ResetDB button on menu). Next, check that the database service is running and that the database username, password, database name, and database location are configured correctly. Note: File /mutillidae/classes/MySQLHandler.php contains the database configuration."; 
-		$UNKNOWN_DATABASE_MESSAGE = "Unable to select default database " . self::$mMySQLDatabaseName. ". It appears that the database to which Mutillidae is configured to connect has not been created. First, try to reset the database (ResetDB button on menu). Next, check that the database service is running and that the database username, password, database name, and database location are configured correctly. Note: File /mutillidae/classes/MySQLHandler.php contains the database configuration.";
+		$UNKNOWN_DATABASE_MESSAGE = "Unable to select default database " . self::$mMySQLDatabaseName. ". It appears that the database to which Mutillidae is configured to connect has not been created. Try to <a href=\"set-up-database.php\">setup/reset the DB</a> to see if that helps. Next, check that the database service is running and that the database username, password, database name, and database location are configured correctly. Note: File /mutillidae/classes/MySQLHandler.php contains the database configuration.";
 		
 		try{
-			
 			$lMySQLConnection = new mysqli($HOSTNAME, $USERNAME, $PASSWORD);
 			if (strlen($lMySQLConnection->connect_error) > 0) {
 				/* If error is "Access denied for user", it could just be an incorrect password. On samurai

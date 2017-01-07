@@ -69,7 +69,7 @@
 		viii.	Get rid of PHP "strict" errors. They are not compatible with the OWASP ESAPI 
 		classes in use in Mutillidae 2.0. The error modifies headers disrupting functionality 
 		so this is not simply an annoyance issue. To do this, go to the PHP.INI file  and change the line that reads 
-		"error_reporting = E_ALL | E_STRICT" to "error_reporting = E_ALL & ~E_NOTICE & ~E_WARNING & ~E_DEPRECIATED". 
+		"error_reporting = E_ALL | E_STRICT" to "error_reporting = E_ALL &amp; ~E_NOTICE &amp; ~E_WARNING &amp; ~E_DEPRECIATED". 
 		Once the modification is complete, restart the Apache service. If you are not sure how to restart 
 		the service, reboot.
 	</div>
@@ -91,7 +91,7 @@
 		x.	NOTE: Once PHP 6.0 arrives in XAMPP, E_ALL will include E_STRICT so the line 
 		to change will probably read "error_reporting = E_ALL". In any case, change 
 		the error_reporting line to 
-		"error_reporting = E_ALL & ~E_NOTICE & ~E_DEPRECIATED".
+		"error_reporting = E_ALL &amp; ~E_NOTICE &amp; ~E_DEPRECIATED".
 	</div>
 	<div style="margin:20px">
 		xi. NOTE: Be sure magic quotes is disabled. In XAMMP it seems to be but using MMAP for

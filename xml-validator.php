@@ -56,7 +56,7 @@
     	}//end switch
 
     	if ($lEnableHTMLControls) {
-    		$lHTMLControlAttributes='required="true"';
+    		$lHTMLControlAttributes='required="required"';
     	}else{
     		$lHTMLControlAttributes="";
     	}// end if
@@ -171,7 +171,7 @@
 		<tr>
 			<td class="label">XML</td>
 			<td>
-				<textarea name="xml" rows="8" cols="50" id="idXMLTextArea" title="Please enter XML to validate" autofocus="1" <?php echo $lHTMLControlAttributes ?>></textarea>
+				<textarea name="xml" rows="8" cols="50" id="idXMLTextArea" title="Please enter XML to validate" autofocus="autofocus" <?php echo $lHTMLControlAttributes ?>></textarea>
 			</td>
 		</tr>
 		<tr><td></td></tr>

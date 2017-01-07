@@ -180,10 +180,10 @@
 			<tr>
 				<td class="label">Username</td>
 				<td>
-					<input HTMLandXSSandSQLInjectionPoint="1" type="text" name="username" size="15" autofocus="1"
+					<input HTMLandXSSandSQLInjectionPoint="1" type="text" name="username" size="15" autofocus="autofocus"
 						<?php
 							if ($lEnableHTMLControls) {
-								echo('minlength="1" maxlength="15" required="true"');
+								echo('minlength="1" maxlength="15" required="required"');
 							}// end if
 						?>
 					/>
@@ -195,12 +195,12 @@
 					<input SQLInjectionPoint="1" type="password" name="password" size="15" 
 						<?php
 							if ($lEnableHTMLControls) {
-								echo('minlength="1" maxlength="15" required="true"');
+								echo('minlength="1" maxlength="15" required="required"');
 							}// end if
 						?>
 					/>
 					&nbsp;
-					<a href="index.php?page=password-generator.php&username=<?php echo $logged_in_user ?>" target="_blank">Password Generator
+					<a href="index.php?page=password-generator.php&username=<?php echo $logged_in_user ?>" target="_blank">Password Generator</a>
 				</td>
 			</tr>
 			<tr>
@@ -209,7 +209,7 @@
 					<input SQLInjectionPoint="1" type="password" name="confirm_password" size="15"
 						<?php
 							if ($lEnableHTMLControls) {
-								echo('minlength="1" maxlength="15" required="true"');
+								echo('minlength="1" maxlength="15" required="required"');
 							}// end if
 						?>
 					/>
@@ -221,7 +221,7 @@
 					<textarea HTMLandXSSandSQLInjectionPoint="1" rows="3" cols="50" name="my_signature"
 						<?php
 							if ($lEnableHTMLControls) {
-								echo('minlength="1" maxlength="100" required="true"');
+								echo('minlength="1" maxlength="100" required="required"');
 							}// end if
 						?>
 					></textarea>

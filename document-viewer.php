@@ -140,10 +140,10 @@
 					<input 	name="PathToDocument" id="id_path_to_document" type="radio" 
 							value="documentation/change-log.html"
 							checked="checked"
-							autofocus="1"
+							autofocus="autofocus"
 							<?php
 								if ($lEnableHTMLControls) {
-									echo('required="true"');
+									echo('required="required"');
 								}// end if
 							?>					
 					/>&nbsp;&nbsp;Change Log<br />
@@ -151,7 +151,7 @@
 							value="robots.txt"
 							<?php
 								if ($lEnableHTMLControls) {
-									echo('required="true"');
+									echo('required="required"');
 								}// end if
 							?>
 					/>&nbsp;&nbsp;Robots.txt<br />
@@ -159,7 +159,7 @@
 							value="documentation/mutillidae-installation-on-xampp-win7.pdf" 
 							<?php
 								if ($lEnableHTMLControls) {
-									echo('required="true"');
+									echo('required="required"');
 								}// end if
 							?>
 					/>&nbsp;&nbsp;Installation Instructions: Windows 7 (PDF)<br />
@@ -167,7 +167,7 @@
 							value="documentation/how-to-access-Mutillidae-over-Virtual-Box-network.php" 
 							<?php
 								if ($lEnableHTMLControls) {
-									echo('required="true"');
+									echo('required="required"');
 								}// end if
 							?>
 					/>&nbsp;&nbsp;How to access Mutillidae over Virtual-Box-network<br />

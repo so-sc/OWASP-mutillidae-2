@@ -64,20 +64,20 @@
 <fieldset>
 	<legend>Browser Fingerprint</legend>
 	<div>&nbsp;</div>
-	<table border="1px" width="80%" class="results-table">
+	<table style="width:80%;" class="results-table">
 		<tr><td colspan="3" id="id_result"></td></tr>
-	   	<tr><td colspan="3"></td></tr>
-		<tr><td class="non-wrapping-label">User Agent</td><td JavaScriptInjectionPoint="1" id="id_user_agent_td"></td></tr>
-		<tr><td class="non-wrapping-label">App Code Name</td><td JavaScriptInjectionPoint="1" id="id_browser_codename_td"></td></tr>
-		<tr><td class="non-wrapping-label">App Name</td><td JavaScriptInjectionPoint="1" id="id_browser_td"></td></tr>
-		<tr><td class="non-wrapping-label">Browser Version</td><td JavaScriptInjectionPoint="1" id="id_browser_version_td"></td></tr>
-		<tr><td class="non-wrapping-label">Platform</td><td JavaScriptInjectionPoint="1" id="id_platform_td"></td></tr>
-		<tr><td class="non-wrapping-label">Vendor</td><td JavaScriptInjectionPoint="1" id="id_browser_vendor_td"></td></tr>
-		<tr><td class="non-wrapping-label">Vendor Sub</td><td JavaScriptInjectionPoint="1" id="id_browser_vendor_sub_td"></td></tr>
-		<tr><td class="non-wrapping-label">Build ID</td><td JavaScriptInjectionPoint="1" id="id_build_id_td"></td></tr>
-		<tr><td class="non-wrapping-label">O/S CPU</td><td JavaScriptInjectionPoint="1" id="id_oscpu_td"></td></tr>
-		<tr><td class="non-wrapping-label">Product</td><td JavaScriptInjectionPoint="1" id="id_product_td"></td></tr>
-		<tr><td class="non-wrapping-label">Product Sub</td><td JavaScriptInjectionPoint="1" id="id_product_sub_td"></td></tr>
+	   	<tr><td colspan="3">&nbsp;</td></tr>
+		<tr><th class="report-label">User Agent</th><td class="report-data" JavaScriptInjectionPoint="1" id="id_user_agent_td"></td></tr>
+		<tr><th class="report-label">App Code Name</th><td class="report-data" JavaScriptInjectionPoint="1" id="id_browser_codename_td"></td></tr>
+		<tr><th class="report-label">App Name</th><td class="report-data" JavaScriptInjectionPoint="1" id="id_browser_td"></td></tr>
+		<tr><th class="report-label">Browser Version</th><td class="report-data" JavaScriptInjectionPoint="1" id="id_browser_version_td"></td></tr>
+		<tr><th class="report-label">Platform</th><td class="report-data" JavaScriptInjectionPoint="1" id="id_platform_td"></td></tr>
+		<tr><th class="report-label">Vendor</th><td class="report-data" JavaScriptInjectionPoint="1" id="id_browser_vendor_td"></td></tr>
+		<tr><th class="report-label">Vendor Sub</th><td class="report-data" JavaScriptInjectionPoint="1" id="id_browser_vendor_sub_td"></td></tr>
+		<tr><th class="report-label">Build ID</th><td class="report-data" JavaScriptInjectionPoint="1" id="id_build_id_td"></td></tr>
+		<tr><th class="report-label">O/S CPU</th><td class="report-data" JavaScriptInjectionPoint="1" id="id_oscpu_td"></td></tr>
+		<tr><th class="report-label">Product</th><td class="report-data" JavaScriptInjectionPoint="1" id="id_product_td"></td></tr>
+		<tr><th class="report-label">Product Sub</th><td class="report-data" JavaScriptInjectionPoint="1" id="id_product_sub_td"></td></tr>
 	</table>
 </fieldset>
 

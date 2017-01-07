@@ -5,7 +5,7 @@
 		<title>Rene Magritte Frame</title>
 	</head>
 	<body onload="objHoverDiv = document.getElementById('id-hover-div');">
-		<img style="text-align: center;" alt="Rene Magritte Frame" width="464px" height="582px" src="./images/rene-magritte-frame.jpg"">
+		<img style="text-align: center;" alt="Rene Magritte Frame" width="464px" height="582px" src="./images/rene-magritte-frame.jpg" />
 	</body>
 	<script type="text/javascript">
 					

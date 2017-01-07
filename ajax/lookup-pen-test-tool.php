@@ -134,9 +134,11 @@
 				try {
 					$qPenTestToolResults = $SQLQueryHandler->getPenTestTool($lPostedToolID);
 					$lPenTestToolsDetails = "";
-					$lPenTestToolsJSON = 
-						'{"query": {"toolIDRequested": "'.$lPostedToolID.'", "penTestTools": [';
-					if($qPenTestToolResults->num_rows > 0){
+					/* We want to allow single quotes so the user can do SQL injection, but when they return from
+					 * the database, we escape the single quotes because they would otherwise break the JSON string. */
+					$lPenTestToolsJSON =
+					'{"query": {"toolIDRequested": "'.str_replace("'", "\'", $lPostedToolID).'", "penTestTools": [';
+						if($qPenTestToolResults->num_rows > 0){
 						while($row = $qPenTestToolResults->fetch_object()){
 							$lPenTestToolsDetails .= json_encode($row) . ",";
 						}// end while

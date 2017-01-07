@@ -248,10 +248,10 @@
 			<tr>
 				<td>
 					<textarea 	name="blog_entry" HTMLandXSSandSQLInjectionPoint="1" rows="8" cols="65"
-								autofocus="1"
+								autofocus="autofocus"
 						<?php 
 							if ($lEnableHTMLControls) {
-								echo('minlength="1" maxlength="100" required="true"');
+								echo('minlength="1" maxlength="100" required="required"');
 							}// end if
 						?>
 					></textarea>

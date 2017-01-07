@@ -13,6 +13,58 @@ TODO: Audit help files (ongoing)
 
 <div><span style="font-weight:bold;">09/21/2016</span>: Jeremy Druin</div>
 <blockquote>
+	<div>Change Log for OWASP Mutillidae II 2.6.43:</div>
+	<ul>
+		<li>Updated project to work on OpenJDK 8 on Ubuntu 16.04</li>
+		<li>Updated project to work on PHP 7.0</li>
+		<li>BUG FIX: Mis-spelled word in MySQLHandler.php</li>
+		<li>Made the database-offline.php more user-friendly by providing 
+			a link to reset or build the database if the startup script
+			realizes the project database cannot be selected.
+		</li>
+		<li>Removed donation link for HFC. Johnny is back in USA from his mission. Awaiting
+			more information about his next steps.
+		</li>
+		<li>BUG FIX: Nasty bug in pen test tools lookup (and the AJAX version). The
+		SQL injected single quote would break the resulting JSON syntax ruining the fun.
+		Added escaping for single quotes that show up in the JSON.
+		This will prevent the JSON from getting an errant
+		single quote that would break the JSON string later in the JavaScript that 
+		creates the table from the JSON results. Credit to richardwei for pointing 
+		out the bug.
+		</li>
+		<li>Added donation link to left menu. (Thank you if you donate by the way. Its helps)</li>
+		<li>Removed title from the home page to make all the links easier to see and easier to fit
+		on smaller screens
+		</li>
+		<li>
+			BUG FIX: Three tables using obsolete center attribute not compatible with HTML5. 
+			Switched to using style instead
+		</li>
+		<li>
+			BUG FIX: Two frames tables using obsolete attribute not compatible with HTML5. 
+			Switched to using style instead
+		</li>
+		<li>
+			BUG FIX: Table styles were using obsolete attribute not compatible with HTML5. 
+			Switched to using stylesheet classes instead. This affectd browser-info.php, 
+			user-poll.php, user-agent-impersonation.php
+		</li>
+		<li>
+			BUG FIX: Some special HTML characters were not properly escapted. Example would
+			be ampersand &amp; is supposed to be escaped as &amp;amp; or equivalent.
+		</li>
+		<li>BUG FIX: Small error in command injection documentation.</li>
+		<li>BUG FIX: Forgot to close anchor tag in register.php</li>		
+		<li>BUG FIX: Incorrect img tag syntax in rene-magritte.php</li>
+		<li>BUG FIX: Missing DOCTYPE xml in accounts.xml</li>		
+		<li>BUG FIX: Errant tag in auth bypass hint</li>		
+		<li>BUG FIX: autofocus, required and checked HTML attributes did not have correct values</li>		
+	</ul>
+</blockquote>
+
+<div><span style="font-weight:bold;">09/21/2016</span>: Jeremy Druin</div>
+<blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.6.42:</div>
 	<ul>
 		<li>

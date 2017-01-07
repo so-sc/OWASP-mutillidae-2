@@ -143,11 +143,11 @@
 			<td class="label">Hostname/IP</td>
 			<td>
 				<input 	type="text" id="idTargetHostInput" name="target_host" size="20" 
-						autofocus="1"
+						autofocus="autofocus"
 						OSCommandInjectionPoint="1"
 						<?php
 							if ($lEnableHTMLControls) {
-								echo('minlength="1" maxlength="20" required="true"');
+								echo('minlength="1" maxlength="20" required="required"');
 							}// end if
 						?>
 				/>

@@ -19,7 +19,7 @@
 			<br/><br/>
 			<span class="report-header">Exploitation (SQL Injection)</span>
 			<br/><br/>
-			<a href="index.php?page=login.php">Login</a></li>
+			<a href="index.php?page=login.php">Login</a>
 			<br/><br/>
 			Use SQL Injection to bypass authentication on the login page. See the SQL
 			Injection hints or the SQL injection tutorial for help on SQL injection.

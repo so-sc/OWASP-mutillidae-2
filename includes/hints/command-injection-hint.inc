@@ -25,8 +25,8 @@ you are using Linux or Windows respectively.
 <br/><br/>
 Fuzz with characters reserved in operating system shells
 <br/><br/>
-/bin/bash:	! # $ % & ' ( ) * + , - . / : ; < = < ? @ [ \ ] ^ _ { | } ~<br/>
-cmd.exe: 	% ^ & < > | ' ` , ; = ( ) ! ” [ ] . * ?
+/bin/bash:	! # $ % &amp; ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ { | } ~<br/>
+cmd.exe: 	% ^ &amp; &lt; &gt; | ' ` , ; = ( ) ! ” [ ] . * ?
 <br/><br/>
 Also fuzz with non-alphanumeric ASCII characters and command injection values from Fuzz DB
 <br/><br/>
@@ -58,7 +58,7 @@ users on Windows and Linux against the loopback interface
 Windows:	ping -n 15 127.0.0.1<br/>
 Linux:	ping -i 15 -c 2 127.0.0.1
 <br/><br/>
-Try prefixing and suffixing the injection with chaining characters ||, |, &&, &, `, <CRLF>, <LF>
+Try prefixing and suffixing the injection with chaining characters ||, |, &amp;&amp;, &amp;, `, &lt;CRLF&gt;, &lt;LF&gt;
 <br/><br/>
 Look for errors
 that are related to operating system errors, delays in responses

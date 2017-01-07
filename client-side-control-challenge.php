@@ -414,66 +414,66 @@
 			<tr>
 				<td class="label" style="text-align: left;">Text Box</td>
 				<td style="text-align: left;">
-					<input HTMLandXSSInjectionPoint="1" type="text" name="textbox" id="id_textbox" size="15" maxlength="15" required="true" autofocus="1" />
+					<input HTMLandXSSInjectionPoint="1" type="text" name="textbox" id="id_textbox" size="15" maxlength="15" required="required" autofocus="autofocus" />
 				</td>
 			</tr>			<tr>
 				<td class="label" style="text-align: left;">Read-only Text Box</td>
 				<td style="text-align: left;">
-					<input HTMLandXSSInjectionPoint="1" type="text" name="readonly_textbox" id="id_readonly_textbox" size="15" maxlength="15" required="true" autofocus="1" readonly="1" value="42" />
+					<input HTMLandXSSInjectionPoint="1" type="text" name="readonly_textbox" id="id_readonly_textbox" size="15" maxlength="15" required="required" autofocus="autofocus" readonly="readonly" value="42" />
 				</td>
 			</tr>			
 			<tr>
 				<td class="label" style="text-align: left;">Short Text Box</td>
 				<td style="text-align: left;">
-					<input HTMLandXSSInjectionPoint="1" type="text" name="short_textbox" id="id_short_textbox" size="3" maxlength="3" required="true" />
+					<input HTMLandXSSInjectionPoint="1" type="text" name="short_textbox" id="id_short_textbox" size="3" maxlength="3" required="required" />
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">Disabled Text Box</td>
 				<td style="text-align: left;">
-					<input HTMLandXSSInjectionPoint="1" type="text" name="disabled_textbox" id="id_disabled_textbox" size="15" maxlength="15" required="true" disabled="1" style="background-color:#dddddd;" />
+					<input HTMLandXSSInjectionPoint="1" type="text" name="disabled_textbox" id="id_disabled_textbox" size="15" maxlength="15" required="required" disabled="disabled" style="background-color:#dddddd;" />
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">Hidden Text Box</td>
 				<td style="text-align: left;">
-					<input HTMLandXSSInjectionPoint="1" type="hidden" name="hidden_textbox" id="id_hidden_textbox" size="15" maxlength="15" required="true" />
+					<input HTMLandXSSInjectionPoint="1" type="hidden" name="hidden_textbox" id="id_hidden_textbox" size="15" maxlength="15" required="required" />
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">"Secured by JavaScript" Text Box</td>
 				<td style="text-align: left;">
-					<input HTMLandXSSInjectionPoint="1" type="text" name="tricky_textbox" id="id_tricky_textbox" size="15" maxlength="15" required="true" onfocus="javascript:this.blur();" />
+					<input HTMLandXSSInjectionPoint="1" type="text" name="tricky_textbox" id="id_tricky_textbox" size="15" maxlength="15" required="required" onfocus="javascript:this.blur();" />
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">Vanishing Text Box</td>
 				<td style="text-align: left;">
-					<input HTMLandXSSInjectionPoint="1" type="text" name="vanishing_textbox" id="id_vanishing_textbox" size="15" maxlength="15" required="true" onmouseover="javascript:this.type='hidden';" />
+					<input HTMLandXSSInjectionPoint="1" type="text" name="vanishing_textbox" id="id_vanishing_textbox" size="15" maxlength="15" required="required" onmouseover="javascript:this.type='hidden';" />
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">Shy Text Box</td>
 				<td style="text-align: left;">
-					<input HTMLandXSSInjectionPoint="1" type="text" name="shy_textbox" id="id_shy_textbox" size="15" maxlength="15" required="true" class="box" />
+					<input HTMLandXSSInjectionPoint="1" type="text" name="shy_textbox" id="id_shy_textbox" size="15" maxlength="15" required="required" class="box" />
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">Search Textbox</td>
 				<td style="text-align: left;">
-					<input type="search" name="search" id="id_search" pattern="[a-zA-z]" required="true" />
+					<input type="search" name="search" id="id_search" pattern="[a-zA-z]" required="required" />
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">Password</td>
 				<td style="text-align: left;">
-					<input HTMLandXSSInjectionPoint="1" type="password" name="password" id="id_password" size="15" maxlength="15" required="true" value="Hint: If you use Burp-Suite this exercise is much easier" />
+					<input HTMLandXSSInjectionPoint="1" type="password" name="password" id="id_password" size="15" maxlength="15" required="required" value="Hint: If you use Burp-Suite this exercise is much easier" />
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">Drop-down Box</td>
 				<td style="text-align: left;">
-					<select HTMLandXSSInjectionPoint="1" name="select" id="id_select" required="true">
+					<select HTMLandXSSInjectionPoint="1" name="select" id="id_select" required="required">
 						<option value="1">One</option>
 						<option value="2">Two</option>
 						<option value="3">Buckle my shoe</option>
@@ -483,39 +483,39 @@
 			<tr>
 				<td class="label" style="text-align: left;">Checkbox</td>
 				<td style="text-align: left;">
-					<input type="checkbox" name="checkbox" id="id_checkbox" value="<?php echo $lRandomFlag;?>" required="true" disabled="1" /><span class="label">Select <?php echo $lRandomFlag;?>?</span><br/>
+					<input type="checkbox" name="checkbox" id="id_checkbox" value="<?php echo $lRandomFlag;?>" required="required" disabled="disabled" /><span class="label">Select <?php echo $lRandomFlag;?>?</span><br/>
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">Radio Button</td>
 				<td style="text-align: left;">
-					<input type="radio" name="radio" id="id_radio" value="1" required="true" checked="1" /><span class="label">1</span><br/>
-					<input type="radio" name="radio" id="id_radio" value="2" required="true" /><span class="label">2</span><br/>
-					<input type="radio" name="radio" id="id_radio" value="<?php echo $lRandomFlag;?>" required="true" disabled="1" /><span class="label"><?php echo $lRandomFlag;?></span><br/>
+					<input type="radio" name="radio" id="id_radio" value="1" required="required" checked="checked" /><span class="label">1</span><br/>
+					<input type="radio" name="radio" id="id_radio" value="2" required="required" /><span class="label">2</span><br/>
+					<input type="radio" name="radio" id="id_radio" value="<?php echo $lRandomFlag;?>" required="required" disabled="disabled" /><span class="label"><?php echo $lRandomFlag;?></span><br/>
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">Email Control</td>
 				<td style="text-align: left;">
-					<input type="email" name="email" id="id_email" required="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" />
+					<input type="email" name="email" id="id_email" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" />
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">File Upload</td>
 				<td style="text-align: left;">
-					<input type="file" name="file" id="id_file" required="true" />
+					<input type="file" name="file" id="id_file" required="required" />
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">Number</td>
 				<td style="text-align: left;">
-					<input type="number" name="number" id="id_number" min="0" max="999" step="1" required="true" />
+					<input type="number" name="number" id="id_number" min="0" max="999" step="1" required="required" />
 				</td>
 			</tr>
 			<tr>
 				<td class="label" style="text-align: left;">Range</td>
 				<td style="text-align: left;">
-					<input type="range" name="range" id="id_range" min="0" max="999" step="1" required="true" />
+					<input type="range" name="range" id="id_range" min="0" max="999" step="1" required="required" />
 				</td>
 			</tr>		
 			<tr><td>&nbsp;</td></tr>

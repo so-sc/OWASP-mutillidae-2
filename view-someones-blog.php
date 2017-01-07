@@ -63,7 +63,7 @@
    	}// end switch
 
    	if ($lEnableHTMLControls) {
-   		$lHTMLControlAttributes='required="true"';
+   		$lHTMLControlAttributes='required="required"';
    	}else{
    		$lHTMLControlAttributes="";
    	}// end if
@@ -116,7 +116,7 @@
 			<tr><td></td></tr>
 			<tr>
 				<td>
-					<select name="author" id="id_author_select" SQLInjectionPoint="1" autofocus="1" <?php echo $lHTMLControlAttributes ?>>
+					<select name="author" id="id_author_select" SQLInjectionPoint="1" autofocus="autofocus" <?php echo $lHTMLControlAttributes ?>>
 						<option value="53241E83-76EC-4920-AD6D-503DD2A6BA68">&nbsp;&nbsp;&nbsp;Please Choose Author&nbsp;&nbsp;&nbsp;</option>
 						<option value="6C57C4B5-B341-4539-977B-7ACB9D42985A">Show All</option>
 						<?php

@@ -116,10 +116,10 @@
 				<td class="label">Username</td>
 				<td>
 					<input	SQLInjectionPoint="1" type="text" name="username" size="20"
-							autofocus="1"
+							autofocus="autofocus"
 					<?php
 						if ($lEnableHTMLControls) {
-							echo('minlength="1" maxlength="15" required="true"');
+							echo('minlength="1" maxlength="15" required="required"');
 						}// end if
 					?>
 					/>
@@ -131,7 +131,7 @@
 					<input SQLInjectionPoint="1" type="password" name="password" size="20"
 					<?php
 						if ($lEnableHTMLControls) {
-							echo('minlength="1" maxlength="15" required="true"');
+							echo('minlength="1" maxlength="15" required="required"');
 						}// end if
 					?>
 					/>
@@ -154,7 +154,7 @@
 </div>
 
 <div id="id-log-out-div" style="text-align: center; display: none;">
-	<table align="center">
+	<table>
 		<tr>
 			<td ReflectedXSSExecutionPoint="1" colspan="2" class="hint-header">You are logged in as <?php echo $_SESSION['logged_in_user']; ?></td>
 		</tr>

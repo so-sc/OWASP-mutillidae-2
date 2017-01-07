@@ -39,7 +39,7 @@
 	   	}// end switch ($_SESSION["security-level"])
 
 	   	if ($lEnableHTMLControls) {
-	   		$lHTMLControlAttributes='required="true"';
+	   		$lHTMLControlAttributes='required="required"';
 	   	}else{
 	   		$lHTMLControlAttributes="";
 	   	}// end if
@@ -91,7 +91,7 @@
 		<tr>
 			<td class="label">Text File Name</td>
 			<td>
-				<select size="1" name="textfile" id="id_textfile_select" HTMLandXSSandSQLInjectionPoint="1" autofocus="1" <?php echo $lHTMLControlAttributes ?>>
+				<select size="1" name="textfile" id="id_textfile_select" HTMLandXSSandSQLInjectionPoint="1" autofocus="autofocus" <?php echo $lHTMLControlAttributes ?>>
 					<option value="<?php if ($lUseTokenization){echo 1;}else{echo 'http://www.textfiles.com/hacking/auditool.txt';}?>">Intrusion Detection in Computers by Victor H. Marshall (January 29, 1991)</option>
 					<option value="<?php if ($lUseTokenization){echo 2;}else{echo 'http://www.textfiles.com/hacking/atms';}?>">An Overview of ATMs and Information on the Encoding System</option>
 					<option value="<?php if ($lUseTokenization){echo 3;}else{echo 'http://www.textfiles.com/hacking/backdoor.txt';}?>">How to Hold Onto UNIX Root Once You Have It</option>

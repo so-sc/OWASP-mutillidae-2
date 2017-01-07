@@ -200,6 +200,14 @@ table.tutorial tr.tutorial-title td{
 	 border-bottom-width: 1px;	 
 }
 
+table tr th.report-label{
+	border-color: #000000;
+	border-style: solid;
+	border-width: 1px;
+	font-weight: bold;
+	white-space: nowrap;
+}
+
 table tr td.report-data{
 	border-color: #000000;
 	border-style: solid;

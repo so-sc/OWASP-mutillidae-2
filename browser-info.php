@@ -89,77 +89,77 @@
 <?php include_once (__ROOT__.'/includes/back-button.inc');?>
 <?php include_once (__ROOT__.'/includes/hints/hints-menu-wrapper.inc'); ?>
 
-<table border="1px" width="75%" class="results-table">
+<table style="width:75%;" class="results-table">
 	<tr class="report-header"><td colspan="3">Info obtained by PHP</td></tr>
-	<tr><td class="non-wrapping-label">Client IP</td><td><?php echo $lClientIP; ?></td></tr>
-    <tr><td class="non-wrapping-label">Client Hostname</td><td><?php echo $lClientHostname; ?></td></tr>
-    <tr><td class="non-wrapping-label">Operating System</td><td><?php echo $lOperatingSystem ?></td></tr>
-    <tr><td class="non-wrapping-label">User Agent String</td><td ReflectedXSSExecutionPoint="1"><?php echo $lClientUserAgentString; ?></td></tr>
-    <tr><td class="non-wrapping-label">Referrer</td><td ReflectedXSSExecutionPoint="1"><?php echo $lClientReferrer; ?></td></tr>
-    <tr><td class="non-wrapping-label">Remote Client Port</td><td><?php echo $lClientPort; ?></td></tr>
-    <tr><td class="non-wrapping-label">WhoIs info for client IP</td><td><pre><?php echo $lWhoIsInformation; ?></pre></td></tr>
+	<tr><th class="report-label">Client IP</th><td class="report-data"><?php echo $lClientIP; ?></td></tr>
+    <tr><th class="report-label">Client Hostname</th><td class="report-data"><?php echo $lClientHostname; ?></td></tr>
+    <tr><th class="report-label">Operating System</th><td class="report-data"><?php echo $lOperatingSystem ?></td></tr>
+    <tr><th class="report-label">User Agent String</th><td class="report-data" ReflectedXSSExecutionPoint="1"><?php echo $lClientUserAgentString; ?></td></tr>
+    <tr><th class="report-label">Referrer</th><td class="report-data" ReflectedXSSExecutionPoint="1"><?php echo $lClientReferrer; ?></td></tr>
+    <tr><th class="report-label">Remote Client Port</th><td class="report-data"><?php echo $lClientPort; ?></td></tr>
+    <tr><th class="report-label">WhoIs info for client IP</th><td class="report-data"><pre><?php echo $lWhoIsInformation; ?></pre></td></tr>
 	<?php 
 	if ($lEncodeOutput){	
 		foreach ($_COOKIE as $key => $value){
-	    	echo '<tr><td class="non-wrapping-label">Cookie '.$Encoder->encodeForHTML($key).'</td><td>'.$Encoder->encodeForHTML($value).'</pre></td></tr>';
+	    	echo '<tr><th class="report-label">Cookie '.$Encoder->encodeForHTML($key).'</th><td class="report-data">'.$Encoder->encodeForHTML($value).'</pre></td></tr>';
 		}// end foreach
 	}else{
 		foreach ($_COOKIE as $key => $value){
-	    	echo '<tr><td ReflectedXSSExecutionPoint="1" class="non-wrapping-label">Cookie '.$key.'</td><td>'.$value.'</pre></td></tr>';
+	    	echo '<tr><th class="report-label" ReflectedXSSExecutionPoint="1" class="non-wrapping-label">Cookie '.$key.'</th><td class="report-data">'.$value.'</pre></td></tr>';
 		}// end foreach
 	}// end if
 	?>    
 </table>
 <div>&nbsp;</div><div>&nbsp;</div>
-<table border="1px" width="75%" class="results-table">
+<table style="width:75%;" class="results-table">
     <tr class="report-header"><td colspan="3">Info obtained by JavaScript</td></tr>
 	<tr>
-		<td class="non-wrapping-label">Browser Name</td>
-		<td id="id_browser_td"></td>
+		<th class="report-label">Browser Name</th>
+		<td class="report-data" id="id_browser_td"></td>
 	</tr>
 	<tr>
-		<td class="non-wrapping-label">Browser Codename</td>
-		<td id="id_browser_codename_td"></td>
+		<th class="report-label">Browser Codename</th>
+		<td class="report-data" id="id_browser_codename_td"></td>
 	</tr>
 	<tr>
-		<td class="non-wrapping-label">Browser Version</td>
-		<td id="id_browser_version_td"></td>
+		<th class="report-label">Browser Version</th>
+		<td class="report-data" id="id_browser_version_td"></td>
 	</tr>
 	<tr>
-		<td class="non-wrapping-label">Cookie Enabled?</td>
-		<td id="id_cookie_enabled_td"></td>
+		<th class="report-label">Cookie Enabled?</th>
+		<td class="report-data" id="id_cookie_enabled_td"></td>
 	</tr>
 	<tr>
-		<td class="non-wrapping-label">Platform</td>
-		<td id="id_platform_td"></td>
+		<th class="report-label">Platform</th>
+		<td class="report-data" id="id_platform_td"></td>
 	</tr>
 	<tr>
-		<td class="non-wrapping-label">User Agent</td>
-		<td id="id_user_agent_td"></td>
+		<th class="report-label">User Agent</th>
+		<td class="report-data" id="id_user_agent_td"></td>
 	</tr>
 	<tr>
-		<td class="non-wrapping-label">CPU Class</td>
-		<td id="id_java_enabled_td"></td>
+		<th class="report-label">CPU Class</th>
+		<td class="report-data" id="id_java_enabled_td"></td>
 	</tr>
 	<tr>
-		<td class="non-wrapping-label">System Language</td>
-		<td id="id_system_language_enabled_td"></td>
+		<th class="report-label">System Language</th>
+		<td class="report-data" id="id_system_language_enabled_td"></td>
 	</tr>
 	<tr>
-		<td class="non-wrapping-label">Resolution</td>
-		<td id="id_resolution_enabled_td"></td>
+		<th class="report-label">Resolution</th>
+		<td class="report-data" id="id_resolution_enabled_td"></td>
 	</tr>
 	<tr>
-		<td class="non-wrapping-label">Color Depth</td>
-		<td id="id_color_depth_enabled_td"></td>
+		<th class="report-label">Color Depth</th>
+		<td class="report-data" id="id_color_depth_enabled_td"></td>
 	</tr>
 	<tr>
-		<td class="non-wrapping-label" JavaScriptInjectionPoint="1">Referrer</td>
-		<td id="id_referrer_td" JavaScriptInjectionPoint="1"></td>
+		<th class="report-label" JavaScriptInjectionPoint="1">Referrer</th>
+		<td class="report-data" id="id_referrer_td" JavaScriptInjectionPoint="1"></td>
 	</tr>
 	<tr>
-		<td class="non-wrapping-label">Plug-Ins</td>
-		<td id="id_plug_ins_td"></td>
+		<th class="report-label">Plug-Ins</th>
+		<td class="report-data" id="id_plug_ins_td"></td>
 	</tr>
 </table>
 

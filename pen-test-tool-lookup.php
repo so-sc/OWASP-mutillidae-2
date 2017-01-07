@@ -90,6 +90,8 @@
 	
 			if(!empty($lPostedButton)){
 				
+				$lErrorNoChoiceMade = FALSE;
+				
 				if ($lPostedToolID == "0923ac83-8b50-4eda-ad81-f1aac6168c5c" || strlen($lPostedToolID) == 0){
 					$lErrorNoChoiceMade = TRUE;
 				}else{
@@ -97,8 +99,10 @@
 
 					$qPenTestToolResults = $SQLQueryHandler->getPenTestTool($lPostedToolID);
 					$lPenTestToolsDetails = "";
+					/* We want to allow single quotes so the user can do SQL injection, but when they return from 
+					 * the database, we escape the single quotes because they would otherwise break the JSON string. */
 					$lPenTestToolsJSON = 
-						'{"query": {"toolIDRequested": "'.$lPostedToolID.'", "penTestTools": [';
+						'{"query": {"toolIDRequested": "'.str_replace("'", "\'", $lPostedToolID).'", "penTestTools": [';
 					if($qPenTestToolResults->num_rows > 0){
 						while($row = $qPenTestToolResults->fetch_object()){
 							$lPenTestToolsDetails .= json_encode($row) . ",";
@@ -106,8 +110,6 @@
 						$lPenTestToolsJSON .= substr($lPenTestToolsDetails, 0, strlen($lPenTestToolsDetails)-1);
 					}//end if
 					$lPenTestToolsJSON .= ']}}';
-					
-					//print $lPenTestToolsJSON;
 				    
 				}// end if user didnt pick anything
 				
@@ -224,7 +226,7 @@
 				}else{
 					gPenTestToolsJSON = eval("(" + gPenTestToolsJSONString + ")");
 				}// end if gUseSafeJSONParser
-				//alert(gPenTestToolsJSON);
+				//alert(gPenTestToolsJSON.query.penTestTools.length);
 
 				var laTools = gPenTestToolsJSON.query.penTestTools;
 				if(laTools && laTools.length > 0){
@@ -266,7 +268,7 @@
 			<tr>
 				<td class="label" style="text-align: right;">Pen Test Tool</td>
 				<td>
-					<select id="idToolSelect" JSONInjectionPoint="1" name="ToolID" autofocus="1">
+					<select id="idToolSelect" JSONInjectionPoint="1" name="ToolID" autofocus="autofocus">
 						<option value="0923ac83-8b50-4eda-ad81-f1aac6168c5c" selected="selected">Please Choose Tool</option>
 						<option value="c84326e4-7487-41d3-91fd-88280828c756">Show All</option>
 						<?php echo $lPenTestToolsOptions; ?>

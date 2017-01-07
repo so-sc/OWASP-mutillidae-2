@@ -74,7 +74,7 @@
    	}// end switch		
 
    	if ($lEnableHTMLControls) {
-   		$lHTMLControlAttributes='required="true"';
+   		$lHTMLControlAttributes='required="required"';
    	}else{
    		$lHTMLControlAttributes="";
    	}// end if
@@ -235,11 +235,11 @@
 			echo '<br/>';
 			echo '<fieldset>';
 			echo '<legend>Poll Results</legend>';
-			echo '<table border="1px;" width="50%" class="results-table">';
-			echo '<tr class="report-header"><td colspan="2">'.$lQueryResult->num_rows.' Records Found</td></tr>';
+			echo '<table style="width:50%;" class="results-table">';
+			echo '<tr class="report-header"><th class="report-label" colspan="2">'.$lQueryResult->num_rows.' Records Found</th></tr>';
 		    echo '<tr class="report-header">
-				    <td>Tool</td>
-				    <td>Votes</td>
+				    <th class="report-label">Tool</td>
+				    <th class="report-label">Votes</td>
 			    </tr>';
 	
 		    $lRowNumber = 0;
@@ -255,8 +255,8 @@
 				}// end if
 								
 				echo "<tr>
-						<td ReflectedXSSExecutionPoint=\"1\">{$lToolName}</td>
-						<td>{$lToolCount}</td>
+						<th class=\"report-label\" ReflectedXSSExecutionPoint=\"1\">{$lToolName}</th>
+						<td class=\"report-data\">{$lToolCount}</td>
 					</tr>\n";
 			}//end while $row
 			echo '</table>';

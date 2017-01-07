@@ -62,7 +62,7 @@ server and confirm the subnet being used to connect.
 			of the graphical view and advanced filtering capabilities.
 			<br/>
 <code>
-	root@ubuntu:~# wireshark /tmp/login-packets.pcap &
+	root@ubuntu:~# wireshark /tmp/login-packets.pcap &amp;
 </code>
 	<br/><br/>
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->UsingEttercapandSSLstriptoCaptureCredentials);?>
