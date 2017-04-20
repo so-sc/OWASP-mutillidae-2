@@ -1,7 +1,7 @@
-<div id="smoothmenu1" class="ddsmoothmenu">
+<div id="smoothmenu1" class="ddsmoothmenu">	
 	<ul>
 		<li style="border-color: #ffffff;border-style: solid;border-width: 1px;">
-			<a href="">OWASP 2013</a>
+			<a href="">OWASP 2017</a>
 			<ul>
 				<li>
 					<a href="https://www.owasp.org/index.php/Top_10_2013-A1-Injection" target="_blank">A1 - Injection (SQL)</a>
@@ -384,19 +384,24 @@
 					</ul>
 				</li>
 				<li>
-					<a href="https://www.owasp.org/index.php/Top_10_2013-A4-Insecure_Direct_Object_References" target="_blank">A4 - Insecure Direct Object References</a>
+					<a href="https://www.owasp.org/index.php/Top_10_2017-A4-Broken_Access_Control" target="_blank">A4 - Broken Access Control</a>
 					<ul>
-						<li><a href="index.php?page=text-file-viewer.php">Text File Viewer</a></li>
-						<li><a href="index.php?page=source-viewer.php">Source Viewer</a></li>
-						<li><a href="index.php?page=credits.php">Credits</a></li>
+						<li>
+							<a href="">Insecure Direct Object References</a>
+							<ul>
+								<li><a href="index.php?page=arbitrary-file-inclusion.php">Arbitrary File Inclusion</a></li>
+								<li><a href="index.php?page=text-file-viewer.php">Text File Viewer</a></li>
+								<li><a href="index.php?page=source-viewer.php">Source Viewer</a></li>
+								<li><a href="index.php?page=credits.php">Credits</a></li>							
+							</ul>
+						</li>
+						<li><a href="index.php?page=secret-administrative-pages.php">"Secret" Administrative Pages</a></li>
 						<li><a href="index.php?page=privilege-escalation.php">Cookies</a></li>
-						<li><a href="index.php?page=arbitrary-file-inclusion.php">Arbitrary File Inclusion</a></li>
 					</ul>
 				</li>
 				<li>
 					<a href="https://www.owasp.org/index.php/Top_10_2013-A5-Security_Misconfiguration" target="_blank">A5 - Security Misconfiguration</a>
 					<ul>
-						<li><a href="index.php?page=secret-administrative-pages.php">"Secret" Administrative Pages</a></li>
 						<li><a href="index.php?page=directory-browsing.php">Directory Browsing</a></li>
 						<li>
 							<a href="">Method Tampering (GET for POST)</a>
@@ -453,12 +458,7 @@
 					</ul>
 				</li>
 				<li>
-					<a href="https://www.owasp.org/index.php/Top_10_2013-A7-Missing_Function_Level_Access_Control" target="_blank">A7 - Missing Function Level Access Control</a>
-					<ul>
-						<li><a href="index.php?page=secret-administrative-pages.php">"Secret" Administrative Pages</a></li>
-						<li><a href="index.php?page=client-side-control-challenge.php">Client-side Control Challenge</a></li>
-						<li><a href="index.php?page=robots-txt.php">Robots.txt</a></li>
-					</ul>
+					<a href="https://www.owasp.org/index.php/Top_10_2017-A7-Insufficient_Attack_Protection" target="_blank">A7 - Insufficient Attack Protection</a>
 				</li>
 				<li>
 					<a href="https://www.owasp.org/index.php/Top_10_2013-A8-Cross-Site_Request_Forgery_%28CSRF%29" target="_blank">A8 - Cross Site Request Forgery (CSRF)</a>
@@ -477,6 +477,82 @@
 					</ul>
 				</li>
 				<li>
+					<a href="https://www.owasp.org/index.php/Top_10_2017-A10-Underprotected_APIs" target="_blank">A10 - Underprotected APIs</a>
+					<ul>
+						<li>
+							<a href="">SOAP</a>
+							<ul>
+								<li>
+									<a href="">Test Page</a>
+									<ul>
+										<li><a href="./webservices/soap/ws-hello-world.php">Hello World</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="">Command Injection</a>
+									<ul>
+										<li><a href="./webservices/soap/ws-lookup-dns-record.php">DNS Lookup</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="">SQL Injection</a>
+									<ul>
+										<li><a href="./webservices/soap/ws-user-account.php">Lookup User</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="">Username Enumeration</a>
+									<ul>
+										<li><a href="./webservices/soap/ws-user-account.php">Lookup User</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="">REST</a>
+							<ul>
+								<li>
+									<a href="">SQL Injection</a>
+									<ul>
+										<li><a href="./webservices/rest/ws-user-account.php">User Account Management</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="">Username Enumeration</a>
+									<ul>
+										<li><a href="./webservices/rest/ws-user-account.php">User Account Management</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<ul>
+		<li style="border-color: #ffffff;border-style: solid;border-width: 1px;">
+			<a href="">OWASP 2013</a>
+			<ul>
+				<li>
+					<a href="https://www.owasp.org/index.php/Top_10_2013-A4-Insecure_Direct_Object_References" target="_blank">A4 - Insecure Direct Object References</a>
+					<ul>
+						<li><a href="index.php?page=text-file-viewer.php">Text File Viewer</a></li>
+						<li><a href="index.php?page=source-viewer.php">Source Viewer</a></li>
+						<li><a href="index.php?page=credits.php">Credits</a></li>
+						<li><a href="index.php?page=privilege-escalation.php">Cookies</a></li>
+						<li><a href="index.php?page=arbitrary-file-inclusion.php">Arbitrary File Inclusion</a></li>
+					</ul>
+				</li>				
+				<li>
+					<a href="https://www.owasp.org/index.php/Top_10_2013-A7-Missing_Function_Level_Access_Control" target="_blank">A7 - Missing Function Level Access Control</a>
+					<ul>
+						<li><a href="index.php?page=secret-administrative-pages.php">"Secret" Administrative Pages</a></li>
+						<li><a href="index.php?page=client-side-control-challenge.php">Client-side Control Challenge</a></li>
+						<li><a href="index.php?page=robots-txt.php">Robots.txt</a></li>
+					</ul>
+				</li>
+				<li>
 					<a href="https://www.owasp.org/index.php/Top_10_2013-A10-Unvalidated_Redirects_and_Forwards" target="_blank">A10 - Unvalidated Redirects and Forwards</a>
 					<ul>
 						<li><a href="?page=credits.php">Credits</a></li>
@@ -486,8 +562,8 @@
 						<a href="">Setup/reset the DB (Disabled: Not Admin)</a></li>
 						<?php }; ?>		
 					</ul>
-				</li>
-			</ul>
+				</li>				
+			</ul>			
 		</li>
 	</ul>
 	<ul>
@@ -495,7 +571,7 @@
 			<a href="">OWASP 2010</a>
 			<ul>
 				<li>
-					<a href="http://www.owasp.org/index.php/Top_10_2010-A7" target="_blank">2010 A7 - Insecure Cryptographic Storage</a>
+					<a href="http://www.owasp.org/index.php/Top_10_2010-A7" target="_blank">A7 - Insecure Cryptographic Storage</a>
 					<ul>
 						<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
 						<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
@@ -504,7 +580,7 @@
 					</ul>
 				</li>
 				<li>
-					<a href="http://www.owasp.org/index.php/Top_10_2010-A8" target="_blank">2010 A8 - Failure to Restrict URL Access</a>
+					<a href="http://www.owasp.org/index.php/Top_10_2010-A8" target="_blank">A8 - Failure to Restrict URL Access</a>
 					<ul>
 						<li><a href="index.php?page=phpmyadmin.php">PHP MyAdmin Console</a></li>
 						<li><a href="index.php?page=source-viewer.php">Source Viewer</a></li>
@@ -515,7 +591,7 @@
 					</ul>
 				</li>
 				<li>
-					<a href="http://www.owasp.org/index.php/Top_10_2010-A9" target="_blank">2010 A9 - Insufficient Transport Layer Protection</a>
+					<a href="http://www.owasp.org/index.php/Top_10_2010-A9" target="_blank">A9 - Insufficient Transport Layer Protection</a>
 					<ul>
 						<li><a href="index.php?page=ssl-misconfiguration.php">SSL Misconfiguration</a></li>
 						<li><a href="index.php?page=login.php">Login</a></li>
@@ -531,14 +607,14 @@
 			<a href="">OWASP 2007</a>
 			<ul>
 				<li>
-					<a href="http://www.owasp.org/index.php/Top_10_2007-A3" target="_blank">OWASP 2007 A3 - Malicious File Execution</a>
+					<a href="http://www.owasp.org/index.php/Top_10_2007-A3" target="_blank">A3 - Malicious File Execution</a>
 					<ul>
 						<li><a href="?page=text-file-viewer.php">Text File Viewer</a></li>
 						<li><a href="?page=source-viewer.php">Source Viewer</a></li>
 					</ul>		
 				</li>
 				<li>
-					<a href="http://www.owasp.org/index.php/Top_10_2007-A6" target="_blank">OWASP 2007 A6 - Information Leakage</a>
+					<a href="http://www.owasp.org/index.php/Top_10_2007-A6" target="_blank">A6 - Information Leakage</a>
 					<ul>
 						<li><a href="index.php">Cache-Control</a></li>
 						<li><a href="index.php">X-Powered-By HTTP Header</a></li>
@@ -552,7 +628,7 @@
 					</ul>		
 				</li>
 				<li>
-					<a href="http://www.owasp.org/index.php/Top_10_2007-A6" target="_blank">OWASP 2007 A6 - Improper Error Handling</a>
+					<a href="http://www.owasp.org/index.php/Top_10_2007-A6" target="_blank">A6 - Improper Error Handling</a>
 					<ul>
 						<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
 						<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
@@ -770,5 +846,5 @@
 			</ul>
 		</li>
 	</ul>
-	<br style="clear: left" />
+	<!-- <br style="clear: left" />  -->
 </div>
