@@ -7,11 +7,9 @@
 	<body>
 		<div>&nbsp;</div>
 		<div class="page-title">Setting up the database...</div><br /><br />
-		<span style="text-align: center;">
-			<div class="label">If you see no error messages, it should be done.</div>
-			<div>&nbsp;</div>
-			<div class="label"><a href="index.php">Continue back to the frontpage.</a></div>
-		</span>
+		<div class="label" style="text-align: center;">If you see no error messages, it should be done.</div>
+		<div>&nbsp;</div>
+		<div class="label" style="text-align: center;"><a href="index.php">Continue back to the frontpage.</a></div>
 		<br />
 		<script>
 			try{
@@ -65,9 +63,12 @@ try{
 			echo format("Executed query 'DROP DATABASE IF EXISTS' for database " . MySQLHandler::$mMySQLDatabaseName . " with result ".$lQueryResult,"S");
 		}// end if
 	}catch(Exception $e){
-		//DO NOTHING. THIS IS HERE DUE TO A MYSQL BUG THAT HAS NOT BEEN PATCHED YET.
+		// We do not want error dropping database to derail entire database setup.
+		echo format("Error was reported while attempting to drop database " . MySQLHandler::$mMySQLDatabaseName,"F");
+		echo format("MySQL sometimes throws errors attempting to drop databases. Here is error in case the error is serious.","I");
+		echo $CustomErrorHandler->FormatError($e, $lQueryString);
 	}//end try
-	
+
 	echo format("Preparing to create database " . MySQLHandler::$mMySQLDatabaseName,"I");
 	$lQueryString = "CREATE DATABASE " . MySQLHandler::$mMySQLDatabaseName;
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
