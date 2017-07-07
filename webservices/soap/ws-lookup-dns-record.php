@@ -119,5 +119,11 @@
 
 	// Use the request to (try to) invoke the service
 	$HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : '';
-	$lSOAPWebService->service($HTTP_RAW_POST_DATA);
+	$php_version = phpversion();
+    $php_major_version = (int)substr($php_version, 0, 1);
+    if ($php_major_version >= 7) {
+        $lSOAPWebService->service(file_get_contents("php://input"));
+    } else {
+        $lSOAPWebService->service($HTTP_RAW_POST_DATA);
+    }
 ?>

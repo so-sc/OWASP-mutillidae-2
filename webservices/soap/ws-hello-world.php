@@ -40,6 +40,14 @@ function hello($name) {
 }
 // Use the request to (try to) invoke the service
 $HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : '';
-$server->service($HTTP_RAW_POST_DATA);
+$php_version = phpversion();
+$php_major_version = (int)substr($php_version, 0, 1);
+if ($php_major_version >= 7) { 
+    $server->service(file_get_contents("php://input"));
+} else {
+    $server->service($HTTP_RAW_POST_DATA);
+}
+
+
 ?>
 
