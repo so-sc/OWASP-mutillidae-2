@@ -231,21 +231,21 @@ class YouTubeVideoHandler {
 		$lOperatingSystemAdvice = "";
 
 		try {
-			if (!$this->mCurlIsInstalled){
-				$lHTML .= $this->getNoCurlAdviceBasedOnOperatingSystem();
-			}//end if curl is not installed
+			//if (!$this->mCurlIsInstalled){
+				//$lHTML .= $this->getNoCurlAdviceBasedOnOperatingSystem();
+			//}//end if curl is not installed
 
 			if (!$this->mYouTubeIsReachable){
 				$lHTML .= $this->getYouTubeIsNotReachableAdvice();
 			}//end if YouTube is not reachable
 
-			$lHTML .= '<br/><span class="label">'.$lVideoTitle.': </span>';
+			//$lHTML .= '<br/><span class="label">'.$lVideoTitle.': </span>';
 
-			if($this->mYouTubeIsReachable){
-				$lHTML .= $this->generateYouTubeFrameHTML($lVideoIdentificationToken);
-			}else {
-				$lHTML .= '<a href="https://www.youtube.com/watch?v='.$lVideoIdentificationToken.'" target="_blank">Visit YouTube Site</a>';
-			}// end if
+			//if($this->mYouTubeIsReachable){
+				//$lHTML .= $this->generateYouTubeFrameHTML($lVideoIdentificationToken);
+			//}else {
+				$lHTML .= '<br/><a href="https://www.youtube.com/watch?v='.$lVideoIdentificationToken.'" target="_blank">Click here to watch <span class="label">'.$lVideoTitle.'</span></a>';
+			//}// end if
 
 		} catch (Exception $e) {
 			//do nothing
