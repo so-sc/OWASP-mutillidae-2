@@ -60,7 +60,7 @@ buildmenu:function($, setting){
 		}
 	)
 	$headers.each(function(i){ //loop through each LI header
-		var $curobj=$(this).css({zIndex: 100-i}) //reference current LI header
+		var $curobj=$(this).css({zIndex: 1000-i}) //reference current LI header
 		var $subul=$(this).find('ul:eq(0)').css({display:'block'})
 		$subul.data('timers', {})
 		this._dimensions={w:this.offsetWidth, h:this.offsetHeight, subulw:$subul.outerWidth(), subulh:$subul.outerHeight()}

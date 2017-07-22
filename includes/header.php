@@ -190,46 +190,47 @@
 	</tr>
 	<tr>
 		<td style="vertical-align:top;text-align:left;background-color:#ccccff;width:125pt;">
-		<?php require_once 'main-menu.php'; ?>
-		<div class="label" style="text-align: center;">
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="hosted_button_id" value="45R3YEXENU97S">
-				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-			</form>
-			<span style="color: blue;">Want to Help?</span>
-		</div>
-		<div>&nbsp;</div>
-		<div class="label" style="text-align: center;">
-			<a href="http://www.youtube.com/user/webpwnized" style="white-space:nowrap;" target="_blank">
-				<img align="middle" alt="Webpwnized YouTube Channel" src="./images/youtube-48-48.png" />
-				<br/>
-				Video Tutorials
-			</a>
-		</div>
-		<div>&nbsp;</div>
-		<div class="label" style="text-align: center;">
-			<a href="https://twitter.com/webpwnized" target="_blank">
-				<img align="middle" alt="Webpwnized Twitter Channel" src="./images/twitter-bird-48-48.png" />
-				<br/>
-				Announcements
-			</a>
-		</div>		
-		<div>&nbsp;</div>
-		<div class="label" style="text-align: center;">
-			<a 
-				href="https://www.sans.org/reading-room/whitepapers/application/introduction-owasp-mutillidae-ii-web-pen-test-training-environment-34380" 
-				target="_blank"
-				title="Whitepaper: Introduction to OWASP Mutillidae II Web Pen Test Training Environment"
-			>			
-				<img align="middle" alt="Webpwnized Twitter Channel" src="./images/pdf-icon-48-48.png" />
-				<br/>
-				Getting Started
-			</a>
-		</div>
-		<div>&nbsp;</div>
-	</td>
-	<td valign="top">
-		<blockquote>
-		<!-- Begin Content -->
+			<?php require_once 'main-menu.php'; ?>
+			<div>&nbsp;</div>
+			<div class="label" style="text-align: center;">
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+					<input type="hidden" name="cmd" value="_s-xclick">
+					<input type="hidden" name="hosted_button_id" value="45R3YEXENU97S">
+					<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+					<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form>
+				<span style="color: blue;">Want to Help?</span>
+			</div>
+			<div>&nbsp;</div>
+			<div class="label" style="text-align: center;">
+				<a href="http://www.youtube.com/user/webpwnized" style="white-space:nowrap;" target="_blank">
+					<img align="middle" alt="Webpwnized YouTube Channel" src="./images/youtube-48-48.png" />
+					<br/>
+					Video Tutorials
+				</a>
+			</div>
+			<div>&nbsp;</div>
+			<div class="label" style="text-align: center;">
+				<a href="https://twitter.com/webpwnized" target="_blank">
+					<img align="middle" alt="Webpwnized Twitter Channel" src="./images/twitter-bird-48-48.png" />
+					<br/>
+					Announcements
+				</a>
+			</div>		
+			<div>&nbsp;</div>
+			<div class="label" style="text-align: center;">
+				<a 
+					href="https://www.sans.org/reading-room/whitepapers/application/introduction-owasp-mutillidae-ii-web-pen-test-training-environment-34380" 
+					target="_blank"
+					title="Whitepaper: Introduction to OWASP Mutillidae II Web Pen Test Training Environment"
+				>			
+					<img align="middle" alt="Webpwnized Twitter Channel" src="./images/pdf-icon-48-48.png" />
+					<br/>
+					Getting Started
+				</a>
+			</div>
+			<div>&nbsp;</div>
+		</td>
+		<td valign="top">
+			<blockquote>
+			<!-- Begin Content -->
