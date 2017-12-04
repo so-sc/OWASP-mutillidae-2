@@ -135,8 +135,7 @@
 		$_SESSION["showhints"] = $l_showhints;
 		switch ($l_showhints){
 			case 0: $_SESSION["hints-enabled"] = "Disabled (".$l_showhints." - I try harder)"; break;
-			case 1: $_SESSION["hints-enabled"] = "Enabled (".$l_showhints." - 5cr1pt K1dd1e)"; break;
-			case 2: $_SESSION["hints-enabled"] = "Enabled (".$l_showhints." - Noob)"; break;
+			case 1: $_SESSION["hints-enabled"] = "Enabled (".$l_showhints." - Try easier)"; break;
 		}// end switch
 	}//end if
 	

@@ -42,7 +42,7 @@
     		header("Location: ".$_SERVER['SCRIPT_NAME'].'?popUpNotificationCode='.$lhintsPopUpNotificationCode.'&'.str_ireplace('do=toggle-bubble-hints&', '', $_SERVER['QUERY_STRING']), true, 302);
 			exit();
     		
-    	break;//case "show-bubble-hints"
+			break;//case "toggle-bubble-hints"
 	    
     	case "logout":
 		    $_SESSION["loggedin"] = "False";

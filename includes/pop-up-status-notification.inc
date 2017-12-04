@@ -2,8 +2,7 @@
 	switch ($_GET["popUpNotificationCode"]){
 		case "HPH0": $lhintsPopUpNotificationMessage = "<b>Feeling Lost?</b> Toggle <b><u>Hints</u></b> or <b><u>Popup Hints</u></b> to activate dynamic help systems.";break;
 		case "L1H0": $lhintsPopUpNotificationMessage = "Hints Disabled";break;
-		case "L1H1": $lhintsPopUpNotificationMessage = "Level 1 hints enabled. Toggle hints again to enable level 2 hints.";break;
-		case "L1H2": $lhintsPopUpNotificationMessage = "Level 1 and 2 Hints Enabled. Toggle hints again to disable.";break;
+		case "L1H1": $lhintsPopUpNotificationMessage = "Hints enabled. Please find a \"Hints and Videos\" section added to the top of each applicable page.";break;
 		case "SUD0": $lhintsPopUpNotificationMessage = "Dropping and rebuilding database";break;
 		case "SUD1": $lhintsPopUpNotificationMessage = "Database has been rebuilt";break;
 		case "AU1": $lhintsPopUpNotificationMessage = "User Authenticated";break;
