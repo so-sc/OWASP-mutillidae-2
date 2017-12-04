@@ -4,7 +4,7 @@
 			<a href="">OWASP 2017</a>
 			<ul>
 				<li>
-					<a href="https://www.owasp.org/index.php/Top_10_2013-A1-Injection" target="_blank">A1 - Injection (SQL)</a>
+					<a href="https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf" target="_blank">A1 - Injection (SQL)</a>
 					<ul>
 						<li>
 							<a href="">SQLi - Extract Data</a>
@@ -64,8 +64,8 @@
 					</ul>
 				</li>
 				<li>
-					<a href="https://www.owasp.org/index.php/Top_10_2013-A1-Injection" target="_blank">A1 - Injection (Other)</a>
-						<ul>
+					<a href="https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf" target="_blank">A1 - Injection (Other)</a>
+					<ul>
 						<li>
 							<a href="">Application Log Injection</a>
 							<ul>
@@ -210,7 +210,7 @@
 					</ul>
 				</li>
 				<li>
-					<a href="https://www.owasp.org/index.php/Top_10_2013-A2-Broken_Authentication_and_Session_Management" target="_blank">
+					<a href="https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf" target="_blank">
 						A2 - Broken Authentication and Session Management
 					</a>
 					<ul>
@@ -246,7 +246,100 @@
 					</ul>
 				</li>
 				<li>
-					<a href="https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_%28XSS%29" target="_blank">A3 - Cross Site Scripting (XSS)</a>
+					<a href="https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf" target="_blank">A3 - Sensitive Data Exposure</a>
+					<ul>
+						<li>
+							<a href="">Information Disclosure</a>
+							<ul>
+								<li><a href="index.php?page=phpmyadmin.php">PHP MyAdmin Console</a></li>
+								<li><a href="index.php?page=phpinfo.php">PHP Info Page</a></li>
+								<li><a href="index.php?page=robots-txt.php">Robots.txt</a></li>
+								<li><a href="index.php?page=secret-administrative-pages.php">"Secret" Administrative Pages</a></li>
+								<li><a href="index.php?page=html5-storage.php">HTML5 Web Storage</a></li>
+								<li><a href="index.php?page=client-side-comments.php">HTML/JavaScript Comments</a></li>
+								<li><a href="index.php?page=cache-control.php">Cache-Control</a></li>
+								<li><a href="index.php?page=framing.php">Click-Jacking</a></li>
+								<li><a href="framer.html">Cross-Site Framing (Third-Party Framing)</a></li>
+								<li><a href="index.php?page=framing.php">X-Powered-By HTTP Header</a></li>
+								<li><a href="framer.html">X-Powered-By HTTP Header</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="">Application Path Disclosure</a>
+							<ul>
+								<li><a href="index.php?page=phpmyadmin.php">PHP MyAdmin Console</a></li>
+								<li><a href="index.php?page=phpinfo.php">PHP Info Page</a></li>
+								<li><a href="index.php?page=robots-txt.php">Robots.txt</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="">Platform Path Disclosure</a>
+							<ul>
+								<li><a href="index.php?page=phpmyadmin.php">PHP MyAdmin Console</a></li>
+								<li><a href="index.php?page=phpinfo.php">PHP Info Page</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf" target="_blank">A4 - XML External Entities</a>
+					<ul>
+						<li>
+							<a href="">XML External Entity Injection</a>
+							<ul>
+								<li><a href="index.php?page=xml-validator.php">XML Validator</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf" target="_blank">A5 - Broken Access Control</a>
+					<ul>
+						<li>
+							<a href="">Insecure Direct Object References</a>
+							<ul>
+								<li><a href="index.php?page=arbitrary-file-inclusion.php">Local File Inclusion</a></li>
+								<li><a href="index.php?page=arbitrary-file-inclusion.php">Remote File Inclusion</a></li>
+								<li><a href="index.php?page=text-file-viewer.php">Text File Viewer</a></li>
+								<li><a href="index.php?page=source-viewer.php">Source Viewer</a></li>
+								<li><a href="index.php?page=credits.php">Credits</a></li>							
+							</ul>
+						</li>
+						<li>
+							<a href="">Missing Function Level Access Control</a>
+							<ul>
+								<li><a href="index.php?page=privilege-escalation.php">Cookies as Auth Tokens</a></li>
+								<li><a href="index.php?page=secret-administrative-pages.php">"Secret" Administrative Pages</a></li>
+								<li><a href="index.php?page=client-side-control-challenge.php">Client-side Control Challenge</a></li>
+								<li><a href="index.php?page=robots-txt.php">Robots.txt</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf" target="_blank">A6 - Security Misconfiguration</a>
+					<ul>
+						<li><a href="index.php?page=directory-browsing.php">Directory Browsing</a></li>
+						<li>
+							<a href="">Method Tampering (GET for POST)</a>
+							<ul>
+								<li><a href="index.php?page=add-to-your-blog.php">Add to your blog</a></li>
+								<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
+								<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
+								<li><a href="index.php?page=user-poll.php">Poll Question</a></li>
+								<li><a href="index.php?page=dns-lookup.php">DNS Lookup</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="index.php?page=user-agent-impersonation.php">User-Agent Impersonation</a>
+						</li>
+						<li>
+							<a href="index.php?page=upload-file.php">Unrestricted File Upload</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf" target="_blank">A7 - Cross Site Scripting (XSS)</a>
 					<ul>
 						<li>
 							<a href="">Reflected (First Order)</a>
@@ -384,92 +477,10 @@
 					</ul>
 				</li>
 				<li>
-					<a href="https://www.owasp.org/index.php/Top_10_2017-A4-Broken_Access_Control" target="_blank">A4 - Broken Access Control</a>
-					<ul>
-						<li>
-							<a href="">Insecure Direct Object References</a>
-							<ul>
-								<li><a href="index.php?page=arbitrary-file-inclusion.php">Arbitrary File Inclusion</a></li>
-								<li><a href="index.php?page=text-file-viewer.php">Text File Viewer</a></li>
-								<li><a href="index.php?page=source-viewer.php">Source Viewer</a></li>
-								<li><a href="index.php?page=credits.php">Credits</a></li>							
-							</ul>
-						</li>
-						<li><a href="index.php?page=secret-administrative-pages.php">"Secret" Administrative Pages</a></li>
-						<li><a href="index.php?page=privilege-escalation.php">Cookies</a></li>
-					</ul>
+					<a href="https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf" target="_blank">A8 - Insecure Deserialization</a>
 				</li>
 				<li>
-					<a href="https://www.owasp.org/index.php/Top_10_2013-A5-Security_Misconfiguration" target="_blank">A5 - Security Misconfiguration</a>
-					<ul>
-						<li><a href="index.php?page=directory-browsing.php">Directory Browsing</a></li>
-						<li>
-							<a href="">Method Tampering (GET for POST)</a>
-							<ul>
-								<li><a href="index.php?page=add-to-your-blog.php">Add to your blog</a></li>
-								<li><a href="index.php?page=user-info.php">User Info (SQL)</a></li>
-								<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
-								<li><a href="index.php?page=user-poll.php">Poll Question</a></li>
-								<li><a href="index.php?page=dns-lookup.php">DNS Lookup</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="index.php?page=user-agent-impersonation.php">User-Agent Impersonation</a>
-						</li>
-						<li>
-							<a href="index.php?page=upload-file.php">Unrestricted File Upload</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure" target="_blank">A6 - Sensitive Data Exposure</a>
-					<ul>
-						<li>
-							<a href="">Information Disclosure</a>
-							<ul>
-								<li><a href="index.php?page=phpmyadmin.php">PHP MyAdmin Console</a></li>
-								<li><a href="index.php?page=phpinfo.php">PHP Info Page</a></li>
-								<li><a href="index.php?page=robots-txt.php">Robots.txt</a></li>
-								<li><a href="index.php?page=secret-administrative-pages.php">"Secret" Administrative Pages</a></li>
-								<li><a href="index.php?page=html5-storage.php">HTML5 Web Storage</a></li>
-								<li><a href="index.php?page=client-side-comments.php">HTML/JavaScript Comments</a></li>
-								<li><a href="index.php?page=cache-control.php">Cache-Control</a></li>
-								<li><a href="index.php?page=framing.php">Click-Jacking</a></li>
-								<li><a href="framer.html">Cross-Site Framing (Third-Party Framing)</a></li>
-								<li><a href="index.php?page=framing.php">X-Powered-By HTTP Header</a></li>
-								<li><a href="framer.html">X-Powered-By HTTP Header</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="">Application Path Disclosure</a>
-							<ul>
-								<li><a href="index.php?page=phpmyadmin.php">PHP MyAdmin Console</a></li>
-								<li><a href="index.php?page=phpinfo.php">PHP Info Page</a></li>
-								<li><a href="index.php?page=robots-txt.php">Robots.txt</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="">Platform Path Disclosure</a>
-							<ul>
-								<li><a href="index.php?page=phpmyadmin.php">PHP MyAdmin Console</a></li>
-								<li><a href="index.php?page=phpinfo.php">PHP Info Page</a></li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="https://www.owasp.org/index.php/Top_10_2017-A7-Insufficient_Attack_Protection" target="_blank">A7 - Insufficient Attack Protection</a>
-				</li>
-				<li>
-					<a href="https://www.owasp.org/index.php/Top_10_2013-A8-Cross-Site_Request_Forgery_%28CSRF%29" target="_blank">A8 - Cross Site Request Forgery (CSRF)</a>
-					<ul>
-						<li><a href="index.php?page=add-to-your-blog.php">Add to your blog</a></li>
-						<li><a href="index.php?page=register.php">Register User</a></li>
-						<li><a href="index.php?page=user-poll.php">Poll Question</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="https://www.owasp.org/index.php/Top_10_2013-A9-Using_Components_with_Known_Vulnerabilities" target="_blank">A9 - Using Components with Known Vulnerabilities</a>
+					<a href="https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf" target="_blank">A9 - Using Components with Known Vulnerabilities</a>
 					<ul>
 						<li><a href="index.php?page=phpmyadmin.php">PHP MyAdmin Console</a></li>
 						<li><a href="index.php?page=phpinfo.php">PHP Info Page</a></li>
@@ -477,55 +488,7 @@
 					</ul>
 				</li>
 				<li>
-					<a href="https://www.owasp.org/index.php/Top_10_2017-A10-Underprotected_APIs" target="_blank">A10 - Underprotected APIs</a>
-					<ul>
-						<li>
-							<a href="">SOAP</a>
-							<ul>
-								<li>
-									<a href="">Test Page</a>
-									<ul>
-										<li><a href="./webservices/soap/ws-hello-world.php">Hello World</a></li>
-									</ul>
-								</li>
-								<li>
-									<a href="">Command Injection</a>
-									<ul>
-										<li><a href="./webservices/soap/ws-lookup-dns-record.php">DNS Lookup</a></li>
-									</ul>
-								</li>
-								<li>
-									<a href="">SQL Injection</a>
-									<ul>
-										<li><a href="./webservices/soap/ws-user-account.php">Lookup User</a></li>
-									</ul>
-								</li>
-								<li>
-									<a href="">Username Enumeration</a>
-									<ul>
-										<li><a href="./webservices/soap/ws-user-account.php">Lookup User</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="">REST</a>
-							<ul>
-								<li>
-									<a href="">SQL Injection</a>
-									<ul>
-										<li><a href="./webservices/rest/ws-user-account.php">User Account Management</a></li>
-									</ul>
-								</li>
-								<li>
-									<a href="">Username Enumeration</a>
-									<ul>
-										<li><a href="./webservices/rest/ws-user-account.php">User Account Management</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-					</ul>
+					<a href="https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf" target="_blank">A10 - Insufficient Logging and Monitoring</a>
 				</li>
 			</ul>
 		</li>
@@ -535,21 +498,11 @@
 			<a href="">OWASP 2013</a>
 			<ul>
 				<li>
-					<a href="https://www.owasp.org/index.php/Top_10_2013-A4-Insecure_Direct_Object_References" target="_blank">A4 - Insecure Direct Object References</a>
+					<a href="https://www.owasp.org/index.php/Top_10_2013-A8-Cross-Site_Request_Forgery_(CSRF)" target="_blank">A8 - Cross Site Request Forgery (CSRF)</a>
 					<ul>
-						<li><a href="index.php?page=text-file-viewer.php">Text File Viewer</a></li>
-						<li><a href="index.php?page=source-viewer.php">Source Viewer</a></li>
-						<li><a href="index.php?page=credits.php">Credits</a></li>
-						<li><a href="index.php?page=privilege-escalation.php">Cookies</a></li>
-						<li><a href="index.php?page=arbitrary-file-inclusion.php">Arbitrary File Inclusion</a></li>
-					</ul>
-				</li>				
-				<li>
-					<a href="https://www.owasp.org/index.php/Top_10_2013-A7-Missing_Function_Level_Access_Control" target="_blank">A7 - Missing Function Level Access Control</a>
-					<ul>
-						<li><a href="index.php?page=secret-administrative-pages.php">"Secret" Administrative Pages</a></li>
-						<li><a href="index.php?page=client-side-control-challenge.php">Client-side Control Challenge</a></li>
-						<li><a href="index.php?page=robots-txt.php">Robots.txt</a></li>
+						<li><a href="index.php?page=add-to-your-blog.php">Add to your blog</a></li>
+						<li><a href="index.php?page=register.php">Register User</a></li>
+						<li><a href="index.php?page=user-poll.php">Poll Question</a></li>
 					</ul>
 				</li>
 				<li>
@@ -559,7 +512,7 @@
 						<?php if (isset($_COOKIE["uid"]) && $_COOKIE["uid"]==1) { ?>		
 						<li><a href="set-up-database.php">Setup/reset the DB</a></li>
 						<?php } else { ?>
-						<a href="">Setup/reset the DB (Disabled: Not Admin)</a></li>
+						<li><a href="">Setup/reset the DB (Disabled: Not Admin)</a></li>
 						<?php }; ?>		
 					</ul>
 				</li>				
@@ -737,30 +690,6 @@
 					<a href="">Unrestricted File Upload</a>
 					<ul>
 						<li><a href="index.php?page=upload-file.php">File Upload</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="">XML External Entity Injection</a>
-					<ul>
-						<li><a href="index.php?page=xml-validator.php">XML Validator</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="">XPath Injection</a>
-					<ul>
-						<li><a href="index.php?page=user-info-xpath.php">User Info (XPath)</a></li>
-					</ul>
-				</li>				
-				<li>
-					<a href="">Local File Inclusion</a>
-					<ul>
-						<li><a href="index.php?page=arbitrary-file-inclusion.php">Arbitrary File Inclusion</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="">Remote File Inclusion</a>
-					<ul>
-						<li><a href="index.php?page=arbitrary-file-inclusion.php">Arbitrary File Inclusion</a></li>
 					</ul>
 				</li>
 				<li>
