@@ -20,4 +20,10 @@
 			<span class="report-header">Videos</span>
 			<br/><br/>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->SpideringWebApplicationswithBurpSuite);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtouseWGETtocloneaWebSite);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoInstalldirbonLinux);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoUsedirbtoLocateHiddenDirectoriesonaWebSite);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoInstallOWASPDirBusteronLinux);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtouseOWASPDirBustertoDiscoverHiddenDirectoriesonWebSites);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoInstallOWASPZaponLinux);?>
 			<br/><br/>

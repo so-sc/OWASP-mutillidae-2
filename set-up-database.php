@@ -328,6 +328,7 @@ try{
 			('home.php', 39, 1),
 			('home.php', 40, 1),
 			('home.php', 56, 1),
+			('home.php', 57, 1),
 			('add-to-your-blog.php', 8, 0),
 			('add-to-your-blog.php', 10, 2),
 			('add-to-your-blog.php', 53, 2),
@@ -371,6 +372,7 @@ try{
 			('captured-data.php', 55, 3),
 			('captured-data.php', 12, 1),
 			('captured-data.php', 56, 1),
+			('client-side-comments.php', 57, 1),
 			('client-side-control-challenge.php', 11, 3),
 			('client-side-control-challenge.php', 55, 3),
 			('client-side-control-challenge.php', 12, 1),
@@ -640,6 +642,7 @@ try{
 		(54, 'Insufficient Transport Layer Protection', 'insufficient-transport-layer-protection.inc'),
 		(55, 'Cross-site Scripting with BeEF Framework', 'beef-framework-hint.inc'),
 		(56, 'Using Burp-Suite', 'burp-suite-hint.inc'),
+		(57, 'Client-side Comments', 'client-side-comments.inc'),
 		(99, 'Hints Not Found', 'hints-not-found.inc')";
 	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
@@ -896,8 +899,20 @@ try{
 			(76, 'pNedfUt0F8k', 'Introduction to Password Cracking with John the Ripper'),
 			(77, '_70aJMjBT34', 'Introduction to Fuzzing Web Applications with Burp-Suite Intruder Tool'),
 			(78, 'SiK_vl6MhSo', 'How to Show Secret Page in Security Level 5'),
-			(79, 'xoDzSA9XZQk', 'Solving Password Challenge in Mutillidae with Command Injection')
+			(79, 'xoDzSA9XZQk', 'Solving Password Challenge in Mutillidae with Command Injection'),
+			(80, 'gU_zv8HIG2g', 'Introduction to the Browser Exploitation Framework (BEeF)'),
+			(81, 'OsSPwe-DUOU', 'How to Install Burp Suite on Linux'),
+			(82, '4ye8n6MV1AY', 'How to Identify Web Technology with Wappalyzer'),
+			(83, 'EvMj3UzbN6o', 'How to Sweep a Web Site for HTML Comments'),
+			(84, 'BNFOHWLq340', 'How to Use dirb to Locate Hidden Directories on a Web Site'),
+			(85, 'MpuFW_mkJ3M', 'How to Install OWASP Zap on Linux'),
+			(86, '4Kxg5rAHKjY', 'How to Install OWASP DirBuster on Linux'),
+			(87, 'TcOHYFizzoo', 'How to use OWASP DirBuster to Discover Hidden Directories on Web Sites'),
+			(88, 'Z9HkZJ-qju0', 'How to Install dirb on Linux'),
+			(89, 'U0uirYnvuHc', 'How to use WGET to clone a Web Site'),
+			(90, '-yE5W-owKes', 'How to Scan Wordpress Sites for Vulnerabilities')
 	";
+	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {
 		$lErrorDetected = TRUE;

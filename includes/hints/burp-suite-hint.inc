@@ -7,6 +7,7 @@
 	<br/><br/>
 	<span class="report-header">Videos</span>
 	<br/><br/>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoInstallBurpSuiteonLinux);?>
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoInstallingConfiguringandUsingBurpSuiteProxy);?>
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoinstallandconfigureBurpSuitewithFirefox);?>
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofWebRequestandResponseInterceptionwithBurpSuite);?>

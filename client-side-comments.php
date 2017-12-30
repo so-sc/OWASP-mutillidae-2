@@ -22,7 +22,8 @@
 	</tr>
 	<tr>
 		<td>
-			This <a href="https://www.youtube.com/watch?v=Ouqubk9H-KY" target="_blank">video</a> shows
+			Click <span class="label">"Hints and Videos"</span>. Open the hint on <span class="label">"Client-side Comments"</span>. 
+			There are videos at the bottom that show
 			different techniques that may be useful.
 		</td>
 	</tr>

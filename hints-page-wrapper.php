@@ -60,7 +60,7 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="./styles/global-styles.css" />
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Hints</title>
+		<title><?php echo $lIncludeFileDescription; ?></title>
 	</head>
 	<body>
 		<table class="hint-table">

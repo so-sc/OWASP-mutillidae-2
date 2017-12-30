@@ -116,6 +116,17 @@ class YouTubeVideoHandler {
 	public $IntroductiontoFuzzingWebApplicationswithBurpSuiteIntruderTool = 77;
 	public $MutillidaeHowtoShowSecretPageinSecurityLevel5 = 78;
 	public $SolvingPasswordChallengeInMutillidaeWithCommandInjection = 79;
+	public $IntroductiontotheBrowserExploitationFramework= 80;	
+	public $HowtoInstallBurpSuiteonLinux = 81;
+	public $HowtoIdentifyWebTechnologywithWappalyzer = 82;
+	public $HowtoSweepaWebSiteforHTMLComments = 83;
+	public $HowtoUsedirbtoLocateHiddenDirectoriesonaWebSite = 84;
+	public $HowtoInstallOWASPZaponLinux = 85;
+	public $HowtoInstallOWASPDirBusteronLinux = 86;
+	public $HowtouseOWASPDirBustertoDiscoverHiddenDirectoriesonWebSites = 87;
+	public $HowtoInstalldirbonLinux = 88;
+	public $HowtouseWGETtocloneaWebSite = 89;
+	public $HowtoScanWordpressSitesforVulnerabilities = 90;
 
 	/* private methods */
 	private function doSetSecurityLevel($pSecurityLevel){

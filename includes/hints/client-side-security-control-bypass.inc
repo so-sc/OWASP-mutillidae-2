@@ -180,4 +180,8 @@
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->TwoMethodstoBypassJavaScriptValidation);?>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->XSSbypassingJavaScriptValidation);?>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoBypassMaxlengthRestrictionsonHTMLInputFields);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoInstalldirbonLinux);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoUsedirbtoLocateHiddenDirectoriesonaWebSite);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoInstallOWASPDirBusteronLinux);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtouseOWASPDirBustertoDiscoverHiddenDirectoriesonWebSites);?>
 			<br/><br/>

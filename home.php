@@ -19,7 +19,7 @@
 <table style="margin:0px;margin-top:5px;">
  	<tr>
 	    <td>
-			<a title="Usage Instructions" href="./index.php?page=usage-instructions.php">
+			<a title="Usage Instructions" href="./index.php?page=documentation/usage-instructions.php">
 				<img alt="What Should I Do?" align="middle" src="./images/question-mark-40-61.png" />
 				What Should I Do?
 			</a>
@@ -103,7 +103,7 @@
 						<ul>
 							<li><a title="Latest Version" href="http://sourceforge.net/projects/mutillidae/files/mutillidae-project/" target="_blank">Latest Version</a></li>
 							<li><a title="Installation Instructions" href="./index.php?page=installation.php">Installation Instructions</a></li>
-							<li><a title="Usage Instructions" href="./index.php?page=usage-instructions.php">Usage Instructions</a></li>
+							<li><a title="Usage Instructions" href="./index.php?page=documentation/usage-instructions.php">Usage Instructions</a></li>
 							<li><a title="Get rid of those pesky PHP errors" href="./index.php?page=php-errors.php">Get rid of those pesky PHP errors</a></li>		
 						</ul>			
 					</td>

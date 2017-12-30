@@ -339,4 +339,5 @@ for(i=0;i&lt;s.length;i++){var lKey = s.key(i);m += lKey + &quot;=&quot; + s.get
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->WebPenTestingHTML5WebStorageusingJSONInjection);?>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->StealingHTML5StorageviaJSONInjection);?>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->ReadingHiddenValuesfromHTML5DomStorage);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontotheBrowserExploitationFramework);?>
 			<br/><br/>
