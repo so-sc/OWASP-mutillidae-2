@@ -1,15 +1,15 @@
 
 <?php
 
-	/**** Testing Input ****
-		<?xml version='1.0'?>
-		<!DOCTYPE change-log [
-		<!ENTITY systemEntity SYSTEM "robots.txt">
-		]>
-		<change-log>
-			<text>&systemEntity;</text>
-		</change-log>
-	 */
+/**** Testing Input ****
+<?xml version='1.0'?>
+<!DOCTYPE change-log [
+<!ENTITY systemEntity SYSTEM "robots.txt">
+]>
+<change-log>
+	<text>&systemEntity;</text>
+</change-log>
+*/
  
 	function HandleXmlError($errno, $errstr, $errfile, $errline){
 	    if ($errno==E_WARNING && (substr_count($errstr,"DOMDocument::loadXML()")>0)){
@@ -23,7 +23,7 @@
     	switch ($_SESSION["security-level"]){
     		case "0": // This code is insecure
 				$lEnableHTMLControls = FALSE;
-    			$lFormMethod = "GET";
+    			//$lFormMethod = "GET";
 				$lEnableJavaScriptValidation = FALSE;
 				$lEnableXMLValidation = FALSE;
 				$lEnableXMLEncoding = FALSE;
@@ -33,7 +33,7 @@
     		
     		case "1": // This code is insecure
 				$lEnableHTMLControls = TRUE;
-    			$lFormMethod = "GET";
+    			//$lFormMethod = "GET";
 				$lEnableJavaScriptValidation = TRUE;
 				$lEnableXMLValidation = FALSE;
 				$lEnableXMLEncoding = FALSE;
@@ -46,7 +46,7 @@
 			case "4":
     		case "5": // This code is fairly secure
 				$lEnableHTMLControls = TRUE;
-    			$lFormMethod = "POST";
+    			//$lFormMethod = "POST";
 				$lEnableJavaScriptValidation = TRUE;
 				$lEnableXMLValidation = TRUE;
 				$lEnableXMLEncoding = TRUE;
@@ -147,7 +147,7 @@
 <?php include_once (__ROOT__.'/includes/hints/hints-menu-wrapper.inc'); ?>
 
 <form 	action="./index.php?page=xml-validator.php"
-		method="<?php echo $lFormMethod; ?>" 
+		method="POST" 
 		enctype="application/x-www-form-urlencoded"
 		onsubmit="return onSubmitOfForm(this);"
 >

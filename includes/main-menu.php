@@ -240,7 +240,7 @@
 							<ul>
 								<li><a href="index.php?page=login.php">Login</a></li>
 								<li><a href="./webservices/soap/ws-user-account.php">Lookup User (SOAP Web Service)</a></li>
-								<li><a href="./webservices/rest/ws-user-account.php">User Account Management(REST Web Service)</a></li>
+								<li><a href="./webservices/rest/ws-user-account.php">User Account Management (REST Web Service)</a></li>
 							</ul>
 						</li>							
 					</ul>
@@ -260,8 +260,8 @@
 								<li><a href="index.php?page=cache-control.php">Cache-Control</a></li>
 								<li><a href="index.php?page=framing.php">Click-Jacking</a></li>
 								<li><a href="framer.html">Cross-Site Framing (Third-Party Framing)</a></li>
-								<li><a href="index.php?page=framing.php">X-Powered-By HTTP Header</a></li>
-								<li><a href="framer.html">X-Powered-By HTTP Header</a></li>
+								<li><a href="index.php?page=framing.php">X-Frame-Options (Click-Jacking)</a></li>
+								<li><a href="framer.html">X-Frame-Options (Cross-frame Scripting)</a></li>
 							</ul>
 						</li>
 						<li>
@@ -279,6 +279,7 @@
 								<li><a href="index.php?page=phpinfo.php">PHP Info Page</a></li>
 							</ul>
 						</li>
+						<li><a href="index.php?page=ssl-misconfiguration.php">SSL Misconfiguration</a></li>
 					</ul>
 				</li>
 				<li>
@@ -336,6 +337,7 @@
 						<li>
 							<a href="index.php?page=upload-file.php">Unrestricted File Upload</a>
 						</li>
+						<li><a href="index.php?page=ssl-misconfiguration.php">SSL Misconfiguration</a></li>
 					</ul>
 				</li>
 				<li>
@@ -485,6 +487,7 @@
 						<li><a href="index.php?page=phpmyadmin.php">PHP MyAdmin Console</a></li>
 						<li><a href="index.php?page=phpinfo.php">PHP Info Page</a></li>
 						<li><a href="index.php?page=view-user-privilege-level.php&iv=6bc24fc1ab650b25b4114e93a98f1eba">CBC-bit Flipping</a></li>
+						<li><a href="index.php?page=ssl-misconfiguration.php">SSL Misconfiguration</a></li>
 					</ul>
 				</li>
 				<li>
@@ -578,6 +581,7 @@
 						<li><a href="index.php?page=phpmyadmin.php">PHP MyAdmin Console</a></li>
 						<li><a href="index.php?page=phpinfo.php">PHP Info Page</a></li>
 						<li><a href="index.php?page=robots-txt.php">Robots.txt</a></li>
+						<li><a href="index.php?page=ssl-misconfiguration.php">SSL Misconfiguration</a></li>
 					</ul>		
 				</li>
 				<li>

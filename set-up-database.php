@@ -538,6 +538,7 @@ try{
 			('user-info-xpath.php', 49, 1),
 			('user-info-xpath.php', 54, 1),
 			('user-info-xpath.php', 56, 1),
+			('user-info-xpath.php', 58, 1),
 			('user-poll.php', 10, 2),
 			('user-poll.php', 53, 2),
 			('user-poll.php', 11, 3),
@@ -564,10 +565,11 @@ try{
 			('view-user-privilege-level.php', 56, 1),
 			('xml-validator.php', 11, 3),
 			('xml-validator.php', 55, 3),
-			('xml-validator.php', 12, 1),
-			('xml-validator.php', 15, 1),
-			('xml-validator.php', 36, 1),
-			('xml-validator.php', 56, 1)
+			('xml-validator.php', 12, 2),
+			('xml-validator.php', 15, 2),
+			('xml-validator.php', 36, 2),
+			('xml-validator.php', 56, 1),
+			('xml-validator.php', 58, 1)
 			;";
 	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
@@ -643,6 +645,7 @@ try{
 		(55, 'Cross-site Scripting with BeEF Framework', 'beef-framework-hint.inc'),
 		(56, 'Using Burp-Suite', 'burp-suite-hint.inc'),
 		(57, 'Client-side Comments', 'client-side-comments.inc'),
+		(58, 'XML Entity Expansion', 'xml-entity-expansion-hint.inc'),
 		(99, 'Hints Not Found', 'hints-not-found.inc')";
 	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
@@ -910,7 +913,8 @@ try{
 			(87, 'TcOHYFizzoo', 'How to use OWASP DirBuster to Discover Hidden Directories on Web Sites'),
 			(88, 'Z9HkZJ-qju0', 'How to Install dirb on Linux'),
 			(89, 'U0uirYnvuHc', 'How to use WGET to clone a Web Site'),
-			(90, '-yE5W-owKes', 'How to Scan Wordpress Sites for Vulnerabilities')
+			(90, '-yE5W-owKes', 'How to Scan Wordpress Sites for Vulnerabilities'),
+			(91, 'GPC3EwS7eBM', 'Hacking Web Apps with Style: Path Relative Style Sheet Injection')
 	";
 	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);

@@ -127,7 +127,8 @@ class YouTubeVideoHandler {
 	public $HowtoInstalldirbonLinux = 88;
 	public $HowtouseWGETtocloneaWebSite = 89;
 	public $HowtoScanWordpressSitesforVulnerabilities = 90;
-
+	public $HackingWebAppswithStylePathRelativeStyleSheetInjection = 91;
+	
 	/* private methods */
 	private function doSetSecurityLevel($pSecurityLevel){
 		$this->mSecurityLevel = $pSecurityLevel;

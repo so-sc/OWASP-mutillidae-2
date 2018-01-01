@@ -15,8 +15,24 @@
 	to list the contents of directories since servers will sometimes be misconfigured to show
 	directory contents.
 	<br/><br/>
+	<span class="label">Print robots.txt pages for list of servers</span>
+	<br/>
+<code>
+while read HOST; do echo -n $HOST:; curl -v --silent --connect-timeout 2 --max-time 3 $HOST/robots.txt 2&gt;&amp;1 | grep -A 100 Disallow; echo; done &lt; hosts.txt
+</code>
+	<br/>
+	<span class="label">Nmap: Sweeping for comments</span>
+	<br/>
+<code>
+nmap -p 80,443 -v -Pn --script=http-robots.txt --open -iL hosts.txt
+</code>	
+	<br/>
 	<span class="report-header">Example</span>
 	<br/><br/>
 	Robots.txt is located at http://[server]/mutillidae/robots.txt with default installation. On Samurai
 	WTF the path will be http://mutillidae/robots.txt.
+	<br/><br/>
+	<span class="report-header">Videos</span>
+	<br/><br/>
+	Coming Soon
 	<br/><br/>

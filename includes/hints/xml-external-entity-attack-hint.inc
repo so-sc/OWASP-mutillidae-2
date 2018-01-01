@@ -158,9 +158,9 @@
 <code>
 &lt;?xml version=&quot;1.0&quot;?&gt;&lt;change-log&gt;&lt;text&gt;&amp;lt;script&amp;gt;alert(&amp;quot;Hello World&amp;quot;)&amp;lt;/script&amp;gt;&lt;/text&gt;&lt;/change-log&gt;
 </code>	
-			<br/><br/>
-			<span class="report-header">Videos</span>
-			<br/><br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoXMLExternalEntityInjection);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->ISSAIntroductiontoXMLExternalEntityInjection);?>
-			<br/><br/>
+		<br/><br/>
+		<span class="report-header">Videos</span>
+		<br/><br/>
+		<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoXMLExternalEntityInjection);?>
+		<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->ISSAIntroductiontoXMLExternalEntityInjection);?>
+		<br/><br/>

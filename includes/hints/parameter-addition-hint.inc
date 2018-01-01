@@ -3,10 +3,11 @@
 		<br/><br/>
 	  	Parameter addition may occur if the user submits a new parameter the site
 	  	was not expecting to see. The site will generally not validate parameters 
-	  	that are unexpected. The classic case of sites outputting all parameters
-	  	no matter whether the site uses the parameter is diagnostics. The developer
+	  	that are unexpected. The classic case is sites outputting all parameters
+	  	regardless of whether the site uses the parameter. The developer
 	  	may dump all parameters and their values regardless of whether the parameters
-	  	was expected. 
+	  	was expected. Many times this dump will be into an HTML comment so the user
+	  	will not see the diagnostic output in the browser.
 		<br/><br/>
 		<span class="report-header">Discovery Methodology</span>
 		<br/><br/>

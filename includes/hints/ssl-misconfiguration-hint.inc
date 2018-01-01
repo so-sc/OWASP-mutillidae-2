@@ -12,9 +12,23 @@ HTTPS, the site can be stripped.
 <br/><br/>
 <span class="report-header">Exploitation</span>
 <br/><br/>
-After ARP poisoning the client and the gateway, use SSLStrip to
-remove SSL connection. 
+For SSLStripping, after ARP poisoning the client and the gateway, use SSLStrip to
+remove SSL connection.
 <br/><br/>
+To test cipher strength, the following tools are helpful
+<br/><br/>
+<span class="label">sslscan</span>
+<br/>
+<code>
+sslscan --targets=hosts.txt	
+</code>
+<br/>
+<span class="label">NMap</span>
+<br/>
+<code>
+nmap -p 443 -v -Pn --script=ssl-enum-ciphers --open -iL hosts.txt
+</code>
+<br/>
 <span class="report-header">Videos</span>
 <br/><br/>
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->UsingEttercapandSSLstriptoCaptureCredentials);?>

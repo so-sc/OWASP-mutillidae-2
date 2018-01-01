@@ -28,5 +28,15 @@ if($_SERVER['HTTPS']!="on"){
 			HTTPS and downgrade the users connection.
 		</td>
 	</tr>
+	<tr>
+		<td>
+		Besides redirecting users from HTTP to HTTPS, other misconfigurations include 
+		using weak ciphers or using vulnerable, unpatched software (i.e. Heartbleed). Part
+		of testing web application security is testing for misconfigured HTTPS.
+		</td>
+	</tr>
+	<tr>
+		<td>Open "Hints and Videos" for more information</td>
+	</tr>
 	<tr><td>&nbsp;</td></tr>
 </table>

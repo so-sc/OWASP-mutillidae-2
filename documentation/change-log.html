@@ -1,15 +1,52 @@
 
-TODO: Add "edit my account page"
-TODO: Add privilege levels
-TODO: Make it super cool to be an administator
-TODO: Add more authentication types
-TODO: Add password recovery page
-TODO: Add mad-libs for XSS, AJAX and CSRF XSS
-TODO: Add password hashes into the project
-TODO: Add examples to CSRF hints
-TODO: Audit help files (ongoing)
+TODO: Add "edit my account page"<br />
+TODO: Add privilege levels<br />
+TODO: Make it super cool to be an administator<br />
+TODO: Add more authentication types<br />
+TODO: Add password recovery page<br />
+TODO: Add mad-libs for XSS, AJAX and CSRF XSS<br />
+TODO: Add password hashes into the project<br />
+TODO: Add examples to CSRF hints<br />
+TODO: Audit help files (ongoing)<br />
+TODO: Make these videos: xpath, redirects/forwards, sslscan, 
+nmap ssl-checks, robots.txt, nmap http series, parameter addition, 
+method tampering, frame source injection, buffer overflows,
+xml entity expansion
 <br />
 <br />
+
+<div><span style="font-weight:bold;">12/31/2017</span>: Jeremy Druin</div>
+<blockquote>
+	<div>Change Log for OWASP Mutillidae II 2.6.52:</div>
+	<ul>
+		<li>
+			Changes the form method to POST on the XML validator
+			to allow for easier XML external entity injection attacks.
+			Browsers restrict the lenght of the URI so performing
+			quadratic expansion attacks is easier when the request
+			method is set to POST by default. The user can change
+			the method to GET to perform method tampering attacks.
+			The code still allows for GET. Its just POST by default.
+		</li>
+		<li>
+			Removed spaces from testing input at the top of
+			the XML Validator page in case folks do not
+			realize that spaces cannot appear before the XML
+			declaration
+		</li>
+		<li>Improved parameter addition hint</li>
+		<li>Added new hint for XML entity expansion</li>
+		<li>Added new video to path relative style sheet injection hint</li>
+		<li>Added code examples to Client-side Comments hint</li>
+		<li>Added code examples to Robots.txt hint</li>
+		<li>Added code examples to SSL Misconfiguration hint</li>
+		<li>Improved SSL Misconfiguration page</li>
+		<li>Added SSL Misconfiguration in several menu locations</li>
+		<li>Added Hints and Videos hint to Home page</li>
+		<li>BUG FIX: Menu mislabeled on two links</li>
+		<li>BUG FIX: Minor space issue on a link</li>
+	</ul>
+</blockquote>
 
 <div><span style="font-weight:bold;">12/30/2017</span>: Jeremy Druin</div>
 <blockquote>

@@ -16,6 +16,16 @@
 	}// end if
 ?>
 
+<div style=" width: 750px; overflow: hidden;">
+<?php include_once (__ROOT__.'/includes/hints/hints-menu-wrapper.inc'); ?>
+<span style="float: right">
+	<img src="images/arrow-45-degree-left-up.png" style="margin-right: 5px" />
+	<span class="label" style="float: right;">TIP:&nbsp;
+	<span style="float: right; text-align: center;">Click 
+	<span style="color: blue;font-style: italic;">Hint and Videos</span><br/>on each page</span></span>
+</span>
+</div>
+
 <table style="margin:0px;margin-top:5px;">
  	<tr>
 	    <td>
@@ -148,7 +158,7 @@
 	<tr>
 		<td colspan="2">
 			<img alt="Helpful hints and scripts" align="middle" src="./images/help-icon-48-48.png" />
-			<span style="font-weight: bold;">Hints?: See "/documentation/mutillidae-test-scripts.txt"</span>
+			<span style="font-weight: bold;">More Hints?: See "/documentation/mutillidae-test-scripts.txt"</span>
 		</td>
 	</tr>
 </table>
