@@ -63,4 +63,8 @@
 <code>
 	http://localhost/mutillidae/index.php?page=redirectandlog.php&amp;forwardurl=http://localhost/mutillidae/capture-data.php
 </code>
-			<br/>
+<br/><br/>
+<span class="report-header">Videos</span>
+<br/><br/>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoUnvalidatedRedirectsandForwards);?>
+<br/><br/>

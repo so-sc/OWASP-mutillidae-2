@@ -31,5 +31,6 @@ nmap -p 443 -v -Pn --script=ssl-enum-ciphers --open -iL hosts.txt
 <br/>
 <span class="report-header">Videos</span>
 <br/><br/>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoTestforWeakSSLTLSHTTPSciphers);?>
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->UsingEttercapandSSLstriptoCaptureCredentials);?>
 <br/><br/>

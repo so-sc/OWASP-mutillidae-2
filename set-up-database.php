@@ -914,7 +914,13 @@ try{
 			(88, 'Z9HkZJ-qju0', 'How to Install dirb on Linux'),
 			(89, 'U0uirYnvuHc', 'How to use WGET to clone a Web Site'),
 			(90, '-yE5W-owKes', 'How to Scan Wordpress Sites for Vulnerabilities'),
-			(91, 'GPC3EwS7eBM', 'Hacking Web Apps with Style: Path Relative Style Sheet Injection')
+			(91, 'GPC3EwS7eBM', 'Hacking Web Apps with Style: Path Relative Style Sheet Injection'),
+			(92, 'fV0qsqcScI4', 'Introduction to XPath Injection'),
+			(93, 'CbdOz5KoQc0', 'Introduction to Unvalidated Redirects and Forwards'),
+			(94, 'uPHpt0esPgw', 'Introduction to Parameter Addition'),
+			(95, 'slbwCMHqCkc', 'How to Test for Weak SSL/TLS HTTPS ciphers'),
+			(96, 'ylg7cQH-aBo', 'Introduction to Method Tampering'),
+			(97, 'BKkvTOB_s1I', 'Introduction to Frame Source Injection')
 	";
 	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);

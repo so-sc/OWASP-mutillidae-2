@@ -128,6 +128,12 @@ class YouTubeVideoHandler {
 	public $HowtouseWGETtocloneaWebSite = 89;
 	public $HowtoScanWordpressSitesforVulnerabilities = 90;
 	public $HackingWebAppswithStylePathRelativeStyleSheetInjection = 91;
+	public $IntroductiontoXPathInjection = 92;
+	public $IntroductiontoUnvalidatedRedirectsandForwards = 93;
+	public $IntroductiontoParameterAddition = 94;
+	public $HowtoTestforWeakSSLTLSHTTPSciphers = 95;
+	public $IntroductiontoMethodTampering = 96;
+	public $IntroductiontoFrameSourceInjection = 97;
 	
 	/* private methods */
 	private function doSetSecurityLevel($pSecurityLevel){
