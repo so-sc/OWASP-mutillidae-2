@@ -134,7 +134,15 @@ class YouTubeVideoHandler {
 	public $HowtoTestforWeakSSLTLSHTTPSciphers = 95;
 	public $IntroductiontoMethodTampering = 96;
 	public $IntroductiontoFrameSourceInjection = 97;
-	
+	public $IntroductiontoBurpSuiteRepeaterTool = 98;
+	public $IntroductiontoBurpSuiteIntrudersCharacterFrobberPayload = 99;
+	public $IntroductiontoBurpSuiteIntrudersGrepExtractFeature = 100;
+	//public $HowtoInstallOWASPZaponLinux = 101;
+	public $HowtoInstallandConfigureFoxyProxywithFirefox = 102;
+	public $HowtoSpideraWebSitewithOWASPZAP = 103;
+	public $HowtoProxyWebTrafficthroughOWASPZAP = 104;
+	public $HowtoInterceptHTTPRequestswithOWASPZAP = 105;
+		
 	/* private methods */
 	private function doSetSecurityLevel($pSecurityLevel){
 		$this->mSecurityLevel = $pSecurityLevel;

@@ -8,13 +8,17 @@
 	<span class="report-header">Videos</span>
 	<br/><br/>
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoInstallBurpSuiteonLinux);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoInstallandConfigureFoxyProxywithFirefox);?>	
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoInstallingConfiguringandUsingBurpSuiteProxy);?>
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoinstallandconfigureBurpSuitewithFirefox);?>
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofWebRequestandResponseInterceptionwithBurpSuite);?>
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofBurpSuiteTargetsTab);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoBurpSuiteRepeaterTool);?>
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->SpideringWebApplicationswithBurpSuite);?>
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->UsingBurpIntruderSnipertoFuzzParameters);?>
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->ComparingBurpSuiteIntruderModesSniperBatteringramPitchforkClusterbomb);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoBurpSuiteIntrudersCharacterFrobberPayload);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoBurpSuiteIntrudersGrepExtractFeature);?>
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoBurpSuiteComparerTool);?>
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoFuzzingWebApplicationswithBurpSuiteIntruderTool);?>
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BruteForcePageNamesusingBurpSuiteIntruder);?>
