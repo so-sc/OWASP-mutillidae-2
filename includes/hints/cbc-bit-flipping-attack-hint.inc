@@ -110,5 +110,6 @@
 			<br/><br/>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoBurpSuiteIntrudersCharacterFrobberPayload);?>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoBurpSuiteIntrudersGrepExtractFeature);?>
+			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoFuzzWebApplicationswithOWASPZAPPart2);?>
 			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoCBCBitFlippingAttack);?>
 		  	<br/><br/>

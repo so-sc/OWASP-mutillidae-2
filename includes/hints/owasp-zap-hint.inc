@@ -12,4 +12,6 @@
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoSpideraWebSitewithOWASPZAP);?>
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoProxyWebTrafficthroughOWASPZAP);?>
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoInterceptHTTPRequestswithOWASPZAP);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoFuzzWebApplicationswithOWASPZAPPart1);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoFuzzWebApplicationswithOWASPZAPPart2);?>
 	<br/><br/>

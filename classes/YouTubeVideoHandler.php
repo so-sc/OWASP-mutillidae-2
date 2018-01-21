@@ -142,6 +142,8 @@ class YouTubeVideoHandler {
 	public $HowtoSpideraWebSitewithOWASPZAP = 103;
 	public $HowtoProxyWebTrafficthroughOWASPZAP = 104;
 	public $HowtoInterceptHTTPRequestswithOWASPZAP = 105;
+	public $HowtoFuzzWebApplicationswithOWASPZAPPart1 = 106;
+	public $HowtoFuzzWebApplicationswithOWASPZAPPart2 = 107;	
 		
 	/* private methods */
 	private function doSetSecurityLevel($pSecurityLevel){

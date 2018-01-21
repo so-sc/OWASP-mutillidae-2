@@ -969,8 +969,10 @@ try{
             (102, 'jHGNLvSpaLs', 'How to Install and Configure Foxy Proxy with Firefox'),
             (103, 'pGCBivHNRn8', 'How to Spider a Web Site with OWASP ZAP'),
             (104, 'ICPqz1Al9fk', 'How to Proxy Web Traffic through OWASP ZAP'),
-            (105, 'fa5LAfXmwoo', 'How to Intercept HTTP Requests with OWASP ZAP')";
-
+            (105, 'fa5LAfXmwoo', 'How to Intercept HTTP Requests with OWASP ZAP'),
+            (106, 'uSfGeyJKIVA', 'How to Fuzz Web Applications with OWASP ZAP (Part 1)'),
+            (107, 'tBXX_GAK7BU', 'How to Fuzz Web Applications with OWASP ZAP (Part 2)')";
+	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {
 		$lErrorDetected = TRUE;
