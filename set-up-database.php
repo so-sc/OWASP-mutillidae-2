@@ -965,14 +965,23 @@ try{
 			(98, 'IstpobN5azo', 'Introduction to Burp Suite Repeater Tool'),
 			(99, '7vWTEbOfa-8', 'Introduction to Burp-Suite Intruders Character Frobber Payload'),
 	        (100, 't0uMReqs8Ng', 'Introduction to Burp-Suite Intruders Grep-Extract Feature'),
-
+	        (101, 'fqKjLrdxrJ0', 'How to grab robots.txt file with CURL'),
             (102, 'jHGNLvSpaLs', 'How to Install and Configure Foxy Proxy with Firefox'),
             (103, 'pGCBivHNRn8', 'How to Spider a Web Site with OWASP ZAP'),
             (104, 'ICPqz1Al9fk', 'How to Proxy Web Traffic through OWASP ZAP'),
             (105, 'fa5LAfXmwoo', 'How to Intercept HTTP Requests with OWASP ZAP'),
             (106, 'uSfGeyJKIVA', 'How to Fuzz Web Applications with OWASP ZAP (Part 1)'),
-            (107, 'tBXX_GAK7BU', 'How to Fuzz Web Applications with OWASP ZAP (Part 2)')";
-	
+            (107, 'tBXX_GAK7BU', 'How to Fuzz Web Applications with OWASP ZAP (Part 2)'),
+            (108, 'd6BlRIShKWU', 'How to list HTTP Methods with CURL'),
+            (109, '4c6WaMF2joQ', 'How to list HTTP Methods with NMap'),
+            (110, 'rt8Mi2njee0', 'How to grab HTTP Server Banners with CURL'),
+            (111, '9kNXvcoqerY', 'How to grab HTTP Server Banners with NMap'),
+            (112, '9gsNMf-rf9U', 'How to Install Burp-Suite Community Edition on Linux'),
+            (113, 'zgrfx2xO0NU', 'OWASP ZAP: Using Forced Browse Feature (Find Hidden Directories)'),
+            (114, 'RVzs8aCnpHw', 'OWASP ZAP: Web App Vulnerability Assessment (Partial Site)'),
+            (115, 'KeSUiCr-WGo', 'OWASP ZAP: Automated Web App Vulnerability Assessment (Entire Site)'),
+            (116, 'K6qwqMt_Ldc', 'OWASP ZAP: Web App Vulnerability Assessment (Single Page)')";
+
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {
 		$lErrorDetected = TRUE;

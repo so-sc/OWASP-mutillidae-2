@@ -137,14 +137,23 @@ class YouTubeVideoHandler {
 	public $IntroductiontoBurpSuiteRepeaterTool = 98;
 	public $IntroductiontoBurpSuiteIntrudersCharacterFrobberPayload = 99;
 	public $IntroductiontoBurpSuiteIntrudersGrepExtractFeature = 100;
-	//public $HowtoInstallOWASPZaponLinux = 101;
+	public $HowtograbrobotstxtfilewithCURL = 101;
 	public $HowtoInstallandConfigureFoxyProxywithFirefox = 102;
 	public $HowtoSpideraWebSitewithOWASPZAP = 103;
 	public $HowtoProxyWebTrafficthroughOWASPZAP = 104;
 	public $HowtoInterceptHTTPRequestswithOWASPZAP = 105;
 	public $HowtoFuzzWebApplicationswithOWASPZAPPart1 = 106;
 	public $HowtoFuzzWebApplicationswithOWASPZAPPart2 = 107;	
-		
+	public $HowtolistHTTPMethodswithCURL = 108;
+	public $HowtolistHTTPMethodswithNMap = 109;
+	public $HowtograbHTTPServerBannerswithCURL = 110;
+	public $HowtograbHTTPServerBannerswithNMap = 111;
+	public $HowtoInstallBurpSuiteCommunityEditiononLinux = 112;
+	public $OWASPZAPUsingForcedBrowseFeatureFindHiddenDirectories = 113;
+	public $OWASPZAPWebAppVulnerabilityAssessmentPartialSite = 114;
+	public $OWASPZAPAutomatedWebAppVulnerabilityAssessmentEntireSite = 115;
+	public $OWASPZAPWebAppVulnerabilityAssessmentSinglePage = 116;
+	
 	/* private methods */
 	private function doSetSecurityLevel($pSecurityLevel){
 		$this->mSecurityLevel = $pSecurityLevel;
@@ -272,7 +281,7 @@ class YouTubeVideoHandler {
 			//if($this->mYouTubeIsReachable){
 				//$lHTML .= $this->generateYouTubeFrameHTML($lVideoIdentificationToken);
 			//}else {
-				$lHTML .= '<br/><a href="https://www.youtube.com/watch?v='.$lVideoIdentificationToken.'" target="_blank">Click here to watch <span class="label">'.$lVideoTitle.'</span></a>';
+				$lHTML .= '<br/><a href="https://www.youtube.com/watch?v='.$lVideoIdentificationToken.'" target="_blank"><span style="color:black;">Click here to watch</span> <span class="label">'.$lVideoTitle.'</span></a>';
 			//}// end if
 
 		} catch (Exception $e) {

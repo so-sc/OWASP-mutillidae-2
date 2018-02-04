@@ -14,4 +14,8 @@
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoInterceptHTTPRequestswithOWASPZAP);?>
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoFuzzWebApplicationswithOWASPZAPPart1);?>
 	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoFuzzWebApplicationswithOWASPZAPPart2);?>
-	<br/><br/>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->OWASPZAPUsingForcedBrowseFeatureFindHiddenDirectories);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->OWASPZAPAutomatedWebAppVulnerabilityAssessmentEntireSite);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->OWASPZAPWebAppVulnerabilityAssessmentPartialSite);?>
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->OWASPZAPWebAppVulnerabilityAssessmentSinglePage);?>
+	<br/><br/>	

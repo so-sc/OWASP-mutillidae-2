@@ -34,5 +34,5 @@ nmap -p 80,443 -v -Pn --script=http-robots.txt --open -iL hosts.txt
 	<br/><br/>
 	<span class="report-header">Videos</span>
 	<br/><br/>
-	Coming Soon
+	<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtograbrobotstxtfilewithCURL);?>
 	<br/><br/>

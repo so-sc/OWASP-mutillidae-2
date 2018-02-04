@@ -331,13 +331,15 @@
 								<li><a href="index.php?page=dns-lookup.php">DNS Lookup</a></li>
 							</ul>
 						</li>
-						<li>
-							<a href="index.php?page=user-agent-impersonation.php">User-Agent Impersonation</a>
-						</li>
-						<li>
-							<a href="index.php?page=upload-file.php">Unrestricted File Upload</a>
-						</li>
+						<li><a href="index.php?page=user-agent-impersonation.php">User-Agent Impersonation</a></li>
+						<li><a href="index.php?page=upload-file.php">Unrestricted File Upload</a></li>
 						<li><a href="index.php?page=ssl-misconfiguration.php">SSL Misconfiguration</a></li>
+						<li><a href="index.php?page=phpmyadmin.php">PHP MyAdmin Console</a></li>
+						<li><a href="index.php?page=phpinfo.php">PHP Info Page</a></li>
+						<li><a href="index.php?page=robots-txt.php">Robots.txt</a></li>
+						<li><a href="index.php?page=cache-control.php">Cache-Control</a></li>
+						<li><a href="index.php?page=framing.php">Click-Jacking</a></li>
+						<li><a href="framer.html">Cross-Site Framing (Third-Party Framing)</a></li>
 					</ul>
 				</li>
 				<li>
