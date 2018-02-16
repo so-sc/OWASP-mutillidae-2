@@ -25,6 +25,7 @@ is provided below to help get started with Burp-Suite.
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BruteForcePageNamesusingBurpSuiteIntruder);?>
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AnalyzeSessionTokenRandomnessusingBurpSuiteSequencer);?>
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->UsingBurpSuiteSequencertoCompareCSRFtokenstrengths);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->UsingOWASPZAPwithBurpSuite);?>
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->ISSA2013WebPentestingWorkshopPart1IntrotoMutillidaeBurpSuiteInjection);?>
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BruteForceAuthenticationusingBurpIntruder);?>
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoExploitLocalFileInclusionVulnerabilityusingBurpSuite);?>

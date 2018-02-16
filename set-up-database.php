@@ -980,8 +980,17 @@ try{
             (113, 'zgrfx2xO0NU', 'OWASP ZAP: Using Forced Browse Feature (Find Hidden Directories)'),
             (114, 'RVzs8aCnpHw', 'OWASP ZAP: Web App Vulnerability Assessment (Partial Site)'),
             (115, 'KeSUiCr-WGo', 'OWASP ZAP: Automated Web App Vulnerability Assessment (Entire Site)'),
-            (116, 'K6qwqMt_Ldc', 'OWASP ZAP: Web App Vulnerability Assessment (Single Page)')";
-
+            (116, 'K6qwqMt_Ldc', 'OWASP ZAP: Web App Vulnerability Assessment (Single Page)'),	
+        	(117, 'aTY4F9vzSpQ', 'How to Create Wordlists from Web Sites using CEWL'),
+        	(118, 'b6IR2KgiOcw', 'OWASP ZAP Breakpoints: Part 1 - Trapping HTTP Requests'),
+        	(119, 'H2tKdwMcKnk', 'OWASP ZAP Breakpoints: Part 2 - Trapping Specific HTTP Requests'),
+        	(120, '1CJB8BtW0pQ', 'Using OWASP ZAP with Burp-Suite'),
+        	(121, 'dQ-_TO1zuvA', 'Command Injection Explained - Part 1: The Basics'),
+        	(122, 'YYzWvXG7mjQ', 'Command Injection Explained - Part 2: Discovery'),
+        	(123, 'L_qqJvabctY', 'Command Injection Explained - Part 3: Blind Injection'),
+        	(124, '55BiRJFB1-M', 'Command Injection Explained - Part 4: Chaining Commands'),
+        	(125, '9IMpzlRS1lU', 'Command Injection Explained - Part 5: Shell')";
+	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {
 		$lErrorDetected = TRUE;

@@ -153,6 +153,15 @@ class YouTubeVideoHandler {
 	public $OWASPZAPWebAppVulnerabilityAssessmentPartialSite = 114;
 	public $OWASPZAPAutomatedWebAppVulnerabilityAssessmentEntireSite = 115;
 	public $OWASPZAPWebAppVulnerabilityAssessmentSinglePage = 116;
+	public $HowtoCreateWordlistsfromWebSitesusingCEWL = 117;
+	public $OWASPZAPBreakpointsPart1TrappingHTTPRequests = 118;
+	public $OWASPZAPBreakpointsPart2TrappingSpecificHTTPRequests = 119;
+	public $UsingOWASPZAPwithBurpSuite = 120;
+	public $CommandInjectionExplainedPart1TheBasics = 121;
+	public $CommandInjectionExplainedPart2Discovery = 122;
+	public $CommandInjectionExplainedPart3BlindInjection = 123;
+	public $CommandInjectionExplainedPart4ChainingCommands = 124;
+	public $CommandInjectionExplainedPart5Shell = 125;
 	
 	/* private methods */
 	private function doSetSecurityLevel($pSecurityLevel){
