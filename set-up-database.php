@@ -989,7 +989,8 @@ try{
         	(122, 'YYzWvXG7mjQ', 'Command Injection Explained - Part 2: Discovery'),
         	(123, 'L_qqJvabctY', 'Command Injection Explained - Part 3: Blind Injection'),
         	(124, '55BiRJFB1-M', 'Command Injection Explained - Part 4: Chaining Commands'),
-        	(125, '9IMpzlRS1lU', 'Command Injection Explained - Part 5: Shell')";
+        	(125, '9IMpzlRS1lU', 'Command Injection Explained - Part 5: Shell'),
+	        (126, 'DmGVipmtTS8', 'Command Injection Explained - Part 6: Directory Traversal')";
 	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {

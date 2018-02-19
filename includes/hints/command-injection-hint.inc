@@ -183,6 +183,7 @@ Cover Tracks: Clear logs
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->CommandInjectionExplainedPart3BlindInjection);?>
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->CommandInjectionExplainedPart4ChainingCommands);?>
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->CommandInjectionExplainedPart5Shell);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->CommandInjectionExplainedPart6DirectoryTraversal);?>
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->CommandInjectiontoDumpFilesStartServicesandDisableFirewall);?>
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->HowtoLocatetheEastereggFileusingCommandInjection);?>
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->GainingAdministrativeShellAccessviaCommandInjection);?>

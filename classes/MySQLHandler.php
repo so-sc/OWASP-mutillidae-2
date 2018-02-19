@@ -1,6 +1,10 @@
 <?php
+
+/* read database configuration file and populate class parameters */
+require_once 'includes/database-config.php';
+
 class MySQLHandler {
-	
+    
 	/**************************/
 	/* Database Configuration */
 	/**************************/
@@ -13,7 +17,7 @@ class MySQLHandler {
 	 * If using XAMPP, this is almost certainly localhost.
 	 * 127.0.0.1 might work.
 	 * */
-	static public $mMySQLDatabaseHost = "127.0.0.1";
+    static public $mMySQLDatabaseHost = DB_HOST;
 
 	/* ----------------------------------------------
 	 * DATABASE USER NAME
@@ -23,7 +27,7 @@ class MySQLHandler {
 	 * incorrectly, OWASP Mutillidae II is not going to be able to connect
 	 * to the database.
 	 * */	
-	static public $mMySQLDatabaseUsername = "root";
+	static public $mMySQLDatabaseUsername = DB_USERNAME;
 	
 	/* ----------------------------------------------
 	 * DATABASE PASSWORD
@@ -36,7 +40,7 @@ class MySQLHandler {
 	 * On Samurai, the $dbpass password is "samurai" rather 
 	 * than blank.
 	 * */
-	static public $mMySQLDatabasePassword = "";
+	static public $mMySQLDatabasePassword = DB_PASSWORD;
 	
 	/* ----------------------------------------------
 	 * DATABASE NAME (NOT SERVER NAME)
@@ -44,7 +48,7 @@ class MySQLHandler {
 	 * This is the name of the database which will be created
 	 * by the installation script. You can choose this name.
 	 * */	
-	static public $mMySQLDatabaseName = "nowasp";
+	static public $mMySQLDatabaseName = DB_NAME;
 		
 	/* ------------------------------------------
  	 * OBJECT PROPERTIES
@@ -67,7 +71,27 @@ class MySQLHandler {
  	 * STATIC PROPERTIES
  	 * ------------------------------------------ */
 	public static $mDatabaseAvailableMessage = "";
-		
+
+	/* ------------------------------------------
+	 * CONSTRUCTOR METHOD
+	 * ------------------------------------------ */
+	public function __construct($pPathToESAPI, $pSecurityLevel){
+	    
+	    $this->doSetSecurityLevel($pSecurityLevel);
+	    
+	    /* initialize OWASP ESAPI for PHP */
+	    require_once $pPathToESAPI . 'ESAPI.php';
+	    $this->ESAPI = new ESAPI($pPathToESAPI . 'ESAPI.xml');
+	    $this->Encoder = $this->ESAPI->getEncoder();
+	    
+	    /* initialize custom error handler */
+	    require_once 'CustomErrorHandler.php';
+	    $this->mCustomErrorHandler = new CustomErrorHandler($pPathToESAPI, $pSecurityLevel);
+
+	    $this->doOpenDatabaseConnection();
+	    
+	}// end function __construct()
+	
 	/* ------------------------------------------
  	 * PRIVATE METHODS
  	 * ------------------------------------------ */
@@ -171,25 +195,6 @@ class MySQLHandler {
 		}// end function
 
 	}// end private function executeQuery
-	
-	/* ------------------------------------------
- 	 * CONSTRUCTOR METHOD
- 	 * ------------------------------------------ */
-	public function __construct($pPathToESAPI, $pSecurityLevel){
-		
-		$this->doSetSecurityLevel($pSecurityLevel);
-		
-		//initialize OWASP ESAPI for PHP
-		require_once $pPathToESAPI . 'ESAPI.php';
-		$this->ESAPI = new ESAPI($pPathToESAPI . 'ESAPI.xml');
-		$this->Encoder = $this->ESAPI->getEncoder();
-		 
-		/* initialize custom error handler */
-	    require_once 'CustomErrorHandler.php';
-	    $this->mCustomErrorHandler = new CustomErrorHandler($pPathToESAPI, $pSecurityLevel);
-	    
-	    $this->doOpenDatabaseConnection();
-	}// end function __construct()
 	
 	/* ------------------------------------------
  	 * PUBLIC METHODS

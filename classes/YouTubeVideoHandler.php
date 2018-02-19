@@ -162,6 +162,7 @@ class YouTubeVideoHandler {
 	public $CommandInjectionExplainedPart3BlindInjection = 123;
 	public $CommandInjectionExplainedPart4ChainingCommands = 124;
 	public $CommandInjectionExplainedPart5Shell = 125;
+	public $CommandInjectionExplainedPart6DirectoryTraversal = 126;
 	
 	/* private methods */
 	private function doSetSecurityLevel($pSecurityLevel){

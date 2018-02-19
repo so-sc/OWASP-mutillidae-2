@@ -12,6 +12,32 @@ TODO: Make these videos: nmap http series, buffer overflows, xml entity expansio
 <br />
 <br />
 
+<div><span style="font-weight:bold;">02/19/2018</span>: Jeremy Druin</div>
+<blockquote>
+	<div>Change Log for OWASP Mutillidae II 2.6.57:</div>
+	<ul>
+		<li>
+			Created independent configuration file for database credentials
+			to make it easier to add Mutillidae into Samurai WTF 4.
+			The congiuration file is includes/database-config.php.
+			The class that handles the database connection is still
+			MySQLHandler.php. The config file contains the following by
+			default:
+			<br/>
+			define('DB_HOST', '127.0.0.1');
+			define('DB_USERNAME', 'root');
+			define('DB_PASSWORD', '');
+			define('DB_NAME', 'mutillidae');
+		</li>
+		<li>
+			Changed the default database name to mutillidae to make it more
+			obvious which database belongs to which application on systems
+			with lots of target applications
+		</li>
+		<li>Added another video on command injection</li>
+	</ul>
+</blockquote>
+
 <div><span style="font-weight:bold;">02/15/2018</span>: Jeremy Druin</div>
 <blockquote>
 	<div>Change Log for OWASP Mutillidae II 2.6.56:</div>
