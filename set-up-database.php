@@ -887,14 +887,14 @@ try{
 			(17, 'qsE04AhlJrc', 'Basics of Web Request and Response Interception with Burp-Suite'),
 			(18, 'JPd2YtgJm8Q', 'ISSA 2013 Web Pen-testing Workshop - Part 1 - Intro to Mutillidae, Burp Suite & Injection'),
 			(19, 'Id_JC3hJzhk', 'Overview of Useful Pen Testing Add-ons for Firefox'),
-			(20, '0_AN5FKsxaw', 'Bypass Authentication using SQL Injection'),
+			(20, '0_AN5FKsxaw', 'SQL Injection Explained - Part 8: Authentication Bypass'),
 			(21, 'dmYp2drEwwE', 'Automate SQL Injection using sqlmap'),
-			(22, '3qOgt9IYgaI', 'Basics of SQL Injection Timing Attacks'),
-			(23, 'UcbZUmuMy3U', 'Introduction to Union-Based SQL Injection'),
-			(24, 'WLmKK4LKdl0', 'Basics of Inserting Data with SQL Injection'),
-			(25, 'lcaqam-CyBE', 'Inject Web Shell Backdoor via SQL Injection'),
-			(26, 'EBk0-lJ2LrM', 'Basics of using SQL Injection to Read Files'),
-			(27, 'UH9gx4TyFlk', 'Generate Cross Site Scripts with SQL Injection'),
+			(22, '3qOgt9IYgaI', 'SQL Injection Explained - Part 6: Timing Attacks'),
+			(23, 'UcbZUmuMy3U', 'SQL Injection Explained - Part 5: Union-Based SQL Injection'),
+			(24, 'WLmKK4LKdl0', 'SQL Injection Explained - Part 9: Inserting Data'),
+			(25, 'lcaqam-CyBE', 'SQL Injection Explained - Part 10: Web Shells'),
+			(26, 'EBk0-lJ2LrM', 'SQL Injection Explained - Part 7: Reading Files'),
+			(27, 'UH9gx4TyFlk', 'SQL Injection Explained - Part 11: Beware the Cross-Site Scripts'),
 			(28, 'RFEqlg21mkE', 'SQL Injection via AJAX request with JSON response'),
 			(29, 'vTB3Ze901pM', 'Basics of using sqlmap - ISSA KY Workshop - February 2013'),
 			(30, 'YCfInEFWbVA', 'Explanation of HTTPOnly Cookies in Presence Cross-Site Scripting'),
@@ -990,7 +990,11 @@ try{
         	(123, 'L_qqJvabctY', 'Command Injection Explained - Part 3: Blind Injection'),
         	(124, '55BiRJFB1-M', 'Command Injection Explained - Part 4: Chaining Commands'),
         	(125, '9IMpzlRS1lU', 'Command Injection Explained - Part 5: Shell'),
-	        (126, 'DmGVipmtTS8', 'Command Injection Explained - Part 6: Directory Traversal')";
+	        (126, 'DmGVipmtTS8', 'Command Injection Explained - Part 6: Directory Traversal'),
+        	(127, 'BR-VeQUoRCw', 'SQL Injection Explained - Part 1: The Basics'),
+        	(128, 'OBa8-_I8sYg', 'SQL Injection Explained - Part 2: Tautologies'),
+        	(129, 'Ejru0gQUbik', 'SQL Injection Explained - Part 3: Selective Injections'),
+        	(130, 'BWP-H_xJmrM', 'SQL Injection Explained - Part 4: Discovery by Error')";
 	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {

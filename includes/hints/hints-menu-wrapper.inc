@@ -22,7 +22,13 @@
 	<?php
 	try{
 		if ($_SESSION["showhints"] > 0) {
-			$lPageName = $_GET["page"];
+		    
+		    if(array_key_exists("page", $_GET)){
+		        $lPageName = $_GET["page"];
+		    }else{
+		        $lPageName = "home.php";
+		    }//end if
+		        
 			$lIncludeFileRecords = $SQLQueryHandler->getPageLevelOneHelpIncludeFiles($lPageName);
 
 			if ($SQLQueryHandler->affected_rows()>0) {

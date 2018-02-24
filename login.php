@@ -175,6 +175,8 @@
    	var cNO_RESULTS_FOUND = 2;
    	var cAUTHENTICATION_SUCCESSFUL = 3;
    	var cAUTHENTICATION_EXCEPTION_OCCURED = 4;
+   	var cUSERNAME_OR_PASSWORD_INCORRECT = 5;
+   	
    	var lMessage = "";
    	var lAuthenticationFailed = "FALSE";
    	
@@ -190,6 +192,9 @@
    	   		break;
    		case cAUTHENTICATION_EXCEPTION_OCCURED: 
    	   		lMessage="Exception occurred"; lAuthenticationFailed = "TRUE"; 
+   		break;
+   		case cUSERNAME_OR_PASSWORD_INCORRECT: 
+   	   		lMessage="Username or password incorrect"; lAuthenticationFailed = "TRUE"; 
    		break;
    	};
 

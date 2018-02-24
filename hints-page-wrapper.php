@@ -10,8 +10,9 @@
 		/* We use the session on this page */
 		if (!isset($_SESSION["security-level"])){
 			session_start();
+			$_SESSION["security-level"] = 0;
 		}// end if
-				
+
 		/* ------------------------------------------
 		 * initialize custom error handler
 		* ------------------------------------------ */

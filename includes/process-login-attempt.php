@@ -24,6 +24,7 @@
 				$lUsername = $_REQUEST["username"];
 				$lPassword = $_REQUEST["password"];	   			
 	   			$lProtectCookies = FALSE;
+	   			$lConfidentialityRequired = FALSE;
 	   		break;
 		    		
 			case "2":
@@ -34,6 +35,7 @@
 				$lUsername = $_POST["username"];
 				$lPassword = $_POST["password"];
 	   			$lProtectCookies = TRUE;
+	   			$lConfidentialityRequired = TRUE;
 	   		break;
 	   	}// end switch
 
@@ -43,7 +45,8 @@
 	   	$cNO_RESULTS_FOUND = 2;
 	   	$cAUTHENTICATION_SUCCESSFUL = 3;
 	   	$cAUTHENTICATION_EXCEPTION_OCCURED = 4;
-
+	   	$cUSERNAME_OR_PASSWORD_INCORRECT = 5;
+	   	
 	   	$lAuthenticationAttemptResult = $cUNSURE;
 	   	$lAuthenticationAttemptResultFound = FALSE;
 	   	$lKeepGoing = TRUE;
@@ -52,14 +55,22 @@
    		logLoginAttempt("User {$lUsername} attempting to authenticate");
 
    		if (!$SQLQueryHandler->accountExists($lUsername)){
-   			$lAuthenticationAttemptResult = $cACCOUNT_DOES_NOT_EXIST;
+   		    if ($lConfidentialityRequired){
+   		        $lAuthenticationAttemptResult = $cUSERNAME_OR_PASSWORD_INCORRECT;
+   		    }else{
+   		        $lAuthenticationAttemptResult = $cACCOUNT_DOES_NOT_EXIST;
+   		    }// end if
    			$lKeepGoing = FALSE;
    			logLoginAttempt("Login Failed: Account {$lUsername} does not exist");
    		}// end if accountExists
 
 		if ($lKeepGoing){
    			if (!$SQLQueryHandler->authenticateAccount($lUsername, $lPassword)){
-	   			$lAuthenticationAttemptResult = $cPASSWORD_INCORRECT;
+   			    if ($lConfidentialityRequired){
+   			        $lAuthenticationAttemptResult = $cUSERNAME_OR_PASSWORD_INCORRECT;
+   			    }else{
+   			        $lAuthenticationAttemptResult = $cPASSWORD_INCORRECT;
+   			    }// end if
 	   			$lKeepGoing = FALSE;
 	   			logLoginAttempt("Login Failed: Password for {$lUsername} incorrect");
 	   		}//end if authenticateAccount

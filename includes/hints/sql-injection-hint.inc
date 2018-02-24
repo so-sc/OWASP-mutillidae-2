@@ -437,16 +437,20 @@
 <br/>
 <span class="report-header">Videos</span>
 <br/><br/>
-<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BypassAuthenticationusingSQLInjection);?>
-<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AutomateSQLInjectionusingsqlmap);?>
-<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofSQLInjectionTimingAttacks);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->SQLInjectionExplainedPart1TheBasics);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->SQLInjectionExplainedPart2Tautologies);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->SQLInjectionExplainedPart3SelectiveInjections);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->SQLInjectionExplainedPart4DiscoverybyError);?>
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoUnionBasedSQLInjection);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofSQLInjectionTimingAttacks);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofusingSQLInjectiontoReadFiles);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BypassAuthenticationusingSQLInjection);?>
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofInsertingDatawithSQLInjection);?>
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->InjectWebShellBackdoorviaSQLInjection);?>
-<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofusingSQLInjectiontoReadFiles);?>
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->GenerateCrossSiteScriptswithSQLInjection);?>
-<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->SQLInjectionviaAJAXrequestwithJSONresponse);?>
-<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofusingsqlmapISSAKYWorkshopFebruary2013);	?>
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoSQLInjectionforBeginners);?>
 <?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoSQLInjectionwithSQLMap);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AutomateSQLInjectionusingsqlmap);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->SQLInjectionviaAJAXrequestwithJSONresponse);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofusingsqlmapISSAKYWorkshopFebruary2013);	?>
 <br/>

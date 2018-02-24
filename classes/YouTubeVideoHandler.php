@@ -163,6 +163,10 @@ class YouTubeVideoHandler {
 	public $CommandInjectionExplainedPart4ChainingCommands = 124;
 	public $CommandInjectionExplainedPart5Shell = 125;
 	public $CommandInjectionExplainedPart6DirectoryTraversal = 126;
+	public $SQLInjectionExplainedPart1TheBasics = 127;
+	public $SQLInjectionExplainedPart2Tautologies = 128;
+	public $SQLInjectionExplainedPart3SelectiveInjections = 129;
+	public $SQLInjectionExplainedPart4DiscoverybyError = 130;
 	
 	/* private methods */
 	private function doSetSecurityLevel($pSecurityLevel){

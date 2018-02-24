@@ -343,20 +343,92 @@
      * ------------------------------------------ */
 
    	/* ------------------------------------------
-    * ANTI-CLICK-JACKING (Modern Browsers)
+   	 * PHP Version Detection
+   	 * ------------------------------------------ */
+   	try{
+   	    /*
+   	     * This section detects if the header_remove() function should
+   	     * be supported. PHP 5.3 first includes this function.
+   	     */
+   	    $l_header_remove_supported = FALSE;
+   	    $l_phpversion = explode(".", phpversion());
+   	    $l_phpmajorversion = (int)$l_phpversion[0];
+   	    $l_phpminorversion = (int)$l_phpversion[1];
+   	    if (($l_phpmajorversion >= 5 && $l_phpminorversion >= 3) || $l_phpmajorversion > 5){
+   	        $l_header_remove_supported = TRUE;
+   	    }else{
+   	        $l_header_remove_supported = FALSE;
+   	    }// end if
+   	} catch (Exception $e) {
+   	    //Bummer: Not sure if we have support
+   	    $l_header_remove_supported = FALSE;
+   	}// end try
+   	
+   	/* ------------------------------------------
+    * Security Headers (Modern Browsers)
     * ------------------------------------------ */
+
+   	/* If not security level 5, try to get rid of cache-control */
+   	if ($_SESSION["security-level"] < 5) {
+   	    
+   	    try{
+   	        /*
+   	         * This section is the cache-control. This only works in PHP 5.3
+   	         * and higher due to the header_remove function becoming
+   	         * available at that time.
+   	         */
+   	        if ($l_header_remove_supported){
+   	            /* Try to get rid of expires, last-modified, Pragma,
+   	             * cache control header, HTTP/1.1 and cookie cache control
+   	             * that would be created if the user
+   	             * enabled security level 5.
+   	             */
+   	            header_remove("Expires");
+   	            header_remove("Last-Modified");
+   	            header_remove("Cache-Control");
+   	            header_remove("Pragma");
+   	        }else{
+   	            /* Try to get rid of expires, last-modified, Pragma,
+   	             * cache control header, HTTP/1.1 and cookie cache control
+   	             * that would be created if the user
+   	             * enabled security level 5.
+   	             */
+   	            /*This line causes severe issues with the toggle security and toggle hints.
+   	             DO NOT uncomment until a patch is found.
+   	             header("Expires: Mon, 26 Jul 2050 05:00:00 GMT", TRUE);
+   	             */
+   	            header("Last-Modified: Mon, 26 Jul 2050 05:00:00 GMT", TRUE);
+   	            header('Cache-Control: public', TRUE);
+   	            header("Pragma: public", TRUE);
+   	        }// end if
+   	    } catch (Exception $e) {
+   	        //Bummer: The cahce-control exercise are not working
+   	    }// end try
+   	    
+    }//end if
+   	
 	switch ($_SESSION["security-level"]){
    		case "0": // This code is insecure
    			$lIncludeFrameBustingJavaScript = FALSE;
+   			
+   			/* Built-in user-agent defenses */
+   			header("X-XSS-Protection: 0", TRUE);
    		break;
    		case "1":
-			$lIncludeFrameBustingJavaScript = TRUE;
+   		    
+   		    /* Built-in user-agent defenses */
+   		    header("X-XSS-Protection: 0", TRUE);
+   		    
+   		    /* Cross-frame scripting and click-jacking */
+			$lIncludeFrameBustingJavaScript = TRUE;	
    		break;
 
    		case "2":
    		case "3":
    		case "4":
    		case "5": // This code is fairly secure
+   		    
+   		    /* Cross-frame scripting and click-jacking */
   			/* To prevent click-jacking and IE6 key-log-via-framing issue
   			 * we can instruct the browser that it should not frame our site. 
   			 * Unfortuneately only the latest browsers support this option.
@@ -367,127 +439,67 @@
   			 */
    			header('X-FRAME-OPTIONS: DENY', TRUE);
    			$lIncludeFrameBustingJavaScript = TRUE;
-   		break;
-   	}// end switch
-	/* ------------------------------------------
-    * END ANTI-CLICK-JACKING (Modern Browsers)
-    * ------------------------------------------ */
-	 
-	 /* ------------------------------------------
-     * CACHE CONTROL
-     * ------------------------------------------ */
-	try{
-		/*
-		 * This section detects if the header_remove() function should
-		 * be supported. PHP 5.3 first includes this function.
-		 */
-		$l_header_remove_supported = FALSE;
-		$l_phpversion = explode(".", phpversion());
-		$l_phpmajorversion = (int)$l_phpversion[0];
-		$l_phpminorversion = (int)$l_phpversion[1];
-		if (($l_phpmajorversion >= 5 && $l_phpminorversion >= 3) || $l_phpmajorversion > 5){
-			$l_header_remove_supported = TRUE;
-		}else{
-			$l_header_remove_supported = FALSE;
-		}// end if
-	} catch (Exception $e) {
-   		//Bummer: Not sure if we have support
-		$l_header_remove_supported = FALSE;
-   	}// end try
-
-	switch ($_SESSION["security-level"]){
-   		case "0": // This code is insecure
-   		case "1": // This code is insecure
-			try{
-				/*
-				 * This section is the cache-control. This only works in PHP 5.3
-				 * and higher due to the header_remove function becoming
-				 * available at that time.
-				 */
-				if ($l_header_remove_supported){
-					/* Try to get rid of expires, last-modified, Pragma,
-					 * cache control header, HTTP/1.1 and cookie cache control
-					 * that would be created if the user
-					 * enabled security level 5. 
-					 */
-					header_remove("Expires");
-					header_remove("Last-Modified");
-					header_remove("Cache-Control");
-					header_remove("Pragma");			
-				}else{
-					/* Try to get rid of expires, last-modified, Pragma,
-					 * cache control header, HTTP/1.1 and cookie cache control
-					 * that would be created if the user
-					 * enabled security level 5. 
-					 */
-					 /*This line causes severe issues with the toggle security and toggle hints. 
-						DO NOT uncomment until a patch is found.
-						header("Expires: Mon, 26 Jul 2050 05:00:00 GMT", TRUE);
-					*/
-					header("Last-Modified: Mon, 26 Jul 2050 05:00:00 GMT", TRUE);
-					header('Cache-Control: public', TRUE);
-					header("Pragma: public", TRUE);
-				}// end if
-			} catch (Exception $e) {
-		   		//Bummer: The cahce-control exercise are not working
-		   	}// end try
-   		break;
-	    		
-   		case "2":
-   		case "3":
-   		case "4":
-   		case "5": // This code is fairly secure
+   			
+   			/* Cache-control */
    			/*
    			 * Forms caching:
    			 * In insecure mode, we do nothing (as is often the case with insecure mode)
    			 * In secure mode, we set the proper caching directives to help prevent client side caching
-   			 * 
+   			 *
    			 * When the browser caches the information asset just walked out the door. HTML 5 combined
    			 * with naive developers is going to make this problem much worse. HTML 5 includes advanced
    			 * cookies called "offline" storage or "DOM" storage. This is going to be a nightmare
    			 * for enterprises to protect their data from leakage.
    			 */
-			// Expires: past date tells browser that file is out of date
-			header("Expires: Mon, 26 Jul 1997 05:00:00 GMT", TRUE);
-						
-			// Always modified - Tells browser that new content available
-			header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT", TRUE);
-			
-			// HTTP/1.1 and cookie cache control
-			header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0, no-cache="set-cookie"', TRUE);
-						
-			// HTTP/1.0 cache-control
-			header("Pragma: no-cache", TRUE);
+   			// Expires: past date tells browser that file is out of date
+   			header("Expires: Mon, 26 Jul 1997 05:00:00 GMT", TRUE);
+   			
+   			// Always modified - Tells browser that new content available
+   			header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT", TRUE);
+   			
+   			// HTTP/1.1 and cookie cache control
+   			header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0, no-cache="set-cookie"', TRUE);
+   			
+   			// HTTP/1.0 cache-control
+   			header("Pragma: no-cache", TRUE);
 
-			try{
-				/*
-				 * Remove x-powered-by header and server header for security. 
-				 * Server is hard to get rid of without modifying the Apache config because Apache
-				 * adds the header after the PHP has already been rendered and sent to Apache,
-				 * but atleast we discussed it here.
-				 */
-				if ($l_header_remove_supported){
-					header_remove("X-Powered-By");
-					header_remove("Server");			
-				}else{
-					/* Try to get rid of expires, last-modified, Pragma,
-					 * cache control header, HTTP/1.1 and cookie cache control
-					 * that would be created if the user
-					 * enabled security level 5. Server is often over-ridden 
-					 * by Apache no matter what we do. Change Apache config to fix.
-					 */
-					header("X-Powered-By: Ming Industries Draconian Power Ring", TRUE);
-					header("Server: Kentucky Wildcat Basketball", TRUE);
-				}// end if
-			} catch (Exception $e) {
-		   		//Bummer: The server blabbermouth defense is not working
-		   	}// end try
+   			/* Content sniffing */
+   			header("X-Content-Type-Options: nosniff", TRUE);
+   			
+   			/* Built-in user-agent defenses */
+   			header("X-XSS-Protection: 1", TRUE);
+   			
+   			/* Server version banners */
+   			try{
+   			    /*
+   			     * Remove x-powered-by header and server header for security.
+   			     * Server is hard to get rid of without modifying the Apache config because Apache
+   			     * adds the header after the PHP has already been rendered and sent to Apache,
+   			     * but atleast we discussed it here.
+   			     */
+   			    if ($l_header_remove_supported){
+   			        header_remove("X-Powered-By");
+   			        header_remove("Server");
+   			    }else{
+   			        /* Try to get rid of expires, last-modified, Pragma,
+   			         * cache control header, HTTP/1.1 and cookie cache control
+   			         * that would be created if the user
+   			         * enabled security level 5. Server is often over-ridden
+   			         * by Apache no matter what we do. Change Apache config to fix.
+   			         */
+   			        header("X-Powered-By: Ming Industries Draconian Power Ring", TRUE);
+   			        header("Server: Kentucky Wildcat Basketball", TRUE);
+   			    }// end if
+   			} catch (Exception $e) {
+   			    //Bummer: The server blabbermouth defense is not working
+   			}// end try
+   			
    		break;
-   	}// end switch		
+   	}// end switch
 	/* ------------------------------------------
-     * END CACHE CONTROL
-     * ------------------------------------------ */
-
+    * END Security Headers (Modern Browsers)
+    * ------------------------------------------ */
+	 
    	/* ------------------------------------------
    	 * Set the HTTP content-type of this page
    	 * ------------------------------------------ */
