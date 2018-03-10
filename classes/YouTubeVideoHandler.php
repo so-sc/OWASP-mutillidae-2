@@ -127,7 +127,7 @@ class YouTubeVideoHandler {
 	public $HowtoInstalldirbonLinux = 88;
 	public $HowtouseWGETtocloneaWebSite = 89;
 	public $HowtoScanWordpressSitesforVulnerabilities = 90;
-	public $HackingWebAppswithStylePathRelativeStyleSheetInjection = 91;
+	public $CrossSiteScriptingExplainedPart10PathRelativeStylesheetInjection = 91;
 	public $IntroductiontoXPathInjection = 92;
 	public $IntroductiontoUnvalidatedRedirectsandForwards = 93;
 	public $IntroductiontoParameterAddition = 94;
@@ -167,6 +167,10 @@ class YouTubeVideoHandler {
 	public $SQLInjectionExplainedPart2Tautologies = 128;
 	public $SQLInjectionExplainedPart3SelectiveInjections = 129;
 	public $SQLInjectionExplainedPart4DiscoverybyError = 130;
+	public $CrossSiteScriptingExplainedPart1TheBasics = 131;
+	public $CrossSiteScriptingExplainedPart2DOMBasedXSS = 132;
+	public $CrossSiteScriptingExplainedPart3ReflectedXSS = 133;
+	public $CrossSiteScriptingExplainedPart4StoredXSS = 134;
 	
 	/* private methods */
 	private function doSetSecurityLevel($pSecurityLevel){

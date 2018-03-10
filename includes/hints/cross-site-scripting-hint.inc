@@ -321,23 +321,31 @@ for(i=0;i&lt;s.length;i++){var lKey = s.key(i);m += lKey + &quot;=&quot; + s.get
 			their own code into production; ever. That is what change control is for.
 			<br/><br/>
 			<span class="report-header">Videos</span>
-			<br/><br/>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->ExplanationofHTTPOnlyCookiesinPresenceCrossSiteScripting);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->TwoMethodstoStealSessionTokenusingCrossSiteScripting);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->InjectingaCrossSiteScriptviaCascadingStylesheetContext);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofInjectingCrossSiteScriptintoHTMLonclickEvent);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontolocatingReflectedCrosssiteScripting);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->SendingPersistentCrosssiteScriptsintoWebLogstoSnagWebAdmin);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->GenerateCrossSiteScriptswithSQLInjection);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->InjectingCrossSiteScriptsXSSintoLogPageviaCookie);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoHTMLInjectionHTMLiandCrossSiteScriptingXSSUsingMutillidae);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoCrossSiteScriptingXSSviaJavaScriptStringInjection);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AddingValuestoDOMStorageusingCrosssiteScripting);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AlterValuesinHTML5WebStorageusingCrosssiteScript);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AlterValuesinHTML5WebStorageusingPersistentCrosssiteScript);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AlterValuesinHTML5WebStorageusingReflectedCrosssiteScript);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->WebPenTestingHTML5WebStorageusingJSONInjection);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->StealingHTML5StorageviaJSONInjection);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->ReadingHiddenValuesfromHTML5DomStorage);?>
-			<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontotheBrowserExploitationFramework);?>
-			<br/><br/>
+			<br/><br/>			
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->CrossSiteScriptingExplainedPart1TheBasics);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->CrossSiteScriptingExplainedPart2DOMBasedXSS);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->CrossSiteScriptingExplainedPart3ReflectedXSS);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->CrossSiteScriptingExplainedPart4StoredXSS);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontolocatingReflectedCrosssiteScripting);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->ExplanationofHTTPOnlyCookiesinPresenceCrossSiteScripting);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->BasicsofInjectingCrossSiteScriptintoHTMLonclickEvent);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoCrossSiteScriptingXSSviaJavaScriptStringInjection);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->InjectingaCrossSiteScriptviaCascadingStylesheetContext);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->CrossSiteScriptingExplainedPart10PathRelativeStylesheetInjection);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->TwoMethodstoStealSessionTokenusingCrossSiteScripting);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->InjectingCrossSiteScriptsXSSintoLogPageviaCookie);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->SendingPersistentCrosssiteScriptsintoWebLogstoSnagWebAdmin);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontotheBrowserExploitationFramework);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->XSSbypassingJavaScriptValidation);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->ReadingHiddenValuesfromHTML5DomStorage);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AddingValuestoDOMStorageusingCrosssiteScripting);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AlterValuesinHTML5WebStorageusingCrosssiteScript);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AlterValuesinHTML5WebStorageusingReflectedCrosssiteScript);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->AlterValuesinHTML5WebStorageusingPersistentCrosssiteScript);?>
+
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->GenerateCrossSiteScriptswithSQLInjection);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->WebPenTestingHTML5WebStorageusingJSONInjection);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->StealingHTML5StorageviaJSONInjection);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->IntroductiontoHTMLInjectionHTMLiandCrossSiteScriptingXSSUsingMutillidae);?>
+
+<br/><br/>
