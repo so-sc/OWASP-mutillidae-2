@@ -318,3 +318,13 @@ If injecting into JavaScript context, do not include script tags. */
 	}
 &lt;/script&gt;
 </code>
+<br/><br/>
+<span class="report-header">Videos</span>
+<br/><br/>	
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->CrossSiteScriptingExplainedPart1TheBasics);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->CrossSiteScriptingExplainedPart2DOMBasedXSS);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->CrossSiteScriptingExplainedPart3ReflectedXSS);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->CrossSiteScriptingExplainedPart4StoredXSS);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->CrossSiteRequestForgeryExplainedPart1BasicCSRF);?>
+<?php echo $YouTubeVideoHandler->getYouTubeVideo($YouTubeVideoHandler->CrossSiteRequestForgeryExplainedPart2AdvancedCSRF);?>
+<br/><br/>	

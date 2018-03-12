@@ -171,6 +171,8 @@ class YouTubeVideoHandler {
 	public $CrossSiteScriptingExplainedPart2DOMBasedXSS = 132;
 	public $CrossSiteScriptingExplainedPart3ReflectedXSS = 133;
 	public $CrossSiteScriptingExplainedPart4StoredXSS = 134;
+	public $CrossSiteRequestForgeryExplainedPart1BasicCSRF = 135;
+	public $CrossSiteRequestForgeryExplainedPart2AdvancedCSRF = 136;
 	
 	/* private methods */
 	private function doSetSecurityLevel($pSecurityLevel){

@@ -998,8 +998,10 @@ try{
             (131, '3pXeSkM7m3M', 'Cross-Site Scripting Explained - Part 1: The Basics'),
             (132, 'UFlF3F-XOG4', 'Cross-Site Scripting Explained - Part 2: DOM-Based XSS'),
             (133, 'k91UNRymD0U', 'Cross-Site Scripting Explained - Part 3: Reflected XSS'),
-            (134, 'I0SusAlT1wY', 'Cross-Site Scripting Explained - Part 4: Stored XSS')";
-
+            (134, 'I0SusAlT1wY', 'Cross-Site Scripting Explained - Part 4: Stored XSS'),
+            (135, 'rR0SnARknlk', 'Cross-Site Request Forgery Explained - Part 1: Basic CSRF'),
+            (136, 'xBWqIh6wSz8', 'Cross-Site Request Forgery Explained - Part 2: Advanced CSRF')";
+	
 	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {
 		$lErrorDetected = TRUE;
