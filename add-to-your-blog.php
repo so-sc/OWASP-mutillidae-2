@@ -9,9 +9,6 @@
 		Known Vulnerable Output: Name, Comment, "Add blog for" title,
 	*/
 
-	/* Defined our constants to use to tokenize allowed HTML characters */
-	include_once (__ROOT__.'/includes/constants.php');
-
 	/* Instantiate CSRF Protection object */
 	require_once (__ROOT__.'/classes/CSRFTokenHandler.php');
 	$lCSRFTokenHandler = new CSRFTokenHandler(__ROOT__.'/owasp-esapi-php/src/', $_SESSION["security-level"], "register-user");

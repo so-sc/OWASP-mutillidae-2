@@ -1,7 +1,4 @@
 <?php
-	/* Defined our constants to use to tokenize allowed HTML characters */
-	include_once './includes/constants.php';
-
 	switch ($_SESSION["security-level"]){
    		case "0": // This code is insecure
    			// DO NOTHING: This is insecure

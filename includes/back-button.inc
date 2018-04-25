@@ -64,5 +64,5 @@
 		Back
 	</a>
 	</span>
-	<?php include_once './includes/help-button.inc';?>	
+	<?php include_once('./includes/help-button.inc');?>	
 </div>

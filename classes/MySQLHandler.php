@@ -1,10 +1,10 @@
 <?php
 
 /* read database configuration file and populate class parameters */
-require_once 'includes/database-config.php';
+require_once(__ROOT__ . '/includes/database-config.php');
 
 class MySQLHandler {
-    
+
 	/**************************/
 	/* Database Configuration */
 	/**************************/
