@@ -7,12 +7,12 @@
 	$C_VERSION_STRING = "Version: " . $C_VERSION;
 	$C_MAX_HINT_LEVEL = 1;
 	
-	/* ------------------------------------------
-	 * Document Root (considering this file is in 
-	 * includes folder)
+    /* ------------------------------------------
+     * Determine the root of the entire project. 
+     * Recall this file is in the "includes" folder
+     * so its "2 levels deep".
 	 * ------------------------------------------*/
 	define('__ROOT__', dirname(dirname(__FILE__)));
-	define('__DOCUMENT_ROOT__', dirname($_SERVER['PHP_SELF']));
 
 	/* ------------------------------------------
 	 * @DANGEROUS TAG TOKENIZATION CONSTANTS

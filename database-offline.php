@@ -40,20 +40,35 @@
 			<span class="label" style="color: #cc3333">
 			<?php echo MySQLHandler::$mMySQLDatabaseHost ?>
 			</span> 
-			appears to be offline. Try to <a href="set-up-database.php">setup/reset the DB</a> to see if that helps. 
-			Check the error message below for more suggestions.
-			<br /><br />
-			Note: On some older installations, this 
-			message could be a false positive. You can opt-out of these
-			warnings below.
+			appears to be offline.
 		</th>
 	</tr>
-	<tr><td>&nbsp;</td></tr>
 	<tr>
-		<td style="width:700px;">
-			<div class="warning-message">
-				<?php echo "Error: ".$lErrorMessage ?>
-			</div>
+		<td>	
+			<ol>
+				<li>Be sure the username and password to MySQL is the same as configured in includes/database-config.php</li>
+				<li>Be aware that MySQL disables password authentication for root user upon installation or update in some systesms. This may happen even for a minor update. Please check the username and password to MySQL is the same as configured in includes/database-config.php</li>
+				<li>Try to <a style="font-weight: bold" href="set-up-database.php">setup/reset the DB</a> to see if that helps</li>
+				<li>A <a style="font-weight: bold" href="https://www.youtube.com/watch?v=sG5Z4JqhRx8" target="_blank">video is available</a> to help reset MySQL root password</li>
+				<li>The commands vary by system and version, but may be something similar to the following
+					<ul>
+						<li>mysql -u root</li>
+						<li>use mysql;</li>
+						<li>update user set authentication_string=PASSWORD('') where user='root';</li>
+						<li>update user set plugin='mysql_native_password' where user='root';</li>
+						<li>flush privileges;</li>
+						<li>quit;</li>
+					</ul>
+				</li>
+				<li>Check the error message below for more hints</li>
+				<li>If you think this message is a false-positive, you can opt-out of these warnings below</li>
+			</ol>
+		</td>
+	</tr>
+	<tr><td class="warning-message">Error Message</td></tr>
+	<tr>
+		<td style="width:700px;" class="warning-message">
+			<?php echo "Error: ".$lErrorMessage ?>
 		</td>
 	</tr>
 	<tr><td>&nbsp;</td></tr>

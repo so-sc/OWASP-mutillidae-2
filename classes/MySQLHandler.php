@@ -1,7 +1,12 @@
 <?php
 
-/* read database configuration file and populate class parameters */
-require_once(__ROOT__ . '/includes/database-config.php');
+
+/* Determine the root of the entire project.
+ * Recall this file is in the "includes" folder so its "2 levels deep". */
+define('__SITE_ROOT__', dirname(dirname(__FILE__)));
+
+/* Read database configuration file and populate class parameters */
+require_once(__SITE_ROOT__ . '/includes/database-config.php');
 
 class MySQLHandler {
 
